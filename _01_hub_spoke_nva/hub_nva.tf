@@ -9,8 +9,42 @@ module "vm-hub-nva" {
   tags                 = var.tags
 }
 
-resource "azurerm_virtual_machine_extension" "enable-routes" {
-  name                 = "enable-iptables-routes"
+# resource "azurerm_virtual_machine_extension" "enable-ip-forwarding" {
+#   name                 = "enable-ip-forwarding"
+#   virtual_machine_id   = module.vm-hub-nva.virtual_machine_id
+#   publisher            = "Microsoft.Azure.Extensions"
+#   type                 = "CustomScript"
+#   type_handler_version = "2.0"
+
+#   settings = <<SETTINGS
+#     {
+#         "fileUris": [
+#           "https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/enable-ip-forwarding.sh"
+#         ],
+#         "commandToExecute": "bash enable-ip-forwarding.sh"
+#     }
+# SETTINGS
+# }
+
+# resource "azurerm_virtual_machine_extension" "install-bind9" {
+#   name                 = "install-bind9"
+#   virtual_machine_id   = module.vm-hub-nva.virtual_machine_id
+#   publisher            = "Microsoft.Azure.Extensions"
+#   type                 = "CustomScript"
+#   type_handler_version = "2.0"
+
+#   settings = <<SETTINGS
+#     {
+#         "fileUris": [
+#           "https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-bind9.sh"
+#         ],
+#         "commandToExecute": "bash install-bind9.sh"
+#     }
+# SETTINGS
+# }
+
+resource "azurerm_virtual_machine_extension" "install-networking-tools" {
+  name                 = "install-networking-tools"
   virtual_machine_id   = module.vm-hub-nva.virtual_machine_id
   publisher            = "Microsoft.Azure.Extensions"
   type                 = "CustomScript"
@@ -19,26 +53,9 @@ resource "azurerm_virtual_machine_extension" "enable-routes" {
   settings = <<SETTINGS
     {
         "fileUris": [
-        "https://raw.githubusercontent.com/mspnp/reference-architectures/master/scripts/linux/enable-ip-forwarding.sh"
+          "https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-networking-tools.sh"
         ],
-        "commandToExecute": "bash enable-ip-forwarding.sh"
-    }
-SETTINGS
-}
-
-resource "azurerm_virtual_machine_extension" "install-bind9" {
-  name                 = "install-bind9"
-  virtual_machine_id   = module.vm-hub-nva.virtual_machine_id
-  publisher            = "Microsoft.Azure.Extensions"
-  type                 = "CustomScript"
-  type_handler_version = "2.0"
-
-  settings = <<SETTINGS
-    {
-        "fileUris": [
-        "https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-bind9.sh"
-        ],
-        "commandToExecute": "bash install-bind9.sh"
+        "commandToExecute": "bash install-networking-tools.sh"
     }
 SETTINGS
 }

@@ -98,7 +98,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
 resource "azurerm_virtual_machine_extension" "instal-tools" {
   count                = var.install_tools ? 1 : 0
-  name                 = "vm-extension-linux"
+  name                 = "install-tools"
   virtual_machine_id   = azurerm_linux_virtual_machine.vm.id
   publisher            = "Microsoft.Azure.Extensions"
   type                 = "CustomScript"
@@ -110,12 +110,4 @@ resource "azurerm_virtual_machine_extension" "instal-tools" {
       "commandToExecute": "./install-tools.sh"
     }
 SETTINGS
-  # settings = <<SETTINGS
-  # {
-  #   "fileUris": ["https://${azurerm_storage_account.storage.0.name}.blob.core.windows.net/${azurerm_storage_container.container.0.name}/vm-install-cli-tools.sh"],
-  #   "commandToExecute": "./install-cli-tools.sh"
-  # }
-  # SETTINGS
 }
-
-#todo : diag settings
