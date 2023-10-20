@@ -96,7 +96,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   # }
 }
 
-resource "azurerm_virtual_machine_extension" "vm_extension_linux" {
+resource "azurerm_virtual_machine_extension" "instal-tools" {
   count                = var.install_tools ? 1 : 0
   name                 = "vm-extension-linux"
   virtual_machine_id   = azurerm_linux_virtual_machine.vm.id
@@ -106,8 +106,8 @@ resource "azurerm_virtual_machine_extension" "vm_extension_linux" {
   tags                 = var.tags
   settings             = <<SETTINGS
     {
-      "fileUris": ["https://raw.githubusercontent.com/HoussemDellai/aks-enterprise/main/scripts/install-tools-linux-vm.sh"],
-      "commandToExecute": "./install-tools-linux-vm.sh"
+      "fileUris": ["https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-tools.sh"],
+      "commandToExecute": "./install-tools.sh"
     }
 SETTINGS
   # settings = <<SETTINGS
