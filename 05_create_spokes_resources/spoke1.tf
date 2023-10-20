@@ -105,5 +105,9 @@ resource "azurerm_virtual_network_peering" "hub-spoke1-peer" {
   allow_forwarded_traffic      = true
   allow_gateway_transit        = true
   use_remote_gateways          = false
-  depends_on                   = [azurerm_virtual_network.spoke1-vnet, azurerm_virtual_network.hub-vnet, azurerm_virtual_network_gateway.hub-vnet-gateway]
+  depends_on = [
+    azurerm_virtual_network.spoke1-vnet,
+    azurerm_virtual_network.hub-vnet,
+    azurerm_virtual_network_gateway.hub-vnet-gateway
+  ]
 }
