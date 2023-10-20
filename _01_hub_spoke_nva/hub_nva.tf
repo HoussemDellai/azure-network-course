@@ -36,9 +36,9 @@ resource "azurerm_virtual_machine_extension" "install-bind9" {
   settings = <<SETTINGS
     {
         "fileUris": [
-        "https://raw.githubusercontent.com/mspnp/reference-architectures/master/scripts/linux/enable-ip-forwarding.sh"
+        "https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-bind9.sh"
         ],
-        "commandToExecute": "bash enable-ip-forwarding.sh"
+        "commandToExecute": "bash install-bind9.sh"
     }
 SETTINGS
 }
