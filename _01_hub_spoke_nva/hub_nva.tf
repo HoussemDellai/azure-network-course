@@ -10,7 +10,7 @@ module "vm-hub-nva" {
 }
 
 resource "azurerm_virtual_machine_extension" "install-networking-tools" {
-  count                = 0
+  count                = 1
   name                 = "install-networking-tools"
   virtual_machine_id   = module.vm-hub-nva.virtual_machine_id
   publisher            = "Microsoft.Azure.Extensions"
@@ -22,7 +22,7 @@ resource "azurerm_virtual_machine_extension" "install-networking-tools" {
         "fileUris": [
           "https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-networking-tools.sh"
         ],
-        "commandToExecute": "bash install-networking-tools.sh"
+        "commandToExecute": "sh install-networking-tools.sh"
     }
 SETTINGS
 }
