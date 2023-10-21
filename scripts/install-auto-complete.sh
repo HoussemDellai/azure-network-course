@@ -7,7 +7,7 @@
 
 sudo apt update
 
-sudo apt install bash-completion
+sudo apt install bash-completion -y
 
 cat <<EOF > ~/.inputrc
 set show-all-if-ambiguous on

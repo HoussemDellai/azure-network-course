@@ -12,7 +12,7 @@ sed -i "/net.ipv6.conf.all.forwarding=1/ s/# *//" /etc/sysctl.conf
 
 sudo apt update
 
-sudo apt install bash-completion
+sudo apt install bash-completion -y
 
 cat <<EOF > ~/.inputrc
 set show-all-if-ambiguous on
