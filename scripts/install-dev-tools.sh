@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # # Eliminate debconf: warnings
 # echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
