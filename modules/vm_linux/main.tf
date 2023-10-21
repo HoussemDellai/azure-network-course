@@ -96,9 +96,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
   # }
 }
 
-resource "azurerm_virtual_machine_extension" "instal-tools" {
-  count                = var.install_tools ? 1 : 0
-  name                 = "install-tools"
+resource "azurerm_virtual_machine_extension" "instal-dev-tools" {
+  count                = var.install_dev_tools ? 1 : 0
+  name                 = "install-dev-tools"
   virtual_machine_id   = azurerm_linux_virtual_machine.vm.id
   publisher            = "Microsoft.Azure.Extensions"
   type                 = "CustomScript"
@@ -106,8 +106,8 @@ resource "azurerm_virtual_machine_extension" "instal-tools" {
   tags                 = var.tags
   settings             = <<SETTINGS
     {
-      "fileUris": ["https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-tools.sh"],
-      "commandToExecute": "./install-tools.sh"
+      "fileUris": ["https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-dev-tools.sh"],
+      "commandToExecute": "./install-dev-tools.sh"
     }
 SETTINGS
 }

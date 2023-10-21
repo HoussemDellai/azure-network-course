@@ -6,7 +6,7 @@ resource "azurerm_private_dns_zone" "dns_zone" {
 }
 
 # DNS Zone A record
-resource "azurerm_dns_a_record" "dns_a_record" {
+resource "azurerm_private_dns_a_record" "dns_a_record" {
   name                = "test"
   zone_name           = azurerm_private_dns_zone.dns_zone.name
   resource_group_name = azurerm_private_dns_zone.dns_zone.resource_group_name
