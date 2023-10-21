@@ -1,14 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
-# Update the system
-sudo apt-get update -y
-
-# Upgrade packages
-sudo apt-get upgrade -y
-
-# enable IP forwarding
-bash -c "echo net.ipv4.ip_forward=1 >> /etc/sysctl.conf"
-sysctl -p /etc/sysctl.conf
-
-# install bind9
-sudo apt-get install bind9 bind9utils bind9-doc -y
+# Enable IPv4 and IPv6 forwarding
+sysctl -w net.ipv4.ip_forward=1
+sysctl -w net.ipv6.conf.all.forwarding=1
+sed -i "/net.ipv4.ip_forward=1/ s/# *//" /etc/sysctl.conf
+sed -i "/net.ipv6.conf.all.forwarding=1/ s/# *//" /etc/sysctl.conf
