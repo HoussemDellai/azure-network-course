@@ -20,9 +20,9 @@ resource "azurerm_virtual_machine_extension" "install-networking-tools" {
   settings = <<SETTINGS
     {
         "fileUris": [
-          "https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-networking-tools.sh"
+          "https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/configure-networking.sh"
         ],
-        "commandToExecute": "sh install-networking-tools.sh"
+        "commandToExecute": "sh configure-networking.sh"
     }
 SETTINGS
 }
