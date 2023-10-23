@@ -98,7 +98,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   # }
 }
 
-resource "azurerm_virtual_machine_extension" "instal-webapp" {
+resource "azurerm_virtual_machine_extension" "install-webapp" {
   count                = var.install_webapp ? 1 : 0
   name                 = "install-webapp"
   virtual_machine_id   = azurerm_linux_virtual_machine.vm.id
