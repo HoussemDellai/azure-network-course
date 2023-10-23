@@ -1,3 +1,12 @@
+## Deploy terraform template
+
+## Install tools in the VMs
+
+### Enable IP forwarding and install Bind on Hub NVA VM
+
+### Install Nginx on Spoke VMs
+
+
 https://github.com/dmauser/AzureVM-Router/
 
 

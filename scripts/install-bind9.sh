@@ -7,9 +7,7 @@ sudo apt install bind9 bind9utils bind9-doc -y
 
 sudo -i
 
-sudo nano /etc/bind/named.conf.options
-
-sudo cat <<EOF >/etc/bind/named.conf.options
+cat <<EOF >/etc/bind/named.conf.options
 options {  
     directory "/var/cache/bind";  
     recursion yes;                 # enables resursive queries  
@@ -29,7 +27,7 @@ EOF
 # check syntax
 named-checkconf /etc/bind/named.conf.options
 
-sudo systemctl restart bind9
+systemctl restart bind9
 
 nslookup google.com 127.0.0.1
 

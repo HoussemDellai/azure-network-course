@@ -10,7 +10,7 @@ module "vm-hub-nva" {
 }
 
 resource "azurerm_virtual_machine_extension" "install-networking-tools" {
-  count                = 1
+  count                = 0
   name                 = "install-networking-tools"
   virtual_machine_id   = module.vm-hub-nva.virtual_machine_id
   publisher            = "Microsoft.Azure.Extensions"

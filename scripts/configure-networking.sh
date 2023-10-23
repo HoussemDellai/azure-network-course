@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sudo -i
+
 # https://github.com/dmauser/AzureVM-Router/blob/master/linuxrouter.sh
 # Enable IPv4 and IPv6 forwarding / disable ICMP redirect
 sysctl -w net.ipv4.ip_forward=1
@@ -11,7 +13,6 @@ sed -i "/net.ipv6.conf.all.forwarding=1/ s/# *//" /etc/sysctl.conf
 sed -i "/net.ipv4.conf.all.accept_redirects = 0/ s/# *//" /etc/sysctl.conf
 sed -i "/net.ipv6.conf.all.accept_redirects = 0/ s/# *//" /etc/sysctl.conf
 
-echo "Updating repositories"
 sudo apt-get update
 echo "Installing IPTables-Persistent"
 echo iptables-persistent iptables-persistent/autosave_v4 boolean false | sudo debconf-set-selections
