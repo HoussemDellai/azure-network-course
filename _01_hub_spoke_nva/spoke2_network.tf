@@ -8,6 +8,7 @@ resource "azurerm_virtual_network" "vnet-spoke2" {
   resource_group_name = azurerm_resource_group.rg-spoke2.name
   location            = azurerm_resource_group.rg-spoke2.location
   address_space       = ["10.2.0.0/16"]
+  dns_servers         = [module.vm-hub-nva.virtual_machine_private_ip]
 }
 
 resource "azurerm_subnet" "subnet-spoke2-workload" {
@@ -18,8 +19,8 @@ resource "azurerm_subnet" "subnet-spoke2-workload" {
   private_endpoint_network_policies_enabled = false
 }
 
-resource "azurerm_virtual_network_peering" "vnet_peering_hub_to_spoke2" {
-  name                         = "vnet_peering_hub_to_spoke2"
+resource "azurerm_virtual_network_peering" "vnet-peering-hub-to-spoke2" {
+  name                         = "vnet-peering-hub-to-spoke2"
   virtual_network_name         = azurerm_virtual_network.vnet-hub.name
   resource_group_name          = azurerm_virtual_network.vnet-hub.resource_group_name
   remote_virtual_network_id    = azurerm_virtual_network.vnet-spoke2.id

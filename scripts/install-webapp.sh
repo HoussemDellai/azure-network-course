@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# wait for VM to connect to internet
+while true; do
+wget -T 5 -c https://github.com && break
+done
+
 sudo apt -qq update
 
 # Install NGINX web server
