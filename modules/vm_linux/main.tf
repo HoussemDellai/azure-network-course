@@ -66,6 +66,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
   network_interface_ids           = [azurerm_network_interface.nic_vm.id]
   tags                            = var.tags
 
+  # custom_data = filebase64("../scripts/install-dev-tools.sh")
+
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "StandardSSD_LRS"
@@ -96,9 +98,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
   # }
 }
 
-resource "azurerm_virtual_machine_extension" "instal-dev-tools" {
-  count                = var.install_dev_tools ? 1 : 0
-  name                 = "install-dev-tools"
+resource "azurerm_virtual_machine_extension" "instal-webapp" {
+  count                = var.install_webapp ? 1 : 0
+  name                 = "install-webapp"
   virtual_machine_id   = azurerm_linux_virtual_machine.vm.id
   publisher            = "Microsoft.Azure.Extensions"
   type                 = "CustomScript"
@@ -106,8 +108,8 @@ resource "azurerm_virtual_machine_extension" "instal-dev-tools" {
   tags                 = var.tags
   settings             = <<SETTINGS
     {
-      "fileUris": ["https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-dev-tools.sh"],
-      "commandToExecute": "./install-dev-tools.sh"
+      "fileUris": ["https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-webapp.sh"],
+      "commandToExecute": "./install-webapp.sh"
     }
 SETTINGS
 }

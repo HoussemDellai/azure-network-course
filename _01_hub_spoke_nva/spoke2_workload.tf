@@ -5,6 +5,6 @@ module "vm-spoke2" {
   location            = azurerm_resource_group.rg-spoke2.location
   subnet_id           = azurerm_subnet.subnet-spoke2-workload.id
   enable_public_ip    = false
-  install_dev_tools   = true
+  install_webapp      = true
   tags                = var.tags
 }

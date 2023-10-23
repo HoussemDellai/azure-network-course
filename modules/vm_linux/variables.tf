@@ -23,7 +23,7 @@ variable "enable_ip_forwarding" {
   type    = bool
   default = false
 }
-variable "install_dev_tools" {
+variable "install_webapp" {
   type    = bool
   default = false
 }
