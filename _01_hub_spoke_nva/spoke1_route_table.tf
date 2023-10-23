@@ -10,7 +10,7 @@ resource "azurerm_route" "route-to-nva-spoke1" {
   name                   = "route-to-nva-spoke1"
   resource_group_name    = azurerm_resource_group.rg-spoke1.name
   route_table_name       = azurerm_route_table.route-table-to-nva-spoke1.name
-  address_prefix         = azurerm_virtual_network.vnet-spoke2.address_space[0] # "10.2.0.0/16" # "0.0.0.0/0"
+  address_prefix         = "0.0.0.0/0" # azurerm_virtual_network.vnet-spoke2.address_space[0] # "10.2.0.0/16" # 
   next_hop_type          = "VirtualAppliance"
   next_hop_in_ip_address = module.vm-hub-nva.virtual_machine_private_ip
 }

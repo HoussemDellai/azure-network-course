@@ -15,7 +15,7 @@ resource "azurerm_private_dns_a_record" "dns_a_record" {
 }
 
 # DNS Zone link to the virtual network
-resource "azurerm_private_dns_zone_virtual_network_link" "example" {
+resource "azurerm_private_dns_zone_virtual_network_link" "link-vnet-hub-dns-zone" {
   name                  = "link-vnet-hub-dns-zone"
   resource_group_name   = azurerm_private_dns_zone.dns_zone.resource_group_name
   private_dns_zone_name = azurerm_private_dns_zone.dns_zone.name

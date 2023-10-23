@@ -3,7 +3,7 @@
 sudo apt update
 
 # install bind9
-sudo apt install bind9 bind9utils bind9-doc
+sudo apt install bind9 bind9utils bind9-doc -y
 
 sudo nano /etc/bind/named.conf.options
 
