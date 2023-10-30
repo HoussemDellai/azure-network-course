@@ -18,6 +18,8 @@ sudo apt -qq update
 
 sudo apt -qq install bash-completion -y
 
+pwd
+
 sudo cat <<EOF > ~/.inputrc
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
