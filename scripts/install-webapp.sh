@@ -18,7 +18,7 @@ sudo apt -qq update
 
 sudo apt -qq install bash-completion -y
 
-cat <<EOF > ~/.inputrc
+sudo cat <<EOF > ~/.inputrc
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set menu-complete-display-prefix on
