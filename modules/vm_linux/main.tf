@@ -96,7 +96,13 @@ resource "azurerm_virtual_machine_extension" "install-webapp" {
   settings             = <<SETTINGS
     {
       "fileUris": ["https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-webapp.sh"],
-      "commandToExecute": "./install-webapp.sh"
+      "commandToExecute": "bash install-webapp.sh"
     }
 SETTINGS
+#   settings             = <<SETTINGS
+#     {
+#       "fileUris": ["https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-webapp.sh"],
+#       "commandToExecute": "./install-webapp.sh"
+#     }
+# SETTINGS
 }
