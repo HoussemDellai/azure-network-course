@@ -1,6 +1,9 @@
 variable "resource_group_name" {}
 variable "location" {}
-variable "tags" {}
+variable "tags" {
+  type    = map
+  default = {}
+}
 variable "subnet_id" {}
 variable "vm_name" {}
 variable "vm_size" {

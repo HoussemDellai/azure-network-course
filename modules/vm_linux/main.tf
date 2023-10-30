@@ -1,16 +1,3 @@
-# terraform {
-
-#   required_version = ">= 1.5.0"
-
-#   required_providers {
-
-#     azurerm = {
-#       source  = "hashicorp/azurerm"
-#       version = ">= 3.76.0"
-#     }
-#   }
-# }
-
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
@@ -66,7 +53,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   network_interface_ids           = [azurerm_network_interface.nic_vm.id]
   tags                            = var.tags
 
-  # custom_data = filebase64("../scripts/install-dev-tools.sh")
+  custom_data = filebase64("../scripts/install-webapp.sh")
 
   os_disk {
     caching              = "ReadWrite"
