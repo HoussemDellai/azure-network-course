@@ -53,7 +53,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   network_interface_ids           = [azurerm_network_interface.nic_vm.id]
   tags                            = var.tags
 
-  custom_data = filebase64("../scripts/install-webapp.sh")
+  # custom_data = filebase64("../scripts/install-webapp.sh")
 
   os_disk {
     caching              = "ReadWrite"
