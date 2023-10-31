@@ -53,17 +53,17 @@ resource "azurerm_linux_virtual_machine" "vm" {
   network_interface_ids           = [azurerm_network_interface.nic_vm.id]
   tags                            = var.tags
 
-  # custom_data = filebase64("../scripts/install-webapp.sh")
+  custom_data = var.install_webapp ? filebase64("../scripts/install-webapp.sh") : null
 
   os_disk {
     caching              = "ReadWrite"
-    storage_account_type = "StandardSSD_LRS"
+    storage_account_type = "Standard_LRS" # "StandardSSD_LRS"
   }
 
   source_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer" # "0001-com-ubuntu-server-jammy" # "0001-com-ubuntu-minimal-jammy"
-    sku       = "18.04-LTS"    # "22.04-LTS-gen2" # "22_04-lts-gen2" # "minimal-22_04-lts-gen2"
+    publisher = "canonical"
+    offer     = "0001-com-ubuntu-server-jammy" # "0001-com-ubuntu-minimal-mantic" # "UbuntuServer" # "0001-com-ubuntu-server-jammy" # "0001-com-ubuntu-minimal-jammy"
+    sku       = "22_04-lts-gen2" # "minimal-23_10-gen2" # "18.04-LTS"    # "22.04-LTS-gen2" # "22_04-lts-gen2" # "minimal-22_04-lts-gen2"
     version   = "latest"
   }
 
@@ -86,7 +86,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
 }
 
 resource "azurerm_virtual_machine_extension" "install-webapp" {
-  count                = var.install_webapp ? 1 : 0
+  count                = var.install_webapp ? 0 : 0
   name                 = "install-webapp"
   virtual_machine_id   = azurerm_linux_virtual_machine.vm.id
   publisher            = "Microsoft.Azure.Extensions"
@@ -99,10 +99,10 @@ resource "azurerm_virtual_machine_extension" "install-webapp" {
       "commandToExecute": "bash install-webapp.sh"
     }
 SETTINGS
-#   settings             = <<SETTINGS
-#     {
-#       "fileUris": ["https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-webapp.sh"],
-#       "commandToExecute": "./install-webapp.sh"
-#     }
-# SETTINGS
+  #   settings             = <<SETTINGS
+  #     {
+  #       "fileUris": ["https://raw.githubusercontent.com/HoussemDellai/azure-network-hub-spoke/main/scripts/install-webapp.sh"],
+  #       "commandToExecute": "./install-webapp.sh"
+  #     }
+  # SETTINGS
 }

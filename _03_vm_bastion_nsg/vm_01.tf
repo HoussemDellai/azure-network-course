@@ -5,5 +5,5 @@ module "vm-01" {
   location            = azurerm_resource_group.rg.location
   subnet_id           = azurerm_subnet.subnet-frontend-servers.id
   enable_public_ip    = false
-  install_webapp      = false
+  install_webapp      = true
 }
