@@ -16,7 +16,7 @@ variable "admin_username" {
 }
 variable "admin_password" {
   type    = string
-  default = "@Aa123456789"
+  default = "@Aa123456789" # don't do this
 }
 variable "enable_public_ip" {
   type    = bool

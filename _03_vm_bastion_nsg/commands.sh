@@ -14,3 +14,4 @@ hostname -i
 
 curl localhost
 
+curl 10.0.1.4 --connect-timeout 2
