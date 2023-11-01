@@ -3,13 +3,6 @@ resource "azurerm_resource_group" "rg" {
   location = var.location
 }
 
-# resource "azurerm_subnet" "subnet" {
-#   name                 = "AzureBastionSubnet"
-#   resource_group_name  = azurerm_resource_group.rg.name
-#   virtual_network_name = var.virtual_network_name
-#   address_prefixes     = var.subnet_cidr
-# }
-
 resource "azurerm_public_ip" "pip" {
   name                = "pip-bastion"
   location            = azurerm_resource_group.rg.location
@@ -22,7 +15,7 @@ resource "azurerm_bastion_host" "bastion" {
   name                   = "bastion-host"
   location               = azurerm_resource_group.rg.location
   resource_group_name    = azurerm_resource_group.rg.name
-  sku                    = "Standard" # "Basic"
+  sku                    = "Standard" # "Basic", Developer
   copy_paste_enabled     = true
   file_copy_enabled      = true
   shareable_link_enabled = true
