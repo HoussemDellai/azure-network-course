@@ -9,3 +9,12 @@ variable "subnet_id" {
 variable "location" {
   type = string
 }
+
+variable "sku" {
+  type    = string
+  default = "Standard"
+  validation {
+    condition     = can(regex("^(Developer|Basic|Standard)$", var.sku))
+    error_message = "Valid values are Developer, Basic or Standard"
+  }
+}
