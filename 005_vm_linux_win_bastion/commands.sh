@@ -6,12 +6,15 @@ terraform plan -out tfplan
 
 terraform apply tfplan
 
-terraform destroy -auto-approve
+az vm list --query [].id
 
-# connect to an azure vm through bastion
+# Initiate the connection from the command line.
+# Make sure to replace the value with your own VM ID.
 
-hostname -i 
+# Connect to the Linux VM using SSH.
 
-curl localhost
+az network bastion ssh -n bastion-host -g rg-bastion --target-resource-id /subscriptions/xxx/resourceGroups/rg-vm-linux/providers/Microsoft.Compute/virtualMachines/vm-linux
 
-curl 10.0.1.4
+# Connect to the Windows VM using RDP.
+
+az network bastion rdp -n bastion-host -g rg-bastion --target-resource-id /subscriptions/xxx/resourceGroups/rg-vm-windows/providers/Microsoft.Compute/virtualMachines/vm-windows
