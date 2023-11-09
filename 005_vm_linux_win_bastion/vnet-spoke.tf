@@ -6,9 +6,9 @@ resource "azurerm_virtual_network" "vnet-spoke" {
 }
 
 resource "azurerm_subnet" "subnet-vm" {
-  name                                      = "subnet-vm"
-  resource_group_name                       = azurerm_virtual_network.vnet-spoke.resource_group_name
-  virtual_network_name                      = azurerm_virtual_network.vnet-spoke.name
-  address_prefixes                          = ["10.0.1.0/24"]
-  private_endpoint_network_policies_enabled = false
+  name                 = "subnet-vm"
+  resource_group_name  = azurerm_virtual_network.vnet-spoke.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet-spoke.name
+  address_prefixes     = ["10.0.1.0/24"]
+  # private_endpoint_network_policies_enabled = false
 }
