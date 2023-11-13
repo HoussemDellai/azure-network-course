@@ -1,3 +1,7 @@
+# Introduction to Azure Firewall
+
+![](images/architecture.png)
+
 ## Deploy terraform template
 
 ## Install tools in the VMs

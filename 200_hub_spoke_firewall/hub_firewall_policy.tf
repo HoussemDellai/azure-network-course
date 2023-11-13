@@ -3,6 +3,11 @@ resource "azurerm_firewall_policy" "firewall-policy" {
   resource_group_name = azurerm_resource_group.rg-hub.name
   location            = azurerm_resource_group.rg-hub.location
   sku                 = "Standard" # "Basic" # "Standard" # "Premium" #
+
+  # dns {
+  #   proxy_enabled = true
+  #   servers       = ["168.63.129.16"]
+  # }
 }
 
 resource "azurerm_firewall_policy_rule_collection_group" "policy-group-allow" {
