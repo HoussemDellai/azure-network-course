@@ -1,3 +1,8 @@
+variable "name" {
+  type = string
+  default = "bastion-host"
+}
+
 variable "resource_group_name" {
   type = string
 }

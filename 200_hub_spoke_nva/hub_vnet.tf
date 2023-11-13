@@ -1,8 +1,3 @@
-resource "azurerm_resource_group" "rg-hub" {
-  name     = "rg-hub"
-  location = "westeurope"
-}
-
 resource "azurerm_virtual_network" "vnet-hub" {
   name                = "vnet-hub"
   resource_group_name = azurerm_resource_group.rg-hub.name
@@ -11,13 +6,13 @@ resource "azurerm_virtual_network" "vnet-hub" {
 }
 
 resource "azurerm_subnet" "subnet-nva" {
-  name                                      = "subnet-nva"
-  resource_group_name                       = azurerm_virtual_network.vnet-hub.resource_group_name
-  virtual_network_name                      = azurerm_virtual_network.vnet-hub.name
-  address_prefixes                          = ["172.16.0.0/24"]
+  name                 = "subnet-nva"
+  resource_group_name  = azurerm_virtual_network.vnet-hub.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet-hub.name
+  address_prefixes     = ["172.16.0.0/24"]
 }
 
-resource "azurerm_subnet" "subnet_bastion" {
+resource "azurerm_subnet" "subnet-bastion" {
   name                 = "AzureBastionSubnet"
   virtual_network_name = azurerm_virtual_network.vnet-hub.name
   resource_group_name  = azurerm_virtual_network.vnet-hub.resource_group_name

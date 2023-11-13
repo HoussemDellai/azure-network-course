@@ -10,16 +10,15 @@ sudo -i
 cat <<EOF >/etc/bind/named.conf.options
 options {  
     directory "/var/cache/bind";  
-    recursion yes;                 # enables resursive queries  
-    allow-recursion { any; };     # allows recursive queries from "any" clients  
+    recursion yes;            # enables resursive queries  
+    allow-recursion { any; }; # allows recursive queries from "any" clients
+    forward only;
     forwarders {  
         168.63.129.16; # Azure DNS
-        8.8.8.8; # google DNS
-        8.8.4.4; # google DNS
-        1.1.1.1; # CloudFlare DNS
+        8.8.8.8;       # google DNS
+        8.8.4.4;       # google DNS
+        1.1.1.1;       # CloudFlare DNS
     };  
-    forward only;  
-    dnssec-enable no;             # disables DNSSEC  
 };  
 
 EOF

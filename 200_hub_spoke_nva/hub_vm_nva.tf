@@ -1,18 +1,18 @@
 module "vm-hub-nva" {
   source               = "../modules/vm_linux"
   vm_name              = "vm-hub-nva"
-  resource_group_name  = "rg-hub-nva"
+  resource_group_name  = azurerm_resource_group.rg-hub.name
   location             = azurerm_resource_group.rg-hub.location
   subnet_id            = azurerm_subnet.subnet-nva.id
-  enable_public_ip     = false
+  admin_username       = var.vm_admin_username
+  admin_password       = var.vm_admin_password
   enable_ip_forwarding = true
-  tags                 = var.tags
 }
 
 resource "azurerm_virtual_machine_extension" "install-networking-tools" {
   count                = 0
   name                 = "install-networking-tools"
-  virtual_machine_id   = module.vm-hub-nva.virtual_machine_id
+  virtual_machine_id   = module.vm-hub-nva.vm_id
   publisher            = "Microsoft.Azure.Extensions"
   type                 = "CustomScript"
   type_handler_version = "2.1"
