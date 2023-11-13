@@ -4,6 +4,11 @@
 
 ## Deploy terraform template
 
+```sh
+terraform init
+terraform apply -auto-apply
+```
+
 ## Install tools in the VMs
 
 ### Enable IP forwarding and install Bind on Hub NVA VM
