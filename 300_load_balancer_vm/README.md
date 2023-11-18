@@ -1,3 +1,7 @@
+## Introduction
+
+This sample terraform template shows how to deploy and configure a Load Balancer to distribute traffic into a web application running in an Azure VM.
+
 ## Requirements
 
 | Name | Version |
