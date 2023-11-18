@@ -1,3 +1,8 @@
+```sh
+terraform init
+terraform apply -auto-approve
+```
+
 ## Requirements
 
 | Name | Version |

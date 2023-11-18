@@ -9,7 +9,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   admin_username                  = "azureuser"
   admin_password                  = "@Aa123456789"
 
-  custom_data = filebase64("../scripts/install-webapp.sh")
+  custom_data = filebase64("./install-webapp.sh")
 
   os_disk {
     caching              = "ReadWrite"
