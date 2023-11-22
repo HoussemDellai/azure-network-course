@@ -39,6 +39,9 @@ choco install git -y
 # Install Azure Storage Explorer
 choco install microsoftazurestorageexplorer -y
 
+# Install Azure Data Studio
+choco install azure-data-studio -y
+
 # Install curl
 choco install curl -y
 
