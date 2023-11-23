@@ -6,8 +6,6 @@ resource "azurerm_mssql_server" "mssql-server" {
   administrator_login           = "azureuser"
   administrator_login_password  = "@Aa123456789"
   public_network_access_enabled = false
-
-  netw
 }
 
 resource "azurerm_mssql_database" "database" {
@@ -19,4 +17,23 @@ resource "azurerm_mssql_database" "database" {
   read_scale     = false
   sku_name       = "Basic" # GP_S_Gen5_2,HS_Gen4_1,BC_Gen5_2, ElasticPool, Basic,S0, P2 ,DW100c, DS100
   zone_redundant = false
+}
+
+resource "azurerm_mssql_firewall_rule" "firewall-rule" {
+  name             = "firewall-rule"
+  server_id        = azurerm_mssql_server.mssql-server.id
+  start_ip_address = local.machine_ip
+  end_ip_address   = local.machine_ip
+}
+
+data "http" "machine_ip" {
+  url = "http://ifconf.me"
+
+  request_headers = {
+    Accept = "application/json"
+  }
+}
+
+locals {
+  machine_ip = replace(data.http.machine_ip.response_body, "\n", "")
 }
