@@ -48,6 +48,12 @@ choco install curl -y
 # Install python
 choco install python -y
 
+# Install ffmpeg
+choco install ffmpeg -y
+
+# install auto-editor
+py -m pip install auto-editor
+
 Set-Alias -Name k -Value kubectl
 
 # # (Optional) Install Docker for Desktop
@@ -129,3 +135,8 @@ $powershellProfile > $PSHOME\Profile.ps1 # $PROFILE.CurrentUserAllHosts
 
 # # IMDS
 # Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | ConvertTo-Json -Depth 64
+
+# Install Camtasia
+
+Invoke-WebRequest -Uri https://download.techsmith.com/camtasiastudio/releases/2254/camtasia.msi -OutFile .\camtasia.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I camtasia.msi /quiet';
+
