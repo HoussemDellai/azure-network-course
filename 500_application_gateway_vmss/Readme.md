@@ -1,6 +1,6 @@
 # Azure Application Gateway
 
-[](images/architecture.png)
+![](images/architecture.png)
 
 ```sh
 terraform init
