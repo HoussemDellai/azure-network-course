@@ -7,7 +7,7 @@ resource "azurerm_subnet" "subnet-bastion" {
 
 module "bastion" {
   source              = "../modules/bastion"
-  resource_group_name = "rg-bastion"
+  resource_group_name = azurerm_resource_group.rg-1.name
   location            = azurerm_resource_group.rg-1.location
   subnet_id           = azurerm_subnet.subnet-bastion.id
 }

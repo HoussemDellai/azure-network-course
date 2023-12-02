@@ -1,6 +1,6 @@
 resource "azurerm_public_ip" "pip_vm" {
   count               = var.enable_public_ip ? 1 : 0
-  name                = "pip-vm"
+  name                = "pip-${var.vm_name}"
   resource_group_name = var.resource_group_name
   location            = var.location
   allocation_method   = "Static"
@@ -10,7 +10,7 @@ resource "azurerm_public_ip" "pip_vm" {
 }
 
 resource "azurerm_network_interface" "nic_vm" {
-  name                 = "nic-vm"
+  name                 = "nic-${var.vm_name}"
   resource_group_name  = var.resource_group_name
   location             = var.location
   enable_ip_forwarding = var.enable_ip_forwarding
