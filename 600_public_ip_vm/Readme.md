@@ -1,4 +1,4 @@
-# Azure Application Gateway
+# Azure Public IP address
 
 ![](images/architecture.png)
 
