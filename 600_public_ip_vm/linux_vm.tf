@@ -8,7 +8,7 @@ resource "azurerm_network_interface" "nic-vm" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet-app.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = null # azurerm_public_ip.pip.id
+    public_ip_address_id          = azurerm_public_ip.pip.id
   }
 }
 
