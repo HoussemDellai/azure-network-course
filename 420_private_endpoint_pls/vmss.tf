@@ -1,7 +1,7 @@
 resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   name                            = "vmss-app"
-  resource_group_name             = azurerm_resource_group.rg-customer.name
-  location                        = azurerm_resource_group.rg-customer.location
+  resource_group_name             = azurerm_resource_group.rg-provider.name
+  location                        = azurerm_resource_group.rg-provider.location
   instances                       = 3
   sku                             = "Standard_B2als_v2"
   zones                           = ["1", "2", "3"]
@@ -33,7 +33,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
     ip_configuration {
       name                                         = "internal"
       primary                                      = true
-      subnet_id                                    = azurerm_subnet.subnet-customer.id
+      subnet_id                                    = azurerm_subnet.subnet-provider.id
       load_balancer_backend_address_pool_ids       = [azurerm_lb_backend_address_pool.backend-pool.id]
       application_gateway_backend_address_pool_ids = null
       load_balancer_inbound_nat_rules_ids          = null

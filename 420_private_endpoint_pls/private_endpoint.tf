@@ -1,12 +1,13 @@
-resource "azurerm_private_endpoint" "pe" {
-  name                = "pe-app"
+resource "azurerm_private_endpoint" "pe-consumer" {
+  name                = "pe-consumer"
   location            = azurerm_resource_group.rg-consumer.location
   resource_group_name = azurerm_resource_group.rg-consumer.name
   subnet_id           = azurerm_subnet.subnet-consumer.id
+  custom_network_interface_name = "nic-pe-consumer"
 
   private_service_connection {
     name                           = "pls-connection"
-    private_connection_resource_id = azurerm_private_link_service.pls.id
+    private_connection_resource_id = azurerm_private_link_service.pls-provider.id
     is_manual_connection           = false
   }
 

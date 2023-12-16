@@ -1,13 +1,13 @@
 resource "azurerm_lb" "lb-internal" {
   name                = "lb-internal"
-  location            = azurerm_resource_group.rg-customer.location
-  resource_group_name = azurerm_resource_group.rg-customer.name
+  location            = azurerm_resource_group.rg-provider.location
+  resource_group_name = azurerm_resource_group.rg-provider.name
   sku                 = "Standard" # Standard and Gateway. Defaults to Basic
   sku_tier            = "Regional" # Global and Regional. Defaults to Regional
 
   frontend_ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.subnet-customer.id
+    subnet_id                     = azurerm_subnet.subnet-provider.id
     private_ip_address_allocation = "Dynamic" # Static or Dynamic. Defaults to Dynamic
     # private_ip_address            = "10.1.0.100"
   }
