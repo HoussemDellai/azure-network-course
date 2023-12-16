@@ -1,4 +1,4 @@
-# Azure Application Gateway
+# Azure NAT Gateway
 
 ![](images/architecture.png)
 
