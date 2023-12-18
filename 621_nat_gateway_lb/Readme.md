@@ -1,4 +1,4 @@
-# Azure Application Gateway
+# Azure NAT Gateway and Load Balancer together
 
 ![](images/architecture.png)
 
