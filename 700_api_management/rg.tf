@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-service-endpoint-sa-430"
+  name     = "rg-apim-700-demo"
   location = "westeurope"
 }
