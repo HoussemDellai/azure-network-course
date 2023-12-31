@@ -1,4 +1,4 @@
-# Azure NAT Gateway and Load Balancer together
+# Azure API Management
 
 ![](images/architecture.png)
 

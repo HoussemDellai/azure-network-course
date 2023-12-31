@@ -1,0 +1,1 @@
+Check the content of the APIM Landing Zone here: [https://github.com/Azure/apim-landing-zone-accelerator](https://github.com/Azure/apim-landing-zone-accelerator)
