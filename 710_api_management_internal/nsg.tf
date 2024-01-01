@@ -44,9 +44,9 @@ resource "azurerm_network_security_rule" "allow-inbound-internet-http" {
   access                      = "Allow"
   priority                    = 1020 # between 100 and 4096, must be unique, The lower the priority number, the higher the priority of the rule.
   direction                   = "Inbound"
-  protocol                    = "Tcp"      # Tcp, Udp, Icmp, Esp, Ah or * (which matches all).
+  protocol                    = "Tcp"           # Tcp, Udp, Icmp, Esp, Ah or * (which matches all).
   source_address_prefix       = "Internet" # CIDR or source IP range or * to match any IP, Supports Tags like VirtualNetwork, AzureLoadBalancer and Internet.
-  source_port_range           = "*"        # between 0 and 65535 or * to match any
+  source_port_range           = "*"             # between 0 and 65535 or * to match any
   destination_address_prefix  = "VirtualNetwork"
   destination_port_range      = "80"
 }
@@ -58,9 +58,9 @@ resource "azurerm_network_security_rule" "allow-inbound-internet-https" {
   access                      = "Allow"
   priority                    = 1030 # between 100 and 4096, must be unique, The lower the priority number, the higher the priority of the rule.
   direction                   = "Inbound"
-  protocol                    = "Tcp"      # Tcp, Udp, Icmp, Esp, Ah or * (which matches all).
+  protocol                    = "Tcp"           # Tcp, Udp, Icmp, Esp, Ah or * (which matches all).
   source_address_prefix       = "Internet" # CIDR or source IP range or * to match any IP, Supports Tags like VirtualNetwork, AzureLoadBalancer and Internet.
-  source_port_range           = "*"        # between 0 and 65535 or * to match any
+  source_port_range           = "*"             # between 0 and 65535 or * to match any
   destination_address_prefix  = "VirtualNetwork"
   destination_port_range      = "443"
 }

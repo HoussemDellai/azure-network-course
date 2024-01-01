@@ -1,7 +1,7 @@
 resource "azurerm_network_interface" "nic-vm" {
-  name                 = "nic-vm"
-  resource_group_name  = azurerm_resource_group.rg.name
-  location             = azurerm_resource_group.rg.location
+  name                = "nic-vm"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
 
   ip_configuration {
     name                          = "internal"
@@ -14,7 +14,7 @@ resource "azurerm_network_interface" "nic-vm" {
 resource "azurerm_windows_virtual_machine" "vm" {
   name                  = "vm-jumpbox-w11"
   resource_group_name   = azurerm_resource_group.rg.name
-  location              =   azurerm_resource_group.rg.location
+  location              = azurerm_resource_group.rg.location
   size                  = "Standard_B2als_v2"
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
