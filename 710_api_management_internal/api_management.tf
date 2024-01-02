@@ -16,14 +16,3 @@ resource "azurerm_api_management" "apim" {
 
   depends_on = [ azurerm_subnet_network_security_group_association.nsg-association ]
 }
-
-resource "azurerm_api_management_logger" "apim-logger" {
-  name                = "apim-logger"
-  api_management_name = azurerm_api_management.apim.name
-  resource_group_name = azurerm_api_management.apim.resource_group_name
-  resource_id         = azurerm_application_insights.app_insights.id
-
-  application_insights {
-    instrumentation_key = azurerm_application_insights.app_insights.instrumentation_key
-  }
-}

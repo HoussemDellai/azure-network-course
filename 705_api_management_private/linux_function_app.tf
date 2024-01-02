@@ -38,10 +38,4 @@ resource "azurerm_linux_function_app" "function-linux-container" {
       virtual_network_subnet_id = azurerm_subnet.subnet-apim.id
     }
   }
-
-  #   lifecycle {
-  #     ignore_changes = [
-  #       app_settings["WEBSITE_RUN_FROM_PACKAGE"],
-  #     ]
-  #   }
 }

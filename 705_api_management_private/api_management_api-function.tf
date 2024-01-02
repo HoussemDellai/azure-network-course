@@ -1,4 +1,4 @@
-resource "azurerm_api_management_api" "api-demo" {
+resource "azurerm_api_management_api" "api-azure-function" {
   name                = "api-demo"
   resource_group_name = azurerm_api_management.apim.resource_group_name
   api_management_name = azurerm_api_management.apim.name
@@ -11,11 +11,11 @@ resource "azurerm_api_management_api" "api-demo" {
   subscription_required = false
 }
 
-resource "azurerm_api_management_api_operation" "operation-demo-get" {
+resource "azurerm_api_management_api_operation" "operation-azure-function-get" {
   operation_id        = "api-demo-get"
-  api_name            = azurerm_api_management_api.api-demo.name
-  api_management_name = azurerm_api_management_api.api-demo.api_management_name
-  resource_group_name = azurerm_api_management_api.api-demo.resource_group_name
+  api_name            = azurerm_api_management_api.api-azure-function.name
+  api_management_name = azurerm_api_management_api.api-azure-function.api_management_name
+  resource_group_name = azurerm_api_management_api.api-azure-function.resource_group_name
   display_name        = "Demo API GET"
   method              = "GET"
   url_template        = "/"
