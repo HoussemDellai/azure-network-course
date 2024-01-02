@@ -6,5 +6,5 @@ resource "azurerm_api_management" "apim" {
   publisher_email               = "houssem.dellai@live.com"
   sku_name                      = "Developer_1"
   virtual_network_type          = "None" # None, External, Internal
-  public_network_access_enabled = true
+  public_network_access_enabled = true # false applies only when using private endpoint as the exclusive access method
 }
