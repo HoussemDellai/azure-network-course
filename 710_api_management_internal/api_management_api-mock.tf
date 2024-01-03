@@ -30,8 +30,8 @@ resource "azurerm_api_management_api_operation" "operation-mock-get" {
         name  = "default"
         value = <<JSON
 {
-  "title": "This is a mock API."
-  "description": "This a Mock response from API Management."
+  "title": "This is a mock API.",
+  "description": "This a Mock response from API Management.",
   "purpose": "Mock API"
 }
 JSON
