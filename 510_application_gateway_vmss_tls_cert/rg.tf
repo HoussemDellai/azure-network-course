@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-apim-internal-appgw-${var.prefix}"
+  name     = "rg-appgateway-vmss-tls-${var.prefix}"
   location = "westeurope"
 }

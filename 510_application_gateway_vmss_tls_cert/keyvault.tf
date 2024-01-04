@@ -1,7 +1,7 @@
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "keyvault" {
-  name                       = "kv-apgw-${var.prefix}"
+  name                       = "kv-appgw-${var.prefix}"
   location                   = azurerm_resource_group.rg.location
   resource_group_name        = azurerm_resource_group.rg.name
   tenant_id                  = data.azurerm_client_config.current.tenant_id
@@ -42,14 +42,13 @@ resource "azurerm_key_vault_certificate" "local_domain_certs" {
     }
 
     x509_certificate_properties {
-      subject            = "CN=${var.custom_domain_name}"
-      validity_in_months = 12
       extended_key_usage = ["1.3.6.1.5.5.7.3.1"]
-      
       key_usage = [
         "digitalSignature",
         "keyEncipherment"
       ]
+      subject            = "CN=${var.custom_domain_name}"
+      validity_in_months = 12
 
       subject_alternative_names {
         dns_names = [var.custom_domain_name]
