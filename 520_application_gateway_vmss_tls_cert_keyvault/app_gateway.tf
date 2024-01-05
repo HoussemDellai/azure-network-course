@@ -32,6 +32,11 @@ resource "azurerm_application_gateway" "appgateway" {
     capacity = 1
   }
 
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.identity-appgw.id]
+  }
+
   ssl_certificate {
     name                = var.custom_domain_name
     key_vault_secret_id = azurerm_key_vault_certificate.local_domain_certs.secret_id
