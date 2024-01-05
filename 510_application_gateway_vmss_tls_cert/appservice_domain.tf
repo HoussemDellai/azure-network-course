@@ -1,27 +1,3 @@
-# DNS Zone to configure the domain name
-resource "azurerm_dns_zone" "dns_zone" {
-  name                = var.custom_domain_name
-  resource_group_name = azurerm_resource_group.rg.name
-}
-
-# DNS Zone A record
-resource "azurerm_dns_a_record" "dns_a_record" {
-  name                = "test"
-  zone_name           = azurerm_dns_zone.dns_zone.name
-  resource_group_name = azurerm_resource_group.rg.name
-  ttl                 = 300
-  records             = ["1.2.3.4"] # just example IP address
-}
-
-# DNS Zone A record
-resource "azurerm_dns_a_record" "dns_a_record_appgw" {
-  name                = "@"
-  zone_name           = azurerm_dns_zone.dns_zone.name
-  resource_group_name = azurerm_resource_group.rg.name
-  ttl                 = 300
-  records             = [azurerm_public_ip.pip-appgateway.ip_address] # just example IP address
-}
-
 # App Service Domain
 # REST API reference: https://docs.microsoft.com/en-us/rest/api/appservice/domains/createorupdate
 resource "azapi_resource" "appservice_domain" {
@@ -106,11 +82,4 @@ resource "azapi_resource" "appservice_domain" {
       }
     }
   })
-}
-
-data "azurerm_subscription" "current" {
-}
-
-output "subscription" {
-  value = data.azurerm_subscription.current
 }
