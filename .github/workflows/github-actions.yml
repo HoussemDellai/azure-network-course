@@ -70,6 +70,7 @@ jobs:
     - name: Terraform Apply
       run: terraform apply tfplan
       working-directory: ${{ matrix.directory }}
+      continue-on-error: true
 #      if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
 
     # Terraform Destroy
@@ -86,7 +87,7 @@ jobs:
 
         for name in "${RG_ARRAY[@]}"; do
           echo "Resource group: $name"
-          # Add your commands here
+          az group delete -g $name --no-wait --yes
         done
         
       working-directory: ${{ matrix.directory }}
