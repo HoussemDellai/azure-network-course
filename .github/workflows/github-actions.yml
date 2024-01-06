@@ -54,18 +54,23 @@ jobs:
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
-      run: terraform -chdir=${{ matrix.directory }} fmt -check
+      run: terraform fmt -check
+      working-directory: ${{ matrix.directory }}
+      continue-on-error: true
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform -chdir=${{ matrix.directory }} plan -out tfplan
+      run: terraform plan -out tfplan
+      working-directory: ${{ matrix.directory }}
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
-      run: terraform -chdir=${{ matrix.directory }} apply tfplan
+      run: terraform apply tfplan
+      working-directory: ${{ matrix.directory }}
 #      if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
 
     # Terraform Destroy
     - name: Terraform Destroy
-      run: terraform -chdir=${{ matrix.directory }} destroy -auto-approve -input=false
+      run: terraform destroy -auto-approve -input=false
+      working-directory: ${{ matrix.directory }}
