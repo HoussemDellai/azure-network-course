@@ -35,7 +35,7 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
-    # Login to Azure
+    # Login to Azure using OIDC
     - name: Azure login
       uses: azure/login@v1
       with:
