@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-demo-vnet"
+  name     = "rg-demo-vnet-001"
   location = "westeurope"
 }
 

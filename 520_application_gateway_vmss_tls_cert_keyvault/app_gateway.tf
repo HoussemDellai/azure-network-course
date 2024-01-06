@@ -64,8 +64,6 @@ resource "azurerm_application_gateway" "appgateway" {
 
   backend_address_pool {
     name = local.backend_address_pool_name
-    # ip_addresses = [ azurerm_linux_virtual_machine_scale_set.vmss.network_interface. ]
-    # fqdns = [replace(azurerm_api_management.apim.gateway_url, "https://", "")]
   }
 
   backend_http_settings {
