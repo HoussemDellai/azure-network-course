@@ -15,10 +15,10 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 10
+      max-parallel: 1
       matrix:
-        # directory: [001_vnet_subnets_tf, 002_vm_bastion, 003_vm_bastion_nsg, 004_vnet_peering_tf, 005_vm_linux_win_bastion, 006_route_table]
-        directory: [004_vnet_peering_tf, 003_vm_bastion_nsg, 200_hub_spoke_firewall, 300_load_balancer_vm, 301_load_balancer_vmss, 302_load_balancer_internal_vmss_natgateway, 400_private_dns_zone, 410_private_endpoint_mssql, 420_private_endpoint_pls]
+        directory: [300_load_balancer_vm, 301_load_balancer_vmss, 302_load_balancer_internal_vmss_natgateway, 400_private_dns_zone, 410_private_endpoint_mssql, 420_private_endpoint_pls, 430_service_endpoint_storage_account, 431_service_endpoint_app_service, 500_application_gateway_vmss, 520_application_gateway_vmss_tls_cert_keyvault, 600_public_ip_vm, 610_public_ip_prefix, 620_nat_gateway, 621_nat_gateway_lb, 700_api_management_public, 705_api_management_external, 710_api_management_internal, 715_api_management_internal_app_gateway]
+        # directory: [004_vnet_peering_tf, 003_vm_bastion_nsg, 200_hub_spoke_firewall, 300_load_balancer_vm, 301_load_balancer_vmss, 302_load_balancer_internal_vmss_natgateway, 400_private_dns_zone, 410_private_endpoint_mssql, 420_private_endpoint_pls]
 #       node: [14, 16,]
         
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
@@ -73,10 +73,10 @@ jobs:
       continue-on-error: true
 #      if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
 
-    # Terraform Destroy
-    - name: Terraform Destroy
-      run: terraform destroy -auto-approve -input=false
-      working-directory: ${{ matrix.directory }}
+    # # Terraform Destroy
+    # - name: Terraform Destroy
+    #   run: terraform destroy -auto-approve -input=false
+    #   working-directory: ${{ matrix.directory }}
 
     # Delete Resource Groups
     - name: Delete Resource Groups

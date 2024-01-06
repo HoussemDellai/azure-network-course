@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-demo-lb-vm-02"
+  name     = "rg-loadbalancer-vm-300"
   location = "westeurope"
 }
