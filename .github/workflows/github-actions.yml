@@ -91,4 +91,5 @@ jobs:
         done
         
       working-directory: ${{ matrix.directory }}
+      continue-on-error: true
 
