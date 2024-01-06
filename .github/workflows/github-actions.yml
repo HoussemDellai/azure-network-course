@@ -76,3 +76,18 @@ jobs:
     - name: Terraform Destroy
       run: terraform destroy -auto-approve -input=false
       working-directory: ${{ matrix.directory }}
+
+    # Delete Resource Groups
+    - name: Delete Resource Groups
+      run: |
+        RG=$(jq -r '.resources[] | select(.type=="azurerm_resource_group") | .name' terraform.tfstate)
+
+        RG_ARRAY=($RG)
+
+        for name in "${RG_ARRAY[@]}"; do
+          echo "Resource group: $name"
+          # Add your commands here
+        done
+        
+      working-directory: ${{ matrix.directory }}
+
