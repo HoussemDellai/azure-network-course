@@ -15,7 +15,7 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     strategy:
-      # max-parallel: 10
+      max-parallel: 1
       matrix:
         # directory: [001_vnet_subnets_tf, 002_vm_bastion, 003_vm_bastion_nsg, 004_vnet_peering_tf, 005_vm_linux_win_bastion, 006_route_table]
         directory: [004_vnet_peering_tf, 003_vm_bastion_nsg, 200_hub_spoke_firewall, 300_load_balancer_vm, 301_load_balancer_vmss, 302_load_balancer_internal_vmss_natgateway, 400_private_dns_zone, 410_private_endpoint_mssql, 420_private_endpoint_pls]
