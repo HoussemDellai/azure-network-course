@@ -16,7 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        directory: [001_vnet_subnets_tf, 002_vm_bastion]
+        #,directory: [001_vnet_subnets_tf, 002_vm_bastion, 003_vm_bastion_nsg, 004_vnet_peering_tf, 005_vm_linux_win_bastion, 006_route_table]
+        directory: [003_vm_bastion_nsg, 004_vnet_peering_tf, 005_vm_linux_win_bastion, 006_route_table]
 #        node: [14, 16]
         
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
