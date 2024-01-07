@@ -82,7 +82,8 @@ jobs:
     # Delete Resource Groups
     - name: Delete Resource Groups
       run: |
-        RG=$(jq -r '.resources[] | select(.type=="azurerm_resource_group") | .name' terraform.tfstate)
+        
+        RG=$(jq -r '.resources[] | select(.type=="azurerm_resource_group") | .instances[].attributes.name' terraform.tfstate)
 
         RG_ARRAY=($RG)
 
