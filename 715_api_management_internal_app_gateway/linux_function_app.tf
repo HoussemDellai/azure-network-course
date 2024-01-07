@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "sa" {
-  name                     = "storagefunction${var.prefix}"
+  name                     = "storagefunction${random_string.random.result}${var.prefix}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
@@ -15,7 +15,7 @@ resource "azurerm_service_plan" "plan" {
 }
 
 resource "azurerm_linux_function_app" "function-linux-container" {
-  name                        = "function-linux-container-${var.prefix}"
+  name                        = "function-linux-container-${random_string.random.result}-${var.prefix}"
   resource_group_name         = azurerm_resource_group.rg.name
   location                    = azurerm_resource_group.rg.location
   service_plan_id             = azurerm_service_plan.plan.id

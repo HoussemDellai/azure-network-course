@@ -1,13 +1,13 @@
 resource "azurerm_api_management_api" "api-azure-function" {
-  name                = "api-demo"
-  resource_group_name = azurerm_api_management.apim.resource_group_name
-  api_management_name = azurerm_api_management.apim.name
-  revision            = "1"
-  display_name        = "Demo API"
-  path                = "api"
-  api_type            = "http" # graphql, http, soap, and websocket
-  protocols           = ["http", "https"]
-  service_url         = "https://${azurerm_linux_function_app.function-linux-container.default_hostname}/api"
+  name                  = "api-demo"
+  resource_group_name   = azurerm_api_management.apim.resource_group_name
+  api_management_name   = azurerm_api_management.apim.name
+  revision              = "1"
+  display_name          = "Demo API"
+  path                  = "api"
+  api_type              = "http" # graphql, http, soap, and websocket
+  protocols             = ["http", "https"]
+  service_url           = "https://${azurerm_linux_function_app.function-linux-container.default_hostname}/api"
   subscription_required = false
 }
 

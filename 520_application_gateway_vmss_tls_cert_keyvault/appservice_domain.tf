@@ -1,7 +1,7 @@
 # You should use a Pay-As-You-Go azure subscription to be able to create Azure App Service Domain.
 # MSDN/VisualStudio and Free Azure subscriptions doesn't work.
 module "appservice_domain" {
-  source = "HoussemDellai/appservice-domain/azapi" # if calling module from Terraform Registry
+  source  = "HoussemDellai/appservice-domain/azapi" # if calling module from Terraform Registry
   version = "1.0.2"
 
   providers = {

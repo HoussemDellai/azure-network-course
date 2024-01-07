@@ -1,8 +1,8 @@
 resource "azurerm_private_endpoint" "pe-consumer" {
-  name                = "pe-consumer"
-  location            = azurerm_resource_group.rg-consumer.location
-  resource_group_name = azurerm_resource_group.rg-consumer.name
-  subnet_id           = azurerm_subnet.subnet-consumer.id
+  name                          = "pe-consumer"
+  location                      = azurerm_resource_group.rg-consumer.location
+  resource_group_name           = azurerm_resource_group.rg-consumer.name
+  subnet_id                     = azurerm_subnet.subnet-consumer.id
   custom_network_interface_name = "nic-pe-consumer"
 
   private_service_connection {

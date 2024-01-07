@@ -16,7 +16,7 @@ data "http" "machine_ip" {
 }
 
 locals {
-  machine_ip      = replace(data.http.machine_ip.response_body, "\n", "")
+  machine_ip = replace(data.http.machine_ip.response_body, "\n", "")
 }
 
 data "azurerm_storage_account_blob_container_sas" "blob_sas" {
