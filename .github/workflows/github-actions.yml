@@ -88,7 +88,7 @@ jobs:
         RG_ARRAY=($RG)
 
         for name in "${RG_ARRAY[@]}"; do
-          echo "Resource group: $name"
+          echo "Deleting resource group: $name ..."
           az group delete -g $name --no-wait --yes
         done
         

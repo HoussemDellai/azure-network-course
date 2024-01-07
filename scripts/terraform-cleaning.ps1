@@ -6,13 +6,16 @@ foreach ($folder in $(Get-ChildItem -Directory)) {
 
     if (Test-Path '*.tf') {
 
-      rm -Path ".terraform" -Recurse -Force
+        if (Test-Path '.terraform') {
+            
+            rm -Path ".terraform" -Recurse -Force
+        }
 
-      terraform init -upgrade
+        terraform init -upgrade
 
-      terraform fmt
+        terraform fmt
 
-      terraform validate
+        terraform validate
     }
 
     cd ..
