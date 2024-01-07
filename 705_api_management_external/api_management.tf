@@ -1,5 +1,5 @@
 resource "azurerm_api_management" "apim" {
-  name                          = "apim-external-${var.prefix}"
+  name                          = "apim-external-${random_string.random.result}-${var.prefix}"
   location                      = azurerm_resource_group.rg.location
   resource_group_name           = azurerm_resource_group.rg.name
   publisher_name                = "My Company"

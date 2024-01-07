@@ -5,5 +5,5 @@ resource "azurerm_public_ip" "pip-apim" {
   allocation_method   = "Static"
   sku                 = "Standard"
   zones               = ["1"] # ["1", "2", "3"]
-  domain_name_label   = "apim-external-${var.prefix}"
+  domain_name_label   = "apim-external-${random_string.random.result}-${var.prefix}"
 }

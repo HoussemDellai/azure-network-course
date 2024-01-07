@@ -45,7 +45,7 @@ resource "azurerm_key_vault_certificate" "local_domain_certs" {
       subject            = "CN=${var.custom_domain_name}"
       validity_in_months = 12
       extended_key_usage = ["1.3.6.1.5.5.7.3.1"]
-      
+
       key_usage = [
         "digitalSignature",
         "keyEncipherment"

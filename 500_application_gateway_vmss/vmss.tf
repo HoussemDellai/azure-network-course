@@ -30,9 +30,9 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
     network_security_group_id = null
 
     ip_configuration {
-      name                                         = "internal"
-      primary                                      = true
-      subnet_id                                    = azurerm_subnet.subnet-backend.id
+      name      = "internal"
+      primary   = true
+      subnet_id = azurerm_subnet.subnet-backend.id
       # load_balancer_backend_address_pool_ids       = [azurerm_lb_backend_address_pool.backend-pool.id]
       application_gateway_backend_address_pool_ids = [tolist(azurerm_application_gateway.appgateway.backend_address_pool).0.id] # [one(azurerm_application_gateway.appgateway.backend_address_pool).id]
       load_balancer_inbound_nat_rules_ids          = null
