@@ -4,9 +4,9 @@ module "appservice_domain" {
   source  = "HoussemDellai/appservice-domain/azapi" # if calling module from Terraform Registry
   version = "1.0.2"
 
-  providers = {
-    azapi = azapi
-  }
+  # providers = {
+  #   azapi = azapi
+  # }
 
   custom_domain_name = var.custom_domain_name
   resource_group_id  = azurerm_resource_group.rg.id
