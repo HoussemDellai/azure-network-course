@@ -5,7 +5,7 @@
 
 # Create a self-signed root certificate
 
-$RootCertName = "CN=P2SRootCert800"
+$RootCertName = "CN=P2SRootCert810"
 
 $params = @{
     Type = 'Custom'
@@ -22,25 +22,19 @@ $params = @{
 
 $RootCert = New-SelfSignedCertificate @params
 
-Export-Certificate -Cert $RootCert -FilePath ".\certs\P2SRootCert800Encoded.cer" -NoClobber | Out-Null
+Export-Certificate -Cert $RootCert -FilePath ".\P2SRootCert810Encoded.cer" -NoClobber | Out-Null
 
-certutil -encode ".\certs\P2SRootCert800Encoded.cer" ".\certs\P2SRootCert800.cer" | Out-Null
+certutil -encode ".\P2SRootCert810Encoded.cer" ".\P2SRootCert810.cer" | Out-Null
 
 # Generate a client certificate
+# Optional if you want to use the certificate in another machine
 
 Get-ChildItem -Path "Cert:\CurrentUser\My"
-#    PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
-# Thumbprint                                Subject
-# ----------                                -------
-# F6A65B1743082B4C158CBB3BB1A47C9F34992E6E  CN=310b4f7b-e4f2-4287-97a4-96548ea39ea7
-# AEA8AA79D47E305560188B73888C62942CBB654D  CN=P2SRootCert
-
-# $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\AEA8AA79D47E305560188B73888C62942CBB654D"
 
 $params = @{
     Type = 'Custom'
-    Subject = 'CN=P2SClientCert800'
-    DnsName = 'P2SClientCert800'
+    Subject = 'CN=P2SClientCert810'
+    DnsName = 'P2SClientCert810'
     KeySpec = 'Signature'
     KeyExportPolicy = 'Exportable'
     KeyLength = 2048
@@ -58,4 +52,4 @@ $ClientCert = New-SelfSignedCertificate @params
 
 $CertPwd = ConvertTo-SecureString -String "@Aa123456789" -Force -AsPlainText
 
-Export-PfxCertificate -FilePath ".\certs\P2SClientCert800.pfx" -Password $CertPwd -Cert $ClientCert | Out-Null
+Export-PfxCertificate -FilePath ".\P2SClientCert810.pfx" -Password $CertPwd -Cert $ClientCert | Out-Null

@@ -5,8 +5,8 @@ resource "azurerm_public_ip" "pip-vnet-gateway" {
   allocation_method   = "Dynamic"
 }
 
-resource "azurerm_virtual_network_gateway" "vnet-gateway" {
-  name                = "vnet-gateway"
+resource "azurerm_virtual_network_gateway" "vpn-gateway" {
+  name                = "vpn-gateway"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -33,7 +33,7 @@ resource "azurerm_virtual_network_gateway" "vnet-gateway" {
 
     root_certificate {
       name             = "P2SRootCert800"
-      public_cert_data = replace(replace(file("./certs/P2SRootCert800.cer"), "-----BEGIN CERTIFICATE-----", ""), "-----END CERTIFICATE-----", "")
+      public_cert_data = replace(replace(file("./certs/P2SRootCert810.cer"), "-----BEGIN CERTIFICATE-----", ""), "-----END CERTIFICATE-----", "")
     }
   }
 }

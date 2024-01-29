@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-vnet-gateway-basic-${var.prefix}"
+  name     = "rg-hub-${var.prefix}"
   location = "westeurope"
 }
