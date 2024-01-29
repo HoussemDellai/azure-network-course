@@ -8,7 +8,7 @@ resource "azurerm_private_dns_a_record" "a-record" {
   zone_name           = azurerm_private_dns_zone.private-dns-zone.name
   resource_group_name = azurerm_private_dns_zone.private-dns-zone.resource_group_name
   ttl                 = 300
-  records             = [azurerm_linux_virtual_machine.vm.private_ip_address] # just example IP address
+  records             = [module.vm-hub.vm_private_ip] # just example IP address
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "link-dns-vnet" {
