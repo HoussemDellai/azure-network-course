@@ -3,7 +3,7 @@ resource "azurerm_private_dns_zone" "private-dns-zone" {
   resource_group_name = azurerm_resource_group.rg.name
 }
 
-resource "azurerm_private_dns_a_record" "dns_a_record_test" {
+resource "azurerm_private_dns_a_record" "a-record" {
   name                = "vm"
   zone_name           = azurerm_private_dns_zone.private-dns-zone.name
   resource_group_name = azurerm_private_dns_zone.private-dns-zone.resource_group_name
