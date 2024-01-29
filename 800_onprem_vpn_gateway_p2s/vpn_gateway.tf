@@ -29,7 +29,7 @@ resource "azurerm_virtual_network_gateway" "vpn-gateway" {
   }
 
   vpn_client_configuration {
-    address_space = ["10.1.0.0/24"]
+    address_space = ["172.16.0.0/24"]
 
     root_certificate {
       name             = "P2SRootCert800"
