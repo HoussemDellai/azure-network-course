@@ -16,11 +16,13 @@ resource "azurerm_linux_virtual_machine" "vm" {
   name                            = "vm-linux"
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
-  size                            = "Standard_B2als_v2"
+  size                            = "Standard_B2ats_v2"
   disable_password_authentication = false
   admin_username                  = "azureuser"
   admin_password                  = "@Aa123456789"
   network_interface_ids           = [azurerm_network_interface.nic-vm.id]
+  priority                        = "Spot"
+  eviction_policy                 = "Deallocate"
 
   os_disk {
     caching              = "ReadWrite"
