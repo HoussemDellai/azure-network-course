@@ -1,4 +1,4 @@
-# Azure VNET Gateway
+# Azure VPN Gateway
 
 ![](images/architecture.png)
 
