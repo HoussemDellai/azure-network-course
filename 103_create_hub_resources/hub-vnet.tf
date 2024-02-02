@@ -101,8 +101,9 @@ resource "azurerm_public_ip" "hub-vpn-gateway1-pip" {
   name                = "hub-vpn-gateway1-pip"
   location            = azurerm_resource_group.hub-vnet-rg.location
   resource_group_name = azurerm_resource_group.hub-vnet-rg.name
+  sku                 = "Standard"
 
-  allocation_method = "Dynamic"
+  allocation_method = "Static"
 }
 
 resource "azurerm_virtual_network_gateway" "hub-vnet-gateway" {

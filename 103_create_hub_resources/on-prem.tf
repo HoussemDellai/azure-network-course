@@ -38,7 +38,8 @@ resource "azurerm_public_ip" "onprem-pip" {
   name                = "${local.prefix-onprem}-pip"
   location            = azurerm_resource_group.onprem-vnet-rg.location
   resource_group_name = azurerm_resource_group.onprem-vnet-rg.name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
+  sku                 = "Standard"
 
   tags = {
     environment = local.prefix-onprem
@@ -127,8 +128,8 @@ resource "azurerm_public_ip" "onprem-vpn-gateway1-pip" {
   name                = "${local.prefix-onprem}-vpn-gateway1-pip"
   location            = azurerm_resource_group.onprem-vnet-rg.location
   resource_group_name = azurerm_resource_group.onprem-vnet-rg.name
-
-  allocation_method = "Dynamic"
+  sku                 = "Standard"
+  allocation_method   = "Static"
 }
 
 resource "azurerm_virtual_network_gateway" "onprem-vpn-gateway" {
