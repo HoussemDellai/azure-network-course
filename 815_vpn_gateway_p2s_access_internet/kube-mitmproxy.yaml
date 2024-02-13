@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: mitmproxy
+  name: mitmproxy
+spec:
+  containers:
+  - image: mitmproxy/mitmproxy
+    name: mitmproxy
+    resources: {}
+    command: ["/bin/sh"]
+    args: ["-c", "mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false"]
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+      name: proxy
+    - containerPort: 8081
+      protocol: TCP
+      name: web
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: mitmproxy
+  name: mitmproxy
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+    name: proxy
+  - port: 8081
+    protocol: TCP
+    targetPort: 8081
+    name: web
+  selector:
+    run: mitmproxy
+  type: LoadBalancer
