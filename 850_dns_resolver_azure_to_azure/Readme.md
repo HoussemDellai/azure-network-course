@@ -6,6 +6,9 @@
 3) Azure to Azure
 
 This lab will explore the `Azure to Azure` scenario.
+
+![](images/architecture.png)
+
 Terraform creates the following resources.
 
 1) Create Hub VNET with no Subnet
@@ -23,9 +26,6 @@ Terraform creates the following resources.
 13) Create a Ruleset rule for `corp.azure`
 14) Create Ruleset link to Spoke VNET
 15) Try to resolve the domain name from the vm-linux-spoke using `nslookup addr1.corp.azure`, should work
-
-
-![](images/architecture.png)
 
 The above steps and resources could be deployed by running the following `terraform` command.
 
