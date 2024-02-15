@@ -8,7 +8,7 @@ resource "azurerm_private_dns_a_record" "a-record-hub" {
   zone_name           = azurerm_private_dns_zone.private-dns-zone-hub.name
   resource_group_name = azurerm_private_dns_zone.private-dns-zone-hub.resource_group_name
   ttl                 = 300
-  records             = ["10.0.0.100"]
+  records             = ["1.2.3.4"]
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "link-dns-vnet-hub" {

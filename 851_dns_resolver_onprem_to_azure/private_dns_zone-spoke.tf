@@ -15,7 +15,7 @@ resource "azurerm_private_dns_a_record" "a-record-spoke" {
   zone_name           = azurerm_private_dns_zone.private-dns-zone-spoke.name
   resource_group_name = azurerm_private_dns_zone.private-dns-zone-spoke.resource_group_name
   ttl                 = 300
-  records             = ["10.0.0.200"]
+  records             = ["1.2.3.5"]
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "link-dns-vnet-spoke" {
