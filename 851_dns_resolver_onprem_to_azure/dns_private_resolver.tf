@@ -16,9 +16,9 @@ resource "azurerm_private_dns_resolver_inbound_endpoint" "inbound_endpoint" {
   }
 }
 
-resource "azurerm_private_dns_resolver_outbound_endpoint" "outbound_endpoint" {
-  name                    = "outbound-endpoint"
-  private_dns_resolver_id = azurerm_private_dns_resolver.private_dns_resolver.id
-  location                = azurerm_private_dns_resolver.private_dns_resolver.location
-  subnet_id               = azurerm_subnet.subnet-outbound-dns.id
-}
+# resource "azurerm_private_dns_resolver_outbound_endpoint" "outbound_endpoint" {
+#   name                    = "outbound-endpoint"
+#   private_dns_resolver_id = azurerm_private_dns_resolver.private_dns_resolver.id
+#   location                = azurerm_private_dns_resolver.private_dns_resolver.location
+#   subnet_id               = azurerm_subnet.subnet-outbound-dns.id
+# }
