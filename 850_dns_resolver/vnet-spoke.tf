@@ -5,3 +5,10 @@ resource "azurerm_virtual_network" "vnet-spoke" {
   address_space       = ["10.1.0.0/16"]
   dns_servers         = null
 }
+
+resource "azurerm_subnet" "subnet-vm-spoke" {
+  name                 = "subnet-vm-spoke"
+  resource_group_name  = azurerm_virtual_network.vnet-spoke.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet-spoke.name
+  address_prefixes     = ["10.1.0.0/24"]
+}
