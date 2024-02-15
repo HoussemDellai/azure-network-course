@@ -13,7 +13,3 @@ output "dns_private_resolver_inbound_ip" {
 output "private_dns_zone_hub_name" {
   value = azurerm_private_dns_zone.private-dns-zone-hub.name
 }
-
-output "private_dns_zone_spoke_name" {
-  value = azurerm_private_dns_zone.private-dns-zone-spoke.name
-}
