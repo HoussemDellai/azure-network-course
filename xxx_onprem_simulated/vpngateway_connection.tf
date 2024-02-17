@@ -1,7 +1,7 @@
 resource "azurerm_virtual_network_gateway_connection" "hub-to-onprem" {
   name                = "hub-to-onprem"
-  resource_group_name   = azurerm_resource_group.rg-hub.name
-  location              = azurerm_resource_group.rg-hub.location
+  resource_group_name = azurerm_resource_group.rg-hub.name
+  location            = azurerm_resource_group.rg-hub.location
 
   type                       = "IPsec"
   enable_bgp                 = true
@@ -13,8 +13,8 @@ resource "azurerm_virtual_network_gateway_connection" "hub-to-onprem" {
 
 resource "azurerm_virtual_network_gateway_connection" "onprem-to-hub" {
   name                = "onprem-to-hub"
-  resource_group_name   = azurerm_resource_group.rg-onprem.name
-  location              = azurerm_resource_group.rg-onprem.location
+  resource_group_name = azurerm_resource_group.rg-onprem.name
+  location            = azurerm_resource_group.rg-onprem.location
 
   type                       = "IPsec"
   enable_bgp                 = true
