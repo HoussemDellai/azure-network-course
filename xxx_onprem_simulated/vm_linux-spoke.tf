@@ -1,26 +1,26 @@
-resource "azurerm_network_interface" "nic-vm-onprem" {
-  name                 = "nic-vm-onprem"
-  resource_group_name  = azurerm_resource_group.rg-onprem.name
-  location             = azurerm_resource_group.rg-onprem.location
+resource "azurerm_network_interface" "nic-vm-spoke" {
+  name                 = "nic-vm-spoke"
+  resource_group_name  = azurerm_resource_group.rg-spoke.name
+  location             = azurerm_resource_group.rg-spoke.location
   enable_ip_forwarding = false
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.subnet-onprem-vm.id
+    subnet_id                     = azurerm_subnet.subnet-spoke-vm.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = null
   }
 }
 
-resource "azurerm_linux_virtual_machine" "vm-onprem" {
-  name                            = "vm-linux-onprem"
-  resource_group_name             = azurerm_resource_group.rg-onprem.name
-  location                        = azurerm_resource_group.rg-onprem.location
+resource "azurerm_linux_virtual_machine" "vm-spoke" {
+  name                            = "vm-linux-spoke"
+  resource_group_name             = azurerm_resource_group.rg-spoke.name
+  location                        = azurerm_resource_group.rg-spoke.location
   size                            = "Standard_B2ats_v2"
   disable_password_authentication = false
   admin_username                  = "azureuser"
   admin_password                  = "@Aa123456789"
-  network_interface_ids           = [azurerm_network_interface.nic-vm-onprem.id]
+  network_interface_ids           = [azurerm_network_interface.nic-vm-spoke.id]
   priority                        = "Spot"
   eviction_policy                 = "Deallocate"
 

@@ -7,15 +7,15 @@ resource "azurerm_virtual_network" "vnet-onprem" {
 }
 
 resource "azurerm_subnet" "subnet-onprem-vpngateway" {
-    name                    = "GatewaySubnet"
-    resource_group_name     = azurerm_virtual_network.vnet-onprem.resource_group_name
-    virtual_network_name    = azurerm_virtual_network.vnet-onprem.name
-    address_prefixes        = ["172.16.0.0/24"]
+  name                 = "GatewaySubnet"
+  resource_group_name  = azurerm_virtual_network.vnet-onprem.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet-onprem.name
+  address_prefixes     = ["172.16.0.0/24"]
 }
 
 resource "azurerm_subnet" "subnet-onprem-vm" {
-    name                    = "subnet-default"
-    resource_group_name     = azurerm_virtual_network.vnet-onprem.resource_group_name
-    virtual_network_name    = azurerm_virtual_network.vnet-onprem.name
-    address_prefixes        = ["172.16.1.0/24"]
+  name                 = "subnet-default"
+  resource_group_name  = azurerm_virtual_network.vnet-onprem.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet-onprem.name
+  address_prefixes     = ["172.16.1.0/24"]
 }

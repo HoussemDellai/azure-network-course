@@ -7,8 +7,8 @@ resource "azurerm_virtual_network" "vnet-spoke" {
 }
 
 resource "azurerm_subnet" "subnet-spoke-vm" {
-    name                                           = "subnet-spoke-vm"
-    resource_group_name                            = azurerm_virtual_network.vnet-spoke.resource_group_name
-    virtual_network_name                           = azurerm_virtual_network.vnet-spoke.name
-    address_prefixes                               = ["10.1.0.0/24"]
+  name                 = "subnet-spoke-vm"
+  resource_group_name  = azurerm_virtual_network.vnet-spoke.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet-spoke.name
+  address_prefixes     = ["10.1.0.0/24"]
 }
