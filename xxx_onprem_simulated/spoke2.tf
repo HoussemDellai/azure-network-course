@@ -33,7 +33,7 @@ resource "azurerm_network_interface" "nic-vm-spoke2" {
 }
 
 resource "azurerm_linux_virtual_machine" "vm-spoke2" {
-  name                            = "vm-linux-spoke"
+  name                            = "vm-linux-spoke2"
   resource_group_name             = azurerm_resource_group.rg-spoke2.name
   location                        = azurerm_resource_group.rg-spoke2.location
   size                            = "Standard_B2ats_v2"
@@ -93,6 +93,8 @@ resource "azurerm_virtual_network_peering" "peering-hub-to-spoke2" {
   allow_forwarded_traffic      = true
   allow_gateway_transit        = true
   use_remote_gateways          = false
+
+  depends_on = [azurerm_virtual_network_gateway.vpngateway-hub]
 }
 
 resource "azurerm_virtual_network_peering" "peering-spoke2-to-hub" {
@@ -104,4 +106,6 @@ resource "azurerm_virtual_network_peering" "peering-spoke2-to-hub" {
   allow_forwarded_traffic      = true
   allow_gateway_transit        = true
   use_remote_gateways          = true
+
+  depends_on = [azurerm_virtual_network_gateway.vpngateway-hub]
 }
