@@ -1,7 +1,7 @@
 variable "prefix" {
   description = "Prefix to be used for resources in this example"
   type        = string
-  default     = "xxx"
+  default     = "888"
 }
 
 variable "onpremise_bgp_asn" {
