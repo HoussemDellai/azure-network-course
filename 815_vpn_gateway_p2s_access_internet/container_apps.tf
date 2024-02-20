@@ -19,8 +19,8 @@ resource "azurerm_container_app" "app" {
       command = ["/bin/bash"]
       args    = ["-c", "mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 80 --set block_global=false"]
       # args    = ["-c", "mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false"]
-      cpu     = 0.25
-      memory  = "0.5Gi"
+      cpu    = 0.25
+      memory = "0.5Gi"
     }
   }
 

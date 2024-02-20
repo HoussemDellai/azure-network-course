@@ -21,6 +21,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   network_interface_ids = [azurerm_network_interface.nic-vm-windows.id]
 
   os_disk {
+    name                 = "os-disk-vm"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }

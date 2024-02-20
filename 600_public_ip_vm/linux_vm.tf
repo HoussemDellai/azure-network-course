@@ -25,6 +25,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   eviction_policy                 = "Deallocate"
 
   os_disk {
+    name                 = "os-disk-vm"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }

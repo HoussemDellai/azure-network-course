@@ -7,9 +7,9 @@ resource "azurerm_public_ip" "pip-vm-proxy-squid" {
 }
 
 resource "azurerm_network_interface" "nic-vm-proxy-squid" {
-  name                 = "nic-vm-proxy-squid"
-  resource_group_name  = azurerm_resource_group.rg.name
-  location             = azurerm_resource_group.rg.location
+  name                = "nic-vm-proxy-squid"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
 
   enable_ip_forwarding = true
 
@@ -36,6 +36,7 @@ resource "azurerm_linux_virtual_machine" "vm-proxy-squid" {
   custom_data = filebase64("./install-squid-proxy.sh")
 
   os_disk {
+    name                 = "os-disk-vm"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }

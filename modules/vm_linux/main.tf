@@ -40,6 +40,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   custom_data = var.install_webapp ? filebase64("../scripts/install-webapp.sh") : null
 
   os_disk {
+    name                 = "os-disk-vm"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
