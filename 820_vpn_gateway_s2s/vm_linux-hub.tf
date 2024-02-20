@@ -1,9 +1,8 @@
-resource "azurerm_network_interface" "nic-vm-hub-nva" {
-  name                = "nic-vm-hub-nva"
-  resource_group_name = azurerm_resource_group.rg-hub.name
-  location            = azurerm_resource_group.rg-hub.location
-
-  enable_ip_forwarding = true
+resource "azurerm_network_interface" "nic-vm-hub" {
+  name                 = "nic-vm-hub"
+  resource_group_name  = azurerm_resource_group.rg-hub.name
+  location             = azurerm_resource_group.rg-hub.location
+  enable_ip_forwarding = false
 
   ip_configuration {
     name                          = "internal"
@@ -13,21 +12,22 @@ resource "azurerm_network_interface" "nic-vm-hub-nva" {
   }
 }
 
-resource "azurerm_linux_virtual_machine" "vm-hub-nva" {
-  name                            = "vm-linux-hub-nva"
+resource "azurerm_linux_virtual_machine" "vm-hub" {
+  name                            = "vm-linux-hub"
   resource_group_name             = azurerm_resource_group.rg-hub.name
   location                        = azurerm_resource_group.rg-hub.location
   size                            = "Standard_B2ats_v2"
   disable_password_authentication = false
   admin_username                  = "azureuser"
   admin_password                  = "@Aa123456789"
-  network_interface_ids           = [azurerm_network_interface.nic-vm-hub-nva.id]
+  network_interface_ids           = [azurerm_network_interface.nic-vm-hub.id]
   priority                        = "Spot"
   eviction_policy                 = "Deallocate"
 
-  custom_data = filebase64("./enable-ip-forwarding.sh")
+  custom_data = filebase64("./install-webapp.sh")
 
   os_disk {
+    name                 = "os-disk-vm-hub"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }

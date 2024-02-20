@@ -1,5 +1,5 @@
 resource "azurerm_network_interface" "nic-vm-spoke2" {
-  name                 = "nic-vm-spoke"
+  name                 = "nic-vm-spoke2"
   resource_group_name  = azurerm_resource_group.rg-spoke2.name
   location             = azurerm_resource_group.rg-spoke2.location
   enable_ip_forwarding = false
@@ -27,6 +27,7 @@ resource "azurerm_linux_virtual_machine" "vm-spoke2" {
   custom_data = filebase64("./install-webapp.sh")
 
   os_disk {
+    name                 = "os-disk-vm-spoke2"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }

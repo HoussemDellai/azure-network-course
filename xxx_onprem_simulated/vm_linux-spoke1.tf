@@ -1,5 +1,5 @@
 resource "azurerm_network_interface" "nic-vm-spoke1" {
-  name                 = "nic-vm-spoke"
+  name                 = "nic-vm-spoke1"
   resource_group_name  = azurerm_resource_group.rg-spoke1.name
   location             = azurerm_resource_group.rg-spoke1.location
   enable_ip_forwarding = false
@@ -13,7 +13,7 @@ resource "azurerm_network_interface" "nic-vm-spoke1" {
 }
 
 resource "azurerm_linux_virtual_machine" "vm-spoke1" {
-  name                            = "vm-linux-spoke"
+  name                            = "vm-linux-spoke1"
   resource_group_name             = azurerm_resource_group.rg-spoke1.name
   location                        = azurerm_resource_group.rg-spoke1.location
   size                            = "Standard_B2ats_v2"
@@ -27,6 +27,7 @@ resource "azurerm_linux_virtual_machine" "vm-spoke1" {
   custom_data = filebase64("./install-webapp.sh")
 
   os_disk {
+    name                 = "os-disk-vm-spoke1"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }

@@ -7,9 +7,9 @@ resource "azurerm_public_ip" "pip-vm-proxy" {
 }
 
 resource "azurerm_network_interface" "nic-vm-proxy" {
-  name                 = "nic-vm-proxy"
-  resource_group_name  = azurerm_resource_group.rg.name
-  location             = azurerm_resource_group.rg.location
+  name                = "nic-vm-proxy"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
 
   enable_ip_forwarding = true
 
@@ -36,6 +36,7 @@ resource "azurerm_linux_virtual_machine" "vm-proxy" {
   custom_data = filebase64("./install-mitmproxy.sh")
 
   os_disk {
+    name                 = "os-disk-vm"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }

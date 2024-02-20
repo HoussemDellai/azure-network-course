@@ -11,14 +11,14 @@ resource "azurerm_container_group" "aci-squid" {
     cpu    = "1.0"
     memory = "1.0"
 
-    commands = [ 
+    commands = [
       # "/bin/sh",
       "/bin/bash",
       "-c",
-      "sed -i '/http_access deny all/i acl localnet src 176.177.25.47' /etc/squid/squid.conf; i=0; while true; do echo 'This is demo log $i: $(date)'; i=$((i+1)); sleep 1; done" ]
-      # "apt update -y; apt install squid; sed -i '/http_access deny all/i acl localnet src 176.177.25.47' /etc/squid/squid.conf" ]
-      # "ls /etc/" ]
-      # "sed -i '/http_access deny all/i acl localnet src 176.177.25.47' /etc/squid/squid.conf" ]
+    "sed -i '/http_access deny all/i acl localnet src 176.177.25.47' /etc/squid/squid.conf; i=0; while true; do echo 'This is demo log $i: $(date)'; i=$((i+1)); sleep 1; done"]
+    # "apt update -y; apt install squid; sed -i '/http_access deny all/i acl localnet src 176.177.25.47' /etc/squid/squid.conf" ]
+    # "ls /etc/" ]
+    # "sed -i '/http_access deny all/i acl localnet src 176.177.25.47' /etc/squid/squid.conf" ]
 
     # cat /etc/squid/squid.conf | grep 176
 
@@ -32,7 +32,7 @@ resource "azurerm_container_group" "aci-squid" {
     {
       port     = 3128
       protocol = "TCP"
-    }]
+  }]
 }
 
 output "aci-squid-public_ip" {

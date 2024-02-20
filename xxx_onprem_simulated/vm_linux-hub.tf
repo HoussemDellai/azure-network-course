@@ -27,6 +27,7 @@ resource "azurerm_linux_virtual_machine" "vm-hub" {
   custom_data = filebase64("./install-webapp.sh")
 
   os_disk {
+    name                 = "os-disk-vm-hub"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
