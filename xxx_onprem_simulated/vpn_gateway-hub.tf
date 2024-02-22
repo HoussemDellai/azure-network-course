@@ -20,7 +20,7 @@ resource "azurerm_virtual_network_gateway" "vpngateway-hub" {
   sku           = "VpnGw1"
 
   bgp_settings {
-    asn = var.onpremise_bgp_asn
+    asn = "65000"
   }
 
   ip_configuration {

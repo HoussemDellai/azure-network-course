@@ -20,7 +20,7 @@ resource "azurerm_virtual_network_gateway" "vpngateway-onprem" {
   sku           = "VpnGw1"
 
   bgp_settings {
-    asn = var.azure_bgp_asn
+    asn = "64000"
   }
 
   ip_configuration {

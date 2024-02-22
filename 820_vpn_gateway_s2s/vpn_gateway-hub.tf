@@ -13,18 +13,18 @@ resource "azurerm_virtual_network_gateway" "vpngateway-hub" {
   type                = "Vpn"
   vpn_type            = "RouteBased"
   active_active       = false
-  enable_bgp          = false # true
+  enable_bgp          = false
   sku                 = "VpnGw1"
   generation          = "Generation1"
 
-  # bgp_settings {
-  #   asn = var.onpremise_bgp_asn
-  # }
+  bgp_settings {
+    asn = "65000"
+  }
 
   ip_configuration {
-    name                          = "vnetGatewayIpConfig"
+    name                          = "vpngw-ip-config"
     public_ip_address_id          = azurerm_public_ip.pip-vpngateway-hub.id
     private_ip_address_allocation = "Dynamic"
-    subnet_id                     = azurerm_subnet.subnet-gateway.id
+    subnet_id                     = azurerm_subnet.subnet-hub-gateway.id
   }
 }
