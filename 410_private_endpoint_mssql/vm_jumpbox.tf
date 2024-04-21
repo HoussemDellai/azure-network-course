@@ -19,6 +19,8 @@ resource "azurerm_windows_virtual_machine" "vm" {
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
   network_interface_ids = [azurerm_network_interface.nic-vm.id]
+  priority              = "Spot"
+  eviction_policy       = "Deallocate"
 
   custom_data = filebase64("./install-tools-windows.ps1")
 
@@ -31,7 +33,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
   source_image_reference {
     publisher = "MicrosoftWindowsDesktop"
     offer     = "windows-11"
-    sku       = "win11-22h2-pro"
+    sku       = "win11-23h2-pro"
     version   = "latest"
   }
 
