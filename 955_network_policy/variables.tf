@@ -3,3 +3,9 @@ variable "prefix" {
   type        = string
   default     = "888"
 }
+
+variable "location" {
+  description = "Location for all resources"
+  type        = string
+  default     = "swedencentral"
+}
