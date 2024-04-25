@@ -22,3 +22,9 @@ resource "azurerm_firewall" "firewall" {
     public_ip_address_id = azurerm_public_ip.pip-firewall.id
   }
 }
+
+module "diagnostic-setting-firewall" {
+  source                     = "./modules/diagnostic-setting"
+  target_resource_id         = azurerm_firewall.firewall.id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.workspace.id
+}

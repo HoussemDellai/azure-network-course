@@ -36,6 +36,10 @@ resource "azurerm_firewall_policy_rule_collection_group" "policy-group-allow" {
         type = "Https"
         port = 443
       }
+      protocols {
+        type = "Mssql"
+        port = 1433
+      }
     }
   }
 }
