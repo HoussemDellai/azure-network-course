@@ -11,7 +11,7 @@ resource "azurerm_route" "route-to-firewall-spoke1" {
   route_table_name       = azurerm_route_table.route-table-spoke1.name
   address_prefix         = "0.0.0.0/0" # azurerm_virtual_network.vnet-spoke.address_space.0
   next_hop_type          = "VirtualAppliance"
-  next_hop_in_ip_address = azurerm_firewall.firewall.private_ip_address # azurerm_linux_virtual_machine.vm-hub-nva.private_ip_address
+  next_hop_in_ip_address = azurerm_firewall.firewall.ip_configuration.0.private_ip_address # azurerm_linux_virtual_machine.vm-hub-nva.private_ip_address
 }
 
 resource "azurerm_subnet_route_table_association" "route-table-spoke1" {
