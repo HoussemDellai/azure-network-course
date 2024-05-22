@@ -54,6 +54,12 @@ choco install ffmpeg -y
 # install auto-editor
 py -m pip install auto-editor
 
+# install VLC
+choco install vlc -y
+
+# install winrar
+choco install winrar -y
+
 Set-Alias -Name k -Value kubectl
 
 # # (Optional) Install Docker for Desktop
@@ -106,7 +112,23 @@ $powershellProfile > $PSHOME\Profile.ps1 # $PROFILE.CurrentUserAllHosts
 ## Restart Terminal
 
 # # Install Terraform extension in VS Code
-# code --install-extension hashicorp.terraform
+code --install-extension hashicorp.terraform
+code --install-extension ms-azuretools.vscode-azureterraform
+
+code --install-extension Postman.postman-for-vscode
+
+code --install-extension github.copilot
+
+code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+code --install-extension ms-kubernetes-tools.vscode-aks-tools
+code --install-extension ms-azuretools.vscode-azurecontainerapps
+code --install-extension ms-azuretools.vscode-docker
+
+code --install-extension ms-vscode.vscode-node-azure-pack
+code --install-extension ms-azuretools.vscode-azureresourcegroups
+code --install-extension ms-azuretools.vscode-azurevirtualmachines
+code --install-extension ms-vscode.azurecli
+code --install-extension ms-azure-devops.azure-pipelines
 
 # cd .\Desktop\
 # git clone https://github.com/HoussemDellai/aks-enterprise
@@ -139,4 +161,15 @@ $powershellProfile > $PSHOME\Profile.ps1 # $PROFILE.CurrentUserAllHosts
 # Install Camtasia
 
 Invoke-WebRequest -Uri https://download.techsmith.com/camtasiastudio/releases/2254/camtasia.msi -OutFile .\camtasia.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I camtasia.msi /quiet';
+# Invoke-WebRequest -Uri https://netcologne.dl.sourceforge.net/project/shotcut/v24.04.28/shotcut-win64-240428.exe -OutFile .\shotcut-win64-240428.exe; Start-Process msiexec.exe -Wait -ArgumentList '/I camtasia.msi /quiet';
 
+# install Powershell Core
+choco install powershell-core -y
+# winget install --id Microsoft.Powershell --source winget
+
+# # install Postman CLI
+# powershell.exe -NoProfile -InputFormat None -ExecutionPolicy AllSigned -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))"
+
+winget settings --enable InstallerHashOverride
+winget install --id Microsoft.PowerBI --source winget --ignore-security-hash --accept-source-agreements
+winget install Microsoft.DevProxy --silent
