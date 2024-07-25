@@ -27,14 +27,21 @@ choco install terraform -y
 # Install jq
 choco install jq -y
 
+# Install yq
+choco install yq -y
+
 # Install VS Code
 choco install vscode -y
 
 # Install Edge
 choco install microsoft-edge -y
+# Install Lens
+choco install lens -y
 
 # Install Git
 choco install git -y
+
+choco install openssl -y
 
 # Install Azure Storage Explorer
 choco install microsoftazurestorageexplorer -y
