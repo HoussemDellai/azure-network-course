@@ -16,7 +16,7 @@ choco install azure-cli -y
 choco install kubernetes-cli -y
 
 # Install kubelogin
-choco install kubelogin -y
+choco install azure-kubelogin -y
 
 # Install Helm CLI
 choco install kubernetes-helm -y
@@ -59,6 +59,14 @@ choco install vlc -y
 
 # install winrar
 choco install winrar -y
+
+# install openssl
+choco install openssl -y
+
+# install sqlcmd
+choco install sqlcmd -y
+
+choco install lens -y
 
 Set-Alias -Name k -Value kubectl
 
