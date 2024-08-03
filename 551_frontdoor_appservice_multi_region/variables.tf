@@ -10,10 +10,10 @@ variable "location1" {
 
 variable "location2" {
   type    = string
-  default = "westeurope"
+  default = "northcentralus"
 }
 
 variable "location3" {
   type    = string
-  default = "francecentral"
+  default = "koreacentral"
 }

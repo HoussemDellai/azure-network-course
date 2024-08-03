@@ -1,5 +1,5 @@
 resource "azurerm_service_plan" "region3" {
-  name                = "plan-region3"
+  name                = "plan-${var.location3}"
   location            = var.location3
   resource_group_name = azurerm_resource_group.rg.name
   sku_name            = "B1"
@@ -7,7 +7,7 @@ resource "azurerm_service_plan" "region3" {
 }
 
 resource "azurerm_linux_web_app" "region3" {
-  name                = "app-service-region3-${var.prefix}"
+  name                = "app-${var.prefix}-${var.location3}"
   location            = var.location3
   resource_group_name = azurerm_resource_group.rg.name
   service_plan_id     = azurerm_service_plan.region3.id

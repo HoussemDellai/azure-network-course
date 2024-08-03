@@ -1,5 +1,5 @@
 resource "azurerm_cdn_frontdoor_origin" "origin-region2" {
-  name                           = "region2"
+  name                           = "origin-${var.location2}"
   cdn_frontdoor_origin_group_id  = azurerm_cdn_frontdoor_origin_group.origin-group.id
   enabled                        = true
   host_name                      = azurerm_linux_web_app.region2.default_hostname
