@@ -1,6 +1,6 @@
 variable "prefix" {
   type    = string
-  default = "551"
+  default = "552"
 }
 
 variable "location1" {
@@ -16,9 +16,4 @@ variable "location2" {
 variable "location3" {
   type    = string
   default = "koreacentral"
-}
-
-variable "location4" {
-  type    = string
-  default = "southafricanorth"
 }

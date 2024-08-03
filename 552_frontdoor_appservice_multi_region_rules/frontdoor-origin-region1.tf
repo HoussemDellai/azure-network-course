@@ -7,6 +7,6 @@ resource "azurerm_cdn_frontdoor_origin" "origin-region1" {
   https_port                     = 443
   origin_host_header             = azurerm_linux_web_app.region1.default_hostname
   priority                       = 1
-  weight                         = 1
+  weight                         = 1000
   certificate_name_check_enabled = true
 }
