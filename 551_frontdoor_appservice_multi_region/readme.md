@@ -25,7 +25,7 @@ Ensure requests from the same end user gets sent to the same origin.
 
 ## Deploying the solution
 
-Run the following commands to deploy the solution using `terraform`:
+Run the following commands to deploy the solution using `terraform`.
 
 ```sh
 terraform init

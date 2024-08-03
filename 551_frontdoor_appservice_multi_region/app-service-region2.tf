@@ -14,19 +14,21 @@ resource "azurerm_linux_web_app" "region2" {
   https_only          = true
 
   site_config {
-    ftps_state          = "Disabled"
-    minimum_tls_version = "1.2"
+    # ftps_state                    = "Disabled"
+    # minimum_tls_version           = "1.2"
 
     application_stack {
       docker_image_name   = "jelledruyts/inspectorgadget"
       docker_registry_url = "https://index.docker.io"
     }
 
+    ip_restriction_default_action = "Deny"
+
     ip_restriction {
       service_tag               = "AzureFrontDoor.Backend"
       ip_address                = null
       virtual_network_subnet_id = null
-      action                    = "Deny" # "Allow"
+      action                    = "Allow"
       priority                  = 100
       headers {
         x_azure_fdid      = [azurerm_cdn_frontdoor_profile.frontdoor.resource_guid]

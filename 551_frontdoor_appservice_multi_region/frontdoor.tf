@@ -5,25 +5,26 @@ resource "azurerm_cdn_frontdoor_profile" "frontdoor" {
 }
 
 resource "azurerm_cdn_frontdoor_endpoint" "endpoint" {
-  name                     = "afd-${var.prefix}"
+  name                     = "frontdoor-${var.prefix}"
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.frontdoor.id
 }
 
 resource "azurerm_cdn_frontdoor_origin_group" "origin-group" {
   name                     = "origin-group-apps"
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.frontdoor.id
-  session_affinity_enabled = true
+  session_affinity_enabled = false
 
   load_balancing {
-    sample_size                 = 4
-    successful_samples_required = 3
+    sample_size                        = 4
+    successful_samples_required        = 3
+    additional_latency_in_milliseconds = 500
   }
 
   health_probe {
     path                = "/"
     request_type        = "HEAD"
     protocol            = "Https"
-    interval_in_seconds = 100
+    interval_in_seconds = 30
   }
 }
 
