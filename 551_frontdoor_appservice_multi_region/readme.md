@@ -36,3 +36,7 @@ terraform apply tfplan
 Now you should have successfully exposed multiple `Azure App Services` configured as `origin` for `Azure Front Door` with `Terraform`. The following resources will be created.
 
 ![](images/resources.png)
+
+You will work with the following priority, weight, latency and session affinity routing rules.
+
+![](images/afd-routing-conf.png)
