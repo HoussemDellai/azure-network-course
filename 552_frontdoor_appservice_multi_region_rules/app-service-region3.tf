@@ -11,22 +11,22 @@ resource "azurerm_linux_web_app" "region3" {
   location            = var.location3
   resource_group_name = azurerm_resource_group.rg.name
   service_plan_id     = azurerm_service_plan.region3.id
-  https_only          = true
+
+  https_only = true
 
   site_config {
-    ftps_state          = "Disabled"
-    minimum_tls_version = "1.2"
-
     application_stack {
-      docker_image_name   = "jelledruyts/inspectorgadget"
-      docker_registry_url = "https://index.docker.io"
+      docker_image_name   = "jelledruyts/inspectorgadget" # "appsvc/staticsite:latest" "nginx:latest" # 
+      docker_registry_url = "https://index.docker.io"     # https://mcr.microsoft.com
     }
 
+    ftps_state          = "Disabled"
+    minimum_tls_version = "1.2"
     ip_restriction {
       service_tag               = "AzureFrontDoor.Backend"
       ip_address                = null
       virtual_network_subnet_id = null
-      action                    = "Deny" # "Allow"
+      action                    = "Allow"
       priority                  = 100
       headers {
         x_azure_fdid      = [azurerm_cdn_frontdoor_profile.frontdoor.resource_guid]

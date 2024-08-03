@@ -37,7 +37,7 @@ resource "azurerm_cdn_frontdoor_route" "route" {
   link_to_default_domain        = true
   https_redirect_enabled        = true
   cdn_frontdoor_origin_path     = "/"
-  cdn_frontdoor_rule_set_ids    = []
+  cdn_frontdoor_rule_set_ids = [ azurerm_cdn_frontdoor_rule_set.ruleset-regions.id ]
 
   cdn_frontdoor_origin_ids = [
     azurerm_cdn_frontdoor_origin.origin-region1.id,
