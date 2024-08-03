@@ -33,13 +33,6 @@ resource "azurerm_cdn_frontdoor_origin" "origin-app-service" {
   priority                       = 1
   weight                         = 1000
   certificate_name_check_enabled = true
-
-  # private_link {
-  #   private_link_target_id = data.azurerm_private_link_service.pls-service.id
-  #   request_message        = "Request access for Azure Front Door Private Link origin"
-  #   location               = var.location
-  #   # target_type            = "privateLinkServices" # cannot be specified when using a Load Balancer as an Origin.
-  # }
 }
 
 resource "azurerm_cdn_frontdoor_route" "route-app-service" {
@@ -49,7 +42,7 @@ resource "azurerm_cdn_frontdoor_route" "route-app-service" {
   cdn_frontdoor_origin_ids      = [azurerm_cdn_frontdoor_origin.origin-app-service.id]
   supported_protocols           = ["Http", "Https"]
   patterns_to_match             = ["/*"]
-  forwarding_protocol           = "HttpsOnly" # "HttpsOnly"
+  forwarding_protocol           = "HttpsOnly"
   link_to_default_domain        = true
   https_redirect_enabled        = false
   cdn_frontdoor_origin_path     = "/"

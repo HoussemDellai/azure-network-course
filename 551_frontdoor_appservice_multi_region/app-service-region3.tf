@@ -14,9 +14,6 @@ resource "azurerm_linux_web_app" "region3" {
   https_only          = true
 
   site_config {
-    # ftps_state                    = "Disabled"
-    # minimum_tls_version           = "1.2"
-
     application_stack {
       docker_image_name   = "jelledruyts/inspectorgadget"
       docker_registry_url = "https://index.docker.io"
