@@ -1,8 +1,10 @@
-# Exposing Azure App Service using Front Door
+# Exploring Front Door routing rules
 
-## Objective
+## Introduction
 
-In this lab, you will learn how to use Azure Front Door to expose an Azure App Service. We will use Terraform to automate the deployment of the necessary resources.
+Azure Front Door is a global, scalable entry-point that uses the Microsoft global edge network to create fast, secure, and widely scalable web applications. It provides a single secure global entry point for web applications, APIs, content, and cloud services. Front Door enables you to define, manage, and monitor the global routing for your web traffic by optimizing for best performance and instant global failover for high availability.
+
+In this lab, you will learn how to use Azure Front Door to route traffic to different Azure App Services based on the incoming request's country.
 
 ## Prerequisites
 
@@ -20,5 +22,10 @@ terraform plan -out=tfplan
 terraform apply tfplan
 ```
 
-## Conclusion
-By following these steps, you have successfully exposed an Azure App Service using Azure Front Door with Terraform.
+Now you should have successfully exposed multiple `Azure App Services` configured as `origin` for `Azure Front Door` with `Terraform`. The following resources will be created.
+
+![](images/resources.png)
+
+You will define the following routing rules in `Azure Front Door`.
+
+![](images/afd-ruleset.png)

@@ -11,17 +11,16 @@ resource "azurerm_linux_web_app" "region1" {
   location            = var.location1
   resource_group_name = azurerm_resource_group.rg.name
   service_plan_id     = azurerm_service_plan.region1.id
-
-  https_only = true
+  https_only          = true
 
   site_config {
     application_stack {
-      docker_image_name   = "jelledruyts/inspectorgadget" # "appsvc/staticsite:latest" "nginx:latest" # 
-      docker_registry_url = "https://index.docker.io"     # https://mcr.microsoft.com
+      docker_image_name   = "jelledruyts/inspectorgadget"
+      docker_registry_url = "https://index.docker.io"
     }
 
-    ftps_state          = "Disabled"
-    minimum_tls_version = "1.2"
+    ip_restriction_default_action = "Deny"
+
     ip_restriction {
       service_tag               = "AzureFrontDoor.Backend"
       ip_address                = null
