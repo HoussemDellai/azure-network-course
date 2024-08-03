@@ -5,7 +5,7 @@ resource "azurerm_cdn_frontdoor_profile" "frontdoor" {
 }
 
 resource "azurerm_cdn_frontdoor_endpoint" "endpoint" {
-  name                     = "afd-endpoint-${var.prefix}"
+  name                     = "afd-${var.prefix}"
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.frontdoor.id
 }
 
