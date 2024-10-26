@@ -30,7 +30,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   eviction_policy       = "Deallocate"
   network_interface_ids = [azurerm_network_interface.nic-vm-windows.id]
 
-  custom_data = filebase64("../scripts/install-tools-windows.ps1")
+  custom_data = filebase64("./install-tools-windows.ps1")
 
   os_disk {
     name                 = "os-disk-vm-windows"
@@ -40,9 +40,14 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
 
   source_image_reference {
     publisher = "MicrosoftWindowsDesktop"
-    offer     = "windows-ent-cpc"         # "windows-11"     # 
-    sku       = "win11-23h2-ent-cpc-m365" # "win11-23h2-pro" # 
+    offer     = "windows-11"
+    sku       = "win11-24h2-pro"
     version   = "latest"
+  }
+
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.identity.id]
   }
 
   boot_diagnostics {
@@ -54,8 +59,8 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   }
 }
 
-resource "azurerm_virtual_machine_extension" "cloudinit" {
-  name                 = "cloudinit"
+resource "azurerm_virtual_machine_extension" "cse" {
+  name                 = "cse"
   virtual_machine_id   = azurerm_windows_virtual_machine.vm-windows.id
   publisher            = "Microsoft.Compute"
   type                 = "CustomScriptExtension"
