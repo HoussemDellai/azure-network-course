@@ -75,6 +75,8 @@ choco install sqlcmd -y
 
 choco install lens -y
 
+winget install -e --id Graphviz.Graphviz
+
 Set-Alias -Name k -Value kubectl
 
 # # (Optional) Install Docker for Desktop

@@ -10,7 +10,7 @@ resource "azurerm_subnet_network_security_group_association" "nsg-association" {
 }
 
 resource "azurerm_network_security_rule" "allow-inbound-infra-lb" {
-  resource_group_name         = azurerm_resource_group.rg.name
+  resource_group_name         = azurerm_network_security_group.nsg-apim.resource_group_name
   network_security_group_name = azurerm_network_security_group.nsg-apim.name
   name                        = "allow-inbound-infra-lb"
   access                      = "Allow"
@@ -24,7 +24,7 @@ resource "azurerm_network_security_rule" "allow-inbound-infra-lb" {
 }
 
 resource "azurerm_network_security_rule" "allow-inbound-apim" {
-  resource_group_name         = azurerm_resource_group.rg.name
+  resource_group_name         = azurerm_network_security_group.nsg-apim.resource_group_name
   network_security_group_name = azurerm_network_security_group.nsg-apim.name
   name                        = "allow-inbound-apim"
   access                      = "Allow"
@@ -38,7 +38,7 @@ resource "azurerm_network_security_rule" "allow-inbound-apim" {
 }
 
 resource "azurerm_network_security_rule" "allow-inbound-internet-http" {
-  resource_group_name         = azurerm_resource_group.rg.name
+  resource_group_name         = azurerm_network_security_group.nsg-apim.resource_group_name
   network_security_group_name = azurerm_network_security_group.nsg-apim.name
   name                        = "allow-inbound-internet-http"
   access                      = "Allow"
@@ -52,7 +52,7 @@ resource "azurerm_network_security_rule" "allow-inbound-internet-http" {
 }
 
 resource "azurerm_network_security_rule" "allow-inbound-internet-https" {
-  resource_group_name         = azurerm_resource_group.rg.name
+  resource_group_name         = azurerm_network_security_group.nsg-apim.resource_group_name
   network_security_group_name = azurerm_network_security_group.nsg-apim.name
   name                        = "allow-inbound-internet-https"
   access                      = "Allow"
@@ -67,7 +67,7 @@ resource "azurerm_network_security_rule" "allow-inbound-internet-https" {
 
 resource "azurerm_network_security_rule" "allow-outbound-storage" {
   count                       = 1 # enable if using Azure Storage
-  resource_group_name         = azurerm_resource_group.rg.name
+  resource_group_name         = azurerm_network_security_group.nsg-apim.resource_group_name
   network_security_group_name = azurerm_network_security_group.nsg-apim.name
   name                        = "allow-outbound-storage"
   access                      = "Allow"
@@ -82,7 +82,7 @@ resource "azurerm_network_security_rule" "allow-outbound-storage" {
 
 resource "azurerm_network_security_rule" "allow-outbound-azuresql" {
   count                       = 1 # enable if using Azure SQL
-  resource_group_name         = azurerm_resource_group.rg.name
+  resource_group_name         = azurerm_network_security_group.nsg-apim.resource_group_name
   network_security_group_name = azurerm_network_security_group.nsg-apim.name
   name                        = "allow-outbound-azure-sql"
   access                      = "Allow"
@@ -97,7 +97,7 @@ resource "azurerm_network_security_rule" "allow-outbound-azuresql" {
 
 resource "azurerm_network_security_rule" "allow-outbound-keyvault" {
   count                       = 1 # enable if using Azure Key vault
-  resource_group_name         = azurerm_resource_group.rg.name
+  resource_group_name         = azurerm_network_security_group.nsg-apim.resource_group_name
   network_security_group_name = azurerm_network_security_group.nsg-apim.name
   name                        = "allow-outbound-keyvault"
   access                      = "Allow"

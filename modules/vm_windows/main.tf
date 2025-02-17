@@ -9,11 +9,11 @@ resource "azurerm_public_ip" "pip_vm" {
 }
 
 resource "azurerm_network_interface" "nic_vm" {
-  name                 = "nic-${var.vm_name}"
-  resource_group_name  = var.resource_group_name
-  location             = var.location
-  enable_ip_forwarding = var.enable_ip_forwarding
-  tags                 = var.tags
+  name                  = "nic-${var.vm_name}"
+  resource_group_name   = var.resource_group_name
+  location              = var.location
+  ip_forwarding_enabled = var.enable_ip_forwarding
+  tags                  = var.tags
 
   ip_configuration {
     name                          = "internal"

@@ -10,11 +10,11 @@ resource "azurerm_public_ip" "pip_vm" {
 }
 
 resource "azurerm_network_interface" "nic_vm" {
-  name                 = "nic-${var.vm_name}"
-  resource_group_name  = var.resource_group_name
-  location             = var.location
-  enable_ip_forwarding = var.enable_ip_forwarding
-  tags                 = var.tags
+  name                  = "nic-${var.vm_name}"
+  resource_group_name   = var.resource_group_name
+  location              = var.location
+  ip_forwarding_enabled = var.ip_forwarding_enabled
+  tags                  = var.tags
 
   ip_configuration {
     name                          = "internal"
@@ -40,7 +40,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   custom_data = var.install_webapp ? filebase64("../scripts/install-webapp.sh") : null
 
   os_disk {
-    name                 = "os-disk-vm"
+    name                 = "os-disk-${var.vm_name}"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
