@@ -1,5 +1,5 @@
 resource "azurerm_cdn_frontdoor_endpoint" "endpoint-app-service" {
-  name                     = "endpoint-app-service13"
+  name                     = "endpoint-${var.prefix}"
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.frontdoor.id
 }
 
