@@ -42,4 +42,8 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   boot_diagnostics {
     storage_account_uri = null
   }
+
+  lifecycle {
+    ignore_changes = [ vm_agent_platform_updates_enabled ]
+  }
 }

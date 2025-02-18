@@ -1,9 +1,11 @@
 resource "azurerm_linux_web_app" "backend" {
-  name                = "app-service-backend-${var.prefix}"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  service_plan_id     = azurerm_service_plan.app_service_plan.id
-  https_only          = true
+  name                          = "app-service-backend-${var.prefix}"
+  location                      = azurerm_resource_group.rg.location
+  resource_group_name           = azurerm_resource_group.rg.name
+  service_plan_id               = azurerm_service_plan.app_service_plan.id
+  https_only                    = true
+  public_network_access_enabled = false
+  virtual_network_subnet_id     = null
 
   site_config {
     application_stack {
@@ -11,7 +13,8 @@ resource "azurerm_linux_web_app" "backend" {
       docker_registry_url = "https://index.docker.io"
     }
 
-    # ip_restriction_default_action = "Deny"
+    vnet_route_all_enabled        = false
+    ip_restriction_default_action = "Deny"
     # ip_restriction {
     #   name                      = "Allow traffic from Front Door"
     #   service_tag               = "AzureFrontDoor.Backend"
