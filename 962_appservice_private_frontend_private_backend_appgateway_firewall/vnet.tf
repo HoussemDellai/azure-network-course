@@ -1,5 +1,5 @@
-resource "azurerm_virtual_network" "vnet-app" {
-  name                = "vnet-app"
+resource "azurerm_virtual_network" "vnet-spoke1" {
+  name                = "vnet-spoke1"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   address_space       = ["10.0.0.0/16"]
@@ -41,4 +41,11 @@ resource "azurerm_subnet" "snet-pe" {
   virtual_network_name              = azurerm_virtual_network.vnet-app.name
   address_prefixes                  = ["10.0.4.0/24"]
   private_endpoint_network_policies = "Enabled"
+}
+
+resource "azurerm_subnet" "snet-appgateway" {
+  name                 = "snet-appgateway"
+  resource_group_name  = azurerm_virtual_network.vnet-app.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet-app.name
+  address_prefixes     = ["10.0.5.0/24"]
 }
