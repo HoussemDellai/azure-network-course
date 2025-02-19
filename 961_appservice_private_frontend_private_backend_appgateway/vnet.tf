@@ -42,3 +42,10 @@ resource "azurerm_subnet" "snet-pe" {
   address_prefixes                  = ["10.0.4.0/24"]
   private_endpoint_network_policies = "Enabled"
 }
+
+resource "azurerm_subnet" "snet-appgateway" {
+  name                 = "snet-appgateway"
+  resource_group_name  = azurerm_virtual_network.vnet-app.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet-app.name
+  address_prefixes     = ["10.0.5.0/24"]
+}

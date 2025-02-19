@@ -23,11 +23,3 @@ terraform apply tfplan
 The following resources will be created.
 
 ![](images/resources.png)
-
-## Test Connection
-
-Connect to the frontend web app and test the connection to the backend web app.
-
-For that we'll leverage `Inspector Gadget` which is a simple web app that makes HTTP requests to a specified URL and displays the response.
-
-![](images/front-connect-to-back.png)
