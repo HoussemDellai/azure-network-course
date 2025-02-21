@@ -35,18 +35,26 @@ resource "azurerm_firewall_policy_rule_collection_group" "policy-group-allow" {
     }
   }
 
-  # network_rule_collection {
-  #   name     = "allow-spokes-traffic"
-  #   priority = 500
-  #   action   = "Allow"
+  network_rule_collection {
+    name     = "allow-all-network-rule"
+    priority = 500
+    action   = "Allow"
 
-  #   rule {
-  #     name                  = "allow-spoke1-to-spoke2"
-  #     protocols             = ["TCP", "UDP", "ICMP", "Any"]
-  #     source_addresses      = azurerm_virtual_network.vnet-spoke1.address_space
-  #     destination_addresses = azurerm_virtual_network.vnet-spoke2.address_space
-  #     destination_ports     = ["*"]
-  #   }
+    rule {
+      name                  = "allow-all"
+      protocols             = ["TCP", "UDP", "ICMP", "Any"]
+      source_addresses      = ["*"]
+      destination_addresses = ["*"]
+      destination_ports     = ["*"]
+    }
+  }
+    # rule {
+    #   name                  = "allow-spoke1-to-spoke2"
+    #   protocols             = ["TCP", "UDP", "ICMP", "Any"]
+    #   source_addresses      = azurerm_virtual_network.vnet-spoke1.address_space
+    #   destination_addresses = azurerm_virtual_network.vnet-spoke2.address_space
+    #   destination_ports     = ["*"]
+    # }
 
   #   rule {
   #     name                  = "allow-spoke2-to-spoke1"

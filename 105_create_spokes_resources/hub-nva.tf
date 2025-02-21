@@ -17,7 +17,7 @@ resource "azurerm_network_interface" "hub-nva-nic" {
   name                 = "${local.prefix-hub-nva}-nic"
   location             = azurerm_resource_group.hub-nva-rg.location
   resource_group_name  = azurerm_resource_group.hub-nva-rg.name
-  enable_ip_forwarding = true
+  ip_forwarding_enabled = true
 
   ip_configuration {
     name                          = local.prefix-hub-nva

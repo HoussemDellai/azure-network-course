@@ -51,7 +51,7 @@ resource "azurerm_network_interface" "spoke1-nic" {
   name                 = "${local.prefix-spoke1}-nic"
   location             = azurerm_resource_group.spoke1-vnet-rg.location
   resource_group_name  = azurerm_resource_group.spoke1-vnet-rg.name
-  enable_ip_forwarding = true
+  ip_forwarding_enabled = true
 
   ip_configuration {
     name                          = local.prefix-spoke1
