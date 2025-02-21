@@ -76,7 +76,7 @@ resource "azurerm_cdn_frontdoor_route" "my_route" {
 
   cdn_frontdoor_custom_domain_ids = [
     azurerm_cdn_frontdoor_custom_domain.my_custom_domain.id
-   ]
+  ]
 }
 
 resource "azurerm_cdn_frontdoor_custom_domain" "my_custom_domain" {

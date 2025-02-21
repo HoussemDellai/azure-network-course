@@ -6,7 +6,7 @@ resource "azurerm_linux_web_app" "frontend" {
   https_only                    = true
   public_network_access_enabled = false
   virtual_network_subnet_id     = azurerm_subnet.snet-integration.id
-  
+
 
   site_config {
     application_stack {

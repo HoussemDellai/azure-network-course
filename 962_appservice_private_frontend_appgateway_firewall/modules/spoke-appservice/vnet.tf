@@ -19,7 +19,7 @@ resource "azurerm_subnet" "snet-bastion" {
   virtual_network_name = azurerm_virtual_network.vnet-spoke.name
   address_prefixes     = [cidrsubnet(var.spoke_vnet_cidr, 8, 1)]
 }
-  
+
 resource "azurerm_subnet" "snet-integration" {
   name                 = "snet-integration"
   resource_group_name  = azurerm_virtual_network.vnet-spoke.resource_group_name

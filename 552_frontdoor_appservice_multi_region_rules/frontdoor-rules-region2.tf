@@ -18,8 +18,8 @@ resource "azurerm_cdn_frontdoor_rule" "rule-region2" {
   conditions {
 
     remote_address_condition {
-      operator     = "GeoMatch"
-      match_values = ["NL"]
+      operator         = "GeoMatch"
+      match_values     = ["NL"]
       negate_condition = false
     }
   }

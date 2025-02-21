@@ -1,7 +1,7 @@
 resource "azurerm_network_interface" "nic-vm-spoke" {
-  name                 = "nic-vm-spoke"
-  resource_group_name  = azurerm_resource_group.rg-spoke.name
-  location             = azurerm_resource_group.rg-spoke.location
+  name                  = "nic-vm-spoke"
+  resource_group_name   = azurerm_resource_group.rg-spoke.name
+  location              = azurerm_resource_group.rg-spoke.location
   ip_forwarding_enabled = false
 
   ip_configuration {

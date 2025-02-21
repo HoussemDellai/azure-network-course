@@ -14,9 +14,9 @@ resource "azurerm_resource_group" "hub-nva-rg" {
 }
 
 resource "azurerm_network_interface" "hub-nva-nic" {
-  name                 = "${local.prefix-hub-nva}-nic"
-  location             = azurerm_resource_group.hub-nva-rg.location
-  resource_group_name  = azurerm_resource_group.hub-nva-rg.name
+  name                  = "${local.prefix-hub-nva}-nic"
+  location              = azurerm_resource_group.hub-nva-rg.location
+  resource_group_name   = azurerm_resource_group.hub-nva-rg.name
   ip_forwarding_enabled = true
 
   ip_configuration {
@@ -93,7 +93,7 @@ resource "azurerm_route_table" "hub-gateway-rt" {
   name                          = "hub-gateway-rt"
   location                      = azurerm_resource_group.hub-nva-rg.location
   resource_group_name           = azurerm_resource_group.hub-nva-rg.name
-  disable_bgp_route_propagation = false
+  bgp_route_propagation_enabled = false
 
   route {
     name           = "toHub"
@@ -130,7 +130,7 @@ resource "azurerm_route_table" "spoke1-rt" {
   name                          = "spoke1-rt"
   location                      = azurerm_resource_group.hub-nva-rg.location
   resource_group_name           = azurerm_resource_group.hub-nva-rg.name
-  disable_bgp_route_propagation = false
+  bgp_route_propagation_enabled = false
 
   route {
     name                   = "toSpoke2"
@@ -166,7 +166,7 @@ resource "azurerm_route_table" "spoke2-rt" {
   name                          = "spoke2-rt"
   location                      = azurerm_resource_group.hub-nva-rg.location
   resource_group_name           = azurerm_resource_group.hub-nva-rg.name
-  disable_bgp_route_propagation = false
+  bgp_route_propagation_enabled = false
 
   route {
     name                   = "toSpoke1"

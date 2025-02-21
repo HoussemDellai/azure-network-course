@@ -48,13 +48,13 @@ resource "azurerm_firewall_policy_rule_collection_group" "policy-group-allow" {
       destination_ports     = ["*"]
     }
   }
-    # rule {
-    #   name                  = "allow-spoke1-to-spoke2"
-    #   protocols             = ["TCP", "UDP", "ICMP", "Any"]
-    #   source_addresses      = azurerm_virtual_network.vnet-spoke1.address_space
-    #   destination_addresses = azurerm_virtual_network.vnet-spoke2.address_space
-    #   destination_ports     = ["*"]
-    # }
+  # rule {
+  #   name                  = "allow-spoke1-to-spoke2"
+  #   protocols             = ["TCP", "UDP", "ICMP", "Any"]
+  #   source_addresses      = azurerm_virtual_network.vnet-spoke1.address_space
+  #   destination_addresses = azurerm_virtual_network.vnet-spoke2.address_space
+  #   destination_ports     = ["*"]
+  # }
 
   #   rule {
   #     name                  = "allow-spoke2-to-spoke1"

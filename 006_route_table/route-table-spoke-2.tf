@@ -2,7 +2,7 @@ resource "azurerm_route_table" "route-table-spoke-2" {
   name                          = "route-table-spoke-2"
   location                      = azurerm_resource_group.rg-spoke-2.location
   resource_group_name           = azurerm_resource_group.rg-spoke-2.name
-  disable_bgp_route_propagation = true
+  bgp_route_propagation_enabled = false
 }
 
 resource "azurerm_route" "route-to-firewall-spoke-2" {

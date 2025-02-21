@@ -43,9 +43,9 @@ resource "azurerm_subnet" "hub-dmz" {
 }
 
 resource "azurerm_network_interface" "hub-nic" {
-  name                 = "${local.prefix-hub}-nic"
-  location             = azurerm_resource_group.hub-vnet-rg.location
-  resource_group_name  = azurerm_resource_group.hub-vnet-rg.name
+  name                  = "${local.prefix-hub}-nic"
+  location              = azurerm_resource_group.hub-vnet-rg.location
+  resource_group_name   = azurerm_resource_group.hub-vnet-rg.name
   ip_forwarding_enabled = true
 
   ip_configuration {

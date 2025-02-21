@@ -2,7 +2,7 @@ resource "azurerm_route_table" "route-table-to-nva-spoke1" {
   name                          = "route-table-to-nva-spoke1"
   location                      = azurerm_resource_group.rg-spoke1.location
   resource_group_name           = azurerm_resource_group.rg-spoke1.name
-  disable_bgp_route_propagation = true
+  bgp_route_propagation_enabled = false
   tags                          = var.tags
 }
 

@@ -3,7 +3,7 @@
 data "azurerm_resource_group" "network_watcher" {
   name = "NetworkWatcherRG"
 
-  depends_on = [ azurerm_virtual_network.vnet-hub ]
+  depends_on = [azurerm_virtual_network.vnet-hub]
 }
 
 data "azurerm_network_watcher" "network_watcher" {
