@@ -26,9 +26,10 @@ The following resources will be created.
 
 ## Findings
 
-* WEBSITE_PRIVATE_IP (ex. 10.1.2.254) is the same for 2 web apps in the same ASP and same Subnet.
+* Environment variable `WEBSITE_PRIVATE_IP` (ex. `10.1.2.254`) is the same for 2 web apps in the same ASP and same Subnet.
 
 * When frontend calls backend web app, both in the same ASP and Subnet, backend sees the calling/source IP as `X-Client-IP: 10.1.2.254`.
+The same applies cross VNET, the backend web app in the other VNET sees the following `X-Client-IP: 10.1.2.254`.
 
 * For frontend app:
 Local IP Address	169.254.130.5
