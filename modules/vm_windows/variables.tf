@@ -22,7 +22,7 @@ variable "enable_public_ip" {
   type    = bool
   default = false
 }
-variable "enable_ip_forwarding" {
+variable "ip_forwarding_enabled" {
   type    = bool
   default = false
 }

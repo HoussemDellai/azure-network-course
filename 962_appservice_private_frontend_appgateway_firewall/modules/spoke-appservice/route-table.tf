@@ -18,3 +18,8 @@ resource "azurerm_subnet_route_table_association" "association_route_table_subne
   subnet_id      = azurerm_subnet.snet-integration.id
   route_table_id = azurerm_route_table.route-table-to-nva-spoke.id
 }
+
+resource "azurerm_subnet_route_table_association" "association_route_table_snet_jumpbox" {
+  subnet_id      = azurerm_subnet.snet-jumpbox.id
+  route_table_id = azurerm_route_table.route-table-to-nva-spoke.id
+}

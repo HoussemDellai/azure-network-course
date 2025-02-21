@@ -6,7 +6,7 @@ module "vm-hub-nva" {
   subnet_id            = azurerm_subnet.subnet-nva.id
   admin_username       = var.vm_admin_username
   admin_password       = var.vm_admin_password
-  enable_ip_forwarding = true
+  ip_forwarding_enabled = true
 }
 
 resource "azurerm_virtual_machine_extension" "install-networking-tools" {

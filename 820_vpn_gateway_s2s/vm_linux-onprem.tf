@@ -2,7 +2,7 @@ resource "azurerm_network_interface" "nic-vm-onprem" {
   name                 = "nic-vm-onprem"
   resource_group_name  = azurerm_resource_group.rg-onprem.name
   location             = azurerm_resource_group.rg-onprem.location
-  enable_ip_forwarding = false
+  ip_forwarding_enabled = false
 
   ip_configuration {
     name                          = "internal"

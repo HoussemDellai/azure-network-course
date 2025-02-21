@@ -12,7 +12,7 @@ resource "azurerm_network_interface" "nic_vm" {
   name                  = "nic-${var.vm_name}"
   resource_group_name   = var.resource_group_name
   location              = var.location
-  ip_forwarding_enabled = var.enable_ip_forwarding
+  ip_forwarding_enabled = var.ip_forwarding_enabled
   tags                  = var.tags
 
   ip_configuration {

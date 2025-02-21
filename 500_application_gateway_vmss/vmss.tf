@@ -26,7 +26,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   network_interface {
     name                      = "nic-vmss"
     primary                   = true
-    enable_ip_forwarding      = false
+    ip_forwarding_enabled      = false
     network_security_group_id = null
 
     ip_configuration {
