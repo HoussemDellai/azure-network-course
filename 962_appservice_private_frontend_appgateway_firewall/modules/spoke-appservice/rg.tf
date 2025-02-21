@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-spoke-${var.prefix}"
+  name     = "rg-${var.prefix}-spoke"
   location = var.location
 }
