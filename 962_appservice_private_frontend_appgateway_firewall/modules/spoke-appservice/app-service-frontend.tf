@@ -6,6 +6,7 @@ resource "azurerm_linux_web_app" "frontend" {
   https_only                    = true
   public_network_access_enabled = false
   virtual_network_subnet_id     = azurerm_subnet.snet-integration.id
+  
 
   site_config {
     application_stack {
@@ -13,7 +14,7 @@ resource "azurerm_linux_web_app" "frontend" {
       docker_registry_url = "https://index.docker.io"
     }
 
-    vnet_route_all_enabled = false
+    vnet_route_all_enabled = true
 
     # ip_restriction_default_action = "Deny"
     # ip_restriction {
@@ -36,5 +37,5 @@ resource "azurerm_linux_web_app" "frontend" {
   # app_settings = {
   #   "WEBSITE_DNS_SERVER" : "168.63.129.16",
   #   "WEBSITE_VNET_ROUTE_ALL" : "1"
-  # }
+  # }$env
 }
