@@ -1,7 +1,7 @@
 resource "azurerm_virtual_hub_route_table" "vhub-01-routetable" {
   name           = "vhub-01-routetable"
   virtual_hub_id = azurerm_virtual_hub.vhub-01.id
-  labels = ["VNet"]
+  labels         = ["VNet"]
 
   route {
     name              = "snetToFirewall"

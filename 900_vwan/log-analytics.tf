@@ -33,9 +33,9 @@ resource "azurerm_monitor_diagnostic_setting" "diagnostics-firewall-hub-01" {
     }
   }
 
-#   lifecycle {
-#     ignore_changes = [
-#       log_analytics_destination_type
-#     ]
-#   }
+  #   lifecycle {
+  #     ignore_changes = [
+  #       log_analytics_destination_type
+  #     ]
+  #   }
 }

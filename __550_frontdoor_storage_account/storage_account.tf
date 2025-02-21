@@ -15,7 +15,7 @@ resource "azurerm_storage_account" "my_storage_account" {
 }
 
 resource "azurerm_storage_account_network_rules" "my_network_rules" {
-  storage_account_id  = azurerm_storage_account.my_storage_account.id
+  storage_account_id = azurerm_storage_account.my_storage_account.id
 
   default_action = "Deny"
 }
@@ -25,7 +25,7 @@ resource "azapi_resource" "my_storage_container" {
   name      = var.storage_account_blob_container_name
   parent_id = "${azurerm_storage_account.my_storage_account.id}/blobServices/default"
   type      = "Microsoft.Storage/storageAccounts/blobServices/containers@2021-04-01"
-  body      = jsonencode({
+  body = jsonencode({
     properties = {
       publicAccess = "Blob"
     }

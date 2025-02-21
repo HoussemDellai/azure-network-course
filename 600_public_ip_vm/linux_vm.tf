@@ -1,7 +1,7 @@
 resource "azurerm_network_interface" "nic-vm" {
-  name                 = "nic-vm"
-  resource_group_name  = azurerm_resource_group.rg.name
-  location             = azurerm_resource_group.rg.location
+  name                  = "nic-vm"
+  resource_group_name   = azurerm_resource_group.rg.name
+  location              = azurerm_resource_group.rg.location
   ip_forwarding_enabled = false
 
   ip_configuration {

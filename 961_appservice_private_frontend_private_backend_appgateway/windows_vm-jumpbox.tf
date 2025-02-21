@@ -44,6 +44,6 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   }
 
   lifecycle {
-    ignore_changes = [ vm_agent_platform_updates_enabled ]
+    ignore_changes = [vm_agent_platform_updates_enabled]
   }
 }

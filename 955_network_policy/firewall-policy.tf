@@ -4,14 +4,14 @@ resource "azurerm_firewall_policy" "firewall-policy" {
   location            = azurerm_resource_group.rg-hub.location
   sku                 = "Standard" # "Basic" # "Standard" # "Premium" #
 
-#   explicit_proxy {
-#     enabled         = true
-#     http_port       = 8080
-#     https_port      = 8443
-#     enable_pac_file = false
-#     pac_file_port   = null
-#     pac_file        = null
-#   }
+  #   explicit_proxy {
+  #     enabled         = true
+  #     http_port       = 8080
+  #     https_port      = 8443
+  #     enable_pac_file = false
+  #     pac_file_port   = null
+  #     pac_file        = null
+  #   }
 }
 
 resource "azurerm_firewall_policy_rule_collection_group" "policy-group-allow" {

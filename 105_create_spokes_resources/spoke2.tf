@@ -48,9 +48,9 @@ resource "azurerm_virtual_network_peering" "spoke2-hub-peer" {
 }
 
 resource "azurerm_network_interface" "spoke2-nic" {
-  name                 = "${local.prefix-spoke2}-nic"
-  location             = azurerm_resource_group.spoke2-vnet-rg.location
-  resource_group_name  = azurerm_resource_group.spoke2-vnet-rg.name
+  name                  = "${local.prefix-spoke2}-nic"
+  location              = azurerm_resource_group.spoke2-vnet-rg.location
+  resource_group_name   = azurerm_resource_group.spoke2-vnet-rg.name
   ip_forwarding_enabled = true
 
   ip_configuration {

@@ -15,5 +15,5 @@ output "app_service_backend_outbound_ip_addresses" {
 }
 
 output "app_gateway_public_ip" {
-  value = azurerm_public_ip.pip-appgateway.ip_address 
+  value = azurerm_public_ip.pip-appgateway.ip_address
 }
