@@ -27,3 +27,7 @@ variable "spoke_vnet_cidr" {
 variable "firewall_private_ip" {
   type = string
 }
+
+variable "private_dns_zone_id_appservice" {
+  type = string
+}

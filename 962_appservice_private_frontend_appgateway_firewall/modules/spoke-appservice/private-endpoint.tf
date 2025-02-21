@@ -6,7 +6,7 @@ resource "azurerm_private_endpoint" "pe-frontend" {
 
   private_dns_zone_group {
     name                 = "group"
-    private_dns_zone_ids = [azurerm_private_dns_zone.dns-appservice.id]
+    private_dns_zone_ids = [var.private_dns_zone_id_appservice]
   }
 
   private_service_connection {
@@ -25,7 +25,7 @@ resource "azurerm_private_endpoint" "pe-backend" {
 
   private_dns_zone_group {
     name                 = "group"
-    private_dns_zone_ids = [azurerm_private_dns_zone.dns-appservice.id]
+    private_dns_zone_ids = [var.private_dns_zone_id_appservice]
   }
 
   private_service_connection {

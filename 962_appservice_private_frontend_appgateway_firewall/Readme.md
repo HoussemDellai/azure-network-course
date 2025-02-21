@@ -23,3 +23,20 @@ terraform apply tfplan
 The following resources will be created.
 
 ![](images/resources.png)
+
+## Findings
+
+* WEBSITE_PRIVATE_IP (ex. 10.1.2.254) is the same for 2 web apps in the same ASP and same Subnet.
+
+* When frontend calls backend web app, both in the same ASP and Subnet, backend sees the calling/source IP as `X-Client-IP: 10.1.2.254`.
+
+* For frontend app:
+Local IP Address	169.254.130.5
+Remote IP Address	169.254.130.1
+
+* For backend app:
+Local IP Address	169.254.129.2
+Remote IP Address	169.254.129.1
+
+* To route traffic to Firewall, property `vnetRouteAllEnabled: true` should be set.
+

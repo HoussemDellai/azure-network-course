@@ -85,5 +85,15 @@ resource "azurerm_application_gateway" "appgateway" {
     timeout                                   = 30
     unhealthy_threshold                       = 3
     minimum_servers                           = 0
+
+    match {
+      status_code = ["200-399"]
+    }
+  }
+
+  lifecycle {
+    ignore_changes = [
+      probe
+    ]
   }
 }
