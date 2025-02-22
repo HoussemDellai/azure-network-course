@@ -8,10 +8,6 @@ variable "location" {
   default = "swedencentral"
 }
 
-variable "vnet_ids" {
-  type = set(string)
-}
-
 variable "spoke_dns_vnet_cidr" {
   type = string
 }
