@@ -31,3 +31,7 @@ variable "firewall_private_ip" {
 variable "private_dns_zone_id_appservice" {
   type = string
 }
+
+variable "dns_forwarding_ruleset_id" {
+  type = string
+}
