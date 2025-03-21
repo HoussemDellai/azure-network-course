@@ -20,7 +20,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "policy-group-allow" {
   priority           = 100
 
   application_rule_collection {
-    name     = "allow-internet"
+    name     = "application-rule-allow-all"
     priority = 100
     action   = "Allow"
 
@@ -36,6 +36,20 @@ resource "azurerm_firewall_policy_rule_collection_group" "policy-group-allow" {
         type = "Https"
         port = 443
       }
+    }
+  }
+
+  network_rule_collection {
+    name     = "network-rule-allow-all"
+    priority = 200
+    action   = "Allow"
+
+    rule {
+      name                  = "allow-internet"
+      source_addresses      = ["*"]
+      destination_addresses = ["*"]
+      destination_ports     = ["*"]
+      protocols             = ["Any"]
     }
   }
 }
