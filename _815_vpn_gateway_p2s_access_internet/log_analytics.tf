@@ -10,7 +10,7 @@ resource "azurerm_log_analytics_workspace" "log_analytics" {
   daily_quota_gb                  = -1
 }
 
-data "azurerm_monitor_diagnostic_categories" "categories" {
+data "azurerm_monitor_diagnostic_categories" "categories-firewall" {
   resource_id = azurerm_firewall.firewall.id
 }
 
@@ -22,7 +22,7 @@ resource "azurerm_monitor_diagnostic_setting" "diagnostics_firewall" {
 
 
   dynamic "enabled_log" {
-    for_each = data.azurerm_monitor_diagnostic_categories.categories.log_category_types
+    for_each = data.azurerm_monitor_diagnostic_categories.categories-firewall.log_category_types
 
     content {
       category = enabled_log.key
@@ -30,7 +30,40 @@ resource "azurerm_monitor_diagnostic_setting" "diagnostics_firewall" {
   }
 
   dynamic "metric" {
-    for_each = data.azurerm_monitor_diagnostic_categories.categories.metrics
+    for_each = data.azurerm_monitor_diagnostic_categories.categories-firewall.metrics
+
+    content {
+      category = metric.key
+    }
+  }
+
+  lifecycle {
+    ignore_changes = [
+      log_analytics_destination_type
+    ]
+  }
+}
+
+data "azurerm_monitor_diagnostic_categories" "categories-vpngateway" {
+  resource_id = azurerm_virtual_network_gateway.vpn-gateway.id
+}
+
+resource "azurerm_monitor_diagnostic_setting" "diagnostics-vpngateway" {
+  name                           = "diagnostics-vpngateway"
+  target_resource_id             = azurerm_virtual_network_gateway.vpn-gateway.id
+  log_analytics_workspace_id     = azurerm_log_analytics_workspace.log_analytics.id
+  log_analytics_destination_type = "Dedicated" # "AzureDiagnostics"
+
+  dynamic "enabled_log" {
+    for_each = data.azurerm_monitor_diagnostic_categories.categories-vpngateway.log_category_types
+
+    content {
+      category = enabled_log.key
+    }
+  }
+
+  dynamic "metric" {
+    for_each = data.azurerm_monitor_diagnostic_categories.categories-vpngateway.metrics
 
     content {
       category = metric.key

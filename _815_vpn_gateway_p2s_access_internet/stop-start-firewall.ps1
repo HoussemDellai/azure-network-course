@@ -11,12 +11,6 @@ function Stop-AzFirewall {
     Set-AzFirewall -AzureFirewall $azfw
 }
 
-# $azfw = Get-AzFirewall -Name "firewall" -ResourceGroupName "rg-vpn-gateway-p2s-815-dev"
-
-# $azfw.Deallocate()
-
-# Set-AzFirewall -AzureFirewall $azfw
-
 # Start the firewall
 
 function Start-AzFirewall {
@@ -34,10 +28,3 @@ function Start-AzFirewall {
 
     Set-AzFirewall -AzureFirewall $azfw
 }
-
-# $azfw = Get-AzFirewall -Name "firewall" -ResourceGroupName "rg-vpn-gateway-p2s-815-dev"
-# $vnet = Get-AzVirtualNetwork -ResourceGroupName "rg-vpn-gateway-p2s-815-dev" -Name "vnet-hub"
-# $publicip = Get-AzPublicIpAddress -Name "pip-firewall" -ResourceGroupName "rg-vpn-gateway-p2s-815-dev"
-# $azfw.Allocate($vnet,@($publicip))
-
-# Set-AzFirewall -AzureFirewall $azfw
