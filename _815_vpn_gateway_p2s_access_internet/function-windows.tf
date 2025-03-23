@@ -15,7 +15,7 @@ resource "azurerm_service_plan" "plan" {
 }
 
 resource "azurerm_windows_function_app" "function" {
-  name                       = "function-app"
+  name                       = "function-app-${var.prefix}"
   resource_group_name        = azurerm_resource_group.rg.name
   location                   = azurerm_resource_group.rg.location
   storage_account_name       = azurerm_storage_account.storage.name
@@ -24,7 +24,30 @@ resource "azurerm_windows_function_app" "function" {
 
   site_config {
     application_stack {
-      powershell_core_version = 7
+      powershell_core_version = "7.4"
     }
   }
+
+  app_settings = {
+    "Firewall_NAME"           = azurerm_firewall.firewall.name
+    "FIREWALL_RESOURCE_GROUP" = azurerm_resource_group.rg.name
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+}
+
+# role assignment for function app to stop/start the firewall
+resource "azurerm_role_assignment" "function-contributor-firewall" {
+  principal_id         = azurerm_windows_function_app.function.identity[0].principal_id
+  role_definition_name = "Contributor"
+  scope                = azurerm_firewall.firewall.id
+}
+
+# required to stop the Firewall
+resource "azurerm_role_assignment" "function-contributor-firewall-policy" {
+  principal_id         = azurerm_windows_function_app.function.identity[0].principal_id
+  role_definition_name = "Contributor"
+  scope                = azurerm_firewall_policy.firewall-policy.id
 }
