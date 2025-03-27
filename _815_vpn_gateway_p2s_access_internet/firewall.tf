@@ -8,7 +8,7 @@ resource "azurerm_public_ip" "pip-firewall" {
 }
 
 resource "azurerm_firewall" "firewall" {
-  name                = "firewall-hub"
+  name                = "firewall"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   sku_name            = "AZFW_VNet"
