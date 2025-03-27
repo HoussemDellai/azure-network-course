@@ -8,10 +8,13 @@ function run {
 run
 
 function Stop-AzFirewall {
-    param (
-        [string]$FirewallName = "firewall",
-        [string]$ResourceGroupName = "rg-vpn-gateway-p2s-815-dev"
-    )
+    # param (
+    #     [string]$FirewallName = "firewall",
+    #     [string]$ResourceGroupName = "rg-vpn-gateway-p2s-815-dev"
+    # )
+
+    $FirewallName = $env:Firewall_NAME
+    $ResourceGroupName = $env:FIREWALL_RESOURCE_GROUP
 
     # authenticate to Azure using SystemAssigned Identity
     # Connect-AzAccount -Identity
