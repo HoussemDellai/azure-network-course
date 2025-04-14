@@ -1,4 +1,4 @@
-custom_domain_name = "azureappgw.com"
+custom_domain_name = "azureappgwtls.com"
 
 AgreedBy_IP_v6    = "2a04:cec0:11d9:24c8:8898:3820:8631:d83"
 AgreedAt_DateTime = "2023-08-10T11:50:59.264Z"
