@@ -2,7 +2,7 @@
 # MSDN/VisualStudio and Free Azure subscriptions doesn't work.
 module "appservice_domain" {
   source  = "HoussemDellai/appservice-domain/azapi" # if calling module from Terraform Registry
-  version = "1.0.2"
+  version = "2.0.0"
 
   # providers = {
   #   azapi = azapi

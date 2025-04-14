@@ -1,13 +1,13 @@
 variable "prefix" {
   description = "Prefix to be used for all resources in this example"
   type        = string
-  default     = "510"
+  default     = "510a"
 }
 
 variable "custom_domain_name" {
   description = "Custom domain name to be used for Application Gateway"
   type        = string
-  default     = "azureappgw.com"
+  default     = "azureappgwtls.com"
 }
 
 variable "AgreedBy_IP_v6" { # "2a04:cec0:11d9:24c8:8898:3820:8631:d83"
