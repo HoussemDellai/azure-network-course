@@ -21,3 +21,7 @@ output "vm_linux_proxy_squid_public_ip" {
 output "ssh-into-vm-proxy" {
   value = "ssh ${azurerm_linux_virtual_machine.vm-proxy.admin_username}@${azurerm_public_ip.pip-vm-proxy.ip_address}"
 }
+
+output "aca_mitm_proxy_url" {
+  value = "http://${azurerm_container_app.mitm-proxy.ingress[0].fqdn}"
+}

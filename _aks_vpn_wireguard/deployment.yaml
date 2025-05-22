@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wg-easy
+  namespace: wg-easy
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: wg-easy
+  strategy:
+    # Restrict to a Single wg-easy instance, on redeploys it will tear down the old one before bring a new one up.
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: wg-easy
+    spec:
+      containers:
+        - name: wg-easy
+          # Specify external hostname and port as environment variables
+          env:
+            - name: WG_HOST
+              value: wg.hostname.com
+            - name: WG_PORT
+              value: "30000"
+          image: ghcr.io/wg-easy/wg-easy
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 51820
+              name: wg
+              protocol: UDP
+            - containerPort: 51821
+              name: http
+              protocol: TCP
+          # Use the http server for pod health checks
+          livenessProbe:
+            failureThreshold: 3
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: http
+            timeoutSeconds: 1
+          readinessProbe:
+            failureThreshold: 3
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: http
+            timeoutSeconds: 1
+          startupProbe:
+            failureThreshold: 30
+            periodSeconds: 5
+            successThreshold: 1
+            tcpSocket:
+              port: http
+            timeoutSeconds: 1
+          # Give pod permissions to modify iptables and load the wireguard kernel module
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+                - SYS_MODULE
+          # Persistent storage location
+          volumeMounts:
+            - mountPath: /etc/wireguard
+              name: config
+      restartPolicy: Always
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: wg-easy-storage-claim

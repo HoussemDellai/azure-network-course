@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencryptcertmanager # Or your certificate issuer
+  name: wg-easy
+  namespace: wg-easy
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: wg.ingress-hostname.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: wg-easy-http
+                port: 
+                  name: http
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - wg.ingress-hostname.com
+      secretName: wg-ingress-hostname-com-tls
