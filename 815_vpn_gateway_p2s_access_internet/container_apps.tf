@@ -4,8 +4,8 @@ resource "azurerm_container_app_environment" "env" {
   resource_group_name = azurerm_resource_group.rg.name
 }
 
-resource "azurerm_container_app" "app" {
-  name                         = "aca-app-proxy"
+resource "azurerm_container_app" "mitm-proxy" {
+  name                         = "mitm-proxy"
   container_app_environment_id = azurerm_container_app_environment.env.id
   resource_group_name          = azurerm_resource_group.rg.name
   revision_mode                = "Single"

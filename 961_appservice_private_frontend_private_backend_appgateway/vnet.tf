@@ -36,7 +36,7 @@ resource "azurerm_subnet" "snet-integration" {
 }
 
 resource "azurerm_subnet" "snet-pe" {
-  name                              = "snet-gateway"
+  name                              = "snet-pe"
   resource_group_name               = azurerm_virtual_network.vnet-app.resource_group_name
   virtual_network_name              = azurerm_virtual_network.vnet-app.name
   address_prefixes                  = ["10.0.4.0/24"]

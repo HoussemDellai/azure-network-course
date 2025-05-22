@@ -14,7 +14,10 @@ resource "azurerm_container_group" "aci-mitmproxy" {
     commands = [
       "/bin/bash",
       "-c",
-      "mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false"
+      "mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --block_global=false --proxyauth=any",
+      # "mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --block_global=false --proxyauth=any web_password:mitmproxy",
+      # "mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false --proxyauth=mitmproxy:mitmproxy"
+      # "mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false"
     ]
 
     ports {
