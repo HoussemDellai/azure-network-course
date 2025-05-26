@@ -10,7 +10,10 @@ spec:
     name: mitmproxy
     resources: {}
     command: ["/bin/sh"]
-    args: ["-c", "mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false"]
+    args: ["-c", "mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false --mode wireguard"]
+    # args: ["-c", "mitmdump --listen-port 8080 --mode transparent --set block_global=false"]
+    # args: ["-c", "mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false --mode transparent"] # not working
+    # args: ["-c", "mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false"] # works
     ports:
     - containerPort: 8080
       protocol: TCP
@@ -37,6 +40,10 @@ spec:
     protocol: TCP
     targetPort: 8081
     name: web
+  - port: 51820
+    protocol: UDP
+    targetPort: 51820
+    name: wireguard
   selector:
     run: mitmproxy
   type: LoadBalancer

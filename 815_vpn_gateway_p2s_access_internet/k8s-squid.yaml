@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: squid-config
+data:
+  squid.conf: |
+    http_port 3128
+    acl localnet src 0.0.0.1-0.255.255.255
+    acl domain_dst dst OVERRIDE
+    acl domain_port port OVERRIDE
+    http_access allow localnet
+    http_access allow domain_dst 
+    http_access deny all
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: squid-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: squid-proxy
+  template:
+    metadata:
+      labels:
+        app: squid-proxy
+    spec:
+      containers:
+      - name: squid-container
+        image: ashrafkh99/ashrafk-squid-proxy:1.0
+        ports:
+        - containerPort: 3128
+        volumeMounts:
+        - name: squid-config
+          mountPath: /etc/squid/conf.d/
+        command:
+          - "squid"
+          - "-NYCd"
+          - "1"
+          - "-f"
+          - "/etc/squid/conf.d/squid.conf"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      volumes:
+      - name: squid-config
+        configMap:
+          name: squid-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: squid-service
+spec:
+  selector:
+    app: squid-proxy
+  ports:
+    - protocol: TCP
+      port: 3128
+      targetPort: 3128
+  type: LoadBalancer
