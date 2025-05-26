@@ -46,12 +46,16 @@ resource "azurerm_windows_virtual_machine" "vm" {
   source_image_reference {
     publisher = "MicrosoftWindowsDesktop"
     offer     = "windows-11"
-    sku       = "win11-23h2-pro"
+    sku       = "win11-24h2-pro"
     version   = "latest"
   }
 
   boot_diagnostics {
     storage_account_uri = null
+  }
+
+  lifecycle {
+    ignore_changes = [ identity ]
   }
 }
 
