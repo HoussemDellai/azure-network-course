@@ -22,7 +22,7 @@ class Writer:
     def __init__(self) -> None:
         # We are using an environment variable to keep the example as simple as possible,
         # consider implementing this as a mitmproxy option instead.
-        filename = os.getenv("MITMPROXY_OUTFILE", "out.mitm")
+        filename = os.getenv("MITMPROXY_OUTFILE", "flows.mitm")
         self.f: BinaryIO = open(filename, "wb")
         self.w = io.FlowWriter(self.f)
 
