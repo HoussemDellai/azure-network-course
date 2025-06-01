@@ -13,7 +13,7 @@ from mitmproxy import io
 from mitmproxy.exceptions import FlowReadException
 from datetime import datetime
 
-flows_file_path = 'flows'
+flows_file_path = 'flows.mitm'
 
 with open(flows_file_path, "rb") as logfile:
     freader = io.FlowReader(logfile)
