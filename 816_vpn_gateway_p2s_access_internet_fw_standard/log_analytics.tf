@@ -29,11 +29,11 @@ resource "azurerm_monitor_diagnostic_setting" "diagnostics_firewall" {
     }
   }
 
-  dynamic "metric" {
+  dynamic "enabled_metric" {
     for_each = data.azurerm_monitor_diagnostic_categories.categories-firewall.metrics
 
     content {
-      category = metric.key
+      category = enabled_metric.key
     }
   }
 
@@ -62,11 +62,11 @@ resource "azurerm_monitor_diagnostic_setting" "diagnostics-vpngateway" {
     }
   }
 
-  dynamic "metric" {
+  dynamic "enabled_metric" {
     for_each = data.azurerm_monitor_diagnostic_categories.categories-vpngateway.metrics
 
     content {
-      category = metric.key
+      category = enabled_metric.key
     }
   }
 

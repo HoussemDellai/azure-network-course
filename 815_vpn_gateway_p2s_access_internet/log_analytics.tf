@@ -26,11 +26,11 @@
 #     }
 #   }
 
-#   dynamic "metric" {
+#   dynamic "enabled_metric" {
 #     for_each = data.azurerm_monitor_diagnostic_categories.categories.metrics
 
 #     content {
-#       category = metric.key
+#       category = enabled_metric.key
 #     }
 #   }
 

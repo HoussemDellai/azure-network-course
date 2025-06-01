@@ -9,8 +9,6 @@ resource "azurerm_public_ip" "pip-vnet-gateway" {
 
   allocation_method = "Static"
   sku               = "Standard"
-  sku_tier          = "Regional"
-  zones             = []
 }
 
 resource "azurerm_virtual_network_gateway" "vpn-gateway" {
@@ -23,11 +21,11 @@ resource "azurerm_virtual_network_gateway" "vpn-gateway" {
 
   active_active = false
   enable_bgp    = false
-  # sku           = "VpnGw2"      # Basic, Standard, HighPerformance, UltraPerformance, ErGw1AZ, ErGw2AZ, ErGw3AZ, VpnGw1, VpnGw2, VpnGw3, VpnGw4,VpnGw5, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ,VpnGw4AZ and VpnGw5AZ
-  # generation    = "Generation2" # Generation2 is only value for a sku larger than VpnGw2 or VpnGw2AZ
+  sku           = "VpnGw1"      # Basic, Standard, HighPerformance, UltraPerformance, ErGw1AZ, ErGw2AZ, ErGw3AZ, VpnGw1, VpnGw2, VpnGw3, VpnGw4,VpnGw5, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ,VpnGw4AZ and VpnGw5AZ
+  generation    = "Generation1" # Generation2 is only value for a sku larger than VpnGw2 or VpnGw2AZ
 
-  sku        = "VpnGw1" # "Basic"
-  generation = "Generation1"
+  # sku        = "Basic"
+  # generation = "Generation1"
 
   ip_configuration {
     name                          = "vnetGatewayConfig"
