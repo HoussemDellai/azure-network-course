@@ -13,7 +13,9 @@ from mitmproxy import io
 from mitmproxy.exceptions import FlowReadException
 from datetime import datetime
 
-with open('flows', "rb") as logfile:
+flows_file_path = 'flows'
+
+with open(flows_file_path, "rb") as logfile:
     freader = io.FlowReader(logfile)
     pp = pprint.PrettyPrinter(indent=4)
     
