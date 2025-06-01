@@ -26,19 +26,11 @@
 #     }
 #   }
 
-<<<<<<< HEAD
 #   dynamic "enabled_metric" {
 #     for_each = data.azurerm_monitor_diagnostic_categories.categories.metrics
 
 #     content {
 #       category = enabled_metric.key
-=======
-#   dynamic "metric" {
-#     for_each = data.azurerm_monitor_diagnostic_categories.categories.metrics
-
-#     content {
-#       category = metric.key
->>>>>>> a26231ceb327f6bd30df487e9393348a0f3f689f
 #     }
 #   }
 
