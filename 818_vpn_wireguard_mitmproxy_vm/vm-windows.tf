@@ -23,14 +23,14 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   name                  = "vm-win11"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_D4ads_v5" # "Standard_D96ads_v5" # 
+  size                  = "Standard_D4ads_v5"
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
   priority              = "Spot"
   eviction_policy       = "Deallocate"
   network_interface_ids = [azurerm_network_interface.nic-vm-windows.id]
 
-  custom_data = filebase64("../scripts/install-tools-windows-vm-winget-mini.ps1")
+  custom_data = filebase64("./install-tools-windows-vm-winget-mini.ps1")
 
   os_disk {
     name                 = "os-disk-vm-windows"
