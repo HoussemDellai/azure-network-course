@@ -29,11 +29,19 @@ resource "azurerm_monitor_diagnostic_setting" "diagnostics_firewall" {
     }
   }
 
+<<<<<<< HEAD
   dynamic "enabled_metric" {
     for_each = data.azurerm_monitor_diagnostic_categories.categories-firewall.metrics
 
     content {
       category = enabled_metric.key
+=======
+  dynamic "metric" {
+    for_each = data.azurerm_monitor_diagnostic_categories.categories-firewall.metrics
+
+    content {
+      category = metric.key
+>>>>>>> a26231ceb327f6bd30df487e9393348a0f3f689f
     }
   }
 
@@ -62,11 +70,19 @@ resource "azurerm_monitor_diagnostic_setting" "diagnostics-vpngateway" {
     }
   }
 
+<<<<<<< HEAD
   dynamic "enabled_metric" {
     for_each = data.azurerm_monitor_diagnostic_categories.categories-vpngateway.metrics
 
     content {
       category = enabled_metric.key
+=======
+  dynamic "metric" {
+    for_each = data.azurerm_monitor_diagnostic_categories.categories-vpngateway.metrics
+
+    content {
+      category = metric.key
+>>>>>>> a26231ceb327f6bd30df487e9393348a0f3f689f
     }
   }
 

@@ -43,6 +43,14 @@ resource "azurerm_virtual_network_gateway" "vpn-gateway" {
     aad_audience         = "41b23e61-6c1e-4545-b367-cd054e0ed4b4"
     aad_issuer           = "https://sts.windows.net/${data.azurerm_client_config.current.tenant_id}/"
     aad_tenant           = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}"
+<<<<<<< HEAD
+=======
+
+    # root_certificate {
+    #   name             = "P2SRootCert815"
+    #   public_cert_data = replace(replace(file("./certs/P2SRootCert815.cer"), "-----BEGIN CERTIFICATE-----", ""), "-----END CERTIFICATE-----", "")
+    # }
+>>>>>>> a26231ceb327f6bd30df487e9393348a0f3f689f
   }
 
   custom_route {
