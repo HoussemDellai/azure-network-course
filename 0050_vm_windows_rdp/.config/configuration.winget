@@ -49,12 +49,65 @@ properties:
         id: CoreyButler.NVMforWindows
         source: winget
     - resource: GitDsc/GitClone
+      id: CloneAzureNetworkCourse
       directives:
         description: Clone a Github repository
         allowPrerelease: true
       settings:
-        HttpsUrl: https://github.com/microsoft/winget-cli.git
+        HttpsUrl: https://github.com/HoussemDellai/azure-network-course
         RootDirectory: "${WingetConfigRoot}/SampleRepos/"
+    - resource: GitDsc/GitClone
+      id: CloneAKSCourse
+      directives:
+        description: Clone a Github repository
+        allowPrerelease: true
+      settings:
+        HttpsUrl: https://github.com/HoussemDellai/aks-course/
+        RootDirectory: "C:/Users/azureuser/Desktop"
+    - resource: Microsoft.Windows.Developer/Taskbar
+      directives:
+        description: Modify taskbar settings
+        allowPrerelease: true
+      settings:
+        Alignment: Left # [KeepCurrentValue, Middle]
+        HideLabelsMode: Never # [KeepCurrentValue, WhenFull, Always]
+        SearchBoxMode: ShowIconAndLabel # [KeepCurrentValue, ShowIconOnly, SearchBox, Hide]
+        TaskViewButton: Show # [KeepCurrentValue, Hide]
+        WidgetsButton: Show # [KeepCurrentValue, Hide]
+        RestartExplorer: True # Use caution when setting `RestartExplorer: true` as this will force explorer to close. Required for `HideLabelsMode`.
+    - resource: Microsoft.Windows.Developer/WindowsExplorer
+      directives:
+        description: Modify Windows Explorer settings
+        allowPrerelease: true
+      settings:
+        FileExtensions: Show # [KeepCurrentValue, Hide]
+        HiddenFiles: Show # [KeepCurrentValue, Hide]
+        ItemCheckBoxes: Hide # [KeepCurrentValue, Hide]
+        RestartExplorer: True # Use caution when setting `RestartExplorer: true` as this will force explorer to close. Required for all WindowsExplorer settings.
+    - resource: Microsoft.Windows.Developer/ShowSecondsInClock
+      directives:
+        description: Show seconds in clock
+        allowPrerelease: true
+      settings:
+        Ensure: Present
+    - resource: Microsoft.Windows.Developer/EnableDarkMode
+      directives:
+        description: Enable dark mode
+        allowPrerelease: true
+      settings:
+        Ensure: Present
+        # Use caution when setting `RestartExplorer: true` as this will force explorer to close.
+        RestartExplorer: true # Required to apply changes
+    - resource: Microsoft.Windows.Settings/WindowsSettings
+      directives:
+        allowPrerelease: true
+        description: Modify Windows Settings
+        securityContext: elevated
+      settings:
+        AppColorMode: Dark
+        DeveloperMode: true
+        SystemColorMode: Dark
+        TaskbarAlignment: Left
     # - resource: Microsoft.Windows.Developer/DeveloperMode
     #   directives:
     #     description: Enable Developer Mode
