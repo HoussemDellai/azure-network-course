@@ -493,6 +493,7 @@ properties:
       directives:
         description: Clone a Github repository
         allowPrerelease: true
+        securityContext: elevated
       settings:
         HttpsUrl: https://github.com/HoussemDellai/aks-course/
         RootDirectory: "C:/Users/azureuser/Desktop"
