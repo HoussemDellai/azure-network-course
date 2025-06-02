@@ -1,0 +1,100 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+properties:
+  assertions:
+    - resource: Microsoft.Windows.Developer/OsVersion
+      directives:
+        description: Verify min OS version requirement
+        allowPrerelease: true
+      settings:
+        MinVersion: "10.0.22000"
+  resources:
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Git
+      directives:
+        description: Install Git
+        securityContext: elevated
+      settings:
+        id: Git.Git
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Python 3.13
+      directives:
+        description: Install Python 3.13
+      settings:
+        id: 9PNRBTZXMB4Z
+        source: msstore
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: VisualStudio Code
+      directives:
+        description: Install Visual Studio Code
+      settings:
+        id: Microsoft.VisualStudioCode
+        source: winget
+    - resource: Microsoft.VSCode.Dsc/VSCodeExtension
+      id: ms-python.python
+      dependsOn:
+        - VisualStudio Code
+      directives:
+        description: Install Python Visual Studio Code extension
+        allowPrerelease: true
+      settings:
+        name: ms-python.python
+        exist: true
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: NVM
+      directives:
+        description: Install NVM for Windows
+        securityContext: elevated
+      settings:
+        id: CoreyButler.NVMforWindows
+        source: winget
+    - resource: GitDsc/GitClone
+      directives:
+        description: Clone a Github repository
+        allowPrerelease: true
+      settings:
+        HttpsUrl: https://github.com/microsoft/winget-cli.git
+        RootDirectory: "${WingetConfigRoot}/SampleRepos/"
+    # - resource: Microsoft.Windows.Developer/DeveloperMode
+    #   directives:
+    #     description: Enable Developer Mode
+    #     allowPrerelease: true
+    #   settings:
+    #     Ensure: Present
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage
+    #   id: vsPackage
+    #   directives:
+    #     description: Install Visual Studio 2022 Community
+    #   settings:
+    #     id: Microsoft.VisualStudio.2022.Community
+    #     source: winget
+    # - resource: Microsoft.VisualStudio.DSC/VSComponents
+    #   dependsOn:
+    #     - vsPackage
+    #   directives:
+    #     description: Install required VS workloads from vsconfig file
+    #     allowPrerelease: true
+    #   settings:
+    #     productId: Microsoft.VisualStudio.Product.Community
+    #     channelId: VisualStudio.17.Release
+    #     vsConfigFile: '${WinGetConfigRoot}\..\.vsconfig'
+    #     includeRecommended: true
+    # - resource: Microsoft.Windows.Settings/WindowsSettings
+    #   directives:
+    #     description: Enable Developer Mode
+    #     securityContext: elevated
+    #     allowPrerelease: true
+    #   settings:
+    #     DeveloperMode: true
+    # - resource: Microsoft.VisualStudio.DSC/VSComponents
+    #   dependsOn:
+    #     - vsPackage
+    #   directives:
+    #     description: Install required VS workloads for C# development using the Windows App SDK
+    #     securityContext: elevated
+    #   settings:
+    #     productId: Microsoft.VisualStudio.Product.Community
+    #     channelId: VisualStudio.17.Release
+    #     Components: Microsoft.VisualStudio.Workload.Universal
+    #     includeRecommended: true
+  configurationVersion: 0.2.0
