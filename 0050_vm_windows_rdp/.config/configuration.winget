@@ -48,6 +48,438 @@ properties:
       settings:
         id: CoreyButler.NVMforWindows
         source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: WireGuard
+      directives:
+        description: Install WireGuard
+        securityContext: elevated
+      settings:
+        id: WireGuard.WireGuard
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Docker Desktop
+      directives:
+        description: Install Docker Desktop
+        securityContext: elevated
+      settings:
+        id: Docker.DockerDesktop
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Remote Desktop Client
+      directives:
+        description: Install Microsoft Remote Desktop Client
+        securityContext: elevated
+      settings:
+        id: Microsoft.RemoteDesktopClient
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: TechSmith Snagit 2025
+      directives:
+        description: Install TechSmith Snagit 2025
+        securityContext: elevated
+      settings:
+        id: TechSmith.Snagit.2025
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Azure CLI
+      directives:
+        description: Install Microsoft Azure CLI
+        securityContext: elevated
+      settings:
+        id: Microsoft.AzureCLI
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: OpenJS Node.js
+      directives:
+        description: Install OpenJS Node.js
+        securityContext: elevated
+      settings:
+        id: OpenJS.NodeJS
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Azure Developer CLI
+      directives:
+        description: Install Microsoft Azure Developer CLI
+        securityContext: elevated
+      settings:
+        id: Microsoft.Azd
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Logitech G HUB
+      directives:
+        description: Install Logitech G HUB
+        securityContext: elevated
+      settings:
+        id: Logitech.GHUB
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Google Chrome
+      directives:
+        description: Install Google Chrome
+        securityContext: elevated
+      settings:
+        id: Google.Chrome
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Office
+      directives:
+        description: Install Microsoft Office
+        securityContext: elevated
+      settings:
+        id: Microsoft.Office
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Sqlcmd
+      directives:
+        description: Install Microsoft Sqlcmd
+        securityContext: elevated
+      settings:
+        id: Microsoft.Sqlcmd
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Azure AztfExport
+      directives:
+        description: Install Microsoft Azure AztfExport
+        securityContext: elevated
+      settings:
+        id: Microsoft.Azure.AztfExport
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Azure Functions Core Tools
+      directives:
+        description: Install Microsoft Azure Functions Core Tools
+        securityContext: elevated
+      settings:
+        id: Microsoft.Azure.FunctionsCoreTools
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Edge
+      directives:
+        description: Install Microsoft Edge
+        securityContext: elevated
+      settings:
+        id: Microsoft.Edge
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Wireshark
+      directives:
+        description: Install Wireshark
+        securityContext: elevated
+      settings:
+        id: WiresharkFoundation.Wireshark
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft .NET SDK 8
+      directives:
+        description: Install Microsoft .NET SDK 8
+        securityContext: elevated
+      settings:
+        id: Microsoft.DotNet.SDK.8
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Jabra Direct
+      directives:
+        description: Install Jabra Direct
+        securityContext: elevated
+      settings:
+        id: Jabra.Direct
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft .NET SDK Preview
+      directives:
+        description: Install Microsoft .NET SDK Preview
+        securityContext: elevated
+      settings:
+        id: Microsoft.DotNet.SDK.Preview
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft .NET SDK 9
+      directives:
+        description: Install Microsoft .NET SDK 9
+        securityContext: elevated
+      settings:
+        id: Microsoft.DotNet.SDK.9
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft .NET Runtime 8
+      directives:
+        description: Install Microsoft .NET Runtime 8
+        securityContext: elevated
+      settings:
+        id: Microsoft.DotNet.Runtime.8
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Visual C++ Redistributable 2015+
+      directives:
+        description: Install Microsoft Visual C++ Redistributable 2015+ x64
+        securityContext: elevated
+      settings:
+        id: Microsoft.VCRedist.2015+.x64
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Win10Pcap
+      directives:
+        description: Install Win10Pcap
+        securityContext: elevated
+      settings:
+        id: DaiyuuNobori.Win10Pcap
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Remote Help
+      directives:
+        description: Install Microsoft Remote Help
+        securityContext: elevated
+      settings:
+        id: Microsoft.RemoteHelp
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft .NET Desktop Runtime 9
+      directives:
+        description: Install Microsoft .NET Desktop Runtime 9
+        securityContext: elevated
+      settings:
+        id: Microsoft.DotNet.DesktopRuntime.9
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Visual C++ Redistributable 2015+ x86
+      directives:
+        description: Install Microsoft Visual C++ Redistributable 2015+ x86
+        securityContext: elevated
+      settings:
+        id: Microsoft.VCRedist.2015+.x86
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Anthropic Claude
+      directives:
+        description: Install Anthropic Claude
+        securityContext: elevated
+      settings:
+        id: Anthropic.Claude
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Brave Browser
+      directives:
+        description: Install Brave Browser
+        securityContext: elevated
+      settings:
+        id: Brave.Brave
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Brave Browser Dev
+      directives:
+        description: Install Brave Browser Dev
+        securityContext: elevated
+      settings:
+        id: Brave.Brave.Dev
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: HashiCorp Terraform
+      directives:
+        description: Install HashiCorp Terraform
+        securityContext: elevated
+      settings:
+        id: Hashicorp.Terraform
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Helm
+      directives:
+        description: Install Helm
+        securityContext: elevated
+      settings:
+        id: Helm.Helm
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: kubectl
+      directives:
+        description: Install kubectl
+        securityContext: elevated
+      settings:
+        id: Kubernetes.kubectl
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Azure Kubelogin
+      directives:
+        description: Install Microsoft Azure Kubelogin
+        securityContext: elevated
+      settings:
+        id: Microsoft.Azure.Kubelogin
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Sysinternals BGInfo
+      directives:
+        description: Install Microsoft Sysinternals BGInfo
+        securityContext: elevated
+      settings:
+        id: Microsoft.Sysinternals.BGInfo
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: yq
+      directives:
+        description: Install yq
+        securityContext: elevated
+      settings:
+        id: MikeFarah.yq
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Anaconda Miniconda3
+      directives:
+        description: Install Anaconda Miniconda3
+        securityContext: elevated
+      settings:
+        id: Anaconda.Miniconda3
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft OneDrive
+      directives:
+        description: Install Microsoft OneDrive
+        securityContext: elevated
+      settings:
+        id: Microsoft.OneDrive
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Shotcut
+      directives:
+        description: Install Shotcut
+        securityContext: elevated
+      settings:
+        id: Meltytech.Shotcut
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: ArgoCD CLI
+      directives:
+        description: Install ArgoCD CLI
+        securityContext: elevated
+      settings:
+        id: argoproj.argocd
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: uv
+      directives:
+        description: Install uv
+        securityContext: elevated
+      settings:
+        id: astral-sh.uv
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: cURL
+      directives:
+        description: Install cURL
+        securityContext: elevated
+      settings:
+        id: cURL.cURL
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Headlamp
+      directives:
+        description: Install Headlamp
+        securityContext: elevated
+      settings:
+        id: Headlamp.Headlamp
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Azure Data Studio
+      directives:
+        description: Install Microsoft Azure Data Studio
+        securityContext: elevated
+      settings:
+        id: Microsoft.AzureDataStudio
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Visual Studio Code Insiders
+      directives:
+        description: Install Microsoft Visual Studio Code Insiders
+        securityContext: elevated
+      settings:
+        id: Microsoft.VisualStudioCode.Insiders
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft PowerToys
+      directives:
+        description: Install Microsoft PowerToys
+        securityContext: elevated
+      settings:
+        id: Microsoft.PowerToys
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Azure Storage Explorer
+      directives:
+        description: Install Microsoft Azure Storage Explorer
+        securityContext: elevated
+      settings:
+        id: Microsoft.Azure.StorageExplorer
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Bicep
+      directives:
+        description: Install Microsoft Bicep
+        securityContext: elevated
+      settings:
+        id: Microsoft.Bicep
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Python 3.12
+      directives:
+        description: Install Python 3.12
+        securityContext: elevated
+      settings:
+        id: Python.Python.3.12
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Teams
+      directives:
+        description: Install Microsoft Teams
+        securityContext: elevated
+      settings:
+        id: Microsoft.Teams
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft App Installer
+      directives:
+        description: Install Microsoft App Installer
+        securityContext: elevated
+      settings:
+        id: Microsoft.AppInstaller
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft UI Xaml 2.7
+      directives:
+        description: Install Microsoft UI Xaml 2.7
+        securityContext: elevated
+      settings:
+        id: Microsoft.UI.Xaml.2.7
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft UI Xaml 2.8
+      directives:
+        description: Install Microsoft UI Xaml 2.8
+        securityContext: elevated
+      settings:
+        id: Microsoft.UI.Xaml.2.8
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft VC Libs Desktop 14
+      directives:
+        description: Install Microsoft VC Libs Desktop 14
+        securityContext: elevated
+      settings:
+        id: Microsoft.VCLibs.Desktop.14
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Windows Terminal
+      directives:
+        description: Install Microsoft Windows Terminal
+        securityContext: elevated
+      settings:
+        id: Microsoft.WindowsTerminal
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft Windows App
+      directives:
+        description: Install Microsoft Windows App
+        securityContext: elevated
+      settings:
+        id: Microsoft.WindowsApp
+        source: winget
     - resource: GitDsc/GitClone
       id: CloneAzureNetworkCourse
       directives:
@@ -69,21 +501,21 @@ properties:
         description: Modify taskbar settings
         allowPrerelease: true
       settings:
-        Alignment: Left # [KeepCurrentValue, Middle]
-        HideLabelsMode: Never # [KeepCurrentValue, WhenFull, Always]
-        SearchBoxMode: ShowIconAndLabel # [KeepCurrentValue, ShowIconOnly, SearchBox, Hide]
-        TaskViewButton: Show # [KeepCurrentValue, Hide]
-        WidgetsButton: Show # [KeepCurrentValue, Hide]
-        RestartExplorer: True # Use caution when setting `RestartExplorer: true` as this will force explorer to close. Required for `HideLabelsMode`.
+        Alignment: Left
+        HideLabelsMode: Never
+        SearchBoxMode: ShowIconAndLabel
+        TaskViewButton: Show
+        WidgetsButton: Show
+        RestartExplorer: True
     - resource: Microsoft.Windows.Developer/WindowsExplorer
       directives:
         description: Modify Windows Explorer settings
         allowPrerelease: true
       settings:
-        FileExtensions: Show # [KeepCurrentValue, Hide]
-        HiddenFiles: Show # [KeepCurrentValue, Hide]
-        ItemCheckBoxes: Hide # [KeepCurrentValue, Hide]
-        RestartExplorer: True # Use caution when setting `RestartExplorer: true` as this will force explorer to close. Required for all WindowsExplorer settings.
+        FileExtensions: Show
+        HiddenFiles: Show
+        ItemCheckBoxes: Hide
+        RestartExplorer: True
     - resource: Microsoft.Windows.Developer/ShowSecondsInClock
       directives:
         description: Show seconds in clock
@@ -96,8 +528,7 @@ properties:
         allowPrerelease: true
       settings:
         Ensure: Present
-        # Use caution when setting `RestartExplorer: true` as this will force explorer to close.
-        RestartExplorer: true # Required to apply changes
+        RestartExplorer: true
     - resource: Microsoft.Windows.Settings/WindowsSettings
       directives:
         allowPrerelease: true
