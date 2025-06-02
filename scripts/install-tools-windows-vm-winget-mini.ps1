@@ -32,8 +32,6 @@ winget install -e --id Microsoft.DotNet.DesktopRuntime.9 --accept-package-agreem
 
 winget install -e --id Microsoft.DotNet.AspNetCore.9 --accept-package-agreements --accept-source-agreements
 
-winget install -e --id Microsoft.DotNet.SDK.Preview --accept-package-agreements --accept-source-agreements
-
 winget install -e --id Microsoft.Azd --accept-package-agreements --accept-source-agreements
 
 winget install -e --id Microsoft.Bicep --accept-package-agreements --accept-source-agreements
@@ -43,8 +41,6 @@ winget install -e --id Microsoft.Azure.AztfExport --accept-package-agreements --
 winget install -e --id Microsoft.Azure.FunctionsCoreTools --accept-package-agreements --accept-source-agreements
 
 winget install -e --id Brave.Brave --accept-package-agreements --accept-source-agreements
-
-winget install -e --id Brave.Brave.Dev --accept-package-agreements --accept-source-agreements
 
 pip install auto-editor
 
