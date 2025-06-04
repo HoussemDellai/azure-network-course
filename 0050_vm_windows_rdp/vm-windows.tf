@@ -30,7 +30,9 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   eviction_policy       = "Deallocate"
   network_interface_ids = [azurerm_network_interface.nic-vm-windows.id]
 
-  custom_data = filebase64("../scripts/install-tools-windows-vm-winget-mini.ps1")
+  custom_data = filebase64("../scripts/install-tools-windows.ps1")
+  # custom_data = filebase64("./run-winget-configuration.ps1")
+  # custom_data = filebase64("../scripts/install-tools-windows-vm-winget-mini.ps1")
 
   os_disk {
     name                 = "os-disk-vm-windows"
@@ -67,7 +69,15 @@ resource "azurerm_virtual_machine_extension" "cse" {
   type_handler_version = "1.10"
   settings             = <<SETTINGS
     {
-        "commandToExecute": "powershell -ExecutionPolicy unrestricted -NoProfile -NonInteractive -command \"cp c:/azuredata/customdata.bin c:/azuredata/install.ps1; c:/azuredata/install.ps1\""
+        "commandToExecute": "powershell -ExecutionPolicy unrestricted -NoProfile -NonInteractive -command \"cp c:/azuredata/customdata.bin c:/azuredata/install.ps1; c:/azuredata/install.ps1 > c:/azuredata/install.ps1.log\""
     }
     SETTINGS
+}
+
+output "vm_windows_public_ip" {
+  value = azurerm_public_ip.pip-vm-windows.ip_address
+}
+
+output "vm_windows_private_ip" {
+  value = azurerm_network_interface.nic-vm-windows.private_ip_address
 }

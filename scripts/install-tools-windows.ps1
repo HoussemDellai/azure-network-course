@@ -35,6 +35,7 @@ choco install vscode -y
 
 # Install Edge
 choco install microsoft-edge -y
+
 # Install Lens
 choco install lens -y
 
@@ -74,6 +75,24 @@ choco install openssl -y
 choco install sqlcmd -y
 
 choco install lens -y
+
+choco install wireguard -y
+
+choco install headlamp -y
+
+choco install azd -y
+
+choco install azure-functions-core-tools -y
+
+choco install brave -y
+
+choco install shotcut -y
+
+choco install dotnet -y
+
+choco install dotnet-sdk -y
+
+choco install dotnet-8.0-sdk -y
 
 Set-Alias -Name k -Value kubectl
 
@@ -185,6 +204,6 @@ choco install powershell-core -y
 # # install Postman CLI
 # powershell.exe -NoProfile -InputFormat None -ExecutionPolicy AllSigned -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))"
 
-winget settings --enable InstallerHashOverride
-winget install --id Microsoft.PowerBI --source winget --ignore-security-hash --accept-source-agreements
-winget install Microsoft.DevProxy --silent
+# winget settings --enable InstallerHashOverride
+# winget install --id Microsoft.PowerBI --source winget --ignore-security-hash --accept-source-agreements
+# winget install Microsoft.DevProxy --silent

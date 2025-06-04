@@ -10,4 +10,5 @@
 #   shareable_link_enabled = false
 #   tunneling_enabled      = false
 #   ip_connect_enabled     = false
+#   session_recording_enabled = false
 # }
