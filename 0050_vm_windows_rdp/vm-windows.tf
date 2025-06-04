@@ -36,8 +36,13 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
 
   os_disk {
     name                 = "os-disk-vm-windows"
-    caching              = "ReadWrite"
+    caching              = "ReadWrite" # None, ReadOnly and ReadWrite.
     storage_account_type = "Standard_LRS"
+
+    # diff_disk_settings {
+    #   option    = "Local"     # Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is Local.
+    #   # placement = "CacheDisk" # Specifies the Ephemeral Disk Placement for the OS Disk. Possible values are CacheDisk and ResourceDisk.
+    # }
   }
 
   source_image_reference {
@@ -48,8 +53,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   }
 
   identity {
-    type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.identity.id]
+    type = "SystemAssigned"
   }
 
   boot_diagnostics {
@@ -72,7 +76,22 @@ resource "azurerm_virtual_machine_extension" "cse" {
         "commandToExecute": "powershell -ExecutionPolicy unrestricted -NoProfile -NonInteractive -command \"cp c:/azuredata/customdata.bin c:/azuredata/install.ps1; c:/azuredata/install.ps1 > c:/azuredata/install.ps1.log\""
     }
     SETTINGS
+    
+  timeouts {
+    create = "60m"
+    read   = "5m"
+    update = "30m"
+    delete = "30m"
+  }
 }
+
+resource "azurerm_role_assignment" "owner" {
+  scope                = data.azurerm_subscription.current.id
+  role_definition_name = "Owner"
+  principal_id         = azurerm_windows_virtual_machine.vm-windows.identity[0].principal_id
+}
+
+data "azurerm_subscription" "current" {}
 
 output "vm_windows_public_ip" {
   value = azurerm_public_ip.pip-vm-windows.ip_address
