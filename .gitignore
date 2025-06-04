@@ -3,6 +3,7 @@
 
 # .tfstate files
 *.tfstate
+**/*.tfstate
 *.tfstate.*
 
 # tfplan files
