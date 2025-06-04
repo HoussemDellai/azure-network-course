@@ -4,9 +4,9 @@ variable "prefix" {
   default     = "210"
 }
 
-variable "spoke_vnet_cidr" {
-  type    = string
-  default = "10.0.1.0/24"
+variable "spoke_vnet_cidrs" {
+  type    = list(string)
+  default = ["10.0.1.0/26", "100.64.0.0/10"]
 }
 
 variable "hub_firewall_private_ip_address" {
