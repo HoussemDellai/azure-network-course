@@ -18,6 +18,10 @@ The following resources will be created.
 
 ![](images/resources.png)
 
+>Note: Configuring SAS token through Key vault is not yet supported using Azure CLI or Terraform or ARM or Bicep. You can use the Azure Portal to configure the SAS token in Key Vault.
+
+![](images/configure-keyvault-for-storage.png)
+
 ## Test Connection
 
 Connect to the frontend web app's console (SSH or Bash) and test the connection to the Storage Account File Share.
