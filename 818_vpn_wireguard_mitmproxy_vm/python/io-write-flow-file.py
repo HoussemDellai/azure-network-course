@@ -12,6 +12,7 @@ to multiple files in parallel.
 
 import os
 import random
+import datetime
 from typing import BinaryIO
 
 from mitmproxy import http
@@ -22,7 +23,8 @@ class Writer:
     def __init__(self) -> None:
         # We are using an environment variable to keep the example as simple as possible,
         # consider implementing this as a mitmproxy option instead.
-        filename = os.getenv("MITMPROXY_OUTFILE", "flows.mitm")
+        now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        filename = os.getenv("MITMPROXY_OUTFILE", f"out-{now}.mitm")
         self.f: BinaryIO = open(filename, "wb")
         self.w = io.FlowWriter(self.f)
 

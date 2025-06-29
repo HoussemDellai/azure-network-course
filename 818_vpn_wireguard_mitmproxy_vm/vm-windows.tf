@@ -30,7 +30,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   eviction_policy       = "Deallocate"
   network_interface_ids = [azurerm_network_interface.nic-vm-windows.id]
 
-  custom_data = filebase64("./install-tools-windows-vm-winget-mini.ps1")
+  custom_data = filebase64("../scripts/install-tools-windows-vm-winget-mini.ps1")
 
   os_disk {
     name                 = "os-disk-vm-windows"

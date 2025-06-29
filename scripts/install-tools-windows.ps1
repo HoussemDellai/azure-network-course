@@ -8,6 +8,12 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 ## Start Terminal
 
+# Install VS Code
+choco install vscode -y
+
+# Install Git
+choco install git -y
+
 # Install Azure CLI
 choco install azure-cli -y
 # Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
@@ -24,23 +30,22 @@ choco install kubernetes-helm -y
 # Install Terraform
 choco install terraform -y
 
+# Install python
+choco install python -y
+
 # Install jq
 choco install jq -y
 
 # Install yq
 choco install yq -y
 
-# Install VS Code
-choco install vscode -y
-
 # Install Edge
 choco install microsoft-edge -y
 
+choco install brave -y
+
 # Install Lens
 choco install lens -y
-
-# Install Git
-choco install git -y
 
 choco install openssl -y
 
@@ -52,9 +57,6 @@ choco install azure-data-studio -y
 
 # Install curl
 choco install curl -y
-
-# Install python
-choco install python -y
 
 # Install ffmpeg
 choco install ffmpeg -y
@@ -74,17 +76,15 @@ choco install openssl -y
 # install sqlcmd
 choco install sqlcmd -y
 
+choco install headlamp -y
+
 choco install lens -y
 
 choco install wireguard -y
 
-choco install headlamp -y
-
 choco install azd -y
 
 choco install azure-functions-core-tools -y
-
-choco install brave -y
 
 choco install shotcut -y
 
@@ -93,6 +93,10 @@ choco install dotnet -y
 choco install dotnet-sdk -y
 
 choco install dotnet-8.0-sdk -y
+
+choco install uv -y
+
+choco install powerautomatedesktop -y
 
 Set-Alias -Name k -Value kubectl
 

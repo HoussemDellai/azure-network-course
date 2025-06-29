@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-loadbalancer-internal-vmss-302"
+  name     = "rg-appservice-storage-account-pe-${var.prefix}"
   location = "swedencentral"
 }
