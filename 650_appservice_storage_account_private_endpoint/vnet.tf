@@ -6,18 +6,11 @@ resource "azurerm_virtual_network" "vnet-app" {
   dns_servers         = null
 }
 
-resource "azurerm_subnet" "snet-jumpbox" {
-  name                 = "snet-jumpbox"
+resource "azurerm_subnet" "snet-webapp" {
+  name                 = "snet-webapp"
   resource_group_name  = azurerm_virtual_network.vnet-app.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet-app.name
   address_prefixes     = ["10.0.1.0/24"]
-}
-
-resource "azurerm_subnet" "snet-integration" {
-  name                 = "snet-integration"
-  resource_group_name  = azurerm_virtual_network.vnet-app.resource_group_name
-  virtual_network_name = azurerm_virtual_network.vnet-app.name
-  address_prefixes     = ["10.0.2.0/24"]
 
   delegation {
     name = "delegation"
@@ -32,6 +25,6 @@ resource "azurerm_subnet" "snet-pe" {
   name                              = "snet-pe"
   resource_group_name               = azurerm_virtual_network.vnet-app.resource_group_name
   virtual_network_name              = azurerm_virtual_network.vnet-app.name
-  address_prefixes                  = ["10.0.3.0/24"]
+  address_prefixes                  = ["10.0.2.0/24"]
   private_endpoint_network_policies = "Enabled"
 }

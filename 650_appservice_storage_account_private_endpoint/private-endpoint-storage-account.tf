@@ -1,8 +1,9 @@
 resource "azurerm_private_endpoint" "pe-storage-account" {
-  name                = "pe-storage-account"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  subnet_id           = azurerm_subnet.snet-pe.id
+  name                          = "pe-storage-account"
+  location                      = azurerm_resource_group.rg.location
+  resource_group_name           = azurerm_resource_group.rg.name
+  subnet_id                     = azurerm_subnet.snet-pe.id
+  custom_network_interface_name = "nic-pe-storage-account"
 
   private_dns_zone_group {
     name                 = "group"

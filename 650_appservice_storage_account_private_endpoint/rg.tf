@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-appservice-storage-account-pe-${var.prefix}"
+  name     = "rg-app-service-storage-account-file-pe-${var.prefix}"
   location = "swedencentral"
 }

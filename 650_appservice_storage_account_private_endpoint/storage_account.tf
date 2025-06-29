@@ -5,7 +5,7 @@ resource "azurerm_storage_account" "storage-account" {
   account_tier                  = "Standard"
   account_replication_type      = "LRS"
   shared_access_key_enabled     = true
-  public_network_access_enabled = false
+  public_network_access_enabled = true # should be false, but to avoid deploying through a Jumpbox VM in the VNET, we set it to false
 }
 
 resource "azurerm_storage_share" "file-share" {
