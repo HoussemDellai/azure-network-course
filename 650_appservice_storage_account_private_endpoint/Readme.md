@@ -70,3 +70,7 @@ Now go to the Azure Portal and navigate to the Storage Account File Share. You s
 ## Important notes
 
 * Key vault integration to mount File share to App Service supports RBAC mode in Key vault. Our public documentation didn't mentioned anything about RBAC mode. It provided examples only with access policies. But it seems that RBAC mode works fine.
+
+## Resources
+
+https://learn.microsoft.com/en-us/azure/app-service/configure-connect-to-azure-storage?tabs=key-vault%2Ccli&pivots=container-linux
