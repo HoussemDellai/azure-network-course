@@ -74,3 +74,5 @@ Now go to the Azure Portal and navigate to the Storage Account File Share. You s
 ## Resources
 
 https://learn.microsoft.com/en-us/azure/app-service/configure-connect-to-azure-storage?tabs=key-vault%2Ccli&pivots=container-linux
+
+https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references?tabs=azure-cli#source-app-settings-from-key-vault
