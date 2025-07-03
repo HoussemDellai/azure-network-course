@@ -7,5 +7,5 @@ resource "azurerm_app_service_certificate_binding" "custom_domain_binding" {
   certificate_id      = azurerm_app_service_managed_certificate.managed_certificate.id
   ssl_state           = "SniEnabled"
 
-  depends_on = [ azurerm_dns_txt_record.txt_record ]
+  depends_on = [azurerm_dns_txt_record.txt_record]
 }

@@ -29,15 +29,22 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   priority              = "Spot"
   eviction_policy       = "Deallocate"
   network_interface_ids = [azurerm_network_interface.nic-vm-windows.id]
+  license_type          = "Windows_Client" # Possible values are None, Windows_Client and Windows_Server.
+  disk_controller_type  = "NVMe"           # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
 
   custom_data = filebase64("../scripts/install-tools-windows-vm-winget-mini.ps1")
 
   os_disk {
     name                 = "os-disk-vm-windows"
-    caching              = "ReadWrite"
-    storage_account_type = "Standard_LRS"
-  }
+    caching              = "ReadOnly"        # "ReadWrite" # None, ReadOnly and ReadWrite.
+    storage_account_type = "StandardSSD_LRS" # "Standard_LRS"
+    disk_size_gb         = 128
 
+    diff_disk_settings {
+      option    = "Local"    # Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is Local.
+      placement = "NvmeDisk" # "ResourceDisk" # "CacheDisk" # Specifies the Ephemeral Disk Placement for the OS Disk. NvmeDisk can only be used for v6 VMs
+    }
+  }
   source_image_reference {
     publisher = "MicrosoftWindowsDesktop"
     offer     = "windows-11" # "windows11preview-arm64"
@@ -50,7 +57,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   }
 
   lifecycle {
-    ignore_changes = [ identity ]
+    ignore_changes = [identity]
   }
 }
 
