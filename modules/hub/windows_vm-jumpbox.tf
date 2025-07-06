@@ -15,7 +15,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   name                  = "vm-windows-w11"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_D4ads_v5"
+  size                  = "Standard_D4ads_v6"
   priority              = "Spot"
   eviction_policy       = "Deallocate"
   admin_username        = "azureuser"

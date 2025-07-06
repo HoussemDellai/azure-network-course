@@ -23,7 +23,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   name                  = "vm-win11"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_D4ads_v5"
+  size                  = "Standard_D4ads_v6"
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
   priority              = "Spot"
@@ -45,6 +45,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
       placement = "NvmeDisk" # "ResourceDisk" # "CacheDisk" # Specifies the Ephemeral Disk Placement for the OS Disk. NvmeDisk can only be used for v6 VMs
     }
   }
+
   source_image_reference {
     publisher = "MicrosoftWindowsDesktop"
     offer     = "windows-11" # "windows11preview-arm64"

@@ -15,7 +15,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
   name                  = "vm-jumpbox-w11"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_B2ats_v2"
+  size                  = "Standard_D4ads_v6"
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
   network_interface_ids = [azurerm_network_interface.nic-vm-windows.id]
@@ -39,7 +39,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
   source_image_reference {
     publisher = "MicrosoftWindowsDesktop"
     offer     = "windows-11"
-    sku       = "win11-23h2-pro"
+    sku       = "win11-24h2-pro"
     version   = "latest"
   }
 
