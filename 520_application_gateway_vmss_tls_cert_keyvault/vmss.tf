@@ -3,11 +3,13 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
   instances                       = 3
-  sku                             = "Standard_D2ads_v5" # "Standard_B2ats_v2"
+  sku                             = "Standard_D2ads_v6" # "Standard_B2ats_v2"
   zones                           = ["1", "2", "3"]
   disable_password_authentication = false
   admin_username                  = "azureuser"
   admin_password                  = "@Aa123456789"
+  priority                        = "Spot"
+  eviction_policy                 = "Deallocate"
 
   custom_data = filebase64("./install-webapp.sh")
 
@@ -18,8 +20,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "server"
     version   = "latest"
   }
 
@@ -30,12 +32,12 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
     network_security_group_id = null
 
     ip_configuration {
-      name      = "internal"
-      primary   = true
-      subnet_id = azurerm_subnet.subnet-backend.id
-      # load_balancer_backend_address_pool_ids       = [azurerm_lb_backend_address_pool.backend-pool.id]
+      name                                         = "internal"
+      primary                                      = true
+      subnet_id                                    = azurerm_subnet.subnet-backend.id
       application_gateway_backend_address_pool_ids = [tolist(azurerm_application_gateway.appgateway.backend_address_pool).0.id] # [one(azurerm_application_gateway.appgateway.backend_address_pool).id]
       load_balancer_inbound_nat_rules_ids          = null
+      # load_balancer_backend_address_pool_ids       = [azurerm_lb_backend_address_pool.backend-pool.id]
     }
   }
 
