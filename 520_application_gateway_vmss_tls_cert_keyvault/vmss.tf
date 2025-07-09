@@ -3,13 +3,13 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
   instances                       = 3
-  sku                             = "Standard_D2ads_v6" # "Standard_B2ats_v2"
+  sku                             = "Standard_D2ads_v6" # "Standard_D2ads_v6"
   zones                           = ["1", "2", "3"]
   disable_password_authentication = false
   admin_username                  = "azureuser"
   admin_password                  = "@Aa123456789"
   priority                        = "Spot"
-  eviction_policy                 = "Deallocate"
+  eviction_policy                 = "Delete"
 
   custom_data = filebase64("./install-webapp.sh")
 

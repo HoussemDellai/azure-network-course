@@ -15,7 +15,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   name                  = "vm-windows-w11"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_D4ads_v6" # "Standard_D2ads_v5" # "Standard_B2ats_v2"
+  size                  = "Standard_D4ads_v6" # "Standard_D2ads_v5" # "Standard_D2ads_v6"
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
   network_interface_ids = [azurerm_network_interface.nic-vm-windows.id]

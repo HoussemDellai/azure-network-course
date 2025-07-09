@@ -17,7 +17,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   location              = azurerm_resource_group.rg.location
   size                  = "Standard_D4ads_v6"
   priority              = "Spot"
-  eviction_policy       = "Deallocate"
+  eviction_policy       = "Delete"
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
   network_interface_ids = [azurerm_network_interface.nic-vm-windows.id]

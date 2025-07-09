@@ -43,13 +43,14 @@ module "vm_linux_snet-vnet-hub-02-spoke-01" {
 #   name                            = "vm-linux"
 #   resource_group_name             = azurerm_resource_group.rg.name
 #   location                        = azurerm_resource_group.rg.location
-#   size                            = "Standard_B2ats_v2"
+#   size                            = "Standard_D2ads_v6"
 #   disable_password_authentication = false
 #   admin_username                  = "azureuser"
 #   admin_password                  = "@Aa123456789"
 #   network_interface_ids           = [azurerm_network_interface.nic-vm-linux.id]
 #   priority                        = "Spot"
-#   eviction_policy                 = "Deallocate"
+#   eviction_policy                 = "Delete"
+# disk_controller_type            = "NVMe" # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
 
 #   custom_data = filebase64("./install-webapp.sh")
 

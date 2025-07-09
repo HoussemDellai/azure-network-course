@@ -31,14 +31,21 @@ resource "azurerm_linux_virtual_machine" "vm-linux-nva" {
   admin_password                  = "@Aa123456789"
   network_interface_ids           = [azurerm_network_interface.nic-vm-nva.id]
   priority                        = "Spot"
-  eviction_policy                 = "Deallocate"
+  eviction_policy                 = "Delete"
+  disk_controller_type            = "NVMe" # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
 
   # custom_data = filebase64("./install-openvpn.sh")
 
   os_disk {
-    name                 = "os-disk-vm-linux-nva"
-    caching              = "ReadWrite"
-    storage_account_type = "Standard_LRS"
+    name                 = "os-disk-vm-nva"
+    caching              = "ReadOnly"        # "ReadWrite" # None, ReadOnly and ReadWrite.
+    storage_account_type = "StandardSSD_LRS" # "Standard_LRS"
+    disk_size_gb         = 128
+
+    diff_disk_settings {
+      option    = "Local"    # Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is Local.
+      placement = "NvmeDisk" # "ResourceDisk" # "CacheDisk" # Specifies the Ephemeral Disk Placement for the OS Disk. NvmeDisk can only be used for v6 VMs
+    }
   }
 
   source_image_reference {

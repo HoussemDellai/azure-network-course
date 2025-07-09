@@ -47,7 +47,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
   admin_password        = "@Aa123456789"
   network_interface_ids = [azurerm_network_interface.nic.id]
   priority              = "Spot"
-  eviction_policy       = "Deallocate"
+  eviction_policy       = "Delete"
   license_type          = "Windows_Client" # Possible values are None, Windows_Client and Windows_Server.
   disk_controller_type  = "NVMe"           # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
 

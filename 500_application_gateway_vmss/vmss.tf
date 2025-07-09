@@ -9,7 +9,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   admin_username                  = "azureuser"
   admin_password                  = "@Aa123456789"
   priority                        = "Spot"
-  eviction_policy                 = "Deallocate"
+  eviction_policy                 = "Delete"
 
   custom_data = filebase64("./install-webapp.sh")
 

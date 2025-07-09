@@ -3,7 +3,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
   instances                       = 3
-  sku                             = "Standard_B2ats_v2"
+  sku                             = "Standard_D2ads_v6"
   zones                           = ["1", "2", "3"]
   disable_password_authentication = false
   admin_username                  = "azureuser"
@@ -18,8 +18,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
+    offer     = "ubuntu-24_04-lts" # "0001-com-ubuntu-server-jammy"
+    sku       = "server"           # "22_04-lts"
     version   = "latest"
   }
 
