@@ -1,7 +1,7 @@
 variable "prefix" {
   description = "Prefix to be used for all resources in this example"
   type        = string
-  default     = "510"
+  default     = "520"
 }
 
 variable "custom_domain_name" {
