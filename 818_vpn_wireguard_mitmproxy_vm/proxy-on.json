@@ -1,0 +1,6 @@
+{
+    "Proxy": "http=10.0.2.4:8080;https=10.0.2.4:8443",
+    "ProxyBypass": "",
+    "AutoconfigUrl": "",
+    "AutoDetect": true
+}

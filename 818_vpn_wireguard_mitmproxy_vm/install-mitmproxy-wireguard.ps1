@@ -12,3 +12,10 @@ mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global
 # 1. download wireguard client
 # 2. add profile
 # 3. install MITMProxy certificate
+
+
+# Connect to proxy using command line: https://learn.microsoft.com/en-us/windows/win32/winhttp/netsh-exe-commands#set-advproxy
+netsh winhttp set advproxy setting-scope=machine settings-file=proxy.json
+
+# view configured proxy
+netsh winhttp show advproxy
