@@ -15,7 +15,16 @@ mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global
 
 
 # Connect to proxy using command line: https://learn.microsoft.com/en-us/windows/win32/winhttp/netsh-exe-commands#set-advproxy
-netsh winhttp set advproxy setting-scope=machine settings-file=proxy.json
+netsh winhttp set advproxy setting-scope=machine settings-file=proxy-on.json
 
 # view configured proxy
 netsh winhttp show advproxy
+
+# to disable proxy
+netsh winhttp set advproxy setting-scope=machine settings-file=proxy-off.json
+
+# Connect to VPN
+rasdial "vnet-hub-swc-vpngw2-fw-std"
+
+# Disconnect from VPN
+rasdial "vnet-hub-swc-vpngw2-fw-std" /disconnect

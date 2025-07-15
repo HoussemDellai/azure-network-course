@@ -4,5 +4,5 @@ resource "azurerm_virtual_wan" "vwan" {
   location                       = azurerm_resource_group.rg.location
   type                           = "Standard"
   allow_branch_to_branch_traffic = true
-  # disable_vpn_encryption         = false
+  disable_vpn_encryption         = false
 }

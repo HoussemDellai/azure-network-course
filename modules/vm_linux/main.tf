@@ -44,7 +44,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     name                 = "os-disk-${var.vm_name}"
     caching              = "ReadOnly"        # "ReadWrite" # None, ReadOnly and ReadWrite.
     storage_account_type = "StandardSSD_LRS" # "Standard_LRS"
-    disk_size_gb         = 128
+    disk_size_gb         = 64
 
     diff_disk_settings {
       option    = "Local"    # Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is Local.
