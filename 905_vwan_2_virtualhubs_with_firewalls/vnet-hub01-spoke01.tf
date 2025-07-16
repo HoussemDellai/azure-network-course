@@ -15,7 +15,7 @@ resource "azurerm_subnet" "snet-spoke01-vm" {
 
 module "vm_linux_spoke01" {
   source              = "../modules/vm_linux"
-  vm_name             = "vm-linux-${azurerm_subnet.snet-spoke01-vm.name}"
+  vm_name             = "vm-linux-spoke01"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   subnet_id           = azurerm_subnet.snet-spoke01-vm.id
