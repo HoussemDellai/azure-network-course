@@ -4,6 +4,12 @@ variable "prefix" {
   default     = "905"
 }
 
+# variable "region1" {
+#   description = "Location for the virtual Hub resources"
+#   type        = string
+#   default     = "swedencentral"
+# }
+
 variable "region2" {
   description = "Location for the virtual Hub resources"
   type        = string

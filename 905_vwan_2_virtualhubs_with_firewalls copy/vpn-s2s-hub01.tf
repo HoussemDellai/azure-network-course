@@ -18,6 +18,11 @@ resource "azurerm_vpn_site" "vpn-site" {
     name       = "link1"
     ip_address = "10.1.0.0"
   }
+
+  # link {
+  #   name       = "link2"
+  #   ip_address = "10.2.0.0"
+  # }
 }
 
 resource "azurerm_vpn_gateway_connection" "vpn-gateway-connection-vhub01" {
@@ -32,6 +37,13 @@ resource "azurerm_vpn_gateway_connection" "vpn-gateway-connection-vhub01" {
     bandwidth_mbps   = 100
     shared_key       = random_string.vpn-psk.result
   }
+
+  # vpn_link {
+  #   name             = "link2"
+  #   vpn_site_link_id = azurerm_vpn_site.vpn-site.link.1.id
+  #   bandwidth_mbps   = 100
+  #   shared_key = random_string.vpn-psk.result
+  # }
 }
 
 resource "random_string" "vpn-psk" {

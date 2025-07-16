@@ -6,4 +6,10 @@ resource "azurerm_virtual_hub" "vhub01" {
   address_prefix                         = "10.10.0.0/24"
   virtual_router_auto_scale_min_capacity = 2
   sku                                    = "Standard"
+  # hub_routing_preference = # Possible values are ExpressRoute, ASPath and VpnGateway. Defaults to ExpressRoute
+
+  # route {
+  #   address_prefixes    = [""]
+  #   next_hop_ip_address = ""
+  # }
 }

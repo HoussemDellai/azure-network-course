@@ -1,4 +1,4 @@
-# Azure VPN Gateway
+# Azure VPN Gateway P2S
 
 ![](images/architecture.png)
 
