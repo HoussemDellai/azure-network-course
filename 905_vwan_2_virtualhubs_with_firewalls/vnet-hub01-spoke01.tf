@@ -22,7 +22,7 @@ module "vm_linux_spoke01" {
   install_webapp      = true
 }
 
-resource "azapi_resource" "connection-vhub-01-vnet-01" {
+resource "azapi_resource" "connection-vhub01-vnet01" {
   type      = "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections@2020-05-01"
   parent_id = azurerm_virtual_hub.vhub01.id
   name      = "connection-vhub01-vnet01"

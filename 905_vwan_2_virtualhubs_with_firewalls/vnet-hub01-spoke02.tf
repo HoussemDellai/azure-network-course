@@ -22,10 +22,10 @@ module "vm_linux_spoke02" {
   install_webapp      = true
 }
 
-resource "azapi_resource" "connection-vhub-01-vnet-02" {
+resource "azapi_resource" "connection-vhub01-vnet02" {
   type      = "Microsoft.Network/virtualHubs/hubVirtualNetworkConnections@2020-05-01"
   parent_id = azurerm_virtual_hub.vhub01.id
-  name      = "connection-vhub-01-vnet-02"
+  name      = "connection-vhub01-vnet02"
   body = {
     properties = {
       allowHubToRemoteVnetTransit         = true
