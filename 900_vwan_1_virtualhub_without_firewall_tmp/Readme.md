@@ -1,4 +1,4 @@
-# Azure Virtual Wan and Virtual Hub
+# Azure Virtual Wan with regional Virtual Hubs
 
 ## Objectives
 
@@ -48,4 +48,20 @@ ping 10.12.0.4
 curl 10.12.0.3
 ```
 
->Note that the private IP addresses `10.11.0.4` and `10.12.0.4` are the ones assigned to the VMs in the Spoke VNETs.
+From VM1, test connection to VM3.
+
+```sh
+ping 10.21.0.4
+
+curl 10.21.0.4
+```
+
+From VM3, test connection to VM1.
+
+```sh
+ping 10.11.0.4
+
+curl 10.11.0.4
+```
+
+>Note that the private IP addresses `10.11.0.4`, `10.12.0.4` and `10.21.0.4` are the ones assigned to the VMs in the Spoke VNETs.
