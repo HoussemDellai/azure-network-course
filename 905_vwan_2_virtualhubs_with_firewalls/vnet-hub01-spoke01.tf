@@ -1,6 +1,6 @@
 resource "azurerm_virtual_network" "vnet-spoke01" {
   name                = "vnet-spoke01"
-  location            = azurerm_resource_group.rg.location
+  location            = var.region1
   resource_group_name = azurerm_resource_group.rg.name
   address_space       = ["10.1.0.0/16"]
   dns_servers         = null
@@ -17,7 +17,7 @@ module "vm_linux_spoke01" {
   source              = "../modules/vm_linux"
   vm_name             = "vm-linux-spoke01"
   resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
+  location            = var.region1
   subnet_id           = azurerm_subnet.snet-spoke01-vm.id
   install_webapp      = true
 }

@@ -1,6 +1,6 @@
 resource "azurerm_public_ip" "pip-firewall-hub01" {
   name                = "pip-firewall-hub01"
-  location            = azurerm_resource_group.rg.location
+  location            = var.region1
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
   sku                 = "Standard"
@@ -8,7 +8,7 @@ resource "azurerm_public_ip" "pip-firewall-hub01" {
 
 resource "azurerm_firewall" "firewall-hub01" {
   name                = "firewall-hub01"
-  location            = azurerm_resource_group.rg.location
+  location            = var.region1
   resource_group_name = azurerm_resource_group.rg.name
   sku_name            = "AZFW_Hub"
   sku_tier            = "Standard"

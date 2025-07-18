@@ -1,6 +1,6 @@
 resource "azurerm_vpn_gateway" "vpn-gateway-vhub01" {
   name                = "vpn-gateway-vhub01"
-  location            = azurerm_resource_group.rg.location
+  location            = var.region1
   resource_group_name = azurerm_resource_group.rg.name
   virtual_hub_id      = azurerm_virtual_hub.vhub01.id
   routing_preference  = "Microsoft Network" # "Microsoft Network" or "Internet"
@@ -9,7 +9,7 @@ resource "azurerm_vpn_gateway" "vpn-gateway-vhub01" {
 
 resource "azurerm_vpn_site" "vpn-site" {
   name                = "vpn-site"
-  location            = azurerm_resource_group.rg.location
+  location            = var.region1
   resource_group_name = azurerm_resource_group.rg.name
   virtual_wan_id      = azurerm_virtual_wan.vwan.id
   address_cidrs       = ["172.16.0.0/24"]

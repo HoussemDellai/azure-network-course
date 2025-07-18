@@ -1,6 +1,10 @@
-# Azure Virtual Wan and Virtual Hub
+# Azure Virtual Wan and Secure Virtual Hub with Intent based Routing
 
 In this lab you will explore `Azure Virtual WAN` and `Virtual Hub` with two hubs, each with a firewall. The focus is on understanding how traffic flows between VNets in different hubs when firewalls are configured.
+
+Without any firewall or route table, traffic between VNets in the same Virtual Hub and across Virtual Hubs is allowed. This lab will help you understand how to control this traffic using firewalls and routing policies.
+
+For that we will create two Virtual Hubs, each with a firewall, define routing intents and then we will create VNets in each hub. We will then test the connectivity between these VNets.
 
 ![architecture](./images/architecture.png)
 
@@ -45,9 +49,9 @@ ping 10.2.0.4
 curl 10.2.0.4
 ```
 
-## Testing connection from Hub01 VNET01 to Hub02 VNET03
+## Testing connection from Spokes intra Secure vHubs
 
-Now we want to check if the VNETs in different hubs can communicate. From VM Spoke01 in Hub01, you can ping the VM in Spoke03 in Hub02 and access its Nginx app.
+Now we want to check if the VNETs in different vhubs can communicate. From VM Spoke01 in Hub01, you can ping the VM in Spoke03 in Hub02 and access its Nginx app.
 
 From VM Spoke01, run the following commands:
 
@@ -61,7 +65,16 @@ curl 10.3.0.4
 
 You should see a response from the Nginx app running on the VM in Spoke03.
 
+## Checking the traffic path
+
+The Terraform template already enabled collecting logs for the two Azure Firewalls. You can check the logs to see the traffic flow between the VNets.
+
 ## Learnings
 
 * Without Firewall and without Route Table, the traffic between VNets in the same and across Virtual Hubs is allowed.
 
+* A general recommendation is to dissociate security from routing. This means it is recommended to open the traffic between VNets in the same Virtual Hub and across Virtual Hubs, and then use Firewall to control the traffic.
+
+* Bastion is installed in a dedicated VNET where there Route `0.0.0.0/0` is not injected by default by the Intent Route Table. This is done by disabling `enableInternetSecurity` in the vHub - VNET connection. This allows Bastion to connect to the Internet which is required for the management plane. Details: https://blog.cloudtrooper.net/2022/09/17/azure-bastion-routing-in-virtual-wan/
+
+With this configuration, you can use Bastion to connect to the VMs in the VNets within the same vHub as the Bastion and also the VNets in the other vHubs.

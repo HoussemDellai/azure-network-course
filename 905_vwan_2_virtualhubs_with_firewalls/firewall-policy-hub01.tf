@@ -1,7 +1,7 @@
 resource "azurerm_firewall_policy" "firewall-policy-hub01" {
   name                     = "firewall-policy-hub01"
   resource_group_name      = azurerm_resource_group.rg.name
-  location                 = azurerm_resource_group.rg.location
+  location                 = var.region1
   sku                      = "Standard"
   threat_intelligence_mode = "Alert"
 }
