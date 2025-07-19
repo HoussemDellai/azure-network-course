@@ -21,10 +21,3 @@ module "vm_linux_spoke01" {
   subnet_id           = azurerm_subnet.snet-spoke01-vm.id
   install_webapp      = true
 }
-
-resource "azurerm_virtual_hub_connection" "connection-vhub-vnet01" {
-  name                      = "connection-vhub-vnet01"
-  virtual_hub_id            = azurerm_virtual_hub.vhub.id
-  remote_virtual_network_id = azurerm_virtual_network.vnet-spoke01.id
-  internet_security_enabled = false
-}
