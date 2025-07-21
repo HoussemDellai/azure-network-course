@@ -13,9 +13,9 @@ resource "azurerm_subnet" "snet-spoke03-vm" {
   address_prefixes     = ["10.21.0.0/24"]
 }
 
-module "vm_linux_spoke_03" {
+module "vm_linux_spoke03" {
   source              = "../modules/vm_linux"
-  vm_name             = "vm-linux-spoke3"
+  vm_name             = "vm-linux-spoke03"
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.region2
   subnet_id           = azurerm_subnet.snet-spoke03-vm.id
