@@ -49,8 +49,6 @@ resource "azapi_resource" "connection-vhub01-vnetbastion" {
       }
     }
   }
-
-  # depends_on = [ azurerm_bastion_host.bastion ]
 }
 
 # # The following commented-out section is an alternative way to define the connection

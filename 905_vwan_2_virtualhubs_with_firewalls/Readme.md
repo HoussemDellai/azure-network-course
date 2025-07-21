@@ -36,7 +36,7 @@ ping 10.2.0.4
 # Access the Nginx app in Spoke02
 curl 10.2.0.4
 ```
-
+s
 You should see a response from the Nginx app running on the VM in Spoke02.
 
 Do the same from VM Spoke02 to Spoke01:

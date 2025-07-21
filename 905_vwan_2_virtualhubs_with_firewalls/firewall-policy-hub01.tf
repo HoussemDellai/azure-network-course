@@ -39,8 +39,8 @@ resource "azurerm_firewall_policy_rule_collection_group" "policy-firewall-hub01"
     rule {
       name                  = "Allow-Internal-Communication"
       description           = "Allow internal communication between VNets"
-      source_addresses      = ["10.0.0.0/8"]
-      destination_addresses = ["10.0.0.0/8"]
+      source_addresses      = ["10.0.0.0/8", "172.16.0.0/12"]
+      destination_addresses = ["10.0.0.0/8", "172.16.0.0/12"]
       destination_ports     = ["*"]
       protocols             = ["TCP", "UDP", "ICMP", "Any"]
     }

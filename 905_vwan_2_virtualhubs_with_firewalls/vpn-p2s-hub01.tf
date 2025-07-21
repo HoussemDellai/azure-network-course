@@ -22,7 +22,7 @@ resource "azurerm_point_to_site_vpn_gateway" "vpn-p2s-gateway-hub01" {
 
   connection_configuration {
     name                      = "hub01_P2SConnectionConfig"
-    internet_security_enabled = false
+    internet_security_enabled = true # set to true for your clients to be properly configured for forced-tunneling
 
     vpn_client_address_pool {
       address_prefixes = ["172.16.1.0/24"]
