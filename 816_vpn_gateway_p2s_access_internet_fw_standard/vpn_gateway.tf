@@ -47,6 +47,10 @@ resource "azurerm_virtual_network_gateway" "vpn-gateway" {
     #   public_cert_data = replace(replace(file("./certs/P2SRootCert815.cer"), "-----BEGIN CERTIFICATE-----", ""), "-----END CERTIFICATE-----", "")
     # }
   }
+
+  custom_route { # https://learn.microsoft.com/en-us/azure/vpn-gateway/azure-vpn-client-optional-configurations#forced-tunneling
+    address_prefixes = ["0.0.0.0/1", "128.0.0.0/1"]
+  }
 }
 
 data "azurerm_client_config" "current" {}

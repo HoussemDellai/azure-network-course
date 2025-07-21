@@ -32,6 +32,8 @@ The following resources will be created.
 Navigate to the Azure VMs in the Spoke VNETs and test the connectivity between them using `ping` or `curl` commands.
 Each VM exposes a web server on port 80, so you can also test HTTP connectivity.
 
+![Network flow](./images/network-flow.png)
+
 From VM1, test connection to VM2.
 
 ```sh
