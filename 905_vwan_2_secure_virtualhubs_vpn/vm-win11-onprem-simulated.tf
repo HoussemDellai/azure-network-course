@@ -38,9 +38,14 @@ resource "azurerm_subnet_network_security_group_association" "snet-onprem-vm-nsg
 
 module "vm_windows_onprem" {
   source              = "../modules/vm_windows"
-  vm_name             = "vm-windows-onprem"
+  vm_name             = "vm-win11-onprem"
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.region1
   subnet_id           = azurerm_subnet.snet-onprem-vm.id
   install_webapp      = true
+  enable_public_ip    = true
+}
+
+output "vm_windows_onprem_pip" {
+  value = module.vm_windows_onprem.public_ip
 }
