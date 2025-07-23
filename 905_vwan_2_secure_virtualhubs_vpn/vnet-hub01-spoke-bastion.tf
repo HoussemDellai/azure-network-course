@@ -40,7 +40,7 @@ resource "azapi_resource" "connection-vhub01-vnetbastion" {
       # Disabling Internet Security is important for Bastion to work.
       # This will disable the propagation of routes by the Secure VHUB into the Bastion VNET.
       # We need that behaviour in order to not inject route '0.0.0.0/0' to the VNET Gateway. 
-      # It should should route to Internet. 
+      # It should route to Internet. 
       # Details: https://blog.cloudtrooper.net/2022/09/17/azure-bastion-routing-in-virtual-wan/
       enableInternetSecurity = false
 
