@@ -107,6 +107,8 @@ You should see a response from all the VMs in the Spoke networks.
 
 The Terraform template already enabled collecting logs for the two Azure Firewalls. You can check the logs to see the traffic flow between the VNets.
 
+![Azure Firewall Logs](./images/firewall-logs-onprem-to-azure.png)
+
 ## Learnings
 
 * Without Firewall and without Route Table, the traffic between VNets in the same and across Virtual Hubs is allowed.
