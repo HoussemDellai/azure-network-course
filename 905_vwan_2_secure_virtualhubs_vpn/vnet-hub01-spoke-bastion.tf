@@ -2,22 +2,22 @@ resource "azurerm_virtual_network" "vnet-spoke-bastion" {
   name                = "vnet-spoke-bastion"
   location            = var.region1
   resource_group_name = azurerm_resource_group.rg.name
-  address_space       = ["10.4.0.0/16"]
+  address_space       = ["10.100.0.0/16"]
   dns_servers         = null
-}
-
-resource "azurerm_subnet" "snet-spoke-bastion" {
-  name                 = "AzureBastionSubnet"
-  resource_group_name  = azurerm_virtual_network.vnet-spoke-bastion.resource_group_name
-  virtual_network_name = azurerm_virtual_network.vnet-spoke-bastion.name
-  address_prefixes     = ["10.4.0.0/24"]
 }
 
 resource "azurerm_subnet" "snet-spoke-bastion-vm" {
   name                 = "snet-spoke-bastion-vm"
   resource_group_name  = azurerm_virtual_network.vnet-spoke-bastion.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet-spoke-bastion.name
-  address_prefixes     = ["10.4.1.0/24"]
+  address_prefixes     = ["10.100.0.0/24"]
+}
+
+resource "azurerm_subnet" "snet-spoke-bastion" {
+  name                 = "AzureBastionSubnet"
+  resource_group_name  = azurerm_virtual_network.vnet-spoke-bastion.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet-spoke-bastion.name
+  address_prefixes     = ["10.100.1.0/24"]
 }
 
 module "vm_linux_spoke_bastion" {
@@ -85,7 +85,7 @@ resource "azurerm_public_ip" "pip-bastion" {
 }
 
 resource "azurerm_bastion_host" "bastion" {
-  name                      = "bastion-host"
+  name                      = "bastion"
   resource_group_name       = azurerm_resource_group.rg.name
   location                  = azurerm_resource_group.rg.location
   sku                       = "Standard" # "Basic", "Developer"
