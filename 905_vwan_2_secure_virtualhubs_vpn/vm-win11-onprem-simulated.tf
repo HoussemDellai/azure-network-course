@@ -47,5 +47,5 @@ module "vm_windows_onprem" {
 }
 
 output "vm_windows_onprem_pip" {
-  value = module.vm_windows_onprem.public_ip
+  value = module.vm_windows_onprem.vm_public_ip
 }
