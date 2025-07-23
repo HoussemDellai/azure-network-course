@@ -47,7 +47,7 @@ The terraform template created a `Point-to-Site VPN` connection to the `Virtual 
 You need to download the VPN client configuration from the `Microsoft Store` or from [App Center](https://install.appcenter.ms/users/user-microsoft/apps/azure-vpn-client-1/distribution_groups/publicgroup/releases/21). 
 More details on how to download the client configuration can be found in the [Azure documentation](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-download-vpn-client).
 
-Once you have the client configuration, you can install it on your local machine.
+Once you have the client configuration, you can install it on your local machine or in the onprem-vm (created by Terraform template).
 
 Then you need to download the VPN client configuration from the `Azure Portal` under `your vWAN resource.
 
@@ -57,7 +57,30 @@ Then you can import the configuration into the `Azure VPN Client` application.
 
 After that, you can connect to the VPN by selecting the profile and clicking on `Connect`.
 
-Once connected, you can access the VMs in the `Spoke` networks using their private IP addresses.
+Once connected, you can verify your connectivity by running the following powershell command from the onprem-vm.
+
+```powershell
+Get-NetIPConfiguration
+
+# InterfaceAlias       : Ethernet
+# InterfaceIndex       : 6
+# InterfaceDescription : Microsoft Hyper-V Network Adapter
+# NetProfile.Name      : Network
+# IPv4Address          : 192.168.1.4
+# IPv6DefaultGateway   :
+# IPv4DefaultGateway   : 192.168.1.1
+# DNSServer            : 168.63.129.16
+
+# InterfaceAlias       : vwan_vpn-configuration-hub01
+# InterfaceIndex       : 25
+# InterfaceDescription :
+# NetProfile.Name      : vwan_vpn-configuration-hub01
+# IPv4Address          : 172.16.1.130
+# IPv4DefaultGateway   : 0.0.0.0
+# DNSServer            :
+```
+
+Then you can access the VMs in the `Spoke` networks using their private IP addresses.
 
 Try the following commands from your local machine after connecting to the VPN:
 
