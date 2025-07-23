@@ -1,12 +1,15 @@
 # Azure Virtual Wan and Secure Virtual Hub with Intent based Routing
 
-In this lab you will explore `Azure Virtual WAN` and `Virtual Hub` with two hubs, each with a firewall. The focus is on understanding how traffic flows between VNets in different hubs when firewalls are configured.
+In this lab you will explore connectivity between `Azure Virtual WAN`, `Secure virtual Hub`, `Azure Bastion` and `Azure VPN P2S`. The focus is on understanding how to:
 
-Without any firewall or route table, traffic between VNets in the same Virtual Hub and across Virtual Hubs is allowed. This lab will help you understand how to control this traffic using firewalls and routing policies.
-
-For that we will create two Virtual Hubs, each with a firewall, define routing intents and then we will create VNets in each hub. We will then test the connectivity between these VNets.
+1. Establish connectivity from `Azure Bastion` to VMs in `Virtual Networks` in different `Secure Virtual Hubs`.
+2. Configure `Point-to-Site VPN` connections to the `Virtual Hubs`.
 
 ![architecture](./images/architecture.png)
+
+We'll explore the following traffic flows:
+
+![network flow](./images/network-flow.png)
 
 ## Deploying the resources
 
@@ -23,47 +26,59 @@ This will take about 45 minutes. Then the following resources will be created:
 
 ![resources](./images/resources.png)
 
-## Testing connection from Spoke VNET01 to VNET02 in Hub01
+## Testing connection from Bastion to VMs in different virtual Hubs
 
-To check that VNETs in the same `virtual Hub` can communicate, you can use the VM Spoke01 in Hub01 to ping the VM in Spoke02 in the same hub. And as each VM exposes an Nginx app, you can also access the Nginx app in Spoke02 from Spoke01 using the curl command. 
+To check that `Azure Bastion` can connect to VMs in different `Virtual Hubs`, you can use the Bastion host to connect to the VMs in the `Spoke` networks.
 
-From VM Spoke01, navigate to `run command` feature and run the following:
+From the `Azure Portal`, navigate to the Bastion host and use the `Connect` feature to connect to the VMs in the `Spoke` networks. We use Bastion with `Standard SKU` which allows us to connect to VMs using RDP or SSH and by specifying the appropriate IP address.
+
+You can connect to the VMs in `Spoke01` and `Spoke02` in `Hub01`, and `Spoke03` in `Hub02`.
+
+You will need the private IP addresses for these VMs, which are as follows:
+
+* VM in Spoke01: `10.1.0.4`
+* VM in Spoke02: `10.2.0.4`
+* VM in Spoke03: `10.3.0.4`
+
+## Testing connection from VPN P2S to Spokes in Secure vHubs
+
+The terraform template created a `Point-to-Site VPN` connection to the `Virtual Hub`. You can connect to the VPN using the provided client configuration.
+
+You need to download the VPN client configuration from the `Microsoft Store` or from [App Center](https://install.appcenter.ms/users/user-microsoft/apps/azure-vpn-client-1/distribution_groups/publicgroup/releases/21). 
+More details on how to download the client configuration can be found in the [Azure documentation](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-download-vpn-client).
+
+Once you have the client configuration, you can install it on your local machine.
+
+Then you need to download the VPN client configuration from the `Azure Portal` under `your vWAN resource.
+
+![VPN Client Configuration](./images/vpn-p2s-profile.png)
+
+Then you can import the configuration into the `Azure VPN Client` application.
+
+After that, you can connect to the VPN by selecting the profile and clicking on `Connect`.
+
+Once connected, you can access the VMs in the `Spoke` networks using their private IP addresses.
+
+Try the following commands from your local machine after connecting to the VPN:
 
 ```sh
-# Ping the VM in Spoke02
+# Ping the VM in Spoke01 vHub01
+ping 10.1.0.4
+# Access the Nginx app in Spoke01 vHub01
+curl 10.1.0.4
+
+# Ping the VM in Spoke02 vHub01
 ping 10.2.0.4
-
-# Access the Nginx app in Spoke02
+# Access the Nginx app in Spoke02 vHub01
 curl 10.2.0.4
-```
-s
-You should see a response from the Nginx app running on the VM in Spoke02.
 
-Do the same from VM Spoke02 to Spoke01:
-
-```sh
-# Ping the VM in Spoke01
-ping 10.2.0.4
-
-# Access the Nginx app in Spoke01
-curl 10.2.0.4
-```
-
-## Testing connection from Spokes intra Secure vHubs
-
-Now we want to check if the VNETs in different vhubs can communicate. From VM Spoke01 in Hub01, you can ping the VM in Spoke03 in Hub02 and access its Nginx app.
-
-From VM Spoke01, run the following commands:
-
-```sh
-# Ping the VM in Spoke03
+# Ping the VM in Spoke03 vHub02
 ping 10.3.0.4
-
-# Access the Nginx app in Spoke03
+# Access the Nginx app in Spoke03 vHub02
 curl 10.3.0.4
 ```
 
-You should see a response from the Nginx app running on the VM in Spoke03.
+You should see a response from all the VMs in the Spoke networks.
 
 ## Checking the traffic path
 
