@@ -30,3 +30,7 @@ variable "install_webapp" {
   type    = bool
   default = false
 }
+variable "enable_identity" {
+  type    = bool
+  default = false
+}

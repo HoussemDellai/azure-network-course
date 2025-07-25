@@ -13,17 +13,17 @@ resource "azurerm_network_interface" "nic-vm-windows" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.snet-vm.id
+    subnet_id                     = azurerm_subnet.snet-nva.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.pip-vm-windows.id
   }
 }
 
 resource "azurerm_windows_virtual_machine" "vm-windows" {
-  name                  = "vm-win11"
+  name                  = "vm-win11-nva"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_NV12ads_A10_v5" # "Standard_D4ads_v6" # "Standard_D96ads_v5" # 
+  size                  = "Standard_D4ads_v6" # "Standard_D96ads_v5" # 
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
   priority              = "Spot"
@@ -56,7 +56,8 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   }
 
   identity {
-    type = "SystemAssigned"
+    type = "SystemAssigned, UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.identity-ama.id]
   }
 
   boot_diagnostics {
@@ -86,6 +87,40 @@ resource "azurerm_virtual_machine_extension" "cse" {
     update = "30m"
     delete = "30m"
   }
+}
+
+# managed identity for Azure Monitor Agent
+resource "azurerm_user_assigned_identity" "identity-ama" {
+  name                = "identity-ama"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+}
+
+# role assignment for the managed identity
+resource "azurerm_role_assignment" "ama-mi" {
+  scope                = azurerm_windows_virtual_machine.vm-windows.id
+  role_definition_name = "Virtual Machine Contributor"
+  principal_id         = azurerm_user_assigned_identity.identity-ama.principal_id
+}
+
+resource "azurerm_virtual_machine_extension" "ama" {
+  name                       = "ama"
+  virtual_machine_id         = azurerm_windows_virtual_machine.vm-windows.id
+  publisher                  = "Microsoft.Azure.Monitor"
+  type                       = "AzureMonitorWindowsAgent"
+  type_handler_version       = "1.0"
+  auto_upgrade_minor_version = true
+  automatic_upgrade_enabled  = true
+  settings                   = <<SETTINGS
+    {
+      "authentication": {
+        "managedIdentity": {
+          "identifier-name": "mi_res_id",
+          "identifier-value": "${azurerm_user_assigned_identity.identity-ama.id}"
+        }
+      }
+    }
+  SETTINGS
 }
 
 resource "azurerm_role_assignment" "owner" {

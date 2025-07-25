@@ -7,6 +7,7 @@ module "vm-hub-nva" {
   admin_username        = var.vm_admin_username
   admin_password        = var.vm_admin_password
   ip_forwarding_enabled = true
+  enable_public_ip      = true
 }
 
 resource "azurerm_virtual_machine_extension" "install-networking-tools" {

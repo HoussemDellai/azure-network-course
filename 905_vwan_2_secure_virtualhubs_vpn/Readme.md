@@ -109,6 +109,10 @@ The Terraform template already enabled collecting logs for the two Azure Firewal
 
 ![Azure Firewall Logs](./images/firewall-logs-onprem-to-azure.png)
 
+>Note that in the logs, you will see the traffic from the `onprem-vm` to the `Spoke` networks. The traffic is allowed by the Azure Firewall rules.
+
+>Note that the traffic goes through the first Firewall Hub01 but not throught the second Firewall Hub02. This is because the traffic is allowed by the Intent Route Table.
+
 ## Learnings
 
 * Without Firewall and without Route Table, the traffic between VNets in the same and across Virtual Hubs is allowed.

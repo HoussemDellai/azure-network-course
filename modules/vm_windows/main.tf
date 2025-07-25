@@ -39,6 +39,13 @@ resource "azurerm_windows_virtual_machine" "vm" {
 
   custom_data = var.install_webapp ? filebase64("../scripts/install-tools-windows.ps1") : null
 
+  dynamic "identity" {
+    for_each = var.enable_identity ? ["any_value"] : []
+    content {
+      type = "SystemAssigned"
+    }
+  }
+
   os_disk {
     name                 = "os-disk-vm-windows"
     caching              = "ReadOnly"        # "ReadWrite" # None, ReadOnly and ReadWrite.
@@ -66,6 +73,16 @@ resource "azurerm_windows_virtual_machine" "vm" {
     ignore_changes = [identity]
   }
 }
+
+# role assignment for the VM identity
+resource "azurerm_role_assignment" "owner-identity" {
+  count                = var.enable_identity ? 1 : 0
+  scope                = data.azurerm_subscription.current.id
+  role_definition_name = "Owner"
+  principal_id         = azurerm_windows_virtual_machine.vm.identity.0.principal_id
+}
+
+data "azurerm_subscription" "current" {}
 
 resource "azurerm_virtual_machine_extension" "cloudinit" {
   name                 = "cloudinit"

@@ -44,6 +44,7 @@ module "vm_windows_onprem" {
   subnet_id           = azurerm_subnet.snet-onprem-vm.id
   install_webapp      = true
   enable_public_ip    = true
+  enable_identity     = true
 }
 
 output "vm_windows_onprem_pip" {
