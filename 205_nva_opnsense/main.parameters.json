@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "scenarioOption": {
+      "value": "TwoNics"
+    },
+    "virtualMachineSize": {
+      "value": "Standard_B2s"
+    },
+    "virtualMachineName": {
+      "value": "OPNsense"
+    },
+    "virtualNetworkName": {
+      "value": "OPN-VNET"
+    },
+    "existingvirtualNetwork" :{
+      "value": "new"
+    },
+    "VNETAddress": {
+      "value": [
+        "10.0.0.0/16"
+      ]
+    },
+    "UntrustedSubnetCIDR": {
+      "value": "10.0.0.0/24"
+    },
+    "TrustedSubnetCIDR": {
+      "value": "10.0.1.0/24"
+    },
+    "existingUntrustedSubnetName": {
+      "value": "Untrusted-Subnet"
+    },
+    "existingTrustedSubnetName": {
+      "value": "Trusted-Subnet"
+    },
+    "PublicIPAddressSku": {
+      "value": "Standard"
+    },
+    "OpnScriptURI": {
+      "value": "https://raw.githubusercontent.com/dmauser/opnazure/master/scripts/"
+    },
+    "ShellScriptName": {
+      "value": "configureopnsense.sh"
+    },
+    "DeployWindows" :{
+      "value": false
+    },
+    "DeployWindowsSubnet": {
+      "value": "10.0.2.0/24"
+    },
+    "existingWindowsSubnet": {
+      "value": "Windows-VM-Subnet"
+    },
+    "WinUsername": {
+      "value": "azureuser"
+    },
+    "WinPassword": {
+      "value": "P@ssw0rd!1234&Azure"
+    }
+  }
+}
