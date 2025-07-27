@@ -14,7 +14,7 @@ resource "azurerm_network_security_rule" "allow-all-inbound" {
   protocol                     = "*"
   source_address_prefix        = "*"
   source_port_range            = "*"
-  destination_address_prefixes = ["0.0.0.0/0"]
+  destination_address_prefixes = ["*"]
   destination_port_range       = "*"
 }
 
@@ -28,7 +28,7 @@ resource "azurerm_network_security_rule" "allow-all-outbound" {
   protocol                     = "*"
   source_address_prefix        = "*"
   source_port_range            = "*"
-  destination_address_prefixes = ["0.0.0.0/0"]
+  destination_address_prefixes = ["*"]
   destination_port_range       = "*"
 }
 

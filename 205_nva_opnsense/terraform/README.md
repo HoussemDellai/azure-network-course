@@ -1,161 +1,219 @@
 # OPNsense Firewall Terraform Deployment
 
-This Terraform configuration deploys OPNsense firewall in Azure with support for two deployment scenarios:
+This Terraform configuration deploys OPNsense firewall(s) on Azure, converted from the original ARM template. It supports two deployment scenarios:
 
-1. **TwoNics**: Single OPNsense VM with two network interfaces
-2. **Active-Active**: Two OPNsense VMs in HA mode with load balancers
-
-## Converted from ARM Template
-
-This Terraform configuration is converted from the original ARM template `main.json` and maintains the same functionality and deployment options.
+1. **TwoNics** - Single OPNsense firewall with two network interfaces
+2. **Active-Active** - High Availability pair with load balancers
 
 ## Prerequisites
 
-1. **Terraform Installation**: If Terraform is not installed, you can install it using winget:
-   ```powershell
-   winget install HashiCorp.Terraform
-   ```
+- Azure CLI or Azure PowerShell
+- Terraform >= 1.0
+- An Azure Resource Group
 
-2. **Azure CLI**: Ensure you're authenticated with Azure CLI:
-   ```powershell
-   az login
-   ```
+## Deployment Scenarios
 
-3. **Resource Group**: Create a resource group or ensure you have an existing one to deploy into.
+### TwoNics (Single Firewall)
+- Single OPNsense VM with untrusted and trusted interfaces
+- Public IP directly attached to untrusted interface
+- Suitable for development/testing environments
+
+### Active-Active (High Availability)
+- Two OPNsense VMs in active-active configuration
+- External load balancer for inbound traffic
+- Internal load balancer for outbound traffic from trusted networks
+- Management access via NAT rules on external load balancer
 
 ## Quick Start
 
-1. **Clone and Navigate**:
-   ```powershell
-   cd d:\projects\azure-network-course\205_nva_opnsense\terraform
+1. **Clone and navigate to the terraform directory**
+   ```bash
+   cd terraform/
    ```
 
-2. **Configure Variables**:
-   ```powershell
+2. **Copy the example variables file**
+   ```bash
    cp terraform.tfvars.example terraform.tfvars
-   # Edit terraform.tfvars with your specific values
    ```
 
-3. **Initialize Terraform**:
-   ```powershell
+3. **Edit terraform.tfvars with your values**
+   ```hcl
+   resource_group_name = "your-rg-name"
+   virtual_network_name = "OPNsenseWAF-VNET"
+   scenario_option = "TwoNics"  # or "Active-Active"
+   ```
+
+4. **Initialize Terraform**
+   ```bash
    terraform init
    ```
 
-4. **Validate Configuration**:
-   ```powershell
-   terraform validate
-   ```
-
-5. **Plan Deployment**:
-   ```powershell
+5. **Plan the deployment**
+   ```bash
    terraform plan
    ```
 
-6. **Deploy Infrastructure**:
-   ```powershell
-   terraform apply -auto-approve
+6. **Apply the configuration**
+   ```bash
+   terraform apply
    ```
 
-## Configuration Options
+## Configuration Variables
 
 ### Required Variables
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `resource_group_name` | Name of the Azure Resource Group | `"opnsense-rg"` |
+| `virtual_network_name` | Name of the virtual network | `"OPNsenseWAF-VNET"` |
 
-- `resource_group_name`: Name of the Azure resource group
-- `virtual_machine_name`: Name for the OPNsense VM(s)
-
-### Deployment Scenarios
-
-#### TwoNics (Default)
-- Single OPNsense VM with two network interfaces
-- Suitable for basic firewall functionality
-- Lower cost option
-
-#### Active-Active
-- Two OPNsense VMs in high availability configuration
-- External and internal load balancers
-- Higher availability and redundancy
-- Higher cost due to multiple VMs and load balancers
+### Optional Variables
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `scenario_option` | Deployment scenario | `"TwoNics"` |
+| `virtual_machine_size` | VM size for OPNsense | `"Standard_B2s"` |
+| `deploy_windows` | Deploy Windows test VM | `false` |
+| `public_ip_address_sku` | Public IP SKU | `"Standard"` |
 
 ### Network Configuration
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `vnet_address` | VNet address space | `["10.0.0.0/16"]` |
+| `untrusted_subnet_cidr` | Untrusted subnet CIDR | `"10.0.1.0/24"` |
+| `trusted_subnet_cidr` | Trusted subnet CIDR | `"10.0.2.0/24"` |
+| `deploy_windows_subnet` | Windows VM subnet CIDR | `"10.0.3.0/24"` |
 
-- **New VNet**: Creates a new virtual network with specified CIDR blocks
-- **Existing VNet**: Uses an existing virtual network and subnets
+## Using Existing Virtual Networks
 
-### Optional Components
+To deploy into an existing VNet:
 
-- **Windows VM**: Deploy a Windows 11 client VM for testing
-- **Custom Subnets**: Configure custom subnet CIDR blocks
-
-## Deployment Architecture
-
-### TwoNics Scenario
-```
-Internet
-    │
-    ├─ Public IP
-    │
-    ├─ OPNsense VM
-    │   ├─ Untrusted NIC (Public Subnet)
-    │   └─ Trusted NIC (Private Subnet)
-    │
-    └─ [Optional] Windows VM (Windows Subnet)
-```
-
-### Active-Active Scenario
-```
-Internet
-    │
-    ├─ External Load Balancer
-    │   ├─ OPNsense Primary VM
-    │   └─ OPNsense Secondary VM
-    │
-    ├─ Internal Load Balancer
-    │   ├─ OPNsense Primary VM (Trusted NIC)
-    │   └─ OPNsense Secondary VM (Trusted NIC)
-    │
-    └─ [Optional] Windows VM (Windows Subnet)
-```
+1. Set `existing_virtual_network` to the existing VNet name
+2. Specify the existing subnet names:
+   ```hcl
+   existing_virtual_network = "my-existing-vnet"
+   existing_untrusted_subnet_name = "untrusted-subnet"
+   existing_trusted_subnet_name = "trusted-subnet"
+   existing_windows_subnet = "windows-subnet"  # if deploy_windows = true
+   ```
 
 ## Post-Deployment
 
-After successful deployment, you can access:
+### Access OPNsense Web Interface
 
-### TwoNics Scenario
-- **OPNsense Management**: `https://<public_ip>`
+**TwoNics Scenario:**
+- URL: `https://<public-ip>`
+- Default credentials: `root/opnsense`
 
-### Active-Active Scenario
-- **Primary OPNsense**: `https://<public_ip>:50443`
-- **Secondary OPNsense**: `https://<public_ip>:50444`
+**Active-Active Scenario:**
+- Primary: `https://<public-ip>:50443`
+- Secondary: `https://<public-ip>:50444`
+- Default credentials: `root/opnsense`
 
-### Windows VM (if deployed)
-- **RDP Access**: Use the public IP address output
-- **Credentials**: As specified in `win_username` and `win_password`
+### Windows Test VM (if deployed)
 
-## Important Notes
+- RDP: `mstsc /v:<windows-public-ip>`
+- Username: Value of `win_username`
+- Password: Value of `win_password`
 
-1. **Default Credentials**: The OPNsense VMs use temporary credentials that should be changed after first login
-2. **Firewall Rules**: Default NSG rules allow SSH, HTTP, and HTTPS. Customize as needed
-3. **Security**: Change default passwords and configure proper firewall rules for production use
-4. **Cost**: Active-Active scenario incurs higher costs due to multiple VMs and load balancers
+## Outputs
+
+After deployment, Terraform provides these outputs:
+
+- `opnsense_public_ip` - Public IP of the firewall
+- `opnsense_web_interface` - Web interface URL(s)
+- `internal_load_balancer_ip` - Internal LB IP (Active-Active only)
+- `windows_vm_public_ip` - Windows VM public IP (if deployed)
+- `subnet_ids` - IDs of all subnets
+
+## Architecture
+
+### TwoNics Architecture
+```
+Internet
+    |
+[Public IP]
+    |
+[OPNsense VM]
+    |
+[Trusted Network]
+    |
+[Protected Resources]
+```
+
+### Active-Active Architecture
+```
+Internet
+    |
+[Public IP]
+    |
+[External Load Balancer]
+   /              \
+[OPNsense-1]   [OPNsense-2]
+   \              /
+[Internal Load Balancer]
+    |
+[Trusted Network]
+    |
+[Protected Resources]
+```
 
 ## Troubleshooting
 
-1. **Terraform Validate**: Always run `terraform validate` before `terraform plan`
-2. **State Management**: Terraform state is stored locally by default. Consider remote state for production
-3. **Resource Cleanup**: Use `terraform destroy` to remove all created resources
+### Common Issues
 
-## Terraform Best Practices
+1. **Resource Group Not Found**
+   - Ensure the resource group exists before running Terraform
+   - Verify you have proper permissions
 
-This configuration follows Terraform best practices:
-- Modular structure with reusable modules
-- Proper variable validation
+2. **Subnet Conflicts**
+   - Check that subnet CIDRs don't overlap
+   - Ensure existing subnets exist when using existing VNet
+
+3. **VM Size Not Available**
+   - Verify the VM size is available in your region
+   - Check Azure quotas
+
+### Validation Commands
+
+```bash
+# Validate Terraform configuration
+terraform validate
+
+# Check what will be created/changed
+terraform plan
+
+# Show current state
+terraform show
+
+# List all resources
+terraform state list
+```
+
+## Cleanup
+
+To remove all deployed resources:
+
+```bash
+terraform destroy
+```
+
+## Differences from ARM Template
+
+This Terraform version maintains the same functionality as the original ARM template but with these improvements:
+
+- Simplified single-file configuration (no modules)
+- Better variable validation
+- Clearer resource naming
 - Comprehensive outputs
-- Resource tagging for organization
-- Conditional resource creation based on scenarios
+- Easier customization through variables
 
-## Azure Portal Access
+## Security Considerations
 
-After successful deployment, you can view and manage your resources in the Azure Portal:
-[Azure Portal](https://portal.azure.com)
+- Change default OPNsense credentials after deployment
+- Configure appropriate firewall rules
+- Use strong passwords for Windows VM (if deployed)
+- Review NSG rules for your security requirements
+- Consider using Azure Key Vault for sensitive data
 
-Navigate to your resource group to see all deployed resources including VMs, load balancers, network interfaces, and security groups.
+## Support
+
+This configuration is based on the original ARM template for OPNsense deployment. For OPNsense-specific configuration and support, refer to the [OPNsense documentation](https://docs.opnsense.org/).

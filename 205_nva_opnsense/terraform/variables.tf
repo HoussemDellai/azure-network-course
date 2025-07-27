@@ -1,75 +1,112 @@
 # Variables for OPNsense Terraform Deployment
+# Converted from ARM template parameters
 
 variable "resource_group_name" {
-  description = "Name of the resource group"
+  description = "Name of the resource group to deploy resources into"
   type        = string
+}
+
+variable "location" {
+  description = "Azure location/region for the resources"
+  type        = string
+  default     = null
 }
 
 variable "scenario_option" {
-  description = "Select a valid scenario. Active-Active: Two OPNSenses deployed in HA mode using SLB and ILB. TwoNics: Single OPNSense deployed with two Nics."
+  description = "Deployment scenario - TwoNics for single firewall or Active-Active for HA pair"
   type        = string
   default     = "TwoNics"
   validation {
-    condition     = contains(["Active-Active", "TwoNics"], var.scenario_option)
-    error_message = "Scenario option must be either 'Active-Active' or 'TwoNics'."
+    condition     = contains(["TwoNics", "Active-Active"], var.scenario_option)
+    error_message = "Scenario option must be either 'TwoNics' or 'Active-Active'."
   }
 }
 
+variable "virtual_machine_name" {
+  description = "Name for the OPNsense virtual machine"
+  type        = string
+  default     = "OPNsenseWAF"
+}
+
 variable "virtual_machine_size" {
-  description = "VM size, please choose a size which allow 2 NICs."
+  description = "Size of the virtual machine"
   type        = string
   default     = "Standard_B2s"
 }
 
-variable "virtual_machine_name" {
-  description = "OPN NVA Machine Name"
-  type        = string
-}
-
-variable "virtual_network_name" {
-  description = "Virtual Network Name. This is a required parameter to build a new VNet or find an existing one."
-  type        = string
-  default     = "OPN-VNET"
-}
-
 variable "existing_virtual_network" {
-  description = "Use Existing Virtual Network. The value must be new or existing."
+  description = "Use existing virtual network or create new one (use 'new' to create new)"
   type        = string
   default     = "new"
 }
 
+variable "virtual_network_name" {
+  description = "Name of the virtual network"
+  type        = string
+}
+
 variable "vnet_address" {
-  description = "Virtual Network Address Space. Only required if you want to create a new VNet."
+  description = "Address space for the virtual network"
   type        = list(string)
   default     = ["10.0.0.0/16"]
 }
 
 variable "untrusted_subnet_cidr" {
-  description = "Untrusted-Subnet Address Space. Only required if you want to create a new VNet."
-  type        = string
-  default     = "10.0.0.0/24"
-}
-
-variable "trusted_subnet_cidr" {
-  description = "Trusted-Subnet Address Space. Only required if you want to create a new VNet."
+  description = "CIDR block for the untrusted subnet"
   type        = string
   default     = "10.0.1.0/24"
 }
 
+variable "trusted_subnet_cidr" {
+  description = "CIDR block for the trusted subnet"
+  type        = string
+  default     = "10.0.2.0/24"
+}
+
 variable "existing_untrusted_subnet_name" {
-  description = "Untrusted-Subnet Name. Only required if you want to use an existing VNet and Subnet."
+  description = "Name of existing untrusted subnet (if using existing VNet)"
   type        = string
   default     = ""
 }
 
 variable "existing_trusted_subnet_name" {
-  description = "Trusted-Subnet Name. Only required if you want to use an existing VNet and Subnet."
+  description = "Name of existing trusted subnet (if using existing VNet)"
   type        = string
   default     = ""
 }
 
+variable "existing_windows_subnet" {
+  description = "Name of existing Windows subnet (if using existing VNet and deploying Windows)"
+  type        = string
+  default     = ""
+}
+
+variable "deploy_windows" {
+  description = "Whether to deploy a Windows test VM"
+  type        = bool
+  default     = false
+}
+
+variable "deploy_windows_subnet" {
+  description = "CIDR block for the Windows VM subnet"
+  type        = string
+  default     = "10.0.3.0/24"
+}
+
+variable "win_username" {
+  description = "Username for the Windows VM"
+  type        = string
+  default     = "azureuser"
+}
+
+variable "win_password" {
+  description = "Password for the Windows VM"
+  type        = string
+  sensitive   = true
+}
+
 variable "public_ip_address_sku" {
-  description = "Specify Public IP SKU either Basic (lowest cost) or Standard (Required for HA LB)"
+  description = "SKU for the public IP address"
   type        = string
   default     = "Standard"
   validation {
@@ -79,62 +116,25 @@ variable "public_ip_address_sku" {
 }
 
 variable "opn_script_uri" {
-  description = "URI for Custom OPN Script and Config"
+  description = "Base URI for OPNsense configuration scripts"
   type        = string
-  default     = "https://raw.githubusercontent.com/dmauser/opnazure/master/scripts/"
+  default     = "https://raw.githubusercontent.com/dmauser/azure-virtualwan/main/natvpn-over-er/opnsense/"
 }
 
 variable "shell_script_name" {
-  description = "Shell Script to be executed"
+  description = "Name of the shell script for OPNsense configuration"
   type        = string
   default     = "configureopnsense.sh"
 }
 
 variable "opn_version" {
-  description = "OPN Version"
+  description = "OPNsense version to install"
   type        = string
-  default     = "25.1"
+  default     = "24.1"
 }
 
 variable "wa_linux_version" {
-  description = "Azure WALinux agent Version"
+  description = "Azure Linux Agent version"
   type        = string
-  default     = "2.12.0.4"
-}
-
-variable "deploy_windows" {
-  description = "Deploy Windows VM Trusted Subnet"
-  type        = bool
-  default     = false
-}
-
-variable "win_username" {
-  description = "Only required in case of Deploying Windows VM. Windows Admin username (Used to login in Windows VM)."
-  type        = string
-  default     = ""
-}
-
-variable "win_password" {
-  description = "Only required in case of Deploying Windows VM. Windows Password (Used to login in Windows VM)."
-  type        = string
-  default     = ""
-  sensitive   = true
-}
-
-variable "existing_windows_subnet" {
-  description = "Existing Windows Subnet Name. Only required in case of deploying Windows in an existing subnet."
-  type        = string
-  default     = ""
-}
-
-variable "deploy_windows_subnet" {
-  description = "In case of deploying Windows in a New VNet this will be the Windows VM Subnet Address Space"
-  type        = string
-  default     = "10.0.2.0/24"
-}
-
-variable "location" {
-  description = "Azure region for resource deployment"
-  type        = string
-  default     = null
+  default     = "2.9.1.1"
 }

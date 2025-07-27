@@ -1,87 +1,69 @@
-# Outputs for OPNsense Terraform Deployment
+# Output values for OPNsense deployment
 
 output "opnsense_public_ip" {
   description = "Public IP address of the OPNsense firewall"
   value       = azurerm_public_ip.opnsense.ip_address
 }
 
-output "opnsense_resource_group" {
-  description = "Resource group name"
-  value       = data.azurerm_resource_group.main.name
+output "opnsense_fqdn" {
+  description = "FQDN of the OPNsense firewall public IP"
+  value       = azurerm_public_ip.opnsense.fqdn
 }
 
-output "virtual_network_name" {
-  description = "Virtual network name"
-  value       = var.virtual_network_name
+output "opnsense_web_interface" {
+  description = "URL to access OPNsense web interface"
+  value = var.scenario_option == "Active-Active" ? {
+    primary   = "https://${azurerm_public_ip.opnsense.ip_address}:50443"
+    secondary = "https://${azurerm_public_ip.opnsense.ip_address}:50444"
+  } : "https://${azurerm_public_ip.opnsense.ip_address}"
 }
 
-output "scenario_deployed" {
+output "internal_load_balancer_ip" {
+  description = "Internal load balancer IP address (Active-Active scenario only)"
+  value       = var.scenario_option == "Active-Active" ? azurerm_lb.internal[0].frontend_ip_configuration[0].private_ip_address : null
+}
+
+output "windows_vm_public_ip" {
+  description = "Public IP address of the Windows test VM"
+  value       = var.deploy_windows ? azurerm_public_ip.windows[0].ip_address : null
+}
+
+output "windows_vm_rdp" {
+  description = "RDP connection string for Windows test VM"
+  value       = var.deploy_windows ? "mstsc /v:${azurerm_public_ip.windows[0].ip_address}" : null
+}
+
+output "virtual_network_id" {
+  description = "ID of the virtual network"
+  value       = local.use_existing_vnet ? data.azurerm_resource_group.main.id : azurerm_virtual_network.main[0].id
+}
+
+output "subnet_ids" {
+  description = "IDs of the created/used subnets"
+  value = {
+    untrusted = local.untrusted_subnet_id
+    trusted   = local.trusted_subnet_id
+    windows   = var.deploy_windows ? local.windows_subnet_id : null
+  }
+}
+
+output "deployment_scenario" {
   description = "Deployment scenario used"
   value       = var.scenario_option
 }
 
-# Primary VM outputs (Active-Active scenario)
-output "primary_vm_untrusted_ip" {
-  description = "Primary VM untrusted NIC IP address"
-  value       = var.scenario_option == "Active-Active" ? module.opnsense_primary[0].untrusted_nic_ip : null
+output "vm_names" {
+  description = "Names of the deployed OPNsense VMs"
+  value = var.scenario_option == "Active-Active" ? [
+    azurerm_linux_virtual_machine.primary[0].name,
+    azurerm_linux_virtual_machine.secondary[0].name
+  ] : [azurerm_linux_virtual_machine.single[0].name]
 }
 
-output "primary_vm_trusted_ip" {
-  description = "Primary VM trusted NIC IP address"
-  value       = var.scenario_option == "Active-Active" ? module.opnsense_primary[0].trusted_nic_ip : null
-}
-
-# Secondary VM outputs (Active-Active scenario)
-output "secondary_vm_untrusted_ip" {
-  description = "Secondary VM untrusted NIC IP address"
-  value       = var.scenario_option == "Active-Active" ? module.opnsense_secondary[0].untrusted_nic_ip : null
-}
-
-output "secondary_vm_trusted_ip" {
-  description = "Secondary VM trusted NIC IP address"
-  value       = var.scenario_option == "Active-Active" ? module.opnsense_secondary[0].trusted_nic_ip : null
-}
-
-# Single VM outputs (TwoNics scenario)
-output "single_vm_untrusted_ip" {
-  description = "Single VM untrusted NIC IP address"
-  value       = var.scenario_option == "TwoNics" ? module.opnsense_single[0].untrusted_nic_ip : null
-}
-
-output "single_vm_trusted_ip" {
-  description = "Single VM trusted NIC IP address"
-  value       = var.scenario_option == "TwoNics" ? module.opnsense_single[0].trusted_nic_ip : null
-}
-
-# Windows VM outputs (if deployed)
-output "windows_vm_private_ip" {
-  description = "Windows VM private IP address"
-  value       = var.deploy_windows ? module.windows_vm[0].private_ip_address : null
-}
-
-output "windows_vm_public_ip" {
-  description = "Windows VM public IP address"
-  value       = var.deploy_windows ? module.windows_vm[0].public_ip_address : null
-}
-
-# Load balancer outputs (Active-Active scenario)
-output "external_load_balancer_frontend_ip" {
-  description = "External load balancer frontend IP"
-  value       = var.scenario_option == "Active-Active" ? azurerm_public_ip.opnsense.ip_address : null
-}
-
-output "internal_load_balancer_frontend_ip" {
-  description = "Internal load balancer frontend IP"
-  value       = var.scenario_option == "Active-Active" ? module.internal_load_balancer[0].frontend_ip : null
-}
-
-# Management URLs
-output "opnsense_management_urls" {
-  description = "OPNsense management URLs"
-  value = var.scenario_option == "Active-Active" ? {
-    primary_vm   = "https://${azurerm_public_ip.opnsense.ip_address}:50443"
-    secondary_vm = "https://${azurerm_public_ip.opnsense.ip_address}:50444"
-  } : {
-    single_vm = "https://${azurerm_public_ip.opnsense.ip_address}"
+output "resource_group" {
+  description = "Resource group information"
+  value = {
+    name     = data.azurerm_resource_group.main.name
+    location = data.azurerm_resource_group.main.location
   }
 }
