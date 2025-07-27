@@ -95,7 +95,7 @@ resource "azurerm_virtual_machine_extension" "cslinux" {
   settings             = <<SETTINGS
     {
       "fileUris": [
-        "https://raw.githubusercontent.com/dmauser/opnazure/master/scripts/configureopnsense.sh"
+        "https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/205_nva_opnsense/scripts/configureopnsense.sh"
       ],
       "commandToExecute": "sh configureopnsense.sh 'https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/205_nva_opnsense/scripts/' '25.1' '2.12.0.4' 'TwoNics' '10.0.1.0/24' '' '' ''"
     }
