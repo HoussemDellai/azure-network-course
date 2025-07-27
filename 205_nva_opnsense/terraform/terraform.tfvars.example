@@ -1,0 +1,42 @@
+# Example Terraform Variables File
+# Copy this file to terraform.tfvars and modify the values as needed
+
+# Required variables
+resource_group_name    = "rg-opnsense-demo"
+virtual_machine_name   = "OPNsense"
+
+# Scenario configuration
+scenario_option = "TwoNics"  # Options: "Active-Active" or "TwoNics"
+
+# VM configuration
+virtual_machine_size = "Standard_B2s"
+
+# Network configuration
+virtual_network_name      = "OPN-VNET"
+existing_virtual_network  = "new"  # Options: "new" or "existing"
+vnet_address             = ["10.0.0.0/16"]
+untrusted_subnet_cidr    = "10.0.0.0/24"
+trusted_subnet_cidr      = "10.0.1.0/24"
+
+# Public IP configuration
+public_ip_address_sku = "Standard"  # Options: "Basic" or "Standard"
+
+# OPNsense configuration
+opn_script_uri    = "https://raw.githubusercontent.com/dmauser/opnazure/master/scripts/"
+shell_script_name = "configureopnsense.sh"
+opn_version       = "25.1"
+wa_linux_version  = "2.12.0.4"
+
+# Windows VM configuration (optional)
+deploy_windows        = false
+deploy_windows_subnet = "10.0.2.0/24"
+win_username          = "azureuser"
+win_password          = "P@ssw0rd!1234&Azure"
+
+# Existing subnet names (only needed if existing_virtual_network = "existing")
+existing_untrusted_subnet_name = "Untrusted-Subnet"
+existing_trusted_subnet_name   = "Trusted-Subnet"
+existing_windows_subnet        = "Windows-VM-Subnet"
+
+# Azure region (optional - defaults to resource group location)
+# location = "East US"

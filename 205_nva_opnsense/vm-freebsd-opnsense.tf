@@ -7,9 +7,10 @@ resource "azurerm_public_ip" "pip-vm-nva" {
 }
 
 resource "azurerm_network_interface" "nic-vm-nva-untrusted" {
-  name                = "nic-vm-nva-untrusted"
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
+  name                  = "nic-vm-nva-untrusted"
+  resource_group_name   = azurerm_resource_group.rg.name
+  location              = azurerm_resource_group.rg.location
+  ip_forwarding_enabled = true
 
   ip_configuration {
     name                          = "untrusted"
@@ -23,6 +24,7 @@ resource "azurerm_network_interface" "nic-vm-nva-trusted" {
   name                = "nic-vm-nva-trusted"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
+  ip_forwarding_enabled = true
 
   ip_configuration {
     name                          = "trusted"
@@ -97,7 +99,7 @@ resource "azurerm_virtual_machine_extension" "cslinux" {
       "fileUris": [
         "https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/205_nva_opnsense/scripts/configureopnsense.sh"
       ],
-      "commandToExecute": "sh configureopnsense.sh 'https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/205_nva_opnsense/scripts/' '25.1' '2.12.0.4' 'TwoNics' '10.0.1.0/24' '' '' ''"
+      "commandToExecute": "sh configureopnsense.sh 'https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/205_nva_opnsense/scripts/' '25.1' '2.12.0.4' 'TwoNics' '10.0.1.0/24' '1.1.1.1/32' '' ''"
     }
     SETTINGS
 
