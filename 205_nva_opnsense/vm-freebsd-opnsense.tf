@@ -32,7 +32,7 @@ resource "azurerm_network_interface" "nic-vm-nva-trusted" {
 }
 
 resource "azurerm_linux_virtual_machine" "vm-nva" {
-  name                            = "vm-nva"
+  name                            = "vm-nva-opnsense"
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
   size                            = "Standard_D4ads_v6" # "Standard_D96ads_v5" # 
