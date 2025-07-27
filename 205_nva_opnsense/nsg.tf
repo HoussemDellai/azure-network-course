@@ -14,7 +14,7 @@ resource "azurerm_network_security_rule" "allow-all-inbound" {
   protocol                     = "*"
   source_address_prefix        = "*"
   source_port_range            = "*"
-  destination_address_prefixes = ["*"]
+  destination_address_prefixes = ["0.0.0.0/0"]
   destination_port_range       = "*"
 }
 
@@ -28,11 +28,16 @@ resource "azurerm_network_security_rule" "allow-all-outbound" {
   protocol                     = "*"
   source_address_prefix        = "*"
   source_port_range            = "*"
-  destination_address_prefixes = ["*"]
+  destination_address_prefixes = ["0.0.0.0/0"]
   destination_port_range       = "*"
 }
 
-resource "azurerm_subnet_network_security_group_association" "nsg-association" {
-  subnet_id                 = azurerm_subnet.snet-trusted.id
+resource "azurerm_network_interface_security_group_association" "association-nsg-nic-vm-nva-trusted" {
+  network_interface_id      = azurerm_network_interface.nic-vm-nva-trusted.id
+  network_security_group_id = azurerm_network_security_group.nsg-vm.id
+}
+
+resource "azurerm_network_interface_security_group_association" "association-nsg-nic-vm-nva-untrusted" {
+  network_interface_id      = azurerm_network_interface.nic-vm-nva-untrusted.id
   network_security_group_id = azurerm_network_security_group.nsg-vm.id
 }
