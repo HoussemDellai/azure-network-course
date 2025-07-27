@@ -32,16 +32,17 @@ resource "azurerm_network_interface" "nic-vm-nva-trusted" {
 }
 
 resource "azurerm_linux_virtual_machine" "vm-nva" {
-  name                  = "vm-nva"
-  resource_group_name   = azurerm_resource_group.rg.name
-  location              = azurerm_resource_group.rg.location
-  size                  = "Standard_D4ads_v6" # "Standard_D96ads_v5" # 
-  admin_username        = "azureuser"
-  admin_password        = "@Aa123456789"
-  priority              = "Spot"
-  eviction_policy       = "Delete" # "Deallocate" # With Spot, there's no option of Stop-Deallocate for Ephemeral VMs, rather users need to Delete instead of deallocating them.
-  network_interface_ids = [azurerm_network_interface.nic-vm-nva-untrusted.id, azurerm_network_interface.nic-vm-nva-trusted.id]
-  disk_controller_type  = "NVMe" # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
+  name                            = "vm-nva"
+  resource_group_name             = azurerm_resource_group.rg.name
+  location                        = azurerm_resource_group.rg.location
+  size                            = "Standard_D4ads_v6" # "Standard_D96ads_v5" # 
+  disable_password_authentication = false
+  admin_username                  = "azureuser"
+  admin_password                  = "@Aa123456789"
+  priority                        = "Spot"
+  eviction_policy                 = "Delete" # "Deallocate" # With Spot, there's no option of Stop-Deallocate for Ephemeral VMs, rather users need to Delete instead of deallocating them.
+  network_interface_ids           = [azurerm_network_interface.nic-vm-nva-untrusted.id, azurerm_network_interface.nic-vm-nva-trusted.id]
+  disk_controller_type            = "NVMe" # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
 
   # custom_data = filebase64("../scripts/install-tools-windows.ps1")
   # custom_data = filebase64("./run-winget-configuration.ps1")
@@ -82,6 +83,29 @@ resource "azurerm_linux_virtual_machine" "vm-nva" {
 
   lifecycle {
     ignore_changes = [identity]
+  }
+}
+
+resource "azurerm_virtual_machine_extension" "cslinux" {
+  name                 = "cslinux"
+  virtual_machine_id   = azurerm_linux_virtual_machine.vm-nva.id
+  publisher            = "Microsoft.OSTCExtensions"
+  type                 = "CustomScriptForLinux"
+  type_handler_version = "1.5"
+  settings             = <<SETTINGS
+    {
+      "fileUris": [
+        "https://raw.githubusercontent.com/dmauser/opnazure/master/scripts/configureopnsense.sh"
+      ],
+      "commandToExecute": "sh configureopnsense.sh 'https://raw.githubusercontent.com/dmauser/opnazure/master/scripts/' '25.7' '2.12.0.4' 'TwoNics' '10.0.1.0/24' '' '' ''"
+    }
+    SETTINGS
+
+  timeouts {
+    create = "60m"
+    read   = "5m"
+    update = "30m"
+    delete = "30m"
   }
 }
 
