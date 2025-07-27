@@ -11,7 +11,7 @@ resource "azurerm_network_security_rule" "allow-all-inbound" {
   access                       = "Allow"
   priority                     = 100
   direction                    = "Inbound"
-  protocol                     = "Any"
+  protocol                     = "*"
   source_address_prefix        = "*"
   source_port_range            = "*"
   destination_address_prefixes = ["0.0.0.0/0"]
@@ -25,7 +25,7 @@ resource "azurerm_network_security_rule" "allow-all-outbound" {
   access                       = "Allow"
   priority                     = 101
   direction                    = "Outbound"
-  protocol                     = "Any"
+  protocol                     = "*"
   source_address_prefix        = "*"
   source_port_range            = "*"
   destination_address_prefixes = ["0.0.0.0/0"]
