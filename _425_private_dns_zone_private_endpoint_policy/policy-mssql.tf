@@ -12,6 +12,9 @@ resource "azurerm_subscription_policy_assignment" "policy-mssql" {
 {
   "privateDnsZoneId": {
     "value": "${azurerm_private_dns_zone.private-dns-zone-mssql.id}"
+  },
+  "effect": {
+    "value": "DeployIfNotExists"
   }
 }
 PARAMETERS
