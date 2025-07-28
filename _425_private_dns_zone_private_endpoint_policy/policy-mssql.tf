@@ -4,9 +4,9 @@ resource "azurerm_subscription_policy_assignment" "policy-mssql" {
   subscription_id      = data.azurerm_subscription.current.id
   enforce              = true
 
-  #   identity {
-  #     type = "SystemAssigned"
-  #   }
+  identity {
+    type = "SystemAssigned"
+  }
 
   parameters = <<PARAMETERS
 {
@@ -21,3 +21,10 @@ PARAMETERS
 }
 
 data "azurerm_subscription" "current" {}
+
+# # role assignment for the policy assignment
+# resource "azurerm_role_assignment" "role-policy-mssql" {
+#   scope                = azurerm_subscription_policy_assignment.policy-mssql.id
+#   role_definition_name = "Policy Contributor"
+#   principal_id         = data.azurerm_client_config.current.object_id
+# }
