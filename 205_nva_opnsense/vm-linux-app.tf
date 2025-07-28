@@ -6,6 +6,7 @@ module "vm-hub-app" {
   subnet_id           = azurerm_subnet.snet-hub-app.id
   install_webapp      = true
   enable_public_ip    = false
+  vm_size             = "Standard_B2s" # "Standard_D4ads_v6" # "Standard_D96ads_v5" #
 }
 
 output "vm_hub_app_private_ip" {
