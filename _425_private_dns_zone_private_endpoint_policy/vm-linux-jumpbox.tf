@@ -19,7 +19,7 @@ resource "azurerm_linux_virtual_machine" "vm-linux-jumpbox" {
   disable_password_authentication = false
   admin_username                  = "azureuser"
   admin_password                  = "@Aa123456789"
-  network_interface_ids           = [azurerm_network_interface.nic_vm.id]
+  network_interface_ids           = [azurerm_network_interface.nic-vm.id]
 #   priority                        = "Spot"
 #   eviction_policy                 = "Delete"
 #   disk_controller_type            = "NVMe" # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
