@@ -3,6 +3,7 @@ resource "azurerm_subscription_policy_assignment" "policy-mssql" {
   policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/ac673a9a-f77d-4846-b2d8-a57f8e1c01d4"
   subscription_id      = data.azurerm_subscription.current.id
   enforce              = true
+  location             = azurerm_resource_group.rg.location
 
   identity {
     type = "SystemAssigned"
