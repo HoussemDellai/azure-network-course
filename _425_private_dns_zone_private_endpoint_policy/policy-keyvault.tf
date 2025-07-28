@@ -12,7 +12,7 @@ resource "azurerm_subscription_policy_assignment" "policy-key-vault" {
   parameters = <<PARAMETERS
 {
   "privateDnsZoneId": {
-    "value": "${azurerm_private_dns_zone.private-dns-zone-key-vault.id}"
+    "value": "${azurerm_private_dns_zone.dns-zone-key-vault.id}"
   },
   "effect": {
     "value": "DeployIfNotExists"
