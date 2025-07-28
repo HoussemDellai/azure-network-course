@@ -7,3 +7,7 @@ module "vm-hub-app" {
   install_webapp      = true
   enable_public_ip    = false
 }
+
+output "vm_hub_app_private_ip" {
+  value = module.vm-hub-app.vm_private_ip
+}
