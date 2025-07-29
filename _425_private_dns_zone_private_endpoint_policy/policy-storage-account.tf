@@ -1,6 +1,6 @@
 resource "azurerm_resource_group_policy_assignment" "policy-storage-account" {
   name                 = "policy-storage-account"
-  policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/ac673a9a-f77d-4846-b2d8-a57f8e1c01d4"
+  policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/6df98d03-368a-4438-8730-a93c4d7693d6"
   resource_group_id    = azurerm_resource_group.rg.id
   enforce              = true
   location             = azurerm_resource_group.rg.location
