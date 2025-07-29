@@ -26,7 +26,7 @@ resource "azurerm_resource_group_policy_remediation" "remediation-key-vault" {
 }
 
 resource "azurerm_role_assignment" "role-network-contributor-policy-key-vault" {
-  scope                = azurerm_private_dns_zone.private-dns-zone-key-vault.id
+  scope                = azurerm_resource_group.rg.id
   role_definition_name = "Network Contributor"
   principal_id         = azurerm_resource_group_policy_assignment.policy-key-vault.identity.0.principal_id
 }

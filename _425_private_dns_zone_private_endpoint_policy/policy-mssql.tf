@@ -23,11 +23,11 @@ resource "azurerm_resource_group_policy_remediation" "remediation-mssql" {
   name                 = "remediation-mssql"
   resource_group_id    = azurerm_resource_group.rg.id
   policy_assignment_id = azurerm_resource_group_policy_assignment.policy-mssql.id
-  
+
 }
 
 resource "azurerm_role_assignment" "role-network-contributor-policy-mssql" {
-  scope                = azurerm_private_dns_zone.private-dns-zone-mssql.id
+  scope                = azurerm_resource_group.rg.id
   role_definition_name = "Network Contributor"
   principal_id         = azurerm_resource_group_policy_assignment.policy-mssql.identity.0.principal_id
 }

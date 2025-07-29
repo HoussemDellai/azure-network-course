@@ -26,7 +26,7 @@ resource "azurerm_resource_group_policy_remediation" "remediation-storage-accoun
 }
 
 resource "azurerm_role_assignment" "role-network-contributor-policy-storage-account" {
-  scope                = azurerm_private_dns_zone.private-dns-zone-storage-account.id
+  scope                = azurerm_resource_group.rg.id
   role_definition_name = "Network Contributor"
   principal_id         = azurerm_resource_group_policy_assignment.policy-storage-account.identity.0.principal_id
 }
