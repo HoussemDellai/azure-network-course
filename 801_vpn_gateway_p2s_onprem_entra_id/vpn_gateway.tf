@@ -42,6 +42,10 @@ resource "azurerm_virtual_network_gateway" "vpn-gateway" {
     aad_issuer           = "https://sts.windows.net/${data.azurerm_client_config.current.tenant_id}/"
     aad_tenant           = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}"
   }
+
+  custom_route {
+    address_prefixes = []
+  }
 }
 
 data "azurerm_client_config" "current" {}
