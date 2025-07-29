@@ -1,7 +1,7 @@
-resource "azurerm_subscription_policy_assignment" "policy-key-vault" {
+resource "azurerm_resource_group_policy_assignment" "policy-key-vault" {
   name                 = "policy-key-vault"
   policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/ac673a9a-f77d-4846-b2d8-a57f8e1c01d4"
-  subscription_id      = data.azurerm_subscription.current.id
+  resource_group_id    = azurerm_resource_group.rg.id
   enforce              = true
   location             = azurerm_resource_group.rg.location
 
@@ -9,29 +9,77 @@ resource "azurerm_subscription_policy_assignment" "policy-key-vault" {
     type = "SystemAssigned"
   }
 
-  parameters = <<PARAMETERS
-{
-  "privateDnsZoneId": {
-    "value": "${azurerm_private_dns_zone.dns-zone-key-vault.id}"
-  },
-  "effect": {
-    "value": "DeployIfNotExists"
-  }
-}
-PARAMETERS
+  parameters = jsonencode({
+    privateDnsZoneId = {
+      value = azurerm_private_dns_zone.dns-zone-key-vault.id
+    }
+    effect = {
+      value = "DeployIfNotExists"
+    }
+  })
 }
 
-data "azurerm_subscription" "current" {}
+resource "azurerm_resource_group_policy_remediation" "remediation-key-vault" {
+  name                 = "remediation-key-vault"
+  resource_group_id    = azurerm_resource_group.rg.id
+  policy_assignment_id = azurerm_resource_group_policy_assignment.policy-key-vault.id
+}
 
-# role assignment for the policy assignment
 resource "azurerm_role_assignment" "role-network-contributor-policy-key-vault" {
   scope                = azurerm_private_dns_zone.dns-zone-key-vault.id
-  role_definition_name = "Network Contributor" # "Private DNS Zone Contributor"
-  principal_id         = azurerm_subscription_policy_assignment.policy-key-vault.identity.0.principal_id
+  role_definition_name = "Network Contributor"
+  principal_id         = azurerm_resource_group_policy_assignment.policy-key-vault.identity.0.principal_id
 }
 
-resource "azurerm_role_assignment" "role-private-dns-zone-contributor-policy-key-vault" {
-  scope                = azurerm_private_dns_zone.dns-zone-key-vault.id
-  role_definition_name = "Private DNS Zone Contributor"
-  principal_id         = azurerm_subscription_policy_assignment.policy-key-vault.identity.0.principal_id
-}
+# resource "azurerm_subscription_policy_assignment" "policy-key-vault" {
+#   name                 = "policy-key-vault"
+#   policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/ac673a9a-f77d-4846-b2d8-a57f8e1c01d4"
+#   subscription_id      = data.azurerm_subscription.current.id
+#   enforce              = true
+#   location             = azurerm_resource_group.rg.location
+
+#   identity {
+#     type = "SystemAssigned"
+#   }
+
+#   parameters = jsonencode({
+#     privateDnsZoneId = {
+#       value = azurerm_private_dns_zone.dns-zone-key-vault.id
+#     }
+#     effect = {
+#       value = "DeployIfNotExists"
+#     }
+#   })
+
+#   # parameters = <<PARAMETERS
+#   # {
+#   #   "privateDnsZoneId": {
+#   #     "value": "${azurerm_private_dns_zone.dns-zone-key-vault.id}"
+#   #   },
+#   #   "effect": {
+#   #     "value": "DeployIfNotExists"
+#   #   }
+#   # }
+#   # PARAMETERS
+# }
+
+# resource "azurerm_subscription_policy_remediation" "remediation-key-vault" {
+#   name                 = "remediation-key-vault"
+#   subscription_id      = data.azurerm_subscription.current.id
+#   policy_assignment_id = azurerm_subscription_policy_assignment.policy-key-vault.id
+# }
+
+# data "azurerm_subscription" "current" {}
+
+# # role assignment for the policy assignment
+# resource "azurerm_role_assignment" "role-network-contributor-policy-key-vault" {
+#   scope                = azurerm_private_dns_zone.dns-zone-key-vault.id
+#   role_definition_name = "Network Contributor"
+#   principal_id         = azurerm_subscription_policy_assignment.policy-key-vault.identity.0.principal_id
+# }
+
+# # resource "azurerm_role_assignment" "role-private-dns-zone-contributor-policy-key-vault" {
+# #   scope                = azurerm_private_dns_zone.dns-zone-key-vault.id
+# #   role_definition_name = "Private DNS Zone Contributor"
+# #   principal_id         = azurerm_subscription_policy_assignment.policy-key-vault.identity.0.principal_id
+# # }
