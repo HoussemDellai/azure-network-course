@@ -11,7 +11,7 @@ resource "azurerm_public_ip" "pip-vnet-gateway" {
   sku               = "Standard"
 }
 
-resource "azurerm_virtual_network_gateway" "vpn-gateway" {
+resource "azurerm_virtual_network_gateway" "vpn-gateway-p2s" {
   name                = "vpn-gateway-p2s"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
