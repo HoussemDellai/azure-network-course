@@ -11,7 +11,7 @@ resource "azurerm_resource_group_policy_assignment" "policy-storage-account" {
 
   parameters = jsonencode({
     privateDnsZoneId = {
-      value = azurerm_private_dns_zone.dns-zone-storage-account.id
+      value = azurerm_private_dns_zone.private-dns-zone-storage-account.id
     }
     effect = {
       value = "DeployIfNotExists"

@@ -11,7 +11,7 @@ resource "azurerm_resource_group_policy_assignment" "policy-key-vault" {
 
   parameters = jsonencode({
     privateDnsZoneId = {
-      value = azurerm_private_dns_zone.dns-zone-key-vault.id
+      value = azurerm_private_dns_zone.private-dns-zone-key-vault.id
     }
     effect = {
       value = "DeployIfNotExists"
@@ -26,7 +26,7 @@ resource "azurerm_resource_group_policy_remediation" "remediation-key-vault" {
 }
 
 resource "azurerm_role_assignment" "role-network-contributor-policy-key-vault" {
-  scope                = azurerm_private_dns_zone.dns-zone-key-vault.id
+  scope                = azurerm_private_dns_zone.private-dns-zone-key-vault.id
   role_definition_name = "Network Contributor"
   principal_id         = azurerm_resource_group_policy_assignment.policy-key-vault.identity.0.principal_id
 }
