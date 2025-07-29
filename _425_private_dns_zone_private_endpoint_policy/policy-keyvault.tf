@@ -26,6 +26,6 @@ data "azurerm_subscription" "current" {}
 # role assignment for the policy assignment
 resource "azurerm_role_assignment" "role-policy-key-vault" {
   scope                = azurerm_subscription_policy_assignment.policy-key-vault.id
-  role_definition_name = "Private DNS Zone Contributor"
+  role_definition_name = "Network Contributor" # "Private DNS Zone Contributor"
   principal_id         = data.azurerm_client_config.current.object_id
 }
