@@ -43,9 +43,9 @@ resource "azurerm_virtual_network_gateway" "vpn-gateway-p2s" {
     aad_tenant           = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}"
   }
 
-  # custom_route {
-  #   address_prefixes = []
-  # }
+  custom_route { # https://learn.microsoft.com/en-us/azure/vpn-gateway/azure-vpn-client-optional-configurations#forced-tunneling
+    address_prefixes = ["0.0.0.0/1", "128.0.0.0/1"]
+  }
 }
 
 data "azurerm_client_config" "current" {}
