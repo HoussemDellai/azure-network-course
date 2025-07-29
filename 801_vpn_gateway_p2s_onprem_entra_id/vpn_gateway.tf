@@ -12,7 +12,7 @@ resource "azurerm_public_ip" "pip-vnet-gateway" {
 }
 
 resource "azurerm_virtual_network_gateway" "vpn-gateway" {
-  name                = "vpn-gateway"
+  name                = "vpn-gateway-p2s"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -38,14 +38,14 @@ resource "azurerm_virtual_network_gateway" "vpn-gateway" {
     vpn_client_protocols = ["OpenVPN"] # SSTP, IkeV2 and OpenVPN
     vpn_auth_types       = ["AAD"]     # AAD, Radius and Certificate
     address_space        = ["172.16.0.0/24"]
-    aad_audience         = "41b23e61-6c1e-4545-b367-cd054e0ed4b4"
+    aad_audience         = "c632b3df-fb67-4d84-bdcf-b95ad541b5c8" # "41b23e61-6c1e-4545-b367-cd054e0ed4b4"
     aad_issuer           = "https://sts.windows.net/${data.azurerm_client_config.current.tenant_id}/"
     aad_tenant           = "https://login.microsoftonline.com/${data.azurerm_client_config.current.tenant_id}"
   }
 
-  custom_route {
-    address_prefixes = []
-  }
+  # custom_route {
+  #   address_prefixes = []
+  # }
 }
 
 data "azurerm_client_config" "current" {}
