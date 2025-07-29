@@ -23,6 +23,7 @@ resource "azurerm_resource_group_policy_remediation" "remediation-mssql" {
   name                 = "remediation-mssql"
   resource_group_id    = azurerm_resource_group.rg.id
   policy_assignment_id = azurerm_resource_group_policy_assignment.policy-mssql.id
+  
 }
 
 resource "azurerm_role_assignment" "role-network-contributor-policy-mssql" {
