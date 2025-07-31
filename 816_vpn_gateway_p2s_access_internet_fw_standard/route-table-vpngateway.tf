@@ -13,7 +13,7 @@ resource "azurerm_route_table" "route-table-vpngateway-to-nva" {
 resource "azurerm_route" "route-to-nva-1" {
   name                   = "route-to-nva-1"
   resource_group_name    = azurerm_resource_group.rg.name
-  route_table_name       = azurerm_route_table.route_table_vpngateway_to_nva.name
+  route_table_name       = azurerm_route_table.route-table-vpngateway-to-nva.name
   address_prefix         = "0.0.0.0/1"
   next_hop_type          = "VirtualAppliance"
   next_hop_in_ip_address = "10.0.2.4"
@@ -22,7 +22,7 @@ resource "azurerm_route" "route-to-nva-1" {
 resource "azurerm_route" "route-to-nva-2" {
   name                   = "route-to-nva-2"
   resource_group_name    = azurerm_resource_group.rg.name
-  route_table_name       = azurerm_route_table.route_table_vpngateway_to_nva.name
+  route_table_name       = azurerm_route_table.route-table-vpngateway-to-nva.name
   address_prefix         = "128.0.0.0/1"
   next_hop_type          = "VirtualAppliance"
   next_hop_in_ip_address = "10.0.2.4"
