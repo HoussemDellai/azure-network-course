@@ -7,10 +7,10 @@ resource "azurerm_service_plan" "plan" {
 }
 
 resource "azurerm_linux_web_app" "web-app" {
-  name                = "webapp-${random_string.random.result}"
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_service_plan.plan.location
-  service_plan_id     = azurerm_service_plan.plan.id
+  name                          = "webapp-${random_string.random.result}"
+  resource_group_name           = azurerm_resource_group.rg.name
+  location                      = azurerm_service_plan.plan.location
+  service_plan_id               = azurerm_service_plan.plan.id
   public_network_access_enabled = false
   virtual_network_subnet_id     = null
 
