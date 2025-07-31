@@ -1,4 +1,4 @@
-resource "azurerm_route_table" "route_table_vpngateway_to_nva" {
+resource "azurerm_route_table" "route-table-vpngateway-to-nva" {
   name                          = "route-table-vpngateway-to-nva"
   location                      = azurerm_resource_group.rg.location
   resource_group_name           = azurerm_resource_group.rg.name
