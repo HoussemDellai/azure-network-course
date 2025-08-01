@@ -129,10 +129,10 @@ Set-PSReadLineOption -colors @{ Parameter = "Blue"}
 Set-PSReadLineOption -colors @{ Command = "Magenta"}
 
 function prompt {
-" $ "
+' $ '
 }
 
-Import-Module Terminal-Icons
+`$env:ARM_SUBSCRIPTION_ID=(az account show --query id -o tsv)
 
 Clear
 

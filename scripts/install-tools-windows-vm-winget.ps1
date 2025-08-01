@@ -58,6 +58,8 @@ winget install -e --id Brave.Brave --accept-package-agreements --accept-source-a
 
 winget install -e --id Brave.Brave.Dev --accept-package-agreements --accept-source-agreements
 
+winget install -e --id TorProject.TorBrowser --accept-package-agreements --accept-source-agreements
+
 winget install -e --id Microsoft.Sqlcmd --accept-package-agreements --accept-source-agreements 
 
 winget install -e --id=Microsoft.AzureDataStudio --accept-package-agreements --accept-source-agreements

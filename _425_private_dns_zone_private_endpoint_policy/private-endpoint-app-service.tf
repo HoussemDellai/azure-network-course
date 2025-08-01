@@ -1,9 +1,9 @@
 resource "azurerm_private_endpoint" "private-endpoint-app-service" {
-  name                          = "private-endpoint-app-service"
+  name                          = "pe-app-service"
   location                      = azurerm_resource_group.rg.location
   resource_group_name           = azurerm_resource_group.rg.name
   subnet_id                     = azurerm_subnet.snet-pe.id
-  custom_network_interface_name = "nic-private-endpoint-app-service"
+  custom_network_interface_name = "nic-pe-app-service"
 
   private_service_connection {
     name                           = "connection"

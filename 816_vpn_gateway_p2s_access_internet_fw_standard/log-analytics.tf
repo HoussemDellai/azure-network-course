@@ -6,7 +6,7 @@ resource "azurerm_log_analytics_workspace" "log_analytics" {
   allow_resource_only_permissions = false
   internet_ingestion_enabled      = true
   internet_query_enabled          = true
-  retention_in_days               = 30
+  retention_in_days               = 730
   daily_quota_gb                  = -1
 }
 

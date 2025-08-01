@@ -33,6 +33,10 @@ resource "azurerm_firewall_policy_rule_collection_group" "policy-group-allow" {
         port = 80
       }
       protocols {
+        type = "Http"
+        port = 8081
+      }
+      protocols {
         type = "Https"
         port = 443
       }
