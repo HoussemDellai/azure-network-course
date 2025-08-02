@@ -6,8 +6,8 @@ resource "azurerm_service_plan" "plan" {
   sku_name            = "S1"
 }
 
-resource "azurerm_linux_web_app" "web-app" {
-  name                          = "webapp-${random_string.random.result}"
+resource "azurerm_linux_web_app" "apps-service" {
+  name                          = "app-service-${random_string.random.result}"
   resource_group_name           = azurerm_resource_group.rg.name
   location                      = azurerm_service_plan.plan.location
   service_plan_id               = azurerm_service_plan.plan.id
