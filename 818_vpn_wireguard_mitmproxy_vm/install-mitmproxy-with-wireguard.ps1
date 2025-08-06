@@ -1,8 +1,12 @@
 # install python
 winget install -e --id Python.Python.3.13
 
-# install pip
-pip install mitmproxy
+# install mitmproxy using winget
+winget install -e --id mitmproxy.mitmproxy
+
+# install mitm using pip
+# pip install mitmproxy
+
 
 # start mitmproxy and wireguard
 mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false --mode wireguard -s io-write-flow-file.py
