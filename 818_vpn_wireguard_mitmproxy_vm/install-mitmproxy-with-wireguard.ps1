@@ -9,7 +9,7 @@ winget install -e --id mitmproxy.mitmproxy
 
 
 # start mitmproxy and wireguard
-mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false --mode wireguard -s io-write-flow-file.py
+mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false --mode wireguard -s ./python/io-write-flow-file.py
 # mitmweb --listen-port 8080 --web-host 0.0.0.0 --web-port 8081 --set block_global=false --mode wireguard -w +flows.mitm
 
 # to connect to wireguard you need:

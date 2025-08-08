@@ -1,15 +1,25 @@
 # Azure DNS Private Resolver
 
 `Azure DNS Private Resolver` could be used to resolve domain names in three scenarios:
+
 1) On-prem to Azure
 2) Azure to on-prem
 3) Azure to Azure
 
-This lab will explore the `Azure to Azure` scenario.
+This lab will explore the `Azure to Azure` scenario. 
+From a Spoke network (VNET) you will be able to resolve domain names in a Hub network (VNET) using `DNS Private Resolver`.
 
 ![](images/architecture.png)
 
-Terraform creates the following resources.
+Terraform creates the following resources in the Hub.
+
+![](images/resources-hub.png)
+
+And also the following resources in the Spoke.
+
+![](images/resources-spoke.png)
+
+Here are the steps to follow to complete this lab.
 
 1) Create Hub VNET with no Subnet
 2) Create `Private DNS Zone` called `corp.azure` and an `A record` called `addr1`
@@ -39,3 +49,5 @@ From the vm-linux-spoke, run the following command to ensure DNS resolution is w
 ```sh
 nslookup addr1.corp.azure
 ```
+
+>Note that you can also resolve the Private DNS Zones linked to the Spoke VNET, `spoke.corp.azure` in this lab, from the Spoke VNET. This proves that you can resolve both Hub and Spoke Private DNS Zones from the Spoke VNET.
