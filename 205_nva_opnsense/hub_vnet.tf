@@ -20,8 +20,8 @@ resource "azurerm_subnet" "snet-trusted" {
   address_prefixes     = ["10.0.1.0/24"]
 }
 
-resource "azurerm_subnet" "snet-hub-app" {
-  name                 = "snet-hub-app"
+resource "azurerm_subnet" "snet-bastion" {
+  name                 = "AzureBastionSubnet"
   resource_group_name  = azurerm_virtual_network.vnet-hub.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet-hub.name
   address_prefixes     = ["10.0.2.0/24"]

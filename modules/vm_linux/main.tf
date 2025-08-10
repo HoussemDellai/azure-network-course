@@ -54,8 +54,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   source_image_reference {
     publisher = "canonical"
-    offer     = "ubuntu-25_04" # "0001-com-ubuntu-server-jammy"
-    sku       = "minimal"      # "22_04-lts-gen2"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "server"
     version   = "latest"
   }
 
