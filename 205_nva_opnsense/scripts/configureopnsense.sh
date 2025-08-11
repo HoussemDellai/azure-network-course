@@ -10,7 +10,6 @@ fetch $1config.xml
 sed -i "" "s/yyy.yyy.yyy.yyy/$3/" config.xml
 cp config.xml /usr/local/etc/config.xml
 
-
 #Download OPNSense Bootstrap and Permit Root Remote Login
 # fetch https://raw.githubusercontent.com/opnsense/update/master/src/bootstrap/opnsense-bootstrap.sh.in
 #fetch https://raw.githubusercontent.com/opnsense/update/7ba940e0d57ece480540c4fd79e9d99a87f222c8/src/bootstrap/opnsense-bootstrap.sh.in
