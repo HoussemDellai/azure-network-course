@@ -754,7 +754,7 @@
       </rule>
       <mode>hybrid</mode>
     </outbound>
-  </nat
+  </nat>
   <gateways>
     <gateway_item>
       <interface>lan</interface>
