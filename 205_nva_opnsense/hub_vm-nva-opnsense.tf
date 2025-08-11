@@ -93,16 +93,9 @@ resource "azurerm_virtual_machine_extension" "cslinux" {
   settings             = <<SETTINGS
     {
       "fileUris": [
-        "https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/205_nva_opnsense/scripts1/configureopnsense.sh"
+        "https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/205_nva_opnsense/scripts/configureopnsense.sh"
       ],
-      "commandToExecute": "sh configureopnsense.sh 'https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/205_nva_opnsense/scripts1/' '25.7' '2.12.0.4' 'TwoNics' '10.0.1.0/24' '1.1.1.1/32' '' ''"
+      "commandToExecute": "sh configureopnsense.sh 'https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/205_nva_opnsense/scripts/' '25.7' '10.0.1.1'"
     }
     SETTINGS
-
-  timeouts {
-    create = "60m"
-    read   = "5m"
-    update = "30m"
-    delete = "30m"
-  }
 }
