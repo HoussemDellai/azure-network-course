@@ -8,7 +8,7 @@
 fetch $1config.xml
 
 sed -i "" "s/yyy.yyy.yyy.yyy/$3/" config.xml
-# cp config.xml /usr/local/etc/config.xml # me testing
+cp config.xml /usr/local/etc/config.xml
 
 
 #Download OPNSense Bootstrap and Permit Root Remote Login
