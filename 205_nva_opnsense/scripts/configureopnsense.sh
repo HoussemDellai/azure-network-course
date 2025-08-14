@@ -4,10 +4,12 @@
 # $1 = OpnSense script URI
 # $2 = OpnSense version
 # $3 = Subnet GW IP
+# $4 = Public IP of OpnSense
 
 fetch $1config.xml
 
-sed -i "" "s/yyy.yyy.yyy.yyy/$3/" config.xml
+sed -i "" "s/GATEWAY_PRIVATE_IP/$3/" config.xml
+sed -i "" "s/OPNSENSE_SERVER_PUBLIC_IP/$4/" config.xml
 cp config.xml /usr/local/etc/config.xml
 
 #Download OPNSense Bootstrap and Permit Root Remote Login

@@ -220,7 +220,7 @@
     </user>
     <nextuid>2000</nextuid>
     <nextgid>2000</nextgid>
-    <timezone>Europe/Paris</timezone>
+    <timezone>America/Mexico_City</timezone>
     <time-update-interval>300</time-update-interval>
     <timeservers>0.nl.pool.ntp.org</timeservers>
     <webgui>
@@ -249,8 +249,8 @@
     <backupcount>60</backupcount>
     <crypto_hardware>aesni</crypto_hardware>
     <language>en_US</language>
-    <dnsserver>1.1.1.1</dnsserver>
-    <dnsserver>1.0.0.1</dnsserver>
+    <dnsserver>8.8.8.8</dnsserver>
+    <dnsserver>8.8.4.4</dnsserver>
     <sudo_allow_wheel>1</sudo_allow_wheel>
     <serialspeed>115200</serialspeed>
     <primaryconsole>video</primaryconsole>
@@ -382,6 +382,16 @@
         <network>wanip</network>
         <port>443</port>
       </destination>
+      <updated>
+        <username>root@187.143.37.51</username>
+        <time>1503706250.2226</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@187.143.39.253</username>
+        <time>1502150334.1255</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
       <log>1</log>
     </rule>
     <rule uuid="272c9347-9eb3-4d14-b131-08e0c738e531">
@@ -398,6 +408,16 @@
       <destination>
         <any>1</any>
       </destination>
+      <updated>
+        <username>root@9.223.176.199</username>
+        <time>1754854844.67</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@9.223.176.199</username>
+        <time>1754854844.67</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
       <log>1</log>
     </rule>
     <rule uuid="376489f5-8000-4763-a1d7-c74b9249d998">
@@ -414,6 +434,16 @@
       <destination>
         <any>1</any>
       </destination>
+      <updated>
+        <username>root@9.223.176.199</username>
+        <time>1754854863.16</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@9.223.176.199</username>
+        <time>1754854863.16</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
       <log>1</log>
     </rule>
     <rule uuid="66b4ac7f-6533-4d5e-973b-fee22b13064a">
@@ -432,6 +462,16 @@
         <network>wan</network>
         <port>51820</port>
       </destination>
+      <updated>
+        <username>root@176.177.25.47</username>
+        <time>1754888531.72</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@176.177.25.47</username>
+        <time>1754888531.72</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
       <log>1</log>
     </rule>
     <rule uuid="43f15584-96b9-46b5-91bb-d0f9f0fc8ba6">
@@ -450,6 +490,16 @@
       <destination>
         <network>lanip</network>
       </destination>
+      <updated>
+        <username>root@10.0.1.7</username>
+        <time>1636126633.6864</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@10.0.1.7</username>
+        <time>1636125745.8098</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
     </rule>
     <rule uuid="86081384-918e-4884-b3f3-c2f430b622b8">
       <type>pass</type>
@@ -466,6 +516,16 @@
       <destination>
         <network>lanip</network>
       </destination>
+      <updated>
+        <username>root@10.0.1.7</username>
+        <time>1636146222.3734</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@10.0.1.7</username>
+        <time>1636126523.671</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
     </rule>
     <rule uuid="0c9b7aa5-2152-45f7-be6f-a6a08bfa98ea">
       <type>pass</type>
@@ -494,6 +554,16 @@
       <destination>
         <any>1</any>
       </destination>
+      <updated>
+        <username>root@9.223.176.199</username>
+        <time>1754854642.91</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@9.223.176.199</username>
+        <time>1754854642.91</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
       <log>1</log>
     </rule>
     <rule uuid="86c95e78-f010-4203-b168-79d5797491bf">
@@ -510,6 +580,16 @@
       <destination>
         <any>1</any>
       </destination>
+      <updated>
+        <username>root@9.223.176.199</username>
+        <time>1754854730.24</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@9.223.176.199</username>
+        <time>1754854730.24</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
       <log>1</log>
     </rule>
     <rule uuid="454682b4-7fbf-457e-96d0-61a052a21272">
@@ -527,6 +607,16 @@
       <destination>
         <any>1</any>
       </destination>
+      <updated>
+        <username>root@176.177.25.47</username>
+        <time>1754887757.97</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@176.177.25.47</username>
+        <time>1754887757.97</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
     </rule>
     <rule uuid="dd56c00b-12bf-45a8-9856-f46440df30ff">
       <type>pass</type>
@@ -542,6 +632,16 @@
       <destination>
         <any>1</any>
       </destination>
+      <updated>
+        <username>root@176.177.25.47</username>
+        <time>1754890483.17</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </updated>
+      <created>
+        <username>root@176.177.25.47</username>
+        <time>1754890483.17</time>
+        <description>/firewall_rules_edit.php made changes</description>
+      </created>
       <log>1</log>
     </rule>
   </filter>
@@ -595,6 +695,11 @@
     <sequence>system_information-container:00000000-col3:show,services_status-container:00000001-col4:show,gateways-container:00000002-col4:show,interface_list-container:00000003-col4:show</sequence>
     <column_count>2</column_count>
   </widgets>
+  <revision>
+    <username>root@135.225.87.229</username>
+    <description>/firewall_rules.php made changes</description>
+    <time>1755155525.59</time>
+  </revision>
   <OPNsense>
     <captiveportal version="1.0.4" persisted_at="1754854082.53">
       <zones/>
@@ -779,7 +884,7 @@
             <pubkey>+CV9zx1NgQPF/vNL1teDQ8mbkzPuCNp5KdnBb+yTHHo=</pubkey>
             <psk/>
             <tunneladdress>0.0.0.0/0</tunneladdress>
-            <serveraddress>OPNSENSE_SERVER_PUBLIC_IP</serveraddress>
+            <serveraddress>135.225.87.229</serveraddress>
             <serverport>51820</serverport>
             <keepalive/>
           </client>
@@ -1200,7 +1305,7 @@
         <descr/>
         <interface>lan</interface>
         <ipprotocol>inet</ipprotocol>
-        <gateway>GATEWAY_PRIVATE_IP</gateway>
+        <gateway>10.0.1.1</gateway>
         <defaultgw>0</defaultgw>
         <fargw>0</fargw>
         <monitor_disable>1</monitor_disable>
@@ -1379,6 +1484,11 @@
         </destination>
         <staticnatport>1</staticnatport>
         <descr>Auto created rule for ISAKMP - localhost -&gt; WAN</descr>
+        <created>
+          <username>root@172.15.1.5</username>
+          <time>1501701582.0056</time>
+          <description>/firewall_nat_out.php made changes</description>
+        </created>
       </rule>
       <rule>
         <interface>wan</interface>
@@ -1392,6 +1502,11 @@
         </destination>
         <natport/>
         <descr>Auto created rule - localhost -&gt; WAN</descr>
+        <created>
+          <username>root@172.15.1.5</username>
+          <time>1501701582.0057</time>
+          <description>/firewall_nat_out.php made changes</description>
+        </created>
         <dstport/>
       </rule>
       <rule>
@@ -1409,9 +1524,19 @@
         <poolopts/>
         <poolopts_sourcehashkey/>
         <ipprotocol>inet</ipprotocol>
+        <created>
+          <username>root@9.223.176.199</username>
+          <time>1754854397.34</time>
+          <description>/firewall_nat_out_edit.php made changes</description>
+        </created>
         <target>wanip</target>
         <sourceport/>
         <log>1</log>
+        <updated>
+          <username>root@176.177.25.47</username>
+          <time>1754890061.24</time>
+          <description>/firewall_nat_out_edit.php made changes</description>
+        </updated>
       </rule>
       <rule>
         <source>
@@ -1428,9 +1553,19 @@
         <poolopts/>
         <poolopts_sourcehashkey/>
         <ipprotocol>inet</ipprotocol>
+        <created>
+          <username>root@176.177.25.47</username>
+          <time>1754891506.60</time>
+          <description>/firewall_nat_out_edit.php made changes</description>
+        </created>
         <target>wanip</target>
         <sourceport/>
         <log>1</log>
+        <updated>
+          <username>root@176.177.25.47</username>
+          <time>1754891550.12</time>
+          <description>/firewall_nat_out_edit.php made changes</description>
+        </updated>
       </rule>
       <mode>hybrid</mode>
     </outbound>

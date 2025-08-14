@@ -525,58 +525,6 @@
         <description>/firewall_rules_edit.php made changes</description>
       </created>
     </rule>
-    <rule uuid="63d08bff-0848-494b-94c3-8677dbe2187f">
-      <type>pass</type>
-      <interface>lan</interface>
-      <ipprotocol>inet</ipprotocol>
-      <statetype>keep state</statetype>
-      <descr>Allow Firewall Management Windows-VM-Subnet</descr>
-      <direction>in</direction>
-      <log>1</log>
-      <quick>1</quick>
-      <source>
-        <address>WindowsVMSubnet</address>
-      </source>
-      <destination>
-        <network>lanip</network>
-      </destination>
-      <updated>
-        <username>root@10.0.1.7</username>
-        <time>1650569687.4794</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </updated>
-      <created>
-        <username>root@10.0.1.7</username>
-        <time>1650569687.4794</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </created>
-    </rule>
-    <rule uuid="70560255-8b66-45e1-a282-d2892a45e21b">
-      <type>pass</type>
-      <interface>lan</interface>
-      <ipprotocol>inet</ipprotocol>
-      <statetype>keep state</statetype>
-      <descr>Allow Windows-VM-Subnet Internet Access</descr>
-      <direction>in</direction>
-      <log>1</log>
-      <quick>1</quick>
-      <source>
-        <address>WindowsVMSubnet</address>
-      </source>
-      <destination>
-        <any>1</any>
-      </destination>
-      <updated>
-        <username>root@10.0.1.7</username>
-        <time>1650570771.5832</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </updated>
-      <created>
-        <username>root@10.0.1.7</username>
-        <time>1650570771.5832</time>
-        <description>/firewall_rules_edit.php made changes</description>
-      </created>
-    </rule>
     <rule uuid="0c9b7aa5-2152-45f7-be6f-a6a08bfa98ea">
       <type>pass</type>
       <ipprotocol>inet</ipprotocol>
@@ -915,25 +863,6 @@
         <geoip>
           <url/>
         </geoip>
-        <aliases>
-          <alias uuid="637063a6-909d-4544-b2ac-c883a9ea97e4">
-            <enabled>1</enabled>
-            <name>WindowsVMSubnet</name>
-            <type>network</type>
-            <path_expression/>
-            <proto/>
-            <interface/>
-            <counters>0</counters>
-            <updatefreq/>
-            <content>1.1.1.1/32</content>
-            <password/>
-            <username/>
-            <authtype/>
-            <expire/>
-            <categories/>
-            <description/>
-          </alias>
-        </aliases>
       </Alias>
       <Filter version="1.0.4" persisted_at="1754854082.73">
         <rules/>
@@ -1573,34 +1502,6 @@
           <description>/firewall_nat_out.php made changes</description>
         </created>
         <dstport/>
-      </rule>
-      <rule>
-        <source>
-          <network>WindowsVMSubnet</network>
-        </source>
-        <destination>
-          <any>1</any>
-        </destination>
-        <descr>NAT Windows-VM-Subnet</descr>
-        <category/>
-        <interface>wan</interface>
-        <tag/>
-        <tagged/>
-        <poolopts/>
-        <poolopts_sourcehashkey/>
-        <ipprotocol>inet</ipprotocol>
-        <created>
-          <username>root@10.0.1.7</username>
-          <time>1650569929.4325</time>
-          <description>/firewall_nat_out_edit.php made changes</description>
-        </created>
-        <target>wanip</target>
-        <sourceport/>
-        <updated>
-          <username>root@10.0.1.7</username>
-          <time>1650570006.9471</time>
-          <description>/firewall_nat_out_edit.php made changes</description>
-        </updated>
       </rule>
       <rule>
         <source>
