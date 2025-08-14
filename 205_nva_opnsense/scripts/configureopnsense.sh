@@ -12,17 +12,11 @@ sed -i "" "s/GATEWAY_PRIVATE_IP/$3/" config.xml
 sed -i "" "s/OPNSENSE_SERVER_PUBLIC_IP/$4/" config.xml
 cp config.xml /usr/local/etc/config.xml
 
-#Download OPNSense Bootstrap and Permit Root Remote Login
-# fetch https://raw.githubusercontent.com/opnsense/update/master/src/bootstrap/opnsense-bootstrap.sh.in
-#fetch https://raw.githubusercontent.com/opnsense/update/7ba940e0d57ece480540c4fd79e9d99a87f222c8/src/bootstrap/opnsense-bootstrap.sh.in
+# Download OPNSense Bootstrap and Permit Root Remote Login
 fetch https://raw.githubusercontent.com/opnsense/update/master/src/bootstrap/opnsense-bootstrap.sh.in
 sed -i "" 's/#PermitRootLogin no/PermitRootLogin yes/' /etc/ssh/sshd_config
 
-#OPNSense
-# Due to a recent change in pkg the following commands no longer finish with status code 0
-#		pkg unlock -a
-#		pkg delete -fa
-# This resplace of set -e which force the script to finish in case of non status code 0 has to be inplace
+# OPNSense
 sed -i "" "s/set -e/#set -e/g" opnsense-bootstrap.sh.in
 sed -i "" "s/reboot/shutdown -r +1/g" opnsense-bootstrap.sh.in
 sh ./opnsense-bootstrap.sh.in -y -r "$2"
@@ -38,7 +32,7 @@ route delete 168.63.129.16
 EOL
 chmod +x /usr/local/etc/rc.syshook.d/start/22-remoteroute
 
-#Adds support to LB probe from IP 168.63.129.16
+# Adds support to LB probe from IP 168.63.129.16
 # Add Azure VIP on Arp table
 echo # Add Azure Internal VIP >> /etc/rc.conf
 echo static_arp_pairs=\"azvip\" >>  /etc/rc.conf
