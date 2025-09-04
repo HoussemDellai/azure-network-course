@@ -23,7 +23,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows-nvads" {
   name                  = "vm-win11-nvads"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_NV12ads_A10_v5" # "Standard_D4ads_v6" # "Standard_D96ads_v5" # 
+  size                  = "Standard_NV6ads_A10_v5" # "Standard_D4ads_v6" # "Standard_D96ads_v5" # 
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
   priority              = "Spot"
@@ -88,6 +88,15 @@ resource "azurerm_virtual_machine_extension" "cse-nvads" {
   }
 }
 
+resource "azurerm_virtual_machine_extension" "nvidia-nvads" {
+  name                 = "nvidia-nvads"
+  virtual_machine_id   = azurerm_windows_virtual_machine.vm-windows-nvads.id
+  publisher            = "Microsoft.HpcCompute"
+  type                 = "NvidiaGpuDriverWindows"
+  type_handler_version = "1.6"
+  settings             = null
+}
+
 resource "azurerm_role_assignment" "owner-nvads" {
   scope                = data.azurerm_subscription.current.id
   role_definition_name = "Owner"
@@ -103,3 +112,5 @@ output "vm_windows_nvads_public_ip" {
 output "vm_windows_nvads_private_ip" {
   value = azurerm_network_interface.nic-vm-windows-nvads.private_ip_address
 }
+
+data "azurerm_subscription" "current" {}

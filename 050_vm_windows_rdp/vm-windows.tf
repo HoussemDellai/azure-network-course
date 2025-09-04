@@ -23,7 +23,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   name                  = "vm-win11"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_D4ads_v6" # "Standard_D96ads_v5" # 
+  size                  = "Standard_D8ads_v6" # "Standard_D96ads_v5" # 
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
   priority              = "Spot"
@@ -40,7 +40,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
     name                 = "os-disk-vm-windows"
     caching              = "ReadOnly"        # "ReadWrite" # None, ReadOnly and ReadWrite.
     storage_account_type = "StandardSSD_LRS" # "Standard_LRS"
-    disk_size_gb         = 128
+    disk_size_gb         = 256 # 128
 
     diff_disk_settings {
       option    = "Local"    # Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is Local.
@@ -67,6 +67,15 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
     ignore_changes = [identity]
   }
 }
+
+# resource "azurerm_managed_disk" "example" {
+#   name                 = "acctestmd"
+#   location             = azurerm_resource_group.example.location
+#   resource_group_name  = azurerm_resource_group.example.name
+#   storage_account_type = "Standard_LRS"
+#   create_option        = "Empty"
+#   disk_size_gb         = "1"
+# }
 
 resource "azurerm_virtual_machine_extension" "cse" {
   name                 = "cse"
