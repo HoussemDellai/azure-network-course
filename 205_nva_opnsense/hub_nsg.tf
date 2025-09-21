@@ -1,5 +1,5 @@
 resource "azurerm_network_security_group" "nsg-vm" {
-  name                = "nsg-vm"
+  name                = "nsg-vm-nva"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 }
