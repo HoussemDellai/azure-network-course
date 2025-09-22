@@ -1,5 +1,5 @@
 #!/bin/sh
-apt install python -y
+
 # Script Params
 # $1 = OpnSense script URI
 # $2 = OpnSense version

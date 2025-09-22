@@ -38,7 +38,7 @@ resource "azurerm_linux_virtual_machine" "vm-linux" {
     name                 = "os-disk-linux"
     caching              = "ReadOnly"        # "ReadWrite" # None, ReadOnly and ReadWrite.
     storage_account_type = "StandardSSD_LRS" # "Standard_LRS"
-    disk_size_gb         = 64
+    disk_size_gb         = 128
 
     diff_disk_settings {
       option    = "Local"    # Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is Local.
@@ -48,8 +48,8 @@ resource "azurerm_linux_virtual_machine" "vm-linux" {
 
   source_image_reference {
     publisher = "canonical"
-    offer     = "ubuntu-24_04-lts" # "ubuntu-25_04" # "0001-com-ubuntu-server-jammy"
-    sku       = "minimal"          # "22_04-lts-gen2"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "server"
     version   = "latest"
   }
 
