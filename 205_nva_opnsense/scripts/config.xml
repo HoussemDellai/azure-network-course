@@ -785,7 +785,7 @@
             <pubkey>led4E7kCtRKHBYTPbbljWl2V4QCGgpFDshbq9+hWkzw=</pubkey>
             <psk/>
             <tunneladdress>172.16.0.2/32</tunneladdress>
-            <serveraddress>4.225.220.168</serveraddress>
+            <serveraddress>OPNSENSE_SERVER_PUBLIC_IP</serveraddress>
             <serverport>51820</serverport>
             <keepalive>25</keepalive>
           </client>
@@ -810,8 +810,8 @@
             <gateway/>
             <carp_depend_on/>
             <peers>5f1b7610-d465-4174-8a3c-f770da864c84,03cf0cd9-ccdf-43fa-8525-55e30d3a0604</peers>
-            <endpoint>4.225.220.168:51820</endpoint>
-            <peer_dns>4.225.220.168</peer_dns>
+            <endpoint/>OPNSENSE_SERVER_PUBLIC_IP:51820</endpoint>
+            <peer_dns>OPNSENSE_SERVER_PUBLIC_IP</peer_dns>
           </server>
         </servers>
       </server>
