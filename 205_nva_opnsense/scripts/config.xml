@@ -784,7 +784,7 @@
             <name>LaptopPeer</name>
             <pubkey>led4E7kCtRKHBYTPbbljWl2V4QCGgpFDshbq9+hWkzw=</pubkey>
             <psk/>
-            <tunneladdress>172.16.0.2/32</tunneladdress>
+            <tunneladdress>0.0.0.0/0</tunneladdress>
             <serveraddress>OPNSENSE_SERVER_PUBLIC_IP</serveraddress>
             <serverport>51820</serverport>
             <keepalive>25</keepalive>
