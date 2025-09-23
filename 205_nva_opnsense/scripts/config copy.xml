@@ -777,24 +777,24 @@
       </Filter>
     </Firewall>
     <wireguard>
-      <client version="1.0.0" persisted_at="1755155194.82">
+      <client version="1.0.0" persisted_at="1758437089.01">
         <clients>
           <client uuid="5f1b7610-d465-4174-8a3c-f770da864c84">
             <enabled>1</enabled>
             <name>LaptopPeer</name>
-            <pubkey>+CV9zx1NgQPF/vNL1teDQ8mbkzPuCNp5KdnBb+yTHHo=</pubkey>
+            <pubkey>led4E7kCtRKHBYTPbbljWl2V4QCGgpFDshbq9+hWkzw=</pubkey>
             <psk/>
             <tunneladdress>0.0.0.0/0</tunneladdress>
             <serveraddress>OPNSENSE_SERVER_PUBLIC_IP</serveraddress>
             <serverport>51820</serverport>
-            <keepalive/>
+            <keepalive>25</keepalive>
           </client>
         </clients>
       </client>
-      <general version="0.0.1" persisted_at="1755155196.40">
+      <general version="0.0.1" persisted_at="1758437090.59">
         <enabled>1</enabled>
       </general>
-      <server version="1.0.0" persisted_at="1755155194.80">
+      <server version="1.0.0" persisted_at="1758437089.01">
         <servers>
           <server uuid="3268cd60-b86e-4248-8b6f-821d6f70bb32">
             <enabled>1</enabled>
@@ -810,8 +810,8 @@
             <gateway/>
             <carp_depend_on/>
             <peers>5f1b7610-d465-4174-8a3c-f770da864c84</peers>
-            <endpoint/>
-            <peer_dns/>
+            <endpoint/>OPNSENSE_SERVER_PUBLIC_IP:51820</endpoint>
+            <peer_dns>OPNSENSE_SERVER_PUBLIC_IP</peer_dns>
           </server>
         </servers>
       </server>
