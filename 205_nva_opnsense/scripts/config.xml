@@ -809,7 +809,7 @@
             <disableroutes>0</disableroutes>
             <gateway/>
             <carp_depend_on/>
-            <peers>5f1b7610-d465-4174-8a3c-f770da864c84,03cf0cd9-ccdf-43fa-8525-55e30d3a0604</peers>
+            <peers>5f1b7610-d465-4174-8a3c-f770da864c84</peers>
             <endpoint/>OPNSENSE_SERVER_PUBLIC_IP:51820</endpoint>
             <peer_dns>OPNSENSE_SERVER_PUBLIC_IP</peer_dns>
           </server>
