@@ -782,21 +782,11 @@
           <client uuid="5f1b7610-d465-4174-8a3c-f770da864c84">
             <enabled>1</enabled>
             <name>LaptopPeer</name>
-            <pubkey>+CV9zx1NgQPF/vNL1teDQ8mbkzPuCNp5KdnBb+yTHHo=</pubkey>
-            <psk/>
-            <tunneladdress>0.0.0.0/0</tunneladdress>
-            <serveraddress>4.225.220.168</serveraddress>
-            <serverport>51820</serverport>
-            <keepalive/>
-          </client>
-          <client uuid="03cf0cd9-ccdf-43fa-8525-55e30d3a0604">
-            <enabled>1</enabled>
-            <name>HomePeer001</name>
-            <pubkey>wgKp03JNYvYaPun7UIWCXn0I1KxToCN9RbRo72cPQiE=</pubkey>
+            <pubkey>led4E7kCtRKHBYTPbbljWl2V4QCGgpFDshbq9+hWkzw=</pubkey>
             <psk/>
             <tunneladdress>172.16.0.2/32</tunneladdress>
-            <serveraddress/>
-            <serverport/>
+            <serveraddress>4.225.220.168</serveraddress>
+            <serverport>51820</serverport>
             <keepalive>25</keepalive>
           </client>
         </clients>
