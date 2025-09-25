@@ -56,6 +56,27 @@ resource "azurerm_monitor_data_collection_rule" "dcr-linux" {
       }
     }
 
+    performance_counter {
+      name    = "CustomPerfCounters"
+      streams = ["Microsoft-Perf"]
+      counter_specifiers = [
+        "Processor(*)\\% Processor Time",
+        "Processor(*)\\% Idle Time",
+        "Processor(*)\\% User Time",
+        "Memory(*)\\Available MBytes Memory",
+        "Memory(*)\\Used Memory MBytes",
+        "Logical Disk(*)\\Free Megabytes",
+        "Logical Disk(*)\\% Free Space",
+        "Logical Disk(*)\\% Used Space",
+        "Network(*)\\Total Packets Transmitted",
+        "Network(*)\\Total Packets Received",
+        "System(*)\\Uptime",
+        "System(*)\\Unique Users",
+        "System(*)\\CPUs"
+      ]
+      sampling_frequency_in_seconds = 30
+    }
+
     # performance_counter {
     #   name    = "VMInsightsPerfCounters"
     #   streams = ["Microsoft-InsightsMetrics"]
@@ -64,5 +85,6 @@ resource "azurerm_monitor_data_collection_rule" "dcr-linux" {
     #   ]
     #   sampling_frequency_in_seconds = 30
     # }
+
   }
 }
