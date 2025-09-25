@@ -45,7 +45,7 @@ resource "azurerm_monitor_data_collection_rule" "dcr-linux" {
     }
 
     log_file {
-      name          = "example-datasource-logfile"
+      name          = "datasource-logfile"
       format        = "text"
       streams       = ["Custom-MyTableRawData"]
       file_patterns = ["C:\\JavaLogs\\*.log"]
