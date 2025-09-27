@@ -1,4 +1,4 @@
-resource "azurerm_monitor_data_collection_rule" "dcr-linux" {
+resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
   name                = "dcr-linux"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location

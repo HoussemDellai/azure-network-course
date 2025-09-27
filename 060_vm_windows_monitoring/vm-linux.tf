@@ -1,4 +1,4 @@
-resource "azurerm_public_ip" "pip-vm-linux" {
+resource "azurerm_public_ip" "pip_vm_linux" {
   name                = "pip-vm-linux"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
@@ -6,20 +6,20 @@ resource "azurerm_public_ip" "pip-vm-linux" {
   sku                 = "Standard"
 }
 
-resource "azurerm_network_interface" "nic-vm-linux" {
+resource "azurerm_network_interface" "nic_vm_linux" {
   name                = "nic-vm-linux"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.snet-vm.id
+    subnet_id                     = azurerm_subnet.snet_vm.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.pip-vm-linux.id
+    public_ip_address_id          = azurerm_public_ip.pip_vm_linux.id
   }
 }
 
-resource "azurerm_linux_virtual_machine" "vm-linux" {
+resource "azurerm_linux_virtual_machine" "vm_linux" {
   name                            = "vm-linux"
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
@@ -27,7 +27,7 @@ resource "azurerm_linux_virtual_machine" "vm-linux" {
   disable_password_authentication = false
   admin_username                  = "azureuser"
   admin_password                  = "@Aa123456789"
-  network_interface_ids           = [azurerm_network_interface.nic-vm-linux.id]
+  network_interface_ids           = [azurerm_network_interface.nic_vm_linux.id]
   priority                        = "Spot"
   eviction_policy                 = "Delete"
   disk_controller_type            = "NVMe" # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
@@ -63,9 +63,9 @@ resource "azurerm_linux_virtual_machine" "vm-linux" {
 }
 
 output "vm_linux_public_ip" {
-  value = azurerm_public_ip.pip-vm-linux.ip_address
+  value = azurerm_public_ip.pip_vm_linux.ip_address
 }
 
 output "vm_linux_private_ip" {
-  value = azurerm_network_interface.nic-vm-linux.private_ip_address
+  value = azurerm_network_interface.nic_vm_linux.private_ip_address
 }

@@ -1,4 +1,4 @@
-resource "azurerm_monitor_data_collection_rule" "dcr-windows" {
+resource "azurerm_monitor_data_collection_rule" "dcr_windows" {
   name                = "dcr-windows"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
@@ -33,11 +33,6 @@ resource "azurerm_monitor_data_collection_rule" "dcr-windows" {
 
   # data_flow {
   #   streams      = ["Microsoft-Event"]
-  #   destinations = ["destination-log"]
-  # }
-
-  # data_flow {
-  #   streams      = ["Microsoft-ServiceMap"]
   #   destinations = ["destination-log"]
   # }
 
@@ -147,13 +142,6 @@ resource "azurerm_monitor_data_collection_rule" "dcr-windows" {
     #   #   b = "hello"
     #   # })
     #   name = "datasource-extension"
-    # }
-
-    # extension {
-    #   streams = ["Microsoft-ServiceMap"]
-    #   # input_data_sources = ["VMInsightsPerfCounters"]
-    #   extension_name = "DependencyAgent"
-    #   name           = "DependencyAgentDataSource"
     # }
   }
 

@@ -82,6 +82,11 @@ resource "azurerm_linux_virtual_machine" "vm-nva" {
   lifecycle {
     ignore_changes = [identity]
   }
+
+  tags = {
+    Cost-Control     = "Ignore"
+    Security-Control = "Ignore"
+  }
 }
 
 resource "azurerm_virtual_machine_extension" "cslinux-install-opnsense" {
