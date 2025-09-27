@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-vm-monitoring-060"
+  name     = "rg-vm-monitoring-${var.prefix}"
   location = "swedencentral"
 }
