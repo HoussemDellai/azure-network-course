@@ -10,6 +10,10 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
       name                  = "destination-log"
     }
 
+    azure_monitor_metrics {
+      name = "destination-metrics"
+    }
+
     # event_hub {
     #   event_hub_id = azurerm_eventhub.example.id
     #   name         = "example-destination-eventhub"
@@ -20,10 +24,6 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
     #   container_name     = azurerm_storage_container.example.name
     #   name               = "example-destination-storage"
     # }
-
-    azure_monitor_metrics {
-      name = "destination-metrics"
-    }
   }
 
   data_flow {
@@ -76,15 +76,5 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
       ]
       sampling_frequency_in_seconds = 30
     }
-
-    # performance_counter {
-    #   name    = "VMInsightsPerfCounters"
-    #   streams = ["Microsoft-InsightsMetrics"]
-    #   counter_specifiers = [
-    #     "\\VmInsights\\DetailedMetrics"
-    #   ]
-    #   sampling_frequency_in_seconds = 30
-    # }
-
   }
 }

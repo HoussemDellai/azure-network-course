@@ -10,6 +10,10 @@ resource "azurerm_monitor_data_collection_rule" "dcr_windows" {
       name                  = "destination-log"
     }
 
+    azure_monitor_metrics {
+      name = "destination-metrics"
+    }
+
     # event_hub {
     #   event_hub_id = azurerm_eventhub.example.id
     #   name         = "example-destination-eventhub"
@@ -20,10 +24,6 @@ resource "azurerm_monitor_data_collection_rule" "dcr_windows" {
     #   container_name     = azurerm_storage_container.example.name
     #   name               = "example-destination-storage"
     # }
-
-    azure_monitor_metrics {
-      name = "destination-metrics"
-    }
   }
 
   # data_flow {
@@ -68,18 +68,6 @@ resource "azurerm_monitor_data_collection_rule" "dcr_windows" {
     #   log_levels     = ["*"] # ["Warning", "Error", "Critical", "Alert", "Emergency"]
     #   name           = "datasource-syslog"
     #   streams        = ["Microsoft-Syslog"]
-    # }
-
-    # performance_counter {
-    #   name    = "VMInsightsPerfCounters"
-    #   streams = ["Microsoft-Perf", "Microsoft-InsightsMetrics"]
-    #   counter_specifiers = [
-    #     "\\Processor(_Total)\\% Processor Time",
-    #     "\\Memory\\Committed Bytes",
-    #     "\\LogicalDisk(_Total)\\Free Megabytes",
-    #     "\\PhysicalDisk(_Total)\\Avg. Disk Queue Length"
-    #   ]
-    #   sampling_frequency_in_seconds = 15
     # }
 
     performance_counter {
