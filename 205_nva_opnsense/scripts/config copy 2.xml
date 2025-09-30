@@ -614,10 +614,10 @@
         <interfaces>lan,wan,opt1</interfaces>
         <egress_only>lan,wan,opt1</egress_only>
         <version>v9</version>
-        <targets>127.0.0.1:2056</targets>
+        <targets/>
       </capture>
       <collect>
-        <enable>1</enable>
+        <enable>0</enable>
       </collect>
       <activeTimeout>1800</activeTimeout>
       <inactiveTimeout>15</inactiveTimeout>
