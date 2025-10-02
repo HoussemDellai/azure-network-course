@@ -3,15 +3,15 @@ locals {
 }
 
 resource "azurerm_storage_account" "my_storage_account" {
-  name                            = local.storage_account_name
-  resource_group_name             = azurerm_resource_group.my_resource_group.name
-  location                        = var.location
-  account_kind                    = "StorageV2"
-  account_tier                    = var.storage_account_tier
-  account_replication_type        = var.storage_account_replication_type
-  httpshttps_traffic_only_enabled = true
-  public_network_access_enabled   = false
-  min_tls_version                 = "TLS1_2"
+  name                          = local.storage_account_name
+  resource_group_name           = azurerm_resource_group.my_resource_group.name
+  location                      = var.location
+  account_kind                  = "StorageV2"
+  account_tier                  = var.storage_account_tier
+  account_replication_type      = var.storage_account_replication_type
+  https_traffic_only_enabled    = true
+  public_network_access_enabled = false
+  min_tls_version               = "TLS1_2"
 }
 
 resource "azurerm_storage_account_network_rules" "my_network_rules" {
