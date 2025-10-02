@@ -1,2 +1,0 @@
-You shouldn't modify the VM insights DCR. If you need to collect additional data from the monitored machines, such as event logs and security logs, create additional DCRs and associate them with the same machines.
-Src: https://learn.microsoft.com/en-us/azure/azure-monitor/vm/vminsights-enable?tabs=arm#vm-insights-dcr
