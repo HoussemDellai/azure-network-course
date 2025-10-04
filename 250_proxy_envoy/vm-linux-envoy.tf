@@ -10,7 +10,7 @@ resource "azurerm_network_interface" "nic-vm-linux" {
   name                  = "nic-vm-linux"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  ip_forwarding_enabled = false
+  ip_forwarding_enabled = true
 
   ip_configuration {
     name                          = "internal"
