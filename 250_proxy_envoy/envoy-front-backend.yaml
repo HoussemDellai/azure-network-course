@@ -45,8 +45,8 @@ static_resources:
         - endpoint:
             address:
               socket_address:
-                address: 127.0.0.1
-                port_value: 3000
+                address: github.com # 127.0.0.1
+                port_value: 443 # 3000
   - name: my_backend
     type: STRICT_DNS
     connect_timeout: 0.25s
@@ -57,8 +57,8 @@ static_resources:
         - endpoint:
             address:
               socket_address:
-                address: 127.0.0.1
-                port_value: 5000
+                address: microsoft.com # 127.0.0.1
+                port_value: 443 # 5000
 admin:
   access_log_path: "/dev/null"
   address:
