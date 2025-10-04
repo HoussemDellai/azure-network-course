@@ -1,0 +1,67 @@
+static_resources:
+  listeners:
+    address:
+      socket_address:
+        address: 0.0.0.0
+        port_value: 8080
+    filter_chains:
+    - filters:
+      - name: envoy.filters.network.http_connection_manager
+        typed_config:
+          "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          stat_prefix: ingress_http
+          access_log:
+          - name: envoy.access_loggers.stdout
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
+          http_filters:
+          - name: envoy.filters.http.router
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+          route_config:
+            name: local_route
+            virtual_hosts:
+            - name: local_service
+              domains: ["*"]
+              routes:
+              - match:
+                  prefix: "/api/"
+                route:
+                  prefix_rewrite: "/"
+                  cluster: my_backend
+              - match:
+                  prefix: "/"
+                route:
+                  cluster: my_frontend
+
+  clusters:
+  - name: my_frontend
+    type: STRICT_DNS
+    connect_timeout: 0.25s
+    load_assignment:
+      cluster_name: next_app
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: github.com # 127.0.0.1
+                port_value: 443 # 3000
+  - name: my_backend
+    type: STRICT_DNS
+    connect_timeout: 0.25s
+    load_assignment:
+      cluster_name: go_backend
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address:
+                address: microsoft.com # 127.0.0.1
+                port_value: 443 # 5000
+admin:
+  access_log_path: "/dev/null"
+  address:
+    socket_address:
+      address: 0.0.0.0
+      port_value: 8001
