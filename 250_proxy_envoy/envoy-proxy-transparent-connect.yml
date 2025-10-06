@@ -75,7 +75,7 @@ static_resources:
               "@type": type.googleapis.com/envoy.extensions.network.dns_resolver.cares.v3.CaresDnsResolverConfig
               resolvers:
               - socket_address:
-                  address: "8.8.8.8"
+                  address: "1.1.1.1"
                   port_value: 53
               dns_resolver_options:
                 use_tcp_for_dns_lookups: true
