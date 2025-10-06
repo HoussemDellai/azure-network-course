@@ -38,31 +38,6 @@ static_resources:
                   - upgrade_type: CONNECT
                     connect_config:
                       {}
-
-          access_log:
-          - name: envoy.access_loggers.stdout
-            typed_config:
-              "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
-              log_format:
-                json_format:
-                  start_time: "%START_TIME%"
-                  method: "%REQ(:METHOD)%"
-                  path: "%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%"
-                  protocol: "%PROTOCOL%"
-                  response_code: "%RESPONSE_CODE%"
-                  response_flags: "%RESPONSE_FLAGS%"
-                  bytes_received: "%BYTES_RECEIVED%"
-                  bytes_sent: "%BYTES_SENT%"
-                  duration: "%DURATION%"
-                  upstream_service_time: "%RESP(X-ENVOY-UPSTREAM-SERVICE-TIME)%"
-                  x_forwarded_for: "%REQ(X-FORWARDED-FOR)%"
-                  user_agent: "%REQ(USER-AGENT)%"
-                  request_id: "%REQ(X-REQUEST-ID)%"
-                  upstream_host: "%UPSTREAM_HOST%"
-                  upstream_cluster: "%UPSTREAM_CLUSTER%"
-                  downstream_local_address: "%DOWNSTREAM_LOCAL_ADDRESS%"
-                  downstream_remote_address: "%DOWNSTREAM_REMOTE_ADDRESS%"
-
           http_filters:
           - name: envoy.filters.http.dynamic_forward_proxy
             typed_config:
