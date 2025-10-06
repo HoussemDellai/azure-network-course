@@ -8,6 +8,14 @@ sudo apt-get install envoy
 envoy --version
 ```
 
+## Start envoy proxy with config file
+
+```sh
+sudo envoy -c envoy-proxy-transparent-connect.yml --log-level debug
+```
+
+>Debug log level allows to view detailed logs, including DNS resolution steps.
+
 ## Resources
 
 Samples for Envoy configurations: https://github.com/envoyproxy/envoy/tree/72cbe0e8d6c398497d5d31e91114d05bda584e27/configs
