@@ -7,3 +7,7 @@ sudo apt-get update
 sudo apt-get install envoy
 envoy --version
 ```
+
+## Resources
+
+Samples for Envoy configurations: https://github.com/envoyproxy/envoy/tree/72cbe0e8d6c398497d5d31e91114d05bda584e27/configs
