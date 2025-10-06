@@ -87,4 +87,3 @@ static_resources:
     #     common_tls_context:
     #       validation_context:
     #         trusted_ca: {filename: ./ca-certificates.crt}
-
