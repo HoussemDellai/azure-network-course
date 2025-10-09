@@ -87,3 +87,12 @@ static_resources:
     #     common_tls_context:
     #       validation_context:
     #         trusted_ca: {filename: ./ca-certificates.crt}
+application_log_config:
+  log_format:
+    json_format:
+      Timestamp: "%Y-%m-%dT%T.%F"
+      ThreadId: "%t"
+      SourceLine: "%s:%#"
+      Level: "%l"
+      Message: "%j"
+      FixedValue: "SomeFixedValue"

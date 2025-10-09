@@ -80,7 +80,9 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
     streams       = ["Custom-custom_CL"]
     destinations  = ["destination-log"]
     output_stream = "Custom-custom_CL" # "Microsoft-Syslog"
-    transform_kql = "source | extend TimeGenerated = now()" # "source | project TimeGenerated = Time, Computer, Message = AdditionalContext"
+    transform_kql = "source | project TimeGenerated = now()" # "source | project TimeGenerated = Time, Computer, Message = AdditionalContext"
+    # transform_kql = "source | project TimeGenerated = now() | project LogMessage = 'RawData'" # "source | project TimeGenerated = Time, Computer, Message = AdditionalContext"
+    # transform_kql = "source | project d = split(RawData,",") | project TimeGenerated=todatetime(d[0]), Code=toint(d[1]), Severity=tostring(d[2]), Module=tostring(d[3]), Message=tostring(d[4])"
   }
 
   data_sources {
@@ -125,21 +127,21 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
     }
   }
 
-  stream_declaration {
-    stream_name = "Custom-custom_CL"
-    column {
-      name = "Time"
-      type = "datetime"
-    }
-    column {
-      name = "Computer"
-      type = "string"
-    }
-    column {
-      name = "AdditionalContext"
-      type = "string"
-    }
-  }
+#   stream_declaration {
+#     stream_name = "Custom-custom_CL"
+#     column {
+#       name = "Time"
+#       type = "datetime"
+#     }
+#     column {
+#       name = "Computer"
+#       type = "string"
+#     }
+#     column {
+#       name = "AdditionalContext"
+#       type = "string"
+#     }
+#   }
 }
 
 resource "azurerm_monitor_data_collection_rule" "dcr_vm_insights" {
