@@ -4,6 +4,7 @@ resource "azurerm_public_ip" "pip-vm-nva" {
   location            = azurerm_resource_group.rg.location
   allocation_method   = "Static"
   sku                 = "Standard"
+  # zones               = [1]
 }
 
 resource "azurerm_network_interface" "nic-vm-nva-untrusted" {
@@ -45,6 +46,7 @@ resource "azurerm_linux_virtual_machine" "vm-nva" {
   eviction_policy                 = "Delete" # "Deallocate" # With Spot, there's no option of Stop-Deallocate for Ephemeral VMs, rather users need to Delete instead of deallocating them.
   network_interface_ids           = [azurerm_network_interface.nic-vm-nva-untrusted.id, azurerm_network_interface.nic-vm-nva-trusted.id]
   disk_controller_type            = "NVMe" # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
+  zone                            = 1
 
   os_disk {
     name                 = "os-disk-vm-nva"
@@ -84,8 +86,8 @@ resource "azurerm_linux_virtual_machine" "vm-nva" {
   }
 
   tags = {
-    Cost-Control     = "Ignore"
-    Security-Control = "Ignore"
+    CostControl     = "Ignore"
+    SecurityControl = "Ignore"
   }
 }
 
