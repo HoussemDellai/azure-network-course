@@ -11,10 +11,15 @@ envoy --version
 ## Start envoy proxy with config file
 
 ```sh
+wget https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/250_proxy_envoy/envoy-proxy-transparent-connect.yml
 sudo envoy -c envoy-proxy-transparent-connect.yml --log-level debug
 ```
 
 >Debug log level allows to view detailed logs, including DNS resolution steps.
+
+>By default Envoy system logs are sent to /dev/stderr. This location be overridden using --log-path.
+
+>Envoy exposes metrics under the admin portal /stats endpoint: <admin_endpoint>/stats.
 
 ## Resources
 
