@@ -1,0 +1,25 @@
+{
+    "properties": {
+        "schema": {
+            "name": "Custom_CL",
+            "columns": [
+                {
+                    "name": "TimeGenerated",
+                    "type": "DateTime"
+                },
+                {
+                    "name": "Computer",
+                    "type": "string"
+                },
+                {
+                    "name": "FilePath",
+                    "type": "string"
+                },
+                {
+                    "name": "RawData",
+                    "type": "string"
+                }
+            ]
+        }
+    }
+}

@@ -40,6 +40,10 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
   location            = azurerm_resource_group.rg.location
   kind                = "Linux"
 
+  identity {
+    type = "SystemAssigned"
+  }
+
   destinations {
     log_analytics {
       workspace_resource_id = azurerm_log_analytics_workspace.law.id
@@ -72,6 +76,13 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
     destinations = ["destination-metrics"]
   }
 
+  data_flow {
+    streams       = ["Custom-custom_CL"]
+    destinations  = ["destination-log"]
+    output_stream = "Custom-custom_CL" # "Microsoft-Syslog"
+    transform_kql = "source | extend TimeGenerated = now()" # "source | project TimeGenerated = Time, Computer, Message = AdditionalContext"
+  }
+
   data_sources {
     syslog {
       facility_names = ["*"] # ["daemon", "syslog"]
@@ -83,8 +94,8 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
     log_file {
       name          = "datasource-logfile"
       format        = "text"
-      streams       = ["Custom-MyTableRawData"]
-      file_patterns = ["/dev/stdout", "/dev/stderr"]
+      streams       = ["Custom-custom_CL"]
+      file_patterns = ["/home/azureuser/envoy.log"] # ["/dev/stdout", "/dev/stderr"]
       settings {
         text {
           record_start_timestamp_format = "ISO 8601"
@@ -111,6 +122,22 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
         "System(*)\\CPUs"
       ]
       sampling_frequency_in_seconds = 30
+    }
+  }
+
+  stream_declaration {
+    stream_name = "Custom-custom_CL"
+    column {
+      name = "Time"
+      type = "datetime"
+    }
+    column {
+      name = "Computer"
+      type = "string"
+    }
+    column {
+      name = "AdditionalContext"
+      type = "string"
     }
   }
 }
