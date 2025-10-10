@@ -1,0 +1,1946 @@
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.962805000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "899",
+    "StreamId": "7848347250022075903"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.962809000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "899",
+    "StreamId": "7848347250022075903"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.962815000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "899"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.962822000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.962823000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.962825000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "899",
+    "StreamId": "7848347250022075903"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.962829000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "899",
+    "StreamId": "7848347250022075903"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.962840000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "899",
+    "StreamId": "7848347250022075903"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.962847000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "896"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.962848000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "896"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.962853000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "899",
+    "StreamId": "7848347250022075903"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.962862000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "896"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.962921000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "897"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.962937000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "897",
+    "StreamId": "17330267374359475970"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.962941000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "897",
+    "StreamId": "17330267374359475970"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.962946000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "897"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.962954000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.962954000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.962956000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "897",
+    "StreamId": "17330267374359475970"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.962960000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "897",
+    "StreamId": "17330267374359475970"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.962971000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "897",
+    "StreamId": "17330267374359475970"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.962978000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "934"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.962980000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "934"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.962983000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "897",
+    "StreamId": "17330267374359475970"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.962991000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "934"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.963058000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "935"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963074000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "935",
+    "StreamId": "10461734114464909579"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.963078000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "935",
+    "StreamId": "10461734114464909579"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.963083000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "935"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.963091000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.963092000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.963094000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "935",
+    "StreamId": "10461734114464909579"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.963097000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "935",
+    "StreamId": "10461734114464909579"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963109000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "935",
+    "StreamId": "10461734114464909579"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.963115000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "936"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.963116000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "936"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.963120000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "935",
+    "StreamId": "10461734114464909579"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.963128000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "936"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.963172000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "937"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963185000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "937",
+    "StreamId": "5749088924970617310"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.963189000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "937",
+    "StreamId": "5749088924970617310"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.963194000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "937"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.963201000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.963202000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.963204000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "937",
+    "StreamId": "5749088924970617310"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.963207000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "937",
+    "StreamId": "5749088924970617310"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963218000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "937",
+    "StreamId": "5749088924970617310"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.963248000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "938"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.963250000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "938"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.963255000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "937",
+    "StreamId": "5749088924970617310"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.963263000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "938"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.963309000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "939"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963324000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "939",
+    "StreamId": "11465975316299626352"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.963328000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "939",
+    "StreamId": "11465975316299626352"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.963334000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "939"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.963341000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.963342000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.963344000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "939",
+    "StreamId": "11465975316299626352"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.963347000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "939",
+    "StreamId": "11465975316299626352"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963359000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "939",
+    "StreamId": "11465975316299626352"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.963364000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "940"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.963366000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "940"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.963370000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "939",
+    "StreamId": "11465975316299626352"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.963377000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "940"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.963420000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "941"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963461000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "941",
+    "StreamId": "4723423836109907376"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.963466000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "941",
+    "StreamId": "4723423836109907376"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.963472000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "941"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.963481000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.963482000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.963484000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "941",
+    "StreamId": "4723423836109907376"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.963487000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "941",
+    "StreamId": "4723423836109907376"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963500000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "941",
+    "StreamId": "4723423836109907376"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.963507000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "894"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.963509000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "894"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.963514000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "941",
+    "StreamId": "4723423836109907376"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.963523000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "894"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.963594000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "895"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963629000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "895",
+    "StreamId": "2366571046166791665"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.963633000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "895",
+    "StreamId": "2366571046166791665"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.963640000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "895"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.963647000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.963648000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.963650000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "895",
+    "StreamId": "2366571046166791665"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.963654000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "895",
+    "StreamId": "2366571046166791665"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963665000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "895",
+    "StreamId": "2366571046166791665"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.963671000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "900"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.963673000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "900"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.963677000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "895",
+    "StreamId": "2366571046166791665"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.963685000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "900"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.963730000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "901"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963745000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "901",
+    "StreamId": "12914635456801838814"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.963748000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "901",
+    "StreamId": "12914635456801838814"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.963753000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "901"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.963760000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.963761000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.963763000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "901",
+    "StreamId": "12914635456801838814"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.963766000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "901",
+    "StreamId": "12914635456801838814"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963776000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "901",
+    "StreamId": "12914635456801838814"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.963782000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "902"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.963784000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "902"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.963788000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "901",
+    "StreamId": "12914635456801838814"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.963795000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "902"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.963854000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "903"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963870000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "903",
+    "StreamId": "9737123822089859086"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.963875000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "903",
+    "StreamId": "9737123822089859086"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.963880000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "903"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.963888000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.963888000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.963890000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "903",
+    "StreamId": "9737123822089859086"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.963894000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "903",
+    "StreamId": "9737123822089859086"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963906000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "903",
+    "StreamId": "9737123822089859086"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.963912000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "1244"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.963914000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "1244"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.963918000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "903",
+    "StreamId": "9737123822089859086"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.963926000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "1244"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.963968000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "1247"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.963984000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "1247",
+    "StreamId": "15664710707260035671"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.963988000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "1247",
+    "StreamId": "15664710707260035671"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.963994000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "1247"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.964001000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.964008000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.964022000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "1247",
+    "StreamId": "15664710707260035671"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.964026000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "1247",
+    "StreamId": "15664710707260035671"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964039000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "1247",
+    "StreamId": "15664710707260035671"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.964045000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "1200"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.964047000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "1200"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.964051000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "1247",
+    "StreamId": "15664710707260035671"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.964060000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "1200"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.964122000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "1203"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964137000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "1203",
+    "StreamId": "18354058630591002817"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.964141000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "1203",
+    "StreamId": "18354058630591002817"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.964146000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "1203"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.964153000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.964154000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.964156000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "1203",
+    "StreamId": "18354058630591002817"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.964159000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "1203",
+    "StreamId": "18354058630591002817"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964170000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "1203",
+    "StreamId": "18354058630591002817"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.964175000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "1204"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.964177000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "1204"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.964181000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "1203",
+    "StreamId": "18354058630591002817"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.964188000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "1204"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.964243000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "1207"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964256000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "1207",
+    "StreamId": "16982386330142976198"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.964260000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "1207",
+    "StreamId": "16982386330142976198"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.964265000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "1207"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.964271000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.964272000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.964274000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "1207",
+    "StreamId": "16982386330142976198"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.964277000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "1207",
+    "StreamId": "16982386330142976198"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964287000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "1207",
+    "StreamId": "16982386330142976198"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.964293000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "1208"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.964295000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "1208"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.964298000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "1207",
+    "StreamId": "16982386330142976198"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.964305000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "1208"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.964359000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "1211"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964373000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "1211",
+    "StreamId": "13687493036695843307"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.964376000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "1211",
+    "StreamId": "13687493036695843307"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.964381000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "1211"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.964387000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.964388000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.964390000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "1211",
+    "StreamId": "13687493036695843307"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.964393000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "1211",
+    "StreamId": "13687493036695843307"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964403000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "1211",
+    "StreamId": "13687493036695843307"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.964409000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "1212"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.964410000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "1212"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.964414000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "1211",
+    "StreamId": "13687493036695843307"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.964420000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "1212"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.964463000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "1214"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964482000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "1214",
+    "StreamId": "13331472230196842558"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.964486000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "1214",
+    "StreamId": "13331472230196842558"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.964491000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "1214"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.964498000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.964499000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.964501000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "1214",
+    "StreamId": "13331472230196842558"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.964504000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "1214",
+    "StreamId": "13331472230196842558"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964515000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "1214",
+    "StreamId": "13331472230196842558"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.964521000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "1216"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.964522000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "1216"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.964526000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "1214",
+    "StreamId": "13331472230196842558"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.964533000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "1216"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.964577000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "1219"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964592000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "1219",
+    "StreamId": "7040441595360858318"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.964596000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "1219",
+    "StreamId": "7040441595360858318"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.964601000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "1219"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.964607000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.964608000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.964610000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "1219",
+    "StreamId": "7040441595360858318"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.964613000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "1219",
+    "StreamId": "7040441595360858318"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964624000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "1219",
+    "StreamId": "7040441595360858318"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.964630000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "1220"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.964632000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "1220"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.964636000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "1219",
+    "StreamId": "7040441595360858318"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.964643000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "1220"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.964682000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "1223"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964698000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "1223",
+    "StreamId": "14102703045662190408"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "request end stream timestamp recorded",
+    "Timestamp": "2025-10-09T19:12:25.964702000",
+    "SourceLine": "conn_manager_impl.cc:1166",
+    "ConnectionId": "1223",
+    "StreamId": "14102703045662190408"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "current connecting state: false",
+    "Timestamp": "2025-10-09T19:12:25.964708000",
+    "SourceLine": "connection_impl.h:98",
+    "ConnectionId": "1223"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "thread local lookup for host '4.223.143.51:10001' ",
+    "Timestamp": "2025-10-09T19:12:25.964715000",
+    "SourceLine": "dns_cache_impl.cc:108"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "cache hit for host '4.223.143.51:10001'",
+    "Timestamp": "2025-10-09T19:12:25.964716000",
+    "SourceLine": "dns_cache_impl.cc:125"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "DNS cache entry already loaded, continuing",
+    "Timestamp": "2025-10-09T19:12:25.964719000",
+    "SourceLine": "proxy_filter.cc:288",
+    "ConnectionId": "1223",
+    "StreamId": "14102703045662190408"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "cluster 'dynamic_forward_proxy_cluster' match for URL '/doc/bad397/'",
+    "Timestamp": "2025-10-09T19:12:25.964722000",
+    "SourceLine": "router.cc:527",
+    "ConnectionId": "1223",
+    "StreamId": "14102703045662190408"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "router decoding headers:\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n':scheme', 'http'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964734000",
+    "SourceLine": "router.cc:756",
+    "ConnectionId": "1223",
+    "StreamId": "14102703045662190408"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "using existing fully connected connection",
+    "Timestamp": "2025-10-09T19:12:25.964741000",
+    "SourceLine": "conn_pool_base.cc:265",
+    "ConnectionId": "1260"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "creating stream",
+    "Timestamp": "2025-10-09T19:12:25.964743000",
+    "SourceLine": "conn_pool_base.cc:182",
+    "ConnectionId": "1260"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "pool ready",
+    "Timestamp": "2025-10-09T19:12:25.964747000",
+    "SourceLine": "upstream_request.cc:593",
+    "ConnectionId": "1223",
+    "StreamId": "14102703045662190408"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23605",
+    "Message": "encode complete",
+    "Timestamp": "2025-10-09T19:12:25.964755000",
+    "SourceLine": "codec_client.cc:142",
+    "ConnectionId": "1260"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "new stream",
+    "Timestamp": "2025-10-09T19:12:25.964799000",
+    "SourceLine": "conn_manager_impl.cc:393",
+    "ConnectionId": "1263"
+}
+{
+    "FixedValue": "SomeFixedValue",
+    "Level": "debug",
+    "ThreadId": "23606",
+    "Message": "request headers complete (end_stream=true):\n':authority', '4.223.143.51:10001'\n':path', '/doc/bad397/'\n':method', 'GET'\n'x-forwarded-proto', 'http'\n'x-request-id', '1d868101-db5d-4cba-b00b-34fff63d76b9'\n'x-envoy-expected-rq-timeout-ms', '15000'\n",
+    "Timestamp": "2025-10-09T19:12:25.964815000",
+    "SourceLine": "conn_manager_impl.cc:1183",
+    "ConnectionId": "1263",
+    "StreamId": "14727156947256558468"
+}
