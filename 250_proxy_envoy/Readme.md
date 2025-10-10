@@ -8,10 +8,66 @@ sudo apt-get install envoy
 envoy --version
 ```
 
+## Create Log Analytics Table for custom logs
+
+```sh
+az monitor log-analytics workspace table create --workspace-name log-analytics -g rg-vm-linux-envoy-250 -n MyTable_CL --retention-time 30 --columns TimeGenerated=datetime Computer=string FilePath=string Message=string Level=string ThreadId=string SourceLine=string FixedValue=string
+```
+
+>You can also create table using JSON file like the following: `loganalytics-custom-table.json`.
+
+```json
+{
+  "tableName": "MyTable_CL",
+  "retentionInDays": 30,
+  "columns": [
+    {
+      "name": "TimeGenerated",
+      "type": "datetime"
+    },
+    {
+      "name": "Computer",
+      "type": "string"
+    },
+    {
+      "name": "FilePath",
+      "type": "string"
+    },
+    {
+      "name": "Message",
+      "type": "string"
+    },
+    {
+      "name": "Level",
+      "type": "string"
+    },
+    {
+      "name": "ThreadId",
+      "type": "string"
+    },
+    {
+      "name": "SourceLine",
+      "type": "string"
+    },
+    {
+      "name": "FixedValue",
+      "type": "string"
+    }
+  ]
+}
+```
+
+Example:
+
+```sh
+az monitor log-analytics workspace table create --workspace-name log-analytics -g rg-vm-linux-envoy-250 -n MyTable_CL --retention-time 30 --columns TimeGenerated=datetime Computer=string FilePath=string Message=string Level=string ThreadId=string SourceLine=string FixedValue=string
+```
+
 ## Start envoy proxy with config file
 
 ```sh
 wget https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/250_proxy_envoy/envoy-proxy-transparent-connect.yml
+
 sudo envoy -c envoy-proxy-transparent-connect.yml --log-level debug --log-path envoy.log
 ```
 
@@ -21,15 +77,7 @@ sudo envoy -c envoy-proxy-transparent-connect.yml --log-level debug --log-path e
 
 >Envoy exposes metrics under the admin portal /stats endpoint: <admin_endpoint>/stats.
 
-```sh
-az monitor log-analytics workspace table create --workspace-name log-analytics -g rg-vm-linux-envoy-250 -n MyTable_CL --retention-time 30 --columns TimeGenerated=datetime Computer=string FilePath=string Message=string Level=string ThreadId=string SourceLine=string FixedValue=string
-```
-
-Example:
-
-```sh
-az monitor log-analytics workspace table create --workspace-name log-analytics -g rg-vm-linux-envoy-250 -n MyTable_CL --retention-time 30 --columns TimeGenerated=datetime Computer=string FilePath=string Message=string Level=string ThreadId=string SourceLine=string FixedValue=string
-```
+>As per today, AMA agent cannot collect Prometheus metrics from a VM. It is only supported for AKS clusters.
 
 ## Resources
 
