@@ -12,7 +12,7 @@ envoy --version
 
 ```sh
 wget https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/250_proxy_envoy/envoy-proxy-transparent-connect.yml
-sudo envoy -c envoy-proxy-transparent-connect.yml --log-level debug
+sudo envoy -c envoy-proxy-transparent-connect.yml --log-level debug --log-path envoy.log
 ```
 
 >Debug log level allows to view detailed logs, including DNS resolution steps.
@@ -20,6 +20,16 @@ sudo envoy -c envoy-proxy-transparent-connect.yml --log-level debug
 >By default Envoy system logs are sent to /dev/stderr. This location be overridden using --log-path.
 
 >Envoy exposes metrics under the admin portal /stats endpoint: <admin_endpoint>/stats.
+
+```sh
+az monitor log-analytics workspace table create --workspace-name log-analytics -g rg-vm-linux-envoy-250 -n MyTable_CL --retention-time 30 --columns TimeGenerated=datetime Computer=string FilePath=string Message=string Level=string ThreadId=string SourceLine=string FixedValue=string
+```
+
+Example:
+
+```sh
+az monitor log-analytics workspace table create --workspace-name log-analytics -g rg-vm-linux-envoy-250 -n MyTable_CL --retention-time 30 --columns TimeGenerated=datetime Computer=string FilePath=string Message=string Level=string ThreadId=string SourceLine=string FixedValue=string
+```
 
 ## Resources
 

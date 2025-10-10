@@ -1,7 +1,7 @@
 {
     "properties": {
         "schema": {
-            "name": "Custom_CL",
+            "name": "MyTable_CL",
             "columns": [
                 {
                     "name": "TimeGenerated",
@@ -16,7 +16,23 @@
                     "type": "string"
                 },
                 {
-                    "name": "RawData",
+                    "name": "Message",
+                    "type": "string"
+                },
+                {
+                    "name": "Level",
+                    "type": "string"
+                },
+                {
+                    "name": "ThreadId",
+                    "type": "string"
+                },
+                {
+                    "name": "SourceLine",
+                    "type": "string"
+                },
+                {
+                    "name": "FixedValue",
                     "type": "string"
                 }
             ]

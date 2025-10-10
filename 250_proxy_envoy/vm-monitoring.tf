@@ -53,17 +53,6 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
     azure_monitor_metrics {
       name = "destination-metrics"
     }
-
-    # event_hub {
-    #   event_hub_id = azurerm_eventhub.example.id
-    #   name         = "example-destination-eventhub"
-    # }
-
-    # storage_blob {
-    #   storage_account_id = azurerm_storage_account.example.id
-    #   container_name     = azurerm_storage_container.example.name
-    #   name               = "example-destination-storage"
-    # }
   }
 
   data_flow {
@@ -77,10 +66,25 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
   }
 
   data_flow {
-    streams       = ["Custom-custom_CL"]
+    streams       = ["Custom-Json-MyTable_CL"]
     destinations  = ["destination-log"]
-    output_stream = "Custom-custom_CL" # "Microsoft-Syslog"
-    transform_kql = "source | project TimeGenerated = now()" # "source | project TimeGenerated = Time, Computer, Message = AdditionalContext"
+    output_stream = "Custom-MyTable_CL"
+    #     transform_kql = <<EOT
+    #     source
+    #     | project TimeGenerated = now(),
+    #               Computer = "",
+    #               FilePath = "",
+    #               Message = "",
+    #               Level = "",
+    #               SourceLine = "",
+    #               ThreadId = 0,
+    #               RawData = "",
+    #               FixedValue = ""
+    #   EOT
+
+    transform_kql = "source"
+    # transform_kql = "source | project TimeGenerated = Timestamp, ThreadId, SourceLine, Level, Message, FixedValue"
+    # transform_kql = "source | project TimeGenerated = now()" # "source | project TimeGenerated = Time, Computer, Message = AdditionalContext"
     # transform_kql = "source | project TimeGenerated = now() | project LogMessage = 'RawData'" # "source | project TimeGenerated = Time, Computer, Message = AdditionalContext"
     # transform_kql = "source | project d = split(RawData,",") | project TimeGenerated=todatetime(d[0]), Code=toint(d[1]), Severity=tostring(d[2]), Module=tostring(d[3]), Message=tostring(d[4])"
   }
@@ -94,15 +98,10 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
     }
 
     log_file {
-      name          = "datasource-logfile"
-      format        = "text"
-      streams       = ["Custom-custom_CL"]
+      name          = "Custom-Json-MyTable_CL"
+      format        = "json"
+      streams       = ["Custom-Json-MyTable_CL"]
       file_patterns = ["/home/azureuser/envoy.log"] # ["/dev/stdout", "/dev/stderr"]
-      settings {
-        text {
-          record_start_timestamp_format = "ISO 8601"
-        }
-      }
     }
 
     performance_counter {
@@ -127,21 +126,45 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
     }
   }
 
-#   stream_declaration {
-#     stream_name = "Custom-custom_CL"
-#     column {
-#       name = "Time"
-#       type = "datetime"
-#     }
-#     column {
-#       name = "Computer"
-#       type = "string"
-#     }
-#     column {
-#       name = "AdditionalContext"
-#       type = "string"
-#     }
-#   }
+  stream_declaration {
+    stream_name = "Custom-Json-MyTable_CL"
+    column {
+      name = "TimeGenerated"
+      type = "datetime"
+    }
+    column {
+      name = "Computer"
+      type = "string"
+    }
+    column {
+      name = "FilePath"
+      type = "string"
+    }
+    # column {
+    #   name = "RawData"
+    #   type = "string"
+    # }
+    # column {
+    #   name = "Message"
+    #   type = "string"
+    # }
+    # column {
+    #   name = "Level"
+    #   type = "string"
+    # }
+    # column {
+    #   name = "SourceLine"
+    #   type = "string"
+    # }
+    # column {
+    #   name = "ThreadId"
+    #   type = "int"
+    # }
+    # column {
+    #   name = "FixedValue"
+    #   type = "string"
+    # }
+  }
 }
 
 resource "azurerm_monitor_data_collection_rule" "dcr_vm_insights" {
