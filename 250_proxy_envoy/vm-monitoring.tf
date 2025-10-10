@@ -144,22 +144,22 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
     #   name = "RawData"
     #   type = "string"
     # }
-    # column {
-    #   name = "Message"
-    #   type = "string"
-    # }
-    # column {
-    #   name = "Level"
-    #   type = "string"
-    # }
-    # column {
-    #   name = "SourceLine"
-    #   type = "string"
-    # }
-    # column {
-    #   name = "ThreadId"
-    #   type = "int"
-    # }
+    column {
+      name = "Message"
+      type = "string"
+    }
+    column {
+      name = "Level"
+      type = "string"
+    }
+    column {
+      name = "SourceLine"
+      type = "string"
+    }
+    column {
+      name = "ThreadId"
+      type = "string"
+    }
     # column {
     #   name = "FixedValue"
     #   type = "string"
