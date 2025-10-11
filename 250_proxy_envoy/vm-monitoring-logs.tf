@@ -101,7 +101,7 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
       name          = "Custom-Json-MyTable_CL"
       format        = "json"
       streams       = ["Custom-Json-MyTable_CL"]
-      file_patterns = ["/home/azureuser/envoy.log"] # ["/dev/stdout", "/dev/stderr"]
+      file_patterns = ["/var/log/envoy.log", "/var/log/envoy_admin_access.log"]
     }
 
     performance_counter {

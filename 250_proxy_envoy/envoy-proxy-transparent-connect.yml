@@ -1,5 +1,5 @@
 admin:
-  access_log_path: /tmp/admin_access.log
+  access_log_path: /var/log/envoy_admin_access.log
   address:
     socket_address:
       protocol: TCP
