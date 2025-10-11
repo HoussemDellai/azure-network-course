@@ -225,3 +225,53 @@ resource "azurerm_monitor_data_collection_rule_association" "dcr_association_vm_
   data_collection_rule_id = azurerm_monitor_data_collection_rule.dcr_vm_insights.id
   description             = "DCR association for vm linux and DCR vm insights"
 }
+
+resource "azapi_resource" "table" {
+  type      = "Microsoft.OperationalInsights/workspaces/tables@2025-02-01"
+  parent_id = azurerm_log_analytics_workspace.law.id # "/subscriptions/$${var.subscriptionId}/resourceGroups/$${var.resourceGroupName}"
+  name      = "Envoy_CL"
+  body = {
+    properties = {
+      plan            = "Analytics"
+      retentionInDays = 30
+      schema = {
+        name = "Envoy_CL"
+        columns = [
+          {
+            name = "TimeGenerated"
+            type = "datetime"
+          },
+          {
+            name = "Computer"
+            type = "string"
+          },
+          {
+            name = "FilePath"
+            type = "string"
+          },
+          {
+            name = "Message"
+            type = "string"
+          },
+          {
+            name = "Level"
+            type = "string"
+          },
+          {
+            name = "ThreadId"
+            type = "string"
+          },
+          {
+            name = "SourceLine"
+            type = "string"
+          },
+          {
+            name = "FixedValue"
+            type = "string"
+          }
+        ]
+      }
+      totalRetentionInDays = 30
+    }
+  }
+}
