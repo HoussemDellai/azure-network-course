@@ -1,5 +1,5 @@
 resource "azurerm_log_analytics_workspace" "law" {
-  name                = "log-analytics"
+  name                = "log-analytics-${var.prefix}"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   sku                 = "PerGB2018" # PerGB2018, Free, PerNode, Premium, Standard, Standalone, Unlimited, CapacityReservation
@@ -66,9 +66,10 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
   }
 
   data_flow {
-    streams       = ["Custom-Json-MyTable_CL"]
+    streams       = ["Custom-Json-Envoy_CL"]
     destinations  = ["destination-log"]
-    output_stream = "Custom-MyTable_CL"
+    output_stream = "Custom-Envoy_CL"
+    transform_kql = "source"
     #     transform_kql = <<EOT
     #     source
     #     | project TimeGenerated = now(),
@@ -81,8 +82,6 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
     #               RawData = "",
     #               FixedValue = ""
     #   EOT
-
-    transform_kql = "source"
     # transform_kql = "source | project TimeGenerated = Timestamp, ThreadId, SourceLine, Level, Message, FixedValue"
     # transform_kql = "source | project TimeGenerated = now()" # "source | project TimeGenerated = Time, Computer, Message = AdditionalContext"
     # transform_kql = "source | project TimeGenerated = now() | project LogMessage = 'RawData'" # "source | project TimeGenerated = Time, Computer, Message = AdditionalContext"
@@ -98,9 +97,9 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
     }
 
     log_file {
-      name          = "Custom-Json-MyTable_CL"
+      name          = "Custom-Json-Envoy_CL"
       format        = "json"
-      streams       = ["Custom-Json-MyTable_CL"]
+      streams       = ["Custom-Json-Envoy_CL"]
       file_patterns = ["/var/log/envoy.log", "/var/log/envoy_admin_access.log"]
     }
 
@@ -127,7 +126,7 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
   }
 
   stream_declaration {
-    stream_name = "Custom-Json-MyTable_CL"
+    stream_name = "Custom-Json-Envoy_CL"
     column {
       name = "TimeGenerated"
       type = "datetime"
@@ -140,10 +139,6 @@ resource "azurerm_monitor_data_collection_rule" "dcr_linux" {
       name = "FilePath"
       type = "string"
     }
-    # column {
-    #   name = "RawData"
-    #   type = "string"
-    # }
     column {
       name = "Message"
       type = "string"
