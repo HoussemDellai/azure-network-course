@@ -33,7 +33,7 @@ resource "azurerm_linux_virtual_machine" "vm-linux" {
   eviction_policy                 = "Delete"
   disk_controller_type            = "NVMe" # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
 
-#   custom_data = filebase64("./install-webapp.sh")
+  custom_data = filebase64("./install-envoy.sh")
 
   identity {
     type = "SystemAssigned"
