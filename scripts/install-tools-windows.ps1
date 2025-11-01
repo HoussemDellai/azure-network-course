@@ -30,6 +30,12 @@ choco install kubernetes-helm -y
 # Install Terraform
 choco install terraform -y
 
+# install brave browser
+choco install brave -y
+
+# Install Visual Studio 2022 Enterprise
+choco install visualstudio2022enterprise -y
+
 # Install python
 choco install python -y
 
@@ -39,21 +45,13 @@ choco install jq -y
 # Install yq
 choco install yq -y
 
-# Install Edge
-choco install microsoft-edge -y
-
-choco install brave -y
-
 # Install Lens
-choco install lens -y
+# choco install lens -y
 
 choco install openssl -y
 
 # Install Azure Storage Explorer
 choco install microsoftazurestorageexplorer -y
-
-# Install Azure Data Studio
-choco install azure-data-studio -y
 
 # Install curl
 choco install curl -y
@@ -78,7 +76,7 @@ choco install sqlcmd -y
 
 choco install headlamp -y
 
-choco install lens -y
+# choco install lens -y
 
 choco install wireguard -y
 
