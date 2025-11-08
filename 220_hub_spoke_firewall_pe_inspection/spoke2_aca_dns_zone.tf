@@ -1,7 +1,7 @@
 
 resource "azurerm_private_dns_zone" "private-dns-zone-aca-environment" {
   name                = "privatelink.${azurerm_container_app_environment.env.location}.azurecontainerapps.io"
-  resource_group_name = azurerm_resource_group.rg-spoke2.name
+  resource_group_name = azurerm_resource_group.rg-hub.name
 }
 
 resource "azurerm_private_dns_a_record" "a-record" {
