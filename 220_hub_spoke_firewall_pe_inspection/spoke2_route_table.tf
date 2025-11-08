@@ -11,12 +11,10 @@ resource "azurerm_route" "route-to-nva-spoke2" {
   route_table_name       = azurerm_route_table.route-table-to-nva-spoke2.name
   address_prefix         = "0.0.0.0/0" # azurerm_virtual_network.vnet-spoke1.address_space[0] # "10.1.0.0/16" # 
   next_hop_type          = "VirtualAppliance"
-  next_hop_in_ip_address = azurerm_linux_virtual_machine.vm-nva.private_ip_address
+  next_hop_in_ip_address = azurerm_firewall.firewall.ip_configuration.0.private_ip_address # module.vm-hub-nva.vm_private_ip
 }
 
 resource "azurerm_subnet_route_table_association" "association_route_table_subnet_spoke2" {
-  subnet_id      = azurerm_subnet.subnet-spoke2-workload.id
+  subnet_id      = azurerm_subnet.snet-spoke2-vm.id
   route_table_id = azurerm_route_table.route-table-to-nva-spoke2.id
-
-  depends_on = [module.vm-spoke2]
 }

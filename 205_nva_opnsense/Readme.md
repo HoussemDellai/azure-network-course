@@ -20,8 +20,6 @@ OPNsense offers a wide range of features including:
 
 Our objective is to demonstrate how to deploy and configure OPNsense as an NVA in Azure, providing a cost-effective alternative to Azure Firewall when used in POC environments.
 
-## 
-
 ## Install Wireguard in Windows using Winget
 
 ```sh
