@@ -18,5 +18,5 @@ resource "azurerm_subnet_route_table_association" "association_route_table_subne
   subnet_id      = azurerm_subnet.subnet-spoke1-workload.id
   route_table_id = azurerm_route_table.route-table-to-nva-spoke1.id
 
-  depends_on = [ module.vm-spoke1 ]
+  depends_on = [module.vm-spoke1]
 }

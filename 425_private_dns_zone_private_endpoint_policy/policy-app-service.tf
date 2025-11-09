@@ -8,7 +8,7 @@ resource "azurerm_resource_group_policy_assignment" "policy-app-service" {
   identity {
     type = "SystemAssigned"
   }
-  
+
   parameters = jsonencode({
     privateDnsZoneId = {
       value = azurerm_private_dns_zone.private-dns-zone-app-service.id

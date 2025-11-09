@@ -40,7 +40,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
     name                 = "os-disk-vm-windows"
     caching              = "ReadOnly"        # "ReadWrite" # None, ReadOnly and ReadWrite.
     storage_account_type = "StandardSSD_LRS" # "Standard_LRS"
-    disk_size_gb         = 256 # 128
+    disk_size_gb         = 256               # 128
 
     diff_disk_settings {
       option    = "Local"    # Specifies the Ephemeral Disk Settings for the OS Disk. At this time the only possible value is Local.

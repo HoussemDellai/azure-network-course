@@ -56,7 +56,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   }
 
   identity {
-    type = "SystemAssigned, UserAssigned"
+    type         = "SystemAssigned, UserAssigned"
     identity_ids = [azurerm_user_assigned_identity.identity-ama.id]
   }
 

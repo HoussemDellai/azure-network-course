@@ -25,17 +25,17 @@ resource "azurerm_network_security_group" "nsg-vm-vpnclient" {
 }
 
 resource "azurerm_network_security_rule" "allow-all-tcp" {
-  network_security_group_name  = azurerm_network_security_group.nsg-vm-vpnclient.name
-  resource_group_name          = azurerm_network_security_group.nsg-vm-vpnclient.resource_group_name
-  name                         = "allow-all-tcp"
-  access                       = "Allow"
-  priority                     = 100
-  direction                    = "Inbound"
-  protocol                     = "Tcp"
-  source_address_prefix        = "*"
-  source_port_range            = "*"
-  destination_address_prefix   = "*"
-  destination_port_range       = "*"
+  network_security_group_name = azurerm_network_security_group.nsg-vm-vpnclient.name
+  resource_group_name         = azurerm_network_security_group.nsg-vm-vpnclient.resource_group_name
+  name                        = "allow-all-tcp"
+  access                      = "Allow"
+  priority                    = 100
+  direction                   = "Inbound"
+  protocol                    = "Tcp"
+  source_address_prefix       = "*"
+  source_port_range           = "*"
+  destination_address_prefix  = "*"
+  destination_port_range      = "*"
 }
 
 resource "azurerm_network_security_rule" "allow-all-udp" {
