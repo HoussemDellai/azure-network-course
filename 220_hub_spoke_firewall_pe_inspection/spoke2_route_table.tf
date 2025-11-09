@@ -18,3 +18,8 @@ resource "azurerm_subnet_route_table_association" "association_route_table_subne
   subnet_id      = azurerm_subnet.snet-spoke2-vm.id
   route_table_id = azurerm_route_table.route-table-to-nva-spoke2.id
 }
+
+resource "azurerm_subnet_route_table_association" "association_route_table_subnet_spoke2_aca" {
+  subnet_id      = azurerm_subnet.snet-spoke2-aca.id
+  route_table_id = azurerm_route_table.route-table-to-nva-spoke2.id
+}

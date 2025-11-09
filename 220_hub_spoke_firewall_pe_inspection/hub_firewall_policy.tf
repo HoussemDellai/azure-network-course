@@ -10,45 +10,45 @@ resource "azurerm_firewall_policy_rule_collection_group" "policy-group-allow" {
   firewall_policy_id = azurerm_firewall_policy.firewall-policy.id
   priority           = 1000
 
-  # network_rule_collection {
-  #   name     = "allow-spokes-traffic"
-  #   priority = 500
-  #   action   = "Allow"
-
-  #   rule {
-  #     name                  = "allow-spoke1-to-spoke2"
-  #     protocols             = ["TCP", "UDP", "ICMP", "Any"]
-  #     source_addresses      = azurerm_virtual_network.vnet-spoke1.address_space
-  #     destination_addresses = azurerm_virtual_network.vnet-spoke2.address_space
-  #     destination_ports     = ["*"]
-  #   }
-
-  #   rule {
-  #     name                  = "allow-spoke2-to-spoke1"
-  #     protocols             = ["TCP", "UDP", "ICMP", "Any"]
-  #     source_addresses      = azurerm_virtual_network.vnet-spoke2.address_space
-  #     destination_addresses = azurerm_virtual_network.vnet-spoke1.address_space
-  #     destination_ports     = ["*"]
-  #   }
-  # }
-
-  application_rule_collection {
-    name     = "allow-all"
-    priority = 600
+  network_rule_collection {
+    name     = "allow-spokes-traffic"
+    priority = 500
     action   = "Allow"
 
     rule {
-      name              = "allow-all"
-      source_addresses  = ["*"]
-      destination_fqdns = ["*"]
-      protocols {
-        type = "Http"
-        port = 80
-      }
-      protocols {
-        type = "Https"
-        port = 443
-      }
+      name                  = "allow-spoke1-to-spoke2"
+      protocols             = ["TCP", "UDP", "ICMP", "Any"]
+      source_addresses      = azurerm_virtual_network.vnet-spoke1.address_space
+      destination_addresses = azurerm_virtual_network.vnet-spoke2.address_space
+      destination_ports     = ["*"]
+    }
+
+    rule {
+      name                  = "allow-spoke2-to-spoke1"
+      protocols             = ["TCP", "UDP", "ICMP", "Any"]
+      source_addresses      = azurerm_virtual_network.vnet-spoke2.address_space
+      destination_addresses = azurerm_virtual_network.vnet-spoke1.address_space
+      destination_ports     = ["*"]
     }
   }
+
+  # application_rule_collection {
+  #   name     = "allow-all"
+  #   priority = 600
+  #   action   = "Allow"
+
+  #   rule {
+  #     name              = "allow-all"
+  #     source_addresses  = ["*"]
+  #     destination_fqdns = ["*"]
+  #     protocols {
+  #       type = "Http"
+  #       port = 80
+  #     }
+  #     protocols {
+  #       type = "Https"
+  #       port = 443
+  #     }
+  #   }
+  # }
 }

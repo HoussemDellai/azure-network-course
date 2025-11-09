@@ -8,6 +8,9 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 ## Start Terminal
 
+# install brave browser
+choco install brave -y
+
 # Install VS Code
 choco install vscode -y
 
@@ -29,9 +32,6 @@ choco install kubernetes-helm -y
 
 # Install Terraform
 choco install terraform -y
-
-# install brave browser
-choco install brave -y
 
 # Install Visual Studio 2022 Enterprise
 choco install visualstudio2022enterprise -y
