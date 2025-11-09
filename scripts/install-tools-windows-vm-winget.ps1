@@ -3,6 +3,8 @@
 # Install chocolately
 # Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
+winget install -e --id Brave.Brave --accept-package-agreements --accept-source-agreements
+
 # Install Azure CLI
 winget install -e --id Microsoft.AzureCLI --accept-package-agreements --accept-source-agreements --silent --force
 
@@ -53,10 +55,6 @@ winget install -e --id Microsoft.Bicep --accept-package-agreements --accept-sour
 winget install -e --id Microsoft.Azure.AztfExport --accept-package-agreements --accept-source-agreements
 
 winget install -e --id Microsoft.Azure.FunctionsCoreTools --accept-package-agreements --accept-source-agreements
-
-winget install -e --id Brave.Brave --accept-package-agreements --accept-source-agreements
-
-winget install -e --id Brave.Brave.Dev --accept-package-agreements --accept-source-agreements
 
 winget install -e --id TorProject.TorBrowser --accept-package-agreements --accept-source-agreements
 
