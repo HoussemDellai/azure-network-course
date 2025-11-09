@@ -2,6 +2,19 @@
 
 ![](images/architecture.png)
 
+## Learnings
+
+When deploying a Private Endpoint, its IP address will be automatically added to the subnet's effective routes of the subnet where the Private Endpoint is deployed and to the peered subnets/VNETs. This means that any traffic destined for the Private Endpoint's IP will be routed directly to it, bypassing any Network Virtual Appliances (NVAs) or firewalls in place.
+
+The IP will be advertized only to direct peered VNETs, not transitive peered VNETs.
+
+There are two main ways to ensure that traffic to a Private Endpoint is inspected by an NVA or firewall:
+
+1. **Override the effective route of the Private Endpoint**: Add a more specific route in the route table associated with the source subnet This route should direct traffic destined for the Private Endpoint's IP address to the NVA or firewall. This means: `PRIVATE_IP_PE/32 -> NVA_IP`.
+
+2. **Enable Network Policy at the Subnet**: By enabling network policy on the subnet where the Private Endpoint is deployed, you can ensure that all traffic to and from the Private Endpoint is subject to the network security rules defined in your NVA or firewall. This effectively forces traffic through the NVA/firewall for inspection.
+
+
 ## Deploy terraform template
 
 ```sh
@@ -13,7 +26,7 @@ curl 10.2.1.4 --header 'Host: inspector-gadget.yellowriver-98afd79e.swedencentra
 
 sudo docker run -d -p 80:80 jelledruyts/inspectorgadget
 
- curl 10.2.2.5/api/introspector | jq .request[7]
+curl 10.2.2.5/api/introspector | jq .request[7]
 
 
 ## More resources
