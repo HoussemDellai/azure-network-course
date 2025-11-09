@@ -17,3 +17,7 @@ resource "azurerm_private_endpoint" "pe-aca-environment" {
     private_dns_zone_ids = [azurerm_private_dns_zone.private-dns-zone-aca-environment.id]
   }
 }
+
+output "aca_pe_ip" {
+  value = azurerm_private_endpoint.pe-aca-environment.private_service_connection.0.private_ip_address
+}

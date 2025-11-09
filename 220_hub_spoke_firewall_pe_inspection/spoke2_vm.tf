@@ -48,3 +48,7 @@ resource "azurerm_linux_virtual_machine" "vm-spoke2" {
     storage_account_uri = null
   }
 }
+
+output "vm_spoke2_ip" {
+  value = azurerm_linux_virtual_machine.vm-spoke2.private_ip_address
+}

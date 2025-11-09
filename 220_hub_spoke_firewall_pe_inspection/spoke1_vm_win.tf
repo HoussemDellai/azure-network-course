@@ -51,3 +51,7 @@ resource "azurerm_windows_virtual_machine" "vm-spoke1-windows" {
     storage_account_uri = null
   }
 }
+
+output "vm_spoke1_windows_ip" {
+  value = azurerm_windows_virtual_machine.vm-spoke1-windows.private_ip_address
+}

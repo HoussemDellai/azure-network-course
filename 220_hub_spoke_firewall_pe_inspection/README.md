@@ -28,6 +28,8 @@ sudo docker run -d -p 80:80 jelledruyts/inspectorgadget
 
 curl 10.2.2.5/api/introspector | jq .request[7]
 
+curl 10.2.1.4/api/introspector --header 'Host: inspector-gadget.yellowriver-98afd79e.swedencentral.azurecontainerapps.io' | jq .request[7]
+
 
 ## More resources
 
