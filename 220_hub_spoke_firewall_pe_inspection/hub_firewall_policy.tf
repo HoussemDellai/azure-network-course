@@ -3,6 +3,7 @@ resource "azurerm_firewall_policy" "firewall-policy" {
   resource_group_name = azurerm_resource_group.rg-hub.name
   location            = azurerm_resource_group.rg-hub.location
   sku                 = "Standard" # "Basic" # "Standard" # "Premium" #
+  private_ip_ranges   = ["255.255.255.255/32"]
 }
 
 resource "azurerm_firewall_policy_rule_collection_group" "policy-group-allow" {
@@ -17,7 +18,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "policy-group-allow" {
 
     rule {
       name                  = "allow-all"
-      protocols             = ["Any", "TCP", "UDP", "ICMP"]
+      protocols             = ["Any"]
       source_addresses      = ["*"]
       destination_addresses = ["*"]
       destination_ports     = ["*"]
@@ -65,4 +66,6 @@ resource "azurerm_firewall_policy_rule_collection_group" "policy-group-allow" {
   #     }
   #   }
   # }
+
+
 }

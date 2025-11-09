@@ -27,6 +27,8 @@ resource "azurerm_subnet" "snet-spoke2-pe" {
   virtual_network_name = azurerm_virtual_network.vnet-spoke2.name
   resource_group_name  = azurerm_virtual_network.vnet-spoke2.resource_group_name
   address_prefixes     = ["10.2.1.0/24"]
+
+  private_endpoint_network_policies = "RouteTableEnabled"
 }
 
 resource "azurerm_subnet" "snet-spoke2-vm" {

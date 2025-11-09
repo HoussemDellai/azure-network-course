@@ -30,6 +30,9 @@ curl 10.2.2.5/api/introspector | jq .request[7]
 
 curl 10.2.1.4/api/introspector --header 'Host: inspector-gadget.yellowriver-98afd79e.swedencentral.azurecontainerapps.io' | jq .request[7]
 
+sudo apt install traceroute
+
+traceroute inspector-gadget.yellowriver-98afd79e.swedencentral.azurecontainerapps.io
 
 ## More resources
 
