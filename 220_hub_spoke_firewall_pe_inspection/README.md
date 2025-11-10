@@ -53,6 +53,41 @@ curl 10.2.1.4 --header 'Host: nginx.ashymoss-4ece81e9.swedencentral.azurecontain
 # <style>
 ```
 
+```sh
+# azureuser@vm-linux-hub:~$
+curl 10.2.2.5/api/introspector | jq .request[7]
+#   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+#                                  Dload  Upload   Total   Spent    Left  Speed
+# 100  9056    0  9056    0     0  1380k      0 --:--:-- --:--:-- --:--:-- 1473k
+# {
+#   "key": "remote-ipaddress",
+#   "displayName": "Remote IP Address",
+#   "value": "::ffff:172.16.0.5"
+# }
+```
+
+```sh
+# azureuser@vm-linux-hub:~$ 
+traceroute 10.2.2.5
+# traceroute to 10.2.2.5 (10.2.2.5), 30 hops max, 60 byte packets
+#  1  gsa-01be8da6-9d06000000.internal.cloudapp.net (172.16.0.5)  1.086 ms  1.054 ms gsa-01be8da6-9d06000001.internal.cloudapp.net (172.16.0.6)  1.389 ms
+#  2  * * 10.2.2.5 (10.2.2.5)  2.946 ms
+```
+
+
+```sh
+# azureuser@vm-linux-spoke1:~$
+curl 10.2.2.5/api/introspector | jq .request[7]
+#   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+#                                  Dload  Upload   Total   Spent    Left  Speed
+# 100  9056    0  9056    0     0  1468k      0 --:--:-- --:--:-- --:--:-- 1473k
+# {
+#   "key": "remote-ipaddress",
+#   "displayName": "Remote IP Address",
+#   "value": "::ffff:172.16.0.5"
+# }
+```
+
 ## More resources
 
 Exploring Private Endpoint routing in Azure: https://denishartl.com/2025/10/17/exploring-private-endpoint-routing-in-azure/
