@@ -35,4 +35,17 @@ resource "azurerm_subnet" "snet-spoke2-vm" {
   resource_group_name  = azurerm_virtual_network.vnet-spoke2.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet-spoke2.name
   address_prefixes     = ["10.2.2.0/24"]
+
+  # Required for Private Link service Direct Connect
+  private_link_service_network_policies_enabled = false # just in case we want to host PLS here
 }
+
+resource "azurerm_subnet" "snet-spoke2-pe-dc" {
+  name                 = "snet-spoke2-pe-dc"
+  resource_group_name  = azurerm_virtual_network.vnet-spoke2.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet-spoke2.name
+  address_prefixes     = ["10.2.3.0/24"]
+
+  private_endpoint_network_policies = "Disabled"
+}
+
