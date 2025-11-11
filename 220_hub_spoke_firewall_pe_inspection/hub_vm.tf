@@ -25,6 +25,8 @@ resource "azurerm_linux_virtual_machine" "vm-hub" {
   eviction_policy                 = "Delete"
   disk_controller_type            = "NVMe" # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
 
+  custom_data = filebase64("../scripts/install-traceroute.sh")
+
   os_disk {
     name                 = "os-disk-vm-spoke1"
     caching              = "ReadOnly"        # "ReadWrite" # None, ReadOnly and ReadWrite.

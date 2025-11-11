@@ -81,3 +81,7 @@ resource "azurerm_container_app" "inspector-gadget" {
 output "aca_static_ip" {
   value = azurerm_container_app_environment.env.static_ip_address
 }
+
+output "aca_fqdn_inspector_gadget" {
+  value = "${azurerm_container_app.inspector-gadget.name}.${azurerm_container_app_environment.env.default_domain}"
+}

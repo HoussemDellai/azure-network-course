@@ -22,9 +22,9 @@ terraform init
 terraform apply -auto-apply
 ```
 
-curl 10.2.1.4 --header 'Host: inspector-gadget.ashymoss-4ece81e9.swedencentral.azurecontainerapps.io'
+curl 10.2.1.4 --header 'Host: inspector-gadget.bravesea-d2096df3.swedencentral.azurecontainerapps.io'
 
-curl 10.2.1.4/api/introspector --header 'Host: inspector-gadget.ashymoss-4ece81e9.swedencentral.azurecontainerapps.io' | jq .request[7]
+curl 10.2.1.4/api/introspector --header 'Host: inspector-gadget.bravesea-d2096df3.swedencentral.azurecontainerapps.io' | jq .request[7]
 
 sudo docker run -d -p 80:80 jelledruyts/inspectorgadget
 
@@ -91,3 +91,5 @@ curl 10.2.2.5/api/introspector | jq .request[7]
 ## More resources
 
 Exploring Private Endpoint routing in Azure: https://denishartl.com/2025/10/17/exploring-private-endpoint-routing-in-azure/
+
+Network inspection options for Azure Private Endpoints: https://www.youtube.com/watch?v=xlf_UzTDXfo
