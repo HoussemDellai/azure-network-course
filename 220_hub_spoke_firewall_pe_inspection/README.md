@@ -35,7 +35,7 @@ sudo apt install traceroute
 
 ```sh
 # azureuser@vm-linux-hub:~$
-traceroute inspector-gadget.ashymoss-4ece81e9.swedencentral.azurecontainerapps.io
+traceroute inspector-gadget.bravesea-d2096df3.swedencentral.azurecontainerapps.io
 # traceroute to inspector-gadget.ashymoss-4ece81e9.swedencentral.azurecontainerapps.io (10.2.1.4), 30 hops max, 60 byte packets
 #  1  * gsa-01be8da6-9d06000001.internal.cloudapp.net (172.16.0.6)  0.884 ms *
 #  2  * * *

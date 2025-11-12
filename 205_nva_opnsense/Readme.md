@@ -4,21 +4,107 @@ This repository contains configuration files and instructions to set up an OPNse
 
 ## Introduction to OPNsense
 
-OPNsense is a powerful [open-source](https://github.com/opnsense/core) firewall that can be used to secure your virtual networks. It is a fork of the popular pfSense firewall which is also a fork of [m0n0wall](https://m0n0.ch/). It is based on `FreeBSD` and provides a user-friendly web interface for configuration and management.
-OPNsense offers a wide range of features including: 
+In today’s cloud-driven world, securing your infrastructure is more critical than ever. One powerful solution is Opnsense. OPNsense is a powerful [open-source](https://github.com/opnsense/core) firewall that can be used to secure your virtual networks. Originally forked from pfSense, which itself evolved from [m0n0wall](https://m0n0.ch/), Opnsense is based on `FreeBSD` and provides a user-friendly web interface for configuration and management.
+What makes Opnsense Firewall stand out is its rich feature set:
 
-* VPN connectivity with P2S and P2P:
-  * Wireguard
-  * OpenVPN
-* DNS Servers:
-  * OpenDNS
-  * Unbound DNS
-* Support multiple networks: LAN and WAN.
-* Forward Proxy with Squid proxy.
-* Multiple official and community plugins.
-* Intrusion detection.
+* **VPN Support** for point-to-site and site-to-site connections using technologies like WireGuard and OpenVPN.
+* **DNS Management** with options such as OpenDNS and Unbound DNS.
+* **Multi-network handling**, enabling you to manage different LANs seamlessly.
+* **Advanced security features**, including intrusion detection and forward proxy integration.
+* **Plugin ecosystem**, supporting official and community extensions for third-party integrations.
 
-Our objective is to demonstrate how to deploy and configure OPNsense as an NVA in Azure, providing a cost-effective alternative to Azure Firewall when used in POC environments.
+In this guide, you’ll learn how to install and configure Opnsense Firewall on an Azure Virtual Machine, leveraging its capabilities to secure your cloud resources effectively. We'll have three demonstrations:
+
+1. Installing OPNsense on an Azure virtual machine
+2. Setting up point-to-site VPN using WireGuard
+3. Using Opnsense as an NVA in a Hub and Spoke topology
+
+## 1. Installing OPNsense on an Azure Virtual Machine Using Terraform
+
+### 1.a. Overview of the deployment
+
+
+
+### **Step 2: Understand the Terraform Template**
+
+The Terraform configuration uses the **AzureRM provider** to create:
+
+*   **Resource Group**
+*   **Virtual Network (VNET)** named `VNET-Hub` with two subnets:
+    *   **Trusted Subnet**: Internal traffic between spokes.
+    *   **Untrusted Subnet**: Exposes the firewall to the internet.
+*   **Network Security Group (NSG)** attached to the untrusted subnet (all traffic allowed for demo purposes).
+*   **Virtual Machine**:
+    *   Two NICs (trusted and untrusted) with **IP forwarding enabled**.
+    *   **FreeBSD OS image**.
+    *   VM size: `Standard_D4ads_v5` with NVMe disks.
+    *   Admin credentials.
+
+At this stage, the VM runs FreeBSD but does not yet have OPNsense installed.
+
+***
+
+### **Step 3: Install OPNsense**
+
+We use an **Azure VM Extension** to run a shell script that:
+
+*   Downloads and installs OPNsense.
+*   Applies the `config.xml` file for firewall configuration.
+
+The script parameters include:
+
+*   GitHub path
+*   OPNsense version (currently **25.7**)
+*   Gateway IP and public IP address
+
+These values are passed as local variables in Terraform.
+
+***
+
+### **Step 4: Apply Terraform**
+
+Deploy the resources by running:
+
+```bash
+terraform apply -auto-approve
+```
+
+Terraform provisions the infrastructure and outputs resource details.
+
+***
+
+### **Step 5: Access the OPNsense Dashboard**
+
+1.  Copy the VM’s public IP from the Azure portal.
+2.  Paste it into your browser. Accept the TLS warning (TLS is not configured yet).
+3.  Log in:
+    *   **Username**: `root`
+    *   **Password**: `opnsense`
+
+You now have access to the OPNsense dashboard where you can:
+
+*   Monitor traffic and reports.
+*   Configure firewall rules for LAN, WAN, and VPN.
+*   Set up VPNs (WireGuard, OpenVPN, IPsec).
+*   Configure DNS services (OpenDNS, Unbound).
+
+***
+
+## **Next Steps**
+
+In the next article, we’ll demonstrate how to establish a **WireGuard VPN connection** to your OPNsense firewall.
+
+***
+
+### **Resources**
+
+*   <https://opnsense.org>
+*   <https://developer.hashicorp.com/terraform/docs>
+*   <https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs>
+
+***
+
+✅ Do you want me to **add code snippets for the Terraform configuration and shell script** inside this Markdown file? Or should I **include diagrams (network topology) and screenshots for better visualization**?
 
 ## Install Wireguard in Windows using Winget
 
