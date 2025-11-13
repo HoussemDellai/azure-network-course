@@ -19,10 +19,9 @@ In this guide, you’ll learn how to install and configure Opnsense Firewall on 
 2. Setting up point-to-site VPN using WireGuard
 3. Using Opnsense as an NVA in a Hub and Spoke topology
 
-## 1. Installing OPNsense on an Azure Virtual Machine Using Terraform
+## 1. Installing OPNsense on an Azure Virtual Machine
 
-### 1.a. Overview of the deployment
-
+You will deploy 
 
 
 ### **Step 2: Understand the Terraform Template**
