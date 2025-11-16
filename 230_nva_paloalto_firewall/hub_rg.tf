@@ -1,4 +1,4 @@
-resource "azurerm_resource_group" "rg-paloalto" {
+resource "azurerm_resource_group" "rg" {
   name     = "rg-hub-nva-paloalto-vmseries-${var.prefix}"
   location = "swedencentral"
 }

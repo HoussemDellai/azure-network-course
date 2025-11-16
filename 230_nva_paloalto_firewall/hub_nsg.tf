@@ -1,7 +1,7 @@
 resource "azurerm_network_security_group" "nsg-vm" {
   name                = "nsg-vm-nva"
-  location            = azurerm_resource_group.rg-paloalto.location
-  resource_group_name = azurerm_resource_group.rg-paloalto.name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
 }
 
 resource "azurerm_network_security_rule" "allow-all-inbound" {
@@ -37,7 +37,12 @@ resource "azurerm_network_security_rule" "allow-all-outbound" {
 #   network_security_group_id = azurerm_network_security_group.nsg-vm.id
 # }
 
-resource "azurerm_network_interface_security_group_association" "association-nsg-nic-vm-nva-paloalto" {
-  network_interface_id      = azurerm_network_interface.nic-vm-nva-paloalto.id
+resource "azurerm_network_interface_security_group_association" "association-nsg-nic-vm-nva-untrusted" {
+  network_interface_id      = azurerm_network_interface.nic-vm-nva-untrusted.id
   network_security_group_id = azurerm_network_security_group.nsg-vm.id
 }
+
+# resource "azurerm_network_interface_security_group_association" "association-nsg-nic-vm-nva-paloalto" {
+#   network_interface_id      = azurerm_network_interface.nic-vm-nva-paloalto.id
+#   network_security_group_id = azurerm_network_security_group.nsg-vm.id
+# }
