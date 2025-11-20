@@ -43,3 +43,5 @@ terraform.rc
 # .gitignore
 
 *flows.mitm
+
+/205_nva_opnsense/scripts/config-OPNsense.xml

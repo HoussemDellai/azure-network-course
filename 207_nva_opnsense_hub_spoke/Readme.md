@@ -1,5 +1,7 @@
 # OPNsense Firewall in a Hub and Spoke architecture
 
+![](images/opnsense-hub-spoke.png)
+
 This repository contains configuration files and instructions to set up an OPNsense firewall in a Hub and Spoke architecture. The Hub and Spoke model allows multiple remote sites (spokes) to connect securely to a central site (hub).
 
 Most of Microsoft documentation for Hub and Spoke highlights Azure Firewall as an NVA solution. However, OPNsense is a powerful open-source firewall that can be used as an alternative NVA solution in this architecture.

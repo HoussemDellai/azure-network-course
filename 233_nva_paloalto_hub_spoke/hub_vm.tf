@@ -1,34 +1,34 @@
-resource "azurerm_network_interface" "nic_vm" {
-  name                  = "nic-vm"
-  resource_group_name   = azurerm_resource_group.rg.name
-  location              = azurerm_resource_group.rg.location
+resource "azurerm_network_interface" "nic-vm-hub" {
+  name                  = "nic-vm-hub"
+  resource_group_name   = azurerm_resource_group.rg-hub.name
+  location              = azurerm_resource_group.rg-hub.location
   ip_forwarding_enabled = false
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.subnet-app.id
+    subnet_id                     = azurerm_subnet.snet-hub-vm.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = null
   }
 }
 
-resource "azurerm_linux_virtual_machine" "vm" {
-  name                            = "vm-linux"
-  resource_group_name             = azurerm_resource_group.rg.name
-  location                        = azurerm_resource_group.rg.location
+resource "azurerm_linux_virtual_machine" "vm-hub" {
+  name                            = "vm-linux-hub"
+  resource_group_name             = azurerm_resource_group.rg-hub.name
+  location                        = azurerm_resource_group.rg-hub.location
   size                            = "Standard_D2ads_v6"
   disable_password_authentication = false
   admin_username                  = "azureuser"
   admin_password                  = "@Aa123456789"
-  network_interface_ids           = [azurerm_network_interface.nic_vm.id]
+  network_interface_ids           = [azurerm_network_interface.nic-vm-hub.id]
   priority                        = "Spot"
   eviction_policy                 = "Delete"
   disk_controller_type            = "NVMe" # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
 
-  custom_data = filebase64("../scripts/install-webapp.sh")
+  custom_data = filebase64("../scripts/install-traceroute.sh")
 
   os_disk {
-    name                 = "os-disk-vm-windows"
+    name                 = "os-disk-vm-spoke1"
     caching              = "ReadOnly"        # "ReadWrite" # None, ReadOnly and ReadWrite.
     storage_account_type = "StandardSSD_LRS" # "Standard_LRS"
     disk_size_gb         = 64
