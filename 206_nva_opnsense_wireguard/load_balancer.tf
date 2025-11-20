@@ -88,17 +88,29 @@ resource "azurerm_lb_outbound_rule" "outbound-rule" {
   }
 }
 
-# resource "azurerm_lb_nat_rule" "nat-rdp" {
-#   name                           = "RDP-access"
-#   resource_group_name            = azurerm_resource_group.rg.name
-#   loadbalancer_id                = azurerm_lb.lb-public.id
-#   protocol                       = "Tcp"
-#   frontend_port_start            = 3009
-#   frontend_port_end              = 3009
-#   backend_port                   = 3389
-#   frontend_ip_configuration_name = azurerm_lb.lb-public.frontend_ip_configuration.0.name
-#   backend_address_pool_id        = azurerm_lb_backend_address_pool.backend-pool.id
-# }
+resource "azurerm_lb_nat_rule" "nat-wireguard" {
+  name                           = "nat-wireguard"
+  resource_group_name            = azurerm_resource_group.rg.name
+  loadbalancer_id                = azurerm_lb.lb-public.id
+  protocol                       = "Tcp"
+  frontend_port_start            = 5678
+  frontend_port_end              = 5678
+  backend_port                   = 51820
+  frontend_ip_configuration_name = azurerm_lb.lb-public.frontend_ip_configuration.0.name
+  backend_address_pool_id        = azurerm_lb_backend_address_pool.backend-pool.id
+}
+
+resource "azurerm_lb_nat_rule" "nat-opnsense-website" {
+  name                           = "nat-opnsense-website"
+  resource_group_name            = azurerm_resource_group.rg.name
+  loadbalancer_id                = azurerm_lb.lb-public.id
+  protocol                       = "Tcp"
+  frontend_port_start            = 443
+  frontend_port_end              = 443
+  backend_port                   = 443
+  frontend_ip_configuration_name = azurerm_lb.lb-public.frontend_ip_configuration.0.name
+  backend_address_pool_id        = azurerm_lb_backend_address_pool.backend-pool.id
+}
 
 output "pip_lb_inbound" {
   value = azurerm_public_ip.pip-lb-inbound.ip_address

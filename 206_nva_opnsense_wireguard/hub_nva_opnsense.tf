@@ -63,15 +63,15 @@ resource "azurerm_linux_virtual_machine" "vm-nva" {
 
   source_image_reference {
     publisher = "thefreebsdfoundation"
-    offer     = "freebsd-14_1" # "windows11preview-arm64"
-    sku       = "14_1-release-amd64-gen2-zfs"
+    offer     = "freebsd-14_2" # "windows11preview-arm64"
+    sku       = "14_2-release-amd64-gen2-zfs"
     version   = "latest"
   }
 
   plan {
-    name      = "14_1-release-amd64-gen2-zfs"
+    name      = "14_2-release-amd64-gen2-zfs"
     publisher = "thefreebsdfoundation"
-    product   = "freebsd-14_1"
+    product   = "freebsd-14_2" # "freebsd-14_3"
   }
 
   identity {
@@ -101,9 +101,9 @@ resource "azurerm_virtual_machine_extension" "cslinux-install-opnsense" {
   settings             = <<SETTINGS
     {
       "fileUris": [
-        "https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/205_nva_opnsense/scripts/configureopnsense.sh"
+        "https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/206_nva_opnsense_wireguard/scripts/configureopnsense.sh"
       ],
-      "commandToExecute": "sh configureopnsense.sh 'https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/205_nva_opnsense/scripts/' '${local.opnsense_version}' '${local.trusted_gw_ip}' '${local.opnsense_pip}'"
+      "commandToExecute": "sh configureopnsense.sh 'https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/206_nva_opnsense_wireguard/scripts/' '${local.opnsense_version}' '${local.trusted_gw_ip}' '${local.opnsense_pip}'"
     }
     SETTINGS
 }
