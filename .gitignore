@@ -45,3 +45,4 @@ terraform.rc
 *flows.mitm
 
 /205_nva_opnsense/scripts/config-OPNsense.xml
+/206_nva_opnsense_wireguard/scripts/config-OPNsense.xml
