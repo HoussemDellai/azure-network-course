@@ -32,6 +32,7 @@ resource "azurerm_network_interface" "nic-vm-nva-trusted" {
     name                          = "trusted"
     subnet_id                     = azurerm_subnet.snet-trusted.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = null
   }
 }
 
@@ -39,7 +40,7 @@ resource "azurerm_linux_virtual_machine" "vm-nva" {
   name                            = "vm-nva-opnsense"
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
-  size                            = "Standard_D4ads_v6" # "Standard_B2s" # "Standard_D96ads_v5" #
+  size                            = "Standard_D4ads_v6"
   disable_password_authentication = false
   admin_username                  = "azureuser"
   admin_password                  = "@Aa123456789"
@@ -63,15 +64,15 @@ resource "azurerm_linux_virtual_machine" "vm-nva" {
 
   source_image_reference {
     publisher = "thefreebsdfoundation"
-    offer     = "freebsd-14_2" # "windows11preview-arm64"
-    sku       = "14_2-release-amd64-gen2-zfs"
+    offer     = "freebsd-14_1"                # "freebsd-14_2"
+    sku       = "14_1-release-amd64-gen2-zfs" # "14_2-release-amd64-gen2-zfs"
     version   = "latest"
   }
 
   plan {
-    name      = "14_2-release-amd64-gen2-zfs"
+    name      = "14_1-release-amd64-gen2-zfs" # "14_2-release-amd64-gen2-zfs"
     publisher = "thefreebsdfoundation"
-    product   = "freebsd-14_2" # "freebsd-14_3"
+    product   = "freebsd-14_1" # "freebsd-14_2"
   }
 
   identity {

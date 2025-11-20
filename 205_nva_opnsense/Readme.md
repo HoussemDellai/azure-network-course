@@ -116,3 +116,8 @@ winget install -e --id WireGuard.WireGuard --accept-package-agreements --accept-
 ## More resources
 
 Src: https://www.zenarmor.com/docs/network-security-tutorials/how-to-setup-wireguard-on-opnsense
+
+## Important note
+
+>You will encounter the following error the first time you create a `FreeBSD` VM in your subscription: ResourcePurchaseValidationFailed: User failed validation to purchase resources. Error message: 'You have not accepted the legal terms on this subscription for this plan. Before the subscription can be used, you need to accept the legal terms of the image. To read and accept legal terms, use the Azure CLI commands described at https://go.microsoft.com/fwlink/?linkid=2110637 or the PowerShell commands available at https://go.microsoft.com/fwlink/?linkid=862451. Alternatively, deploying via the Azure portal provides a UI experience for reading and accepting the legal terms. Offer details: publisher='thefreebsdfoundation' offer = 'freebsd-14_2', sku = '14_2-release-amd64-gen2-zfs',
+The solution is to create a `FreeBSD` VM using the Azure Portal first, accept the legal terms, and then you can proceed with Terraform deployments.

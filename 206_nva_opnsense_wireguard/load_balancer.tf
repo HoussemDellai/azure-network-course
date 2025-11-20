@@ -14,6 +14,14 @@ resource "azurerm_public_ip" "pip-lb-outbound" {
   sku                 = "Standard"
 }
 
+resource "azurerm_public_ip" "pip-lb-outbound-2" {
+  name                = "pip-lb-outbound-2"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  allocation_method   = "Static" # "Dynamic"
+  sku                 = "Standard"
+}
+
 resource "azurerm_lb" "lb-public" {
   name                = "load-balancer"
   location            = azurerm_resource_group.rg.location
@@ -29,6 +37,11 @@ resource "azurerm_lb" "lb-public" {
   frontend_ip_configuration {
     name                 = "outbound"
     public_ip_address_id = azurerm_public_ip.pip-lb-outbound.id
+  }
+
+  frontend_ip_configuration {
+    name                 = "outbound-2"
+    public_ip_address_id = azurerm_public_ip.pip-lb-outbound-2.id
   }
 }
 
@@ -86,15 +99,19 @@ resource "azurerm_lb_outbound_rule" "outbound-rule" {
   frontend_ip_configuration {
     name = azurerm_lb.lb-public.frontend_ip_configuration.1.name
   }
+
+  frontend_ip_configuration {
+    name = azurerm_lb.lb-public.frontend_ip_configuration.2.name
+  }
 }
 
 resource "azurerm_lb_nat_rule" "nat-wireguard" {
   name                           = "nat-wireguard"
   resource_group_name            = azurerm_resource_group.rg.name
   loadbalancer_id                = azurerm_lb.lb-public.id
-  protocol                       = "Tcp"
-  frontend_port_start            = 5678
-  frontend_port_end              = 5678
+  protocol                       = "Udp" # wireguard uses UDP protocol
+  frontend_port_start            = 51820
+  frontend_port_end              = 51820
   backend_port                   = 51820
   frontend_ip_configuration_name = azurerm_lb.lb-public.frontend_ip_configuration.0.name
   backend_address_pool_id        = azurerm_lb_backend_address_pool.backend-pool.id
@@ -112,10 +129,26 @@ resource "azurerm_lb_nat_rule" "nat-opnsense-website" {
   backend_address_pool_id        = azurerm_lb_backend_address_pool.backend-pool.id
 }
 
+resource "azurerm_lb_nat_rule" "nat-opnsense-dns" {
+  name                           = "nat-opnsense-dns"
+  resource_group_name            = azurerm_resource_group.rg.name
+  loadbalancer_id                = azurerm_lb.lb-public.id
+  protocol                       = "Udp"
+  frontend_port_start            = 53
+  frontend_port_end              = 53
+  backend_port                   = 53
+  frontend_ip_configuration_name = azurerm_lb.lb-public.frontend_ip_configuration.0.name
+  backend_address_pool_id        = azurerm_lb_backend_address_pool.backend-pool.id
+}
+
 output "pip_lb_inbound" {
   value = azurerm_public_ip.pip-lb-inbound.ip_address
 }
 
 output "pip_lb_outbound" {
   value = azurerm_public_ip.pip-lb-outbound.ip_address
+}
+
+output "pip_lb_outbound-2" {
+  value = azurerm_public_ip.pip-lb-outbound-2.ip_address
 }

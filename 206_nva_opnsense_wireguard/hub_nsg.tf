@@ -32,12 +32,17 @@ resource "azurerm_network_security_rule" "allow-all-outbound" {
   destination_port_range      = "*"
 }
 
-# resource "azurerm_network_interface_security_group_association" "association-nsg-nic-vm-nva-trusted" {
-#   network_interface_id      = azurerm_network_interface.nic-vm-nva-trusted.id
-#   network_security_group_id = azurerm_network_security_group.nsg-vm.id
-# }
-
 resource "azurerm_network_interface_security_group_association" "association-nsg-nic-vm-nva-untrusted" {
   network_interface_id      = azurerm_network_interface.nic-vm-nva-untrusted.id
+  network_security_group_id = azurerm_network_security_group.nsg-vm.id
+}
+
+resource "azurerm_subnet_network_security_group_association" "association-nsg-snet-untrusted" {
+  subnet_id                 = azurerm_subnet.snet-untrusted.id
+  network_security_group_id = azurerm_network_security_group.nsg-vm.id
+}
+
+resource "azurerm_subnet_network_security_group_association" "association-nsg-snet-trusted" {
+  subnet_id                 = azurerm_subnet.snet-trusted.id
   network_security_group_id = azurerm_network_security_group.nsg-vm.id
 }
