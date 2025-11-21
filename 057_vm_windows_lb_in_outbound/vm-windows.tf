@@ -65,14 +65,27 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   }
 }
 
-# resource "azurerm_managed_disk" "example" {
-#   name                 = "acctestmd"
-#   location             = azurerm_resource_group.example.location
-#   resource_group_name  = azurerm_resource_group.example.name
-#   storage_account_type = "Standard_LRS"
-#   create_option        = "Empty"
-#   disk_size_gb         = "1"
-# }
+resource "azurerm_managed_disk" "disk-data" {
+  name                 = "disk-data"
+  location             = azurerm_resource_group.rg.location
+  resource_group_name  = azurerm_resource_group.rg.name
+  storage_account_type = "Standard_LRS"
+  create_option        = "Empty"
+  disk_size_gb         = "256"
+
+  tags = {
+    CostControl     = "Ignore"
+    SecurityControl = "Ignore"
+  }
+}
+
+resource "azurerm_virtual_machine_data_disk_attachment" "disk-attachement" {
+  managed_disk_id    = azurerm_managed_disk.disk-data.id
+  virtual_machine_id = azurerm_windows_virtual_machine.vm-windows.id
+  lun                = "10"
+  caching            = "ReadWrite" # Specifies the caching requirements for this Data Disk. Possible values include None, ReadOnly and ReadWrite.
+  create_option      = "Attach"    # The Create Option of the Data Disk, such as Empty or Attach. Defaults to Attach.
+}
 
 output "vm_pip" {
   value = azurerm_public_ip.pip-vm.ip_address

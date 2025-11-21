@@ -4,20 +4,6 @@ resource "azurerm_network_security_group" "nsg-vm" {
   resource_group_name = azurerm_resource_group.rg.name
 }
 
-# resource "azurerm_network_security_rule" "allow-me-rdp" {
-#   network_security_group_name  = azurerm_network_security_group.nsg-vm.name
-#   resource_group_name          = azurerm_network_security_group.nsg-vm.resource_group_name
-#   name                         = "allow-me-rdp"
-#   access                       = "Allow"
-#   priority                     = 1000
-#   direction                    = "Inbound"
-#   protocol                     = "Tcp"
-#   source_address_prefix        = "*"
-#   source_port_range            = "*"
-#   destination_address_prefixes = ["*"]
-#   destination_port_range       = "*"
-# }
-
 resource "azurerm_network_security_rule" "allow-rdp" {
   name                        = "allow-rdp"
   network_security_group_name = azurerm_network_security_group.nsg-vm.name

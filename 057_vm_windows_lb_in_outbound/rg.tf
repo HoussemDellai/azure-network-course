@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-vm-win11-lb-in-out-057"
+  name     = "rg-vm-win11-slb-in-out-057"
   location = "swedencentral"
 }
