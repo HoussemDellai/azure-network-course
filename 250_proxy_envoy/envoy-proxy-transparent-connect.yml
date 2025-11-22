@@ -84,12 +84,14 @@ static_resources:
 application_log_config:
   log_format:
     json_format:
-      # Timestamp: "%Y-%m-%dT%T.%F"
-      # ThreadId: "%t"
-      # SourceLine: "%s:%#"
-      # Level: "%l"
-      # Message: "%j"
-      # FixedValue: "SomeFixedValue"
+      Timestamp: "%Y-%m-%dT%T.%F"
+      ThreadId: "%t"
+      SourceLine: "%s:%#"
+      Level: "%l"
+      Message: "%j"
+      FixedValue: "SomeFixedValue"
+
+      hostname: "%REQUESTED_SERVER_NAME%"
 
 
 # access_log:
@@ -105,32 +107,32 @@ application_log_config:
 #     path: /dev/stdout
 #     log_format:
 #       json_format:
-        listener_name: https_ingress
-        upstream_connection_id: "%UPSTREAM_CONNECTION_ID%"
-        downstream_connection_id: "%CONNECTION_ID%"
-        time: "%START_TIME%"
-        request_protocol: "%PROTOCOL%"
-        method: "%REQ(:METHOD)%"
-        path: "%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%"
-        scheme: "%REQ(:SCHEME)%"
-        upstream_request_protocol: "%UPSTREAM_PROTOCOL%"
-        status: "%RESPONSE_CODE%"
-        response_code_details: "%RESPONSE_CODE_DETAILS%"
-        request_time_msec: "%DURATION%"
-        request_ttfb_msec: "%RESPONSE_DURATION%"
-        response_flags: "%RESPONSE_FLAGS%"
-        connection_termination_details: "%CONNECTION_TERMINATION_DETAILS%"
-        user_agent: "%REQ(USER-AGENT)%"
-        request_body_length: "%BYTES_RECEIVED%"
-        bytes_sent: "%BYTES_SENT%"
-        remote_addr: "%DOWNSTREAM_REMOTE_ADDRESS_WITHOUT_PORT%"
-        remote_port: "%DOWNSTREAM_REMOTE_PORT%"
-        local_addr: "%DOWNSTREAM_LOCAL_ADDRESS_WITHOUT_PORT%"
-        local_port: "%DOWNSTREAM_LOCAL_PORT%"
-        upstream_cluster: "%UPSTREAM_CLUSTER%"
-        upstream_addr: "%UPSTREAM_HOST%"
-        upstream_request_attempt_count: "%UPSTREAM_REQUEST_ATTEMPT_COUNT%"
-        upstream_transport_failure_reason: "%UPSTREAM_TRANSPORT_FAILURE_REASON%"
-        downstream_transport_failure_reason: "%DOWNSTREAM_TRANSPORT_FAILURE_REASON%"
-        envoy_log_type: HTTP
-        hostname: "%REQUESTED_SERVER_NAME%"
+        # listener_name: https_ingress
+        # upstream_connection_id: "%UPSTREAM_CONNECTION_ID%"
+        # downstream_connection_id: "%CONNECTION_ID%"
+        # time: "%START_TIME%"
+        # request_protocol: "%PROTOCOL%"
+        # method: "%REQ(:METHOD)%"
+        # path: "%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%"
+        # scheme: "%REQ(:SCHEME)%"
+        # upstream_request_protocol: "%UPSTREAM_PROTOCOL%"
+        # status: "%RESPONSE_CODE%"
+        # response_code_details: "%RESPONSE_CODE_DETAILS%"
+        # request_time_msec: "%DURATION%"
+        # request_ttfb_msec: "%RESPONSE_DURATION%"
+        # response_flags: "%RESPONSE_FLAGS%"
+        # connection_termination_details: "%CONNECTION_TERMINATION_DETAILS%"
+        # user_agent: "%REQ(USER-AGENT)%"
+        # request_body_length: "%BYTES_RECEIVED%"
+        # bytes_sent: "%BYTES_SENT%"
+        # remote_addr: "%DOWNSTREAM_REMOTE_ADDRESS_WITHOUT_PORT%"
+        # remote_port: "%DOWNSTREAM_REMOTE_PORT%"
+        # local_addr: "%DOWNSTREAM_LOCAL_ADDRESS_WITHOUT_PORT%"
+        # local_port: "%DOWNSTREAM_LOCAL_PORT%"
+        # upstream_cluster: "%UPSTREAM_CLUSTER%"
+        # upstream_addr: "%UPSTREAM_HOST%"
+        # upstream_request_attempt_count: "%UPSTREAM_REQUEST_ATTEMPT_COUNT%"
+        # upstream_transport_failure_reason: "%UPSTREAM_TRANSPORT_FAILURE_REASON%"
+        # downstream_transport_failure_reason: "%DOWNSTREAM_TRANSPORT_FAILURE_REASON%"
+        # envoy_log_type: HTTP
+        # hostname: "%REQUESTED_SERVER_NAME%"
