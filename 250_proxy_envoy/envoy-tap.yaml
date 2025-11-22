@@ -61,9 +61,9 @@ static_resources:
                     # max_buffered_tx_bytes: 5000
                     sinks:
                     - format: JSON_BODY_AS_BYTES
-                      streaming_admin: {}
+                      streaming_admin: {} # Precisely one of streaming_admin, file_per_tap, buffered_admin, custom_sink must be set
                       # file_per_tap:
-                      #   path_prefix: /tmp/
+                      #   path_prefix: /tmp/envoy_tap
 
           - name: envoy.filters.http.dynamic_forward_proxy
             typed_config:
