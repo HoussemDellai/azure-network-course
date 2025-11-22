@@ -8,7 +8,7 @@ sudo apt-get install envoy
 envoy --version
 
 # run envoy
-sudo wget https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/250_proxy_envoy/envoy-proxy-transparent-connect.yml
+sudo wget https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/250_proxy_envoy/envoy-proxy-transparent-connect.yaml
 
-sudo envoy -c envoy-proxy-transparent-connect.yml --log-level debug --log-path /var/log/envoy.log
+sudo envoy -c envoy-proxy-transparent-connect.yaml --log-level debug --log-path /var/log/envoy.log
 
