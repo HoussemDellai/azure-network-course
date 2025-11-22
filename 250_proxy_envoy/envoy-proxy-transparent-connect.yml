@@ -90,9 +90,8 @@ application_log_config:
       Level: "%l"
       Message: "%j"
       FixedValue: "SomeFixedValue"
-
-      hostname: "%REQUESTED_SERVER_NAME%"
-
+      Protocol: "%PROTOCOL%"
+      Duration: "%DURATION%"
 
 # access_log:
 # - name: envoy.access_loggers.file
