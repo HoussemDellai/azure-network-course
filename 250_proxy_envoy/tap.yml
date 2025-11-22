@@ -12,7 +12,7 @@ static_resources:
   - name: listener_0
     address:
       socket_address:
-      #  protocol: TCP
+        protocol: TCP
         address: 0.0.0.0
         port_value: 10001   
     filter_chains:
@@ -56,13 +56,13 @@ static_resources:
                   #     - name: foo
                   #       exact_match: bar
                   output_config:
-                    streaming: false
+                    streaming: true
                     max_buffered_rx_bytes: 5000
                     max_buffered_tx_bytes: 5000
                     sinks:
                     - format: JSON_BODY_AS_BYTES
                       file_per_tap:
-                        path_prefix: /var/log/envoy_tap/                
+                        path_prefix: /var/log/envoy_tap             
 
           - name: envoy.filters.http.dynamic_forward_proxy
             typed_config:
