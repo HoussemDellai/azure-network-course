@@ -55,7 +55,8 @@ static_resources:
                 # admin_config:
                 #   config_id: test_config_id
                 static_config:
-                  # match_config:
+                  match_config:
+                    any_match: true
                   #   http_request_headers_match:
                   #     headers:
                   #     - name: foo
@@ -94,7 +95,7 @@ static_resources:
               dns_resolver_options:
                 use_tcp_for_dns_lookups: true
                 no_default_search_domain: true
-                
+
   # clusters:
   # - name: service_httpbin
   #   connect_timeout: 0.25s
