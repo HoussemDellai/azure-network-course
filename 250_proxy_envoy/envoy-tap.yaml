@@ -3,7 +3,7 @@ admin:
   access_log_path: /var/log/envoy_admin_access.log
   address:
     socket_address:
-      protocol: TCP
+      # protocol: TCP
       address: 0.0.0.0 # 127.0.0.1
       port_value: 9901
 
@@ -56,13 +56,14 @@ static_resources:
                   #     - name: foo
                   #       exact_match: bar
                   output_config:
-                    streaming: false
-                    max_buffered_rx_bytes: 5000
-                    max_buffered_tx_bytes: 5000
+                    # streaming: false
+                    # max_buffered_rx_bytes: 5000
+                    # max_buffered_tx_bytes: 5000
                     sinks:
                     - format: JSON_BODY_AS_BYTES
-                      file_per_tap:
-                        path_prefix: /tmp/
+                      streaming_admin: {}
+                      # file_per_tap:
+                      #   path_prefix: /tmp/
 
           - name: envoy.filters.http.dynamic_forward_proxy
             typed_config:
