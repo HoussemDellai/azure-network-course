@@ -81,17 +81,15 @@ static_resources:
                 use_tcp_for_dns_lookups: true
                 no_default_search_domain: true
 
-application_log_config:
-  log_format:
-    json_format:
-      Timestamp: "%Y-%m-%dT%T.%F"
-      ThreadId: "%t"
-      SourceLine: "%s:%#"
-      Level: "%l"
-      Message: "%j"
-      FixedValue: "SomeFixedValue"
-      Protocol: "%PROTOCOL%"
-      Duration: "%DURATION%"
+# application_log_config:
+#   log_format:
+#     json_format:
+#       Timestamp: "%Y-%m-%dT%T.%F"
+#       ThreadId: "%t"
+#       SourceLine: "%s:%#"
+#       Level: "%l"
+#       Message: "%j"
+#       FixedValue: "SomeFixedValue"
 
 # access_log:
 # - name: envoy.access_loggers.file
