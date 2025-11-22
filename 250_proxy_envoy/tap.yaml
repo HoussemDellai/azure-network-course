@@ -56,7 +56,7 @@ static_resources:
                   #     - name: foo
                   #       exact_match: bar
                   output_config:
-                    streaming: true
+                    streaming: false
                     max_buffered_rx_bytes: 5000
                     max_buffered_tx_bytes: 5000
                     sinks:
