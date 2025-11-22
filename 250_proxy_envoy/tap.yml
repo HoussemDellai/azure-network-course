@@ -59,10 +59,6 @@ static_resources:
                       use_tcp_for_dns_lookups: true
                       no_default_search_domain: true
 
-          - name: envoy.filters.http.router
-            typed_config:
-              "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
-
           - name: envoy.filters.http.tap
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.filters.http.tap.v3.Tap
@@ -84,6 +80,10 @@ static_resources:
                     - format: JSON_BODY_AS_BYTES
                       file_per_tap:
                         path_prefix: /var/log/envoy_tap/                
+
+          - name: envoy.filters.http.router
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 
   clusters:
   - name: dynamic_forward_proxy_cluster
