@@ -62,7 +62,7 @@ static_resources:
                     sinks:
                     - format: JSON_BODY_AS_BYTES
                       file_per_tap:
-                        path_prefix: /tmp/             
+                        path_prefix: /tmp/
 
           - name: envoy.filters.http.dynamic_forward_proxy
             typed_config:
