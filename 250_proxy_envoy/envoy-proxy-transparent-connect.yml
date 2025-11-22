@@ -84,27 +84,27 @@ static_resources:
 application_log_config:
   log_format:
     json_format:
-      Timestamp: "%Y-%m-%dT%T.%F"
-      ThreadId: "%t"
-      SourceLine: "%s:%#"
-      Level: "%l"
-      Message: "%j"
-      FixedValue: "SomeFixedValue"
+      # Timestamp: "%Y-%m-%dT%T.%F"
+      # ThreadId: "%t"
+      # SourceLine: "%s:%#"
+      # Level: "%l"
+      # Message: "%j"
+      # FixedValue: "SomeFixedValue"
 
 
-access_log:
-- name: envoy.access_loggers.file
-  filter:
-    extension_filter:
-      name: envoy.filters.accesslog.cel
-      typed_config:
-        "@type": type.googleapis.com/envoy.extensions.access_loggers.filters.cel.v3.ExpressionFilter
-        expression: "(response.backend_latency >= duration('2s'))"
-  typed_config:
-    "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
-    path: /dev/stdout
-    log_format:
-      json_format:
+# access_log:
+# - name: envoy.access_loggers.file
+#   filter:
+#     extension_filter:
+#       name: envoy.filters.accesslog.cel
+#       typed_config:
+#         "@type": type.googleapis.com/envoy.extensions.access_loggers.filters.cel.v3.ExpressionFilter
+#         expression: "(response.backend_latency >= duration('2s'))"
+#   typed_config:
+#     "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
+#     path: /dev/stdout
+#     log_format:
+#       json_format:
         listener_name: https_ingress
         upstream_connection_id: "%UPSTREAM_CONNECTION_ID%"
         downstream_connection_id: "%CONNECTION_ID%"
