@@ -6,7 +6,7 @@ This repository contains configuration files and instructions to set up an OPNse
 
 This blog is available as a video on YouTube: [youtube.com/watch?v=JtnIFiB7jkE](https://www.youtube.com/watch?v=JtnIFiB7jkE)
 
-![YouTube Thumbnail](images/youtube-video.png)
+![YouTube Thumbnail](images/video-youtube.png)
 
 ## Introduction to OPNsense
 
