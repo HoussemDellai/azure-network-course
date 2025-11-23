@@ -36,9 +36,16 @@ The shell script `configureopnsense.sh` will install OPNsense and apply a predef
 
 This shell script is executed after the VM creation usingthe `Custom Script Extension` in Terraform represented in the file `vm_extension_install_opnsense.tf`.
 
-### **Step 2: Understand the Terraform Template**
+OPNsense is intended to be used an `NVA` so it would be good to apply some of the good practices. One of these practices is to have two network interfaces:
 
-The Terraform configuration uses the **AzureRM provider** to create:
+*   **Trusted Interface**: Connected to the internal network (spokes).
+*   **Untrusted Interface**: Connected to the internet (WAN).
+
+This setup allows OPNsense to effectively manage and secure traffic between the internal network and the internet.
+
+Another good practice is to start with a predefined configuration file (`config.xml`) that includes the basic settings for the firewall, VPN, and DNS. This approach saves time and ensures consistency across deployments. It is recommended to start with closed firewall rules and then open them as needed based on your security requirements. But for demo purposes, we will allow all traffic.
+
+Let's take a look at the resources that will be created Terraform configuration uses the **AzureRM provider** to create:
 
 *   **Resource Group**
 *   **Virtual Network (VNET)** named `VNET-Hub` with two subnets:
