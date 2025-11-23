@@ -6,6 +6,8 @@ This repository contains configuration files and instructions to set up an OPNse
 
 This blog is available as a video on YouTube: [youtube.com/watch?v=JtnIFiB7jkE](https://www.youtube.com/watch?v=JtnIFiB7jkE)
 
+![YouTube Thumbnail](images/youtube-video.png)
+
 ## Introduction to OPNsense
 
 In today’s cloud-driven world, securing your infrastructure is more critical than ever. One powerful solution is OPNsense. OPNsense is a powerful [open-source](https://github.com/opnsense/core) firewall that can be used to secure your virtual networks. Originally forked from pfSense, which itself evolved from [m0n0wall](https://m0n0.ch/), OPNsense is based on `FreeBSD` and provides a user-friendly web interface for configuration and management.
