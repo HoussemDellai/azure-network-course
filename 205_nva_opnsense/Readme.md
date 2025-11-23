@@ -2,7 +2,7 @@
 
 This repository contains configuration files and instructions to set up an OPNsense firewall as a Network Virtual Appliance (NVA) in Azure. 
 
-![](images/architecture.png)
+![Architecture](images/architecture.png)
 
 ## Introduction to OPNsense
 
@@ -77,6 +77,9 @@ terraform apply -auto-approve
 ```
 
 Terraform provisions the infrastructure and outputs resource details.
+In the Azure portal you should see the newly created resources.
+
+![Azure resources](images/resources.png)
 
 ### **Access the OPNsense dashboard**
 
@@ -101,12 +104,25 @@ Now that the OPNsense firewall is up and running, let's move to the next steps t
 
 We’ll demonstrate how to establish a **WireGuard VPN connection** to OPNsense firewall. The configuration file `config.xml` used during installation already includes the necessary settings for WireGuard VPN. For more details on how to set up WireGuard on OPNsense, refer to the [official documentation](https://docs.opnsense.org/manual/how-tos/wireguard.html).
 
+We will generate a `Wireguard` peer configuration using the OPNsense dashboard. Navigate to `VPN > WireGuard > Peer generator` then add a name for the peer, fill in the IP address for the OPNsense which is the public IP of the VM in Azure, use the same IP if you want to use the pre-configured UnboundDNS. Then copy the generated configuration and click on `Store and generate next` and `Apply`.
 
-## Install Wireguard in Windows using Winget
+![Wireguard peer generator](images/generate-vpn-peer.png)
+
+Next we'll use that configuration to set up WireGuard on a Windows client. Here you can either use your current machine as a client or create a new Windows VM in Azure. We'll go with this second option for better isolation. We'll deploy the client VM using Terraform file `vpn_client_vm_win11.tf`. Make sur it is deployed using command `terraform apply -auto-approve`.
+
+Once the VM is ready, connect to it using RDP, download and install WireGuard from [here](https://www.wireguard.com/install/). Alternatively, you can install WireGuard using the following `Winget` command:
 
 ```sh
 winget install -e --id WireGuard.WireGuard --accept-package-agreements --accept-source-agreements
 ```
+
+Launch WireGuard application, click on `Add Tunnel > Add empty tunnel...`, then paste the peer configuration generated from OPNsense and save it.
+
+![Wireguard client configuration](images/vpnclient-config.png)
+
+Then click on `Activate` to start the VPN connection. We should see the data transfer starting.
+
+![Wireguard client activated](images/vpnclient-activate.png)
 
 ## More resources
 
