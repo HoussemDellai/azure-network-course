@@ -1,4 +1,4 @@
-
+# installs OPNsense using a custom script extension
 resource "azurerm_virtual_machine_extension" "cslinux-install-opnsense" {
   name                 = "cslinux"
   virtual_machine_id   = azurerm_linux_virtual_machine.vm-nva.id

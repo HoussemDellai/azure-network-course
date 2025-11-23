@@ -34,7 +34,7 @@ The shell script `configureopnsense.sh` will install OPNsense and apply a predef
 *   Gateway IP address for the trusted subnet.
 *   Public IP address of the untrusted subnet.
 
-
+This shell script is executed after the VM creation usingthe `Custom Script Extension` in Terraform represented in the file `vm_extension_install_opnsense.tf`.
 
 ### **Step 2: Understand the Terraform Template**
 
