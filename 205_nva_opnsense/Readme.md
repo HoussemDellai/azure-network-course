@@ -124,11 +124,28 @@ Then click on `Activate` to start the VPN connection. We should see the data tra
 
 ![Wireguard client activated](images/vpnclient-activate.png)
 
-## More resources
+We'll verify the VPN connection by pinging the VM, checking the outbound traffic passes through the Nat Gateway's IPs and also checking the DNS resolution using UnboundDNS configured in OPNsense.
 
-Src: https://www.zenarmor.com/docs/network-security-tutorials/how-to-setup-wireguard-on-opnsense
+```sh
+ping 10.0.1.4
+# Pinging 10.0.1.4 with 32 bytes of data:
+# Reply from 10.0.1.4: bytes=32 time=48ms TTL=64
+# ...
 
-## Important note
+curl ifconfig.me/ip # should display the public IP of the Nat Gateway in Azure
+# 74.241.132.239
 
->You will encounter the following error the first time you create a `FreeBSD` VM in your subscription: ResourcePurchaseValidationFailed: User failed validation to purchase resources. Error message: 'You have not accepted the legal terms on this subscription for this plan. Before the subscription can be used, you need to accept the legal terms of the image. To read and accept legal terms, use the Azure CLI commands described at https://go.microsoft.com/fwlink/?linkid=2110637 or the PowerShell commands available at https://go.microsoft.com/fwlink/?linkid=862451. Alternatively, deploying via the Azure portal provides a UI experience for reading and accepting the legal terms. Offer details: publisher='thefreebsdfoundation' offer = 'freebsd-14_2', sku = '14_2-release-amd64-gen2-zfs',
-The solution is to create a `FreeBSD` VM using the Azure Portal first, accept the legal terms, and then you can proceed with Terraform deployments.
+nslookup microsoft.com # should resolve using UnboundDNS configured in OPNsense
+# Server:  UnKnown
+# Address:  4.223.97.148
+# Non-authoritative answer:
+# Name:    microsoft.com
+# Addresses:  2603:1030:b:3::152
+#           13.107.246.53
+#           13.107.213.53
+# ...
+```
+
+## What's next ?
+
+Now that you have OPNsense firewall set up as an NVA in Azure and have successfully established a WireGuard VPN connection, we can explore additional features and configurations such as integrating OPNsense into a Hub and Spoke network topology. That will be covered in the next part of this blog.
