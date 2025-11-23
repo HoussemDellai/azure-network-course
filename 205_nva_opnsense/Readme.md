@@ -48,19 +48,16 @@ Another good practice is to start with a predefined configuration file (`config.
 Let's take a look at the resources that will be created by Terraform using the **AzureRM provider**:
 
 *   **Resource Group**
-*   **Virtual Network (VNET)** named `VNET-Hub` with two subnets:
+*   **Virtual Network (VNET)** named `vnet-hub` with two subnets:
     *   **Trusted Subnet**: Internal traffic between spokes.
     *   **Untrusted Subnet**: Exposes the firewall to the internet.
-*   **Network Security Group (NSG)** attached to the untrusted subnet (all traffic allowed for demo purposes).
+*   **Network Security Group (NSG)**: attached to the untrusted subnet, with rules allowing traffic to the VPN, OPNsense website and to the internet.
 *   **Virtual Machine**:
     *   Two NICs (trusted and untrusted) with **IP forwarding enabled**.
-    *   **FreeBSD OS image**.
-    *   VM size: `Standard_D4ads_v5` with NVMe disks.
-    *   Admin credentials.
-
-At this stage, the VM runs FreeBSD but does not yet have OPNsense installed.
-
-***
+    *   **FreeBSD OS image** using version `14.1`.
+    *   VM size: `Standard_D4ads_v6` with NVMe disk for better performance.
+    *   Admin credentials: feel free to change the username and password with more security.
+*   **NAT Gateway**: attached to the untrusted subnet for outbound internet connectivity.
 
 ### **Step 3: Install OPNsense**
 
