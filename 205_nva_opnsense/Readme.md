@@ -141,7 +141,7 @@ curl ifconfig.me/ip # should display the public IP of the Nat Gateway in Azure
 
 nslookup microsoft.com # should resolve using UnboundDNS configured in OPNsense
 # Server:  UnKnown
-# Address:  4.223.97.148
+# Address:  135.225.126.162
 # Non-authoritative answer:
 # Name:    microsoft.com
 # Addresses:  2603:1030:b:3::152
