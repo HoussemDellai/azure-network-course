@@ -43,7 +43,9 @@ OPNsense is intended to be used an `NVA` so it would be good to apply some of th
 
 This setup allows OPNsense to effectively manage and secure traffic between the internal network and the internet.
 
-Another good practice is to start with a predefined configuration file (`config.xml`) that includes the basic settings for the firewall, VPN, and DNS. This approach saves time and ensures consistency across deployments. It is recommended to start with closed firewall rules and then open them as needed based on your security requirements. But for demo purposes, we will allow all traffic.
+Second good practice is to start with a predefined configuration file (`config.xml`) that includes the basic settings for the firewall, VPN, and DNS. This approach saves time and ensures consistency across deployments. It is recommended to start with closed firewall rules and then open them as needed based on your security requirements. But for demo purposes, we will allow all traffic.
+
+Third good practice is to use multiple instances of OPNsense in a high-availability setup to ensure redundancy and failover capabilities. However, for simplicity, we will use a single instance in this demo.
 
 Let's take a look at the resources that will be created by Terraform using the **AzureRM provider**:
 
@@ -53,7 +55,7 @@ Let's take a look at the resources that will be created by Terraform using the *
     *   **Untrusted Subnet**: Exposes the firewall to the internet.
 *   **Network Security Group (NSG)**: attached to the untrusted subnet, with rules allowing traffic to the VPN, OPNsense website and to the internet.
 *   **Virtual Machine**:
-    *   Two NICs (trusted and untrusted) with **IP forwarding enabled**.
+    *   Two NICs (trusted and untrusted) with **IP forwarding enabled** to allow traffic to pass through the firewall.
     *   **FreeBSD OS image** using version `14.1`.
     *   VM size: `Standard_D4ads_v6` with NVMe disk for better performance.
     *   Admin credentials: feel free to change the username and password with more security.
@@ -83,11 +85,15 @@ You now have access to the OPNsense dashboard where you can:
 *   Monitor traffic and reports.
 *   Configure firewall rules for LAN, WAN, and VPN.
 *   Set up VPNs (WireGuard, OpenVPN, IPsec).
-*   Configure DNS services (OpenDNS, Unbound).
+*   Configure DNS services (OpenDNS, UnboundDNS).
 
 ![OPNsense dashboard](images/opnsense-dashboard.png)
 
-Next, we’ll demonstrate how to establish a **WireGuard VPN connection** to your OPNsense firewall.
+Now that the OPNsense firewall is up and running, let's move to the next steps to explore some of its features like VPN and integration with Hub and Spoke networks.
+
+## 2. Setting up Point-to-Site VPN using WireGuard
+
+We’ll demonstrate how to establish a **WireGuard VPN connection** to OPNsense firewall. The configuration file `config.xml` used during installation already includes the necessary settings for WireGuard VPN. For more details on how to set up WireGuard on OPNsense, refer to the [official documentation](https://docs.opnsense.org/manual/how-tos/wireguard.html).
 
 
 ## Install Wireguard in Windows using Winget
