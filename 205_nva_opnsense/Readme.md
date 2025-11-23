@@ -27,7 +27,14 @@ There are mainly two ways to have OPNsense in a virtual machine. Either you can 
 
 All the required files are in this repository: https://github.com/HoussemDellai/azure-network-course/tree/main/205_nva_opnsense.
 
-The shell script 
+The shell script `configureopnsense.sh` will install OPNsense and apply a predefined configuration file `config.xml` to set up the firewall rules, VPN, and DNS settings. It will take 4 parameters:
+
+*   GitHub path where the script and config file are hosted, in our case it is `https://raw.githubusercontent.com/HoussemDellai/azure-network-course/refs/heads/main/205_nva_opnsense/scripts/`.
+*   OPNsense version to install, currently set to `25.7`.
+*   Gateway IP address for the trusted subnet.
+*   Public IP address of the untrusted subnet.
+
+
 
 ### **Step 2: Understand the Terraform Template**
 
