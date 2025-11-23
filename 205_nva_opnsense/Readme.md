@@ -6,8 +6,8 @@ This repository contains configuration files and instructions to set up an OPNse
 
 ## Introduction to OPNsense
 
-In today’s cloud-driven world, securing your infrastructure is more critical than ever. One powerful solution is Opnsense. OPNsense is a powerful [open-source](https://github.com/opnsense/core) firewall that can be used to secure your virtual networks. Originally forked from pfSense, which itself evolved from [m0n0wall](https://m0n0.ch/), Opnsense is based on `FreeBSD` and provides a user-friendly web interface for configuration and management.
-What makes Opnsense Firewall stand out is its rich feature set:
+In today’s cloud-driven world, securing your infrastructure is more critical than ever. One powerful solution is OPNsense. OPNsense is a powerful [open-source](https://github.com/opnsense/core) firewall that can be used to secure your virtual networks. Originally forked from pfSense, which itself evolved from [m0n0wall](https://m0n0.ch/), OPNsense is based on `FreeBSD` and provides a user-friendly web interface for configuration and management.
+What makes OPNsense Firewall stand out is its rich feature set:
 
 * **VPN Support** for point-to-site and site-to-site connections using technologies like WireGuard and OpenVPN.
 * **DNS Management** with options such as OpenDNS and Unbound DNS.
@@ -15,16 +15,19 @@ What makes Opnsense Firewall stand out is its rich feature set:
 * **Advanced security features**, including intrusion detection and forward proxy integration.
 * **Plugin ecosystem**, supporting official and community extensions for third-party integrations.
 
-In this guide, you’ll learn how to install and configure Opnsense Firewall on an Azure Virtual Machine, leveraging its capabilities to secure your cloud resources effectively. We'll have three demonstrations:
+In this guide, you’ll learn how to install and configure OPNsense Firewall on an Azure Virtual Machine, leveraging its capabilities to secure your cloud resources effectively. We'll have three demonstrations:
 
 1. Installing OPNsense on an Azure virtual machine
 2. Setting up point-to-site VPN using WireGuard
-3. Using Opnsense as an NVA in a Hub and Spoke topology
+3. Using OPNsense as an NVA in a Hub and Spoke topology
 
 ## 1. Installing OPNsense on an Azure Virtual Machine
 
-You will deploy 
+There are mainly two ways to have OPNsense in a virtual machine. Either you can create a VM from scratch and install OPNsense or just [install using the pre-packaged ISO image](https://opnsense.org/get-started/) created by `Deciso` the company that maintains OPNsense. In this demo, we will use the first approach to have more control over the installation and configuration. We will create an Azure VM with `FreeBSD OS` and then install OPNsense using a shell script through the `Custom Script Extension`.
 
+All the required files are in this repository: https://github.com/HoussemDellai/azure-network-course/tree/main/205_nva_opnsense.
+
+The shell script 
 
 ### **Step 2: Understand the Terraform Template**
 
