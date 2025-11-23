@@ -59,42 +59,24 @@ Let's take a look at the resources that will be created by Terraform using the *
     *   Admin credentials: feel free to change the username and password with more security.
 *   **NAT Gateway**: attached to the untrusted subnet for outbound internet connectivity.
 
-### **Step 3: Install OPNsense**
+### **Apply Terraform configuration**
 
-We use an **Azure VM Extension** to run a shell script that:
-
-*   Downloads and installs OPNsense.
-*   Applies the `config.xml` file for firewall configuration.
-
-The script parameters include:
-
-*   GitHub path
-*   OPNsense version (currently **25.7**)
-*   Gateway IP and public IP address
-
-These values are passed as local variables in Terraform.
-
-***
-
-### **Step 4: Apply Terraform**
-
-Deploy the resources by running:
+To deploy the resources, run the following commands in your terminal from within the `205_nva_opnsense` directory:
 
 ```bash
+terraform init
 terraform apply -auto-approve
 ```
 
 Terraform provisions the infrastructure and outputs resource details.
 
-***
+### **Access the OPNsense dashboard**
 
-### **Step 5: Access the OPNsense Dashboard**
-
-1.  Copy the VM’s public IP from the Azure portal.
+1.  Get the VM’s public IP from the Azure portal or from Terraform output.
 2.  Paste it into your browser. Accept the TLS warning (TLS is not configured yet).
 3.  Log in:
     *   **Username**: `root`
-    *   **Password**: `opnsense`
+    *   **Password**: `opnsense` you can change it later in the dashboard.
 
 You now have access to the OPNsense dashboard where you can:
 
@@ -103,23 +85,10 @@ You now have access to the OPNsense dashboard where you can:
 *   Set up VPNs (WireGuard, OpenVPN, IPsec).
 *   Configure DNS services (OpenDNS, Unbound).
 
-***
+![OPNsense dashboard](images/opnsense-dashboard.png)
 
-## **Next Steps**
+Next, we’ll demonstrate how to establish a **WireGuard VPN connection** to your OPNsense firewall.
 
-In the next article, we’ll demonstrate how to establish a **WireGuard VPN connection** to your OPNsense firewall.
-
-***
-
-### **Resources**
-
-*   <https://opnsense.org>
-*   <https://developer.hashicorp.com/terraform/docs>
-*   <https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs>
-
-***
-
-✅ Do you want me to **add code snippets for the Terraform configuration and shell script** inside this Markdown file? Or should I **include diagrams (network topology) and screenshots for better visualization**?
 
 ## Install Wireguard in Windows using Winget
 
