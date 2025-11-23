@@ -23,7 +23,13 @@ In this guide, you’ll learn how to install and configure OPNsense Firewall on 
 
 ## 1. Installing OPNsense on an Azure Virtual Machine
 
-There are mainly two ways to have OPNsense in a virtual machine. Either you can create a VM from scratch and install OPNsense or just [install using the pre-packaged ISO image](https://opnsense.org/get-started/) created by `Deciso` the company that maintains OPNsense. In this demo, we will use the first approach to have more control over the installation and configuration. We will create an Azure VM with `FreeBSD OS` and then install OPNsense using a shell script through the `Custom Script Extension`.
+There are three ways to have OPNsense in a virtual machine.
+
+* Create a VM from scratch and install OPNsense.
+* Install using the [pre-packaged ISO image](https://opnsense.org/get-started/) created by `Deciso` the company that maintains OPNsense.
+* Use a pre-built VM image from the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-en/marketplace/apps/decisosalesbv.opnsense?tab=Overview).
+
+In this demo, we will use the first approach to have more control over the installation and configuration. We will create an Azure VM with `FreeBSD OS` and then install OPNsense using a shell script through the `Custom Script Extension`.
 
 All the required files are in this repository: https://github.com/HoussemDellai/azure-network-course/tree/main/205_nva_opnsense.
 
