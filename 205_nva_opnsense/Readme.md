@@ -10,7 +10,7 @@ This blog is available as a video on YouTube: [youtube.com/watch?v=JtnIFiB7jkE](
 
 ## Introduction to OPNsense
 
-In today’s cloud-driven world, securing your infrastructure is more critical than ever. One powerful solution is OPNsense. OPNsense is a powerful [open-source](https://github.com/opnsense/core) firewall that can be used to secure your virtual networks. Originally forked from pfSense, which itself evolved from [m0n0wall](https://m0n0.ch/), OPNsense is based on `FreeBSD` and provides a user-friendly web interface for configuration and management.
+In today’s cloud-driven world, securing your infrastructure is more critical than ever. One powerful solution is `OPNsense`. OPNsense is a powerful [open-source](https://github.com/opnsense/core) firewall that can be used to secure your virtual networks. Originally forked from `pfSense`, which itself evolved from [m0n0wall](https://m0n0.ch/), OPNsense is based on `FreeBSD` and provides a user-friendly web interface for configuration and management.
 What makes OPNsense Firewall stand out is its rich feature set:
 
 * **VPN Support** for point-to-site and site-to-site connections using technologies like WireGuard and OpenVPN.
