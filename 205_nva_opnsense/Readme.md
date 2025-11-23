@@ -131,7 +131,7 @@ Then click on `Activate` to start the VPN connection. We should see the data tra
 We'll verify the VPN connection by pinging the VM, checking the outbound traffic passes through the Nat Gateway's IPs and also checking the DNS resolution using UnboundDNS configured in OPNsense.
 
 ```sh
-ping 10.0.1.4
+ping 10.0.1.4 # this is the trusted IP of OPNsense in Azure
 # Pinging 10.0.1.4 with 32 bytes of data:
 # Reply from 10.0.1.4: bytes=32 time=48ms TTL=64
 # ...
