@@ -65,10 +65,10 @@ Let's take a look at the resources that will be created by Terraform using the *
     *   **Untrusted Subnet**: Exposes the firewall to the internet.
 *   **Network Security Group (NSG)**: attached to the untrusted subnet, with rules allowing traffic to the VPN, OPNsense website and to the internet.
 *   **Virtual Machine**:
-    *   Two NICs (trusted and untrusted) with **IP forwarding enabled** to allow traffic to pass through the firewall.
     *   **FreeBSD OS image** using version `14.1`.
     *   VM size: `Standard_D4ads_v6` with NVMe disk for better performance.
     *   Admin credentials: feel free to change the username and password with more security.
+*   **Two NICs** (trusted and untrusted) with **IP forwarding enabled** to allow traffic to pass through the firewall.
 *   **NAT Gateway**: attached to the untrusted subnet for outbound internet connectivity.
 
 ### **Apply Terraform configuration**
