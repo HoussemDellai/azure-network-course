@@ -2,7 +2,7 @@
 
 This repository contains configuration files and instructions to set up an OPNsense firewall as a Network Virtual Appliance (NVA) in Azure. 
 
-![](images/wireguard-vpn-to-opnsense.png)
+![](images/architecture.png)
 
 ## Introduction to OPNsense
 
