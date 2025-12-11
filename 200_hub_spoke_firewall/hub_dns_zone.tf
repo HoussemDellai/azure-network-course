@@ -18,7 +18,7 @@ resource "azurerm_private_dns_a_record" "dns_a_record_vm_spoke1" {
   zone_name           = azurerm_private_dns_zone.dns_zone.name
   resource_group_name = azurerm_private_dns_zone.dns_zone.resource_group_name
   ttl                 = 300
-  records             = [module.vm-spoke1.vm_private_ip]
+  records             = [azurerm_linux_virtual_machine.vm-spoke1.private_ip_address]
 }
 
 resource "azurerm_private_dns_a_record" "dns_a_record_vm_spoke2" {
@@ -26,7 +26,7 @@ resource "azurerm_private_dns_a_record" "dns_a_record_vm_spoke2" {
   zone_name           = azurerm_private_dns_zone.dns_zone.name
   resource_group_name = azurerm_private_dns_zone.dns_zone.resource_group_name
   ttl                 = 300
-  records             = [module.vm-spoke2.vm_private_ip]
+  records             = [azurerm_linux_virtual_machine.vm-spoke2.private_ip_address]
 }
 
 # DNS Zone link to the virtual network

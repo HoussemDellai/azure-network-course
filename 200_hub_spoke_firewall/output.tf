@@ -10,13 +10,13 @@ output "commands" {
 
         # 3. Test the webapp on the VMs
 
-        ping ${module.vm-spoke1.vm_private_ip}
+        ping ${azurerm_linux_virtual_machine.vm-spoke1.private_ip_address}
 
-        ping ${module.vm-spoke2.vm_private_ip}
+        ping ${azurerm_linux_virtual_machine.vm-spoke2.private_ip_address}
 
-        traceroute ${module.vm-spoke1.vm_private_ip}
+        traceroute ${azurerm_linux_virtual_machine.vm-spoke1.private_ip_address}
 
-        traceroute ${module.vm-spoke2.vm_private_ip}
+        traceroute ${azurerm_linux_virtual_machine.vm-spoke2.private_ip_address}
 
         nslookup ${azurerm_private_dns_a_record.dns_a_record_vm_spoke1.fqdn}
 
