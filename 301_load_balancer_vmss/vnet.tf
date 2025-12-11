@@ -6,14 +6,14 @@ resource "azurerm_virtual_network" "vnet-app" {
   dns_servers         = null
 }
 
-resource "azurerm_subnet" "subnet-app" {
-  name                 = "subnet-app"
+resource "azurerm_subnet" "snet-app" {
+  name                 = "snet-app"
   resource_group_name  = azurerm_virtual_network.vnet-app.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet-app.name
   address_prefixes     = ["10.0.0.0/24"]
 }
 
-resource "azurerm_subnet" "subnet-bastion" {
+resource "azurerm_subnet" "snet-bastion" {
   name                 = "AzureBastionSubnet"
   resource_group_name  = azurerm_virtual_network.vnet-app.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet-app.name

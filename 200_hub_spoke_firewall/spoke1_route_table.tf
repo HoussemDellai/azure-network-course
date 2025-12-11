@@ -15,6 +15,6 @@ resource "azurerm_route" "route-to-nva-spoke1" {
 }
 
 resource "azurerm_subnet_route_table_association" "association_route_table_subnet_spoke1" {
-  subnet_id      = azurerm_subnet.subnet-spoke1-workload.id
+  subnet_id      = azurerm_subnet.snet-spoke1-workload.id
   route_table_id = azurerm_route_table.route-table-to-nva-spoke1.id
 }

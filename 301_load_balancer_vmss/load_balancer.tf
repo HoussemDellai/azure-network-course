@@ -37,8 +37,8 @@ resource "azurerm_lb_rule" "lb-rule" {
   backend_address_pool_ids       = [azurerm_lb_backend_address_pool.backend-pool.id]
   load_distribution              = "Default" # Default, SourceIP, SourceIPProtocol. Defaults to Default
   disable_outbound_snat          = true      # Defaults to false
-  enable_tcp_reset               = false
-  enable_floating_ip             = false # Defaults to false
+  tcp_reset_enabled              = false
+  floating_ip_enabled            = false # Defaults to false
 }
 
 resource "azurerm_lb_probe" "probe-http" {

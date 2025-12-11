@@ -63,15 +63,15 @@ resource "azurerm_linux_virtual_machine" "vm-nva" {
 
   source_image_reference {
     publisher = "thefreebsdfoundation"
-    offer     = "freebsd-14_1" # "windows11preview-arm64"
-    sku       = "14_1-release-amd64-gen2-zfs"
+    offer     = "freebsd-14_2" # "freebsd-14_1" # "windows11preview-arm64"
+    sku       = "14_2-release-amd64-gen2-zfs" # "14_1-release-amd64-gen2-zfs"
     version   = "latest"
   }
 
   plan {
-    name      = "14_1-release-amd64-gen2-zfs"
+    name      = "14_2-release-amd64-gen2-zfs" # "14_1-release-amd64-gen2-zfs"
     publisher = "thefreebsdfoundation"
-    product   = "freebsd-14_1"
+    product   = "freebsd-14_2" # "freebsd-14_1"
   }
 
   identity {

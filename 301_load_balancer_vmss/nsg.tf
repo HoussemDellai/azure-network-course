@@ -14,11 +14,11 @@ resource "azurerm_network_security_rule" "rule-allow-http" {
   protocol                     = "Tcp"
   source_address_prefix        = "Internet"
   source_port_range            = "*"
-  destination_address_prefixes = azurerm_subnet.subnet-app.address_prefixes
+  destination_address_prefixes = azurerm_subnet.snet-app.address_prefixes
   destination_port_range       = "80"
 }
 
 resource "azurerm_subnet_network_security_group_association" "nsg_association" {
-  subnet_id                 = azurerm_subnet.subnet-app.id
+  subnet_id                 = azurerm_subnet.snet-app.id
   network_security_group_id = azurerm_network_security_group.nsg.id
 }

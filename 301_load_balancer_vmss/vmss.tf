@@ -18,8 +18,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "ubuntu-24_04-lts" # "0001-com-ubuntu-server-jammy"
-    sku       = "server"           # "22_04-lts"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "server"
     version   = "latest"
   }
 
@@ -32,7 +32,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
     ip_configuration {
       name                                         = "internal"
       primary                                      = true
-      subnet_id                                    = azurerm_subnet.subnet-app.id
+      subnet_id                                    = azurerm_subnet.snet-app.id
       load_balancer_backend_address_pool_ids       = [azurerm_lb_backend_address_pool.backend-pool.id]
       application_gateway_backend_address_pool_ids = null
       load_balancer_inbound_nat_rules_ids          = null
