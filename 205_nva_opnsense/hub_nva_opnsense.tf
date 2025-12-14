@@ -4,7 +4,7 @@ resource "azurerm_public_ip" "pip-vm-nva" {
   location            = azurerm_resource_group.rg.location
   allocation_method   = "Static"
   sku                 = "Standard"
-  # domain_name_label   = "opnsense"
+  domain_name_label   = "opnsense"
   # zones               = [1]
 }
 

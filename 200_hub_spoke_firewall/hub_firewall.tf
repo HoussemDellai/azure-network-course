@@ -18,7 +18,7 @@ resource "azurerm_firewall" "firewall" {
 
   ip_configuration {
     name                 = "configuration"
-    subnet_id            = azurerm_subnet.subnet-firewall.id
+    subnet_id            = azurerm_subnet.snet-firewall.id
     public_ip_address_id = azurerm_public_ip.pip-firewall.id
   }
 }
