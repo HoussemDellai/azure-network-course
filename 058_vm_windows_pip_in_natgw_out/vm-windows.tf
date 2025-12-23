@@ -1,5 +1,5 @@
-resource "azurerm_public_ip" "pip-vm" {
-  name                = "pip-in-vm"
+resource "azurerm_public_ip" "pip-in-vm" {
+  name                = "pip-in-vm-win"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   allocation_method   = "Static"
@@ -7,7 +7,7 @@ resource "azurerm_public_ip" "pip-vm" {
 }
 
 resource "azurerm_network_interface" "nic-vm" {
-  name                = "nic-vm"
+  name                = "nic-vm-win"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 
@@ -15,7 +15,7 @@ resource "azurerm_network_interface" "nic-vm" {
     name                          = "primary"
     subnet_id                     = azurerm_subnet.snet-vm.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.pip-vm.id
+    public_ip_address_id          = azurerm_public_ip.pip-in-vm.id
     primary                       = true
   }
 }
@@ -24,7 +24,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   name                  = "vm-win11"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_D4ads_v6" # "Standard_D96ads_v5" # 
+  size                  = "Standard_D4ads_v6"
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
   priority              = "Spot"
@@ -88,7 +88,7 @@ resource "azurerm_virtual_machine_data_disk_attachment" "disk-attachement" {
 }
 
 output "pip_in_vm" {
-  value = azurerm_public_ip.pip-vm.ip_address
+  value = azurerm_public_ip.pip-in-vm.ip_address
 }
 
 output "vm_windows_private_ip" {
