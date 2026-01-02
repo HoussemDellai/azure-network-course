@@ -69,3 +69,21 @@ resource "azapi_resource" "nsp_resource_association_keyvault" {
     }
   }
 }
+
+resource "azapi_resource" "nsp_resource_association_foundry" {
+  type      = "Microsoft.Network/networkSecurityPerimeters/resourceAssociations@2023-07-01-preview"
+  parent_id = azapi_resource.networkSecurityPerimeter.id
+  name      = "nsp-resource-association-foundry"
+  location  = azurerm_resource_group.rg.location
+  body = {
+    properties = {
+      accessMode = "Learning" # "Enforced" # 
+      privateLinkResource = {
+        id = azurerm_cognitive_account.foundry.id
+      }
+      profile = {
+        id = azapi_resource.nsp_profile.id
+      }
+    }
+  }
+}

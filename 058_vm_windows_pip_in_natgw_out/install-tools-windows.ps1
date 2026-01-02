@@ -9,8 +9,7 @@ choco install brave -y
 
 choco install postman -y
 
-choco install visualstudio2022enterprise -y
-
+# choco install visualstudio2022enterprise -y
 
 # Configure Auto-Complete
 Set-ExecutionPolicy RemoteSigned
