@@ -13,3 +13,7 @@ resource "azurerm_cognitive_deployment" "gpt_52" {
     version = "2025-12-11"
   }
 }
+
+output "model_deployment_name" {
+  value = azurerm_cognitive_deployment.gpt_52.name
+}
