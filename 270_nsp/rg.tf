@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-nsp-${var.prefix}"
+  name     = "rg-nsp-foundry-${var.prefix}"
   location = "swedencentral"
 }

@@ -1,0 +1,139 @@
+moved {
+  from = azapi_resource.account
+  to   = azapi_resource.bing_search
+}
+
+resource "azapi_resource" "bing_search" {
+  type                      = "Microsoft.Bing/accounts@2025-05-01-preview"
+  parent_id                 = azurerm_resource_group.rg.id
+  name                      = "bing-search-270"
+  location                  = "global"
+  schema_validation_enabled = false
+
+  body = {
+    kind = "Bing.Grounding"
+    # properties = {
+    #   endpoint          = "https://api.bing.microsoft.com/"
+    #   internalId        = "64f3200655aa44078d82b223fce1cce3"
+    #   provisioningState = "Succeeded"
+    #   statisticsEnabled = false
+    # }
+    sku = {
+      name = "G1"
+    }
+  }
+}
+
+resource "azapi_resource" "bing_search_custom" {
+  type                      = "Microsoft.Bing/accounts@2025-05-01-preview"
+  parent_id                 = azurerm_resource_group.rg.id
+  name                      = "bing-search-custom"
+  location                  = "global"
+  schema_validation_enabled = false
+  response_export_values    = ["*"]
+
+  body = {
+    kind = "Bing.GroundingCustomSearch"
+    # properties = {
+    #   endpoint          = "https://api.bing.microsoft.com/"
+    #   internalId        = "8bd2dba0e2964d058853d23eb44bc095"
+    #   provisioningState = "Succeeded"
+    #   statisticsEnabled = false
+    # }
+    sku = {
+      name = "G2"
+    }
+  }
+}
+
+# List keys for the Bing Account resource
+data "azapi_resource_action" "keys_bing_search_custom" {
+  type        = "microsoft.bing/accounts@2025-05-01-preview"
+  resource_id = azapi_resource.bing_search_custom.id
+  action      = "listKeys"
+  method      = "POST"
+
+  sensitive_response_export_values = ["key1", "key2"]
+  #   response_export_values = ["*"]
+}
+
+output "keys_bing_search_custom" {
+  value     = data.azapi_resource_action.keys_bing_search_custom.sensitive_output
+  sensitive = true
+}
+
+resource "azapi_resource" "connection_bing_search_custom" {
+  type                      = "Microsoft.CognitiveServices/accounts/projects/connections@2025-06-01"
+  name                      = "connection-bing-custom-search"
+  parent_id                 = azurerm_cognitive_account_project.project.id
+  schema_validation_enabled = false
+
+  body = {
+    name = "connection-bing-custom-search"
+    properties = {
+      category = "GroundingWithCustomSearch"
+      target   = "https://api.bing.microsoft.com/"
+      authType = "ApiKey" # AuthType for GroundingWithCustomSearch Connection can only be ApiKey
+      metadata = {
+        ApiType    = "Azure"
+        ResourceId = azapi_resource.bing_search_custom.id
+        location   = azurerm_resource_group.rg.location
+      }
+    }
+  }
+
+  sensitive_body = {
+    properties = {
+      credentials = {
+        key = data.azapi_resource_action.keys_bing_search_custom.sensitive_output.key1
+      }
+    }
+  }
+}
+
+# role assignment: Azure AI Owner role to create Foundry connections to Bing resources.
+resource "azurerm_role_assignment" "ai-owner-bing-search" {
+  scope                = azapi_resource.bing_search_custom.id
+  role_definition_name = "Azure AI Owner"
+  principal_id         = data.azurerm_client_config.current.object_id
+}
+
+resource "azapi_resource" "configuration_bing_search_custom" {
+  type                      = "Microsoft.Bing/accounts/customSearchConfigurations@2025-05-01-preview"
+  name                      = "configuration-bing-search-custom"
+  parent_id                 = azapi_resource.bing_search_custom.id
+  schema_validation_enabled = false
+
+  body = {
+    properties = {
+      allowedDomains = [
+        {
+          boostLevel      = "Boosted"
+          domain          = "microsoft.com"
+          includeSubPages = true
+        },
+        {
+          boostLevel      = "Boosted"
+          domain          = "github.com"
+          includeSubPages = true
+        },
+        {
+          boostLevel      = "Boosted"
+          domain          = "learn.microsoft.com"
+          includeSubPages = true
+        },
+        {
+          boostLevel      = "Boosted"
+          domain          = "techcommunity.microsoft.com"
+          includeSubPages = true
+        },
+      ]
+      blockedDomains = [
+        {
+          domain          = "wikipedia.org"
+          includeSubPages = true
+        }
+      ]
+    }
+  }
+}
