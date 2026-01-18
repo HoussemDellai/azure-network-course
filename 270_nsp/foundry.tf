@@ -32,6 +32,13 @@ resource "azurerm_cognitive_account_project" "project" {
   }
 }
 
+# give your project's managed identity access to pull from the container registry that houses your image.
+resource "azurerm_role_assignment" "foundry_project_acrpull" {
+  scope                = azurerm_container_registry.acr.id
+  role_definition_name = "AcrPull"
+  principal_id         = azurerm_cognitive_account_project.project.identity.0.principal_id
+}
+
 # resource "azurerm_role_assignment" "ai-services" {
 #   scope                = azurerm_cognitive_account.foundry.id
 #   role_definition_name = "Cognitive Services OpenAI Contributor" # "Cognitive Services OpenAI User"
@@ -76,15 +83,23 @@ resource "time_sleep" "purge_ai_foundry_cooldown" {
   # depends_on = [azurerm_subnet.subnet_agent]
 }
 
+output "foundry_name" {
+  value = azurerm_cognitive_account.foundry.name
+}
+
 output "foundry_endpoint" {
   value = azurerm_cognitive_account.foundry.endpoint
 }
 
-output "foundry_primary_access_key" {
+output "foundry_api_key" {
   value     = azurerm_cognitive_account.foundry.primary_access_key
   sensitive = true
 }
 
+output "foundry_project_name" {
+  value = azurerm_cognitive_account_project.project.name
+}
+
 output "foundry_project_endpoint" {
-  value = azurerm_cognitive_account_project.project.endpoints
+  value = azurerm_cognitive_account_project.project.endpoints["AI Foundry API"]
 }

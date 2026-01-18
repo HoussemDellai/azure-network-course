@@ -1,3 +1,3 @@
 variable "prefix" {
-  default = "270-test"
+  default = "270us-test"
 }
