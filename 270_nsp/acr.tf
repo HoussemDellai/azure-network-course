@@ -45,6 +45,10 @@ resource "azurerm_container_registry" "acr" {
   }
 }
 
+output "acr_name" {
+  value = azurerm_container_registry.acr.name
+}
+
 output "acr_fqdn" {
   value = azurerm_container_registry.acr.login_server
 }

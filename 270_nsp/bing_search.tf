@@ -137,3 +137,11 @@ resource "azapi_resource" "configuration_bing_search_custom" {
     }
   }
 }
+
+output "connection_id_bing_search_custom" {
+  value = azapi_resource.connection_bing_search_custom.id
+}
+
+output "bing_search_custom_name" {
+  value = azapi_resource.bing_search_custom.name
+}

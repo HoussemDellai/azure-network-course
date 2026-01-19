@@ -1,19 +1,17 @@
-resource "azapi_resource" "foundry_project_capability_host" {
-  # depends_on = [
-  #   azapi_resource.conn_aisearch,
-  #   azapi_resource.conn_cosmosdb,
-  #   azapi_resource.conn_storage,
-  #   time_sleep.wait_rbac
-  # ]
-  type                      = "Microsoft.CognitiveServices/accounts/projects/capabilityHosts@2025-10-01-preview"
-  name                      = "foundry-project-capability-host"
-  parent_id                 = azurerm_cognitive_account_project.project.id
+# https://learn.microsoft.com/en-us/azure/templates/microsoft.cognitiveservices/accounts/capabilityhosts?pivots=deployment-language-terraform
+resource "azapi_resource" "foundry_capability_host" {
+  type                      = "Microsoft.CognitiveServices/accounts/capabilityHosts@2025-10-01-preview"
+  name                      = "foundry-capability-host"
+  parent_id                 = azurerm_cognitive_account.foundry.id
   schema_validation_enabled = false
 
   body = {
     properties = {
       capabilityHostKind             = "Agents"
       enablePublicHostingEnvironment = true
+      # customerSubnet = "string"
+      # aiServicesConnections = [
+      # ]
       # vectorStoreConnections = [
       #   azapi_resource.ai_search.name
       # ]
@@ -26,3 +24,32 @@ resource "azapi_resource" "foundry_project_capability_host" {
     }
   }
 }
+
+# resource "azapi_resource" "foundry_project_capability_host" {
+#   # depends_on = [
+#   #   azapi_resource.conn_aisearch,
+#   #   azapi_resource.conn_cosmosdb,
+#   #   azapi_resource.conn_storage,
+#   #   time_sleep.wait_rbac
+#   # ]
+#   type                      = "Microsoft.CognitiveServices/accounts/projects/capabilityHosts@2025-10-01-preview"
+#   name                      = "foundry-project-capability-host"
+#   parent_id                 = azurerm_cognitive_account_project.project.id
+#   schema_validation_enabled = false
+
+#   body = {
+#     properties = {
+#       capabilityHostKind             = "Agents"
+#       enablePublicHostingEnvironment = true
+#       # vectorStoreConnections = [
+#       #   azapi_resource.ai_search.name
+#       # ]
+#       # storageConnections = [
+#       #   azurerm_storage_account.storage_account.name
+#       # ]
+#       # threadStorageConnections = [
+#       #   azurerm_cosmosdb_account.cosmosdb.name
+#       # ]
+#     }
+#   }
+# }
