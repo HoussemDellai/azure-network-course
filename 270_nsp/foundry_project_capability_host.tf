@@ -1,3 +1,5 @@
+# Creating capability hosts is not required. 
+# However if you do want agents to use your own resources, you must create a capability host on both the account and project.
 # https://learn.microsoft.com/en-us/azure/templates/microsoft.cognitiveservices/accounts/capabilityhosts?pivots=deployment-language-terraform
 resource "azapi_resource" "foundry_capability_host" {
   type                      = "Microsoft.CognitiveServices/accounts/capabilityHosts@2025-10-01-preview"

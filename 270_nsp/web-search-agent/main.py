@@ -1,70 +1,33 @@
-import os
-from agent_framework import ChatAgent
-from agent_framework_azure_ai import AzureAIAgentClient
+# Copyright (c) Microsoft. All rights reserved.
+
+from random import randint
+from typing import Annotated
+
+from agent_framework.azure import AzureOpenAIChatClient
+from azure.identity import DefaultAzureCredential
+from dotenv import load_dotenv
+
 from azure.ai.agentserver.agentframework import from_agent_framework
-from azure.identity.aio import DefaultAzureCredential
 
-from azure.ai.projects.models import (
-    BingCustomSearchAgentTool,
-    BingCustomSearchToolParameters,
-    BingCustomSearchConfiguration,
-)
+load_dotenv()
 
-def create_agent() -> ChatAgent:
-    """Create and return a ChatAgent with Bing Grounding search tool."""
-    assert (
-        "AZURE_AI_PROJECT_ENDPOINT" in os.environ
-    ), "AZURE_AI_PROJECT_ENDPOINT environment variable must be set."
-    assert (
-        "AZURE_AI_MODEL_DEPLOYMENT_NAME" in os.environ
-    ), "AZURE_AI_MODEL_DEPLOYMENT_NAME environment variable must be set."
-    assert (
-        "BING_CUSTOM_SEARCH_INSTANCE_NAME" in os.environ
-    ), "BING_CUSTOM_SEARCH_INSTANCE_NAME environment variable must be set to use BingCustomSearchAgentTool."
-    assert (
-        "BING_CUSTOM_SEARCH_PROJECT_CONNECTION_NAME" in os.environ
-    ), "BING_CUSTOM_SEARCH_PROJECT_CONNECTION_NAME environment variable must be set to use BingCustomSearchAgentTool."
-    assert (
-        "BING_CUSTOM_SEARCH_PROJECT_CONNECTION_ID" in os.environ
-    ), "BING_CUSTOM_SEARCH_PROJECT_CONNECTION_ID environment variable must be set to use BingCustomSearchAgentTool."
-    # assert (
-    #     "BING_GROUNDING_CONNECTION_ID" in os.environ
-    # ), "BING_GROUNDING_CONNECTION_ID environment variable must be set to use HostedWebSearchTool."
 
-    chat_client = AzureAIAgentClient(
-        endpoint=os.environ["AZURE_AI_PROJECT_ENDPOINT"],
-        async_credential=DefaultAzureCredential(),
+def get_weather(
+    location: Annotated[str, "The location to get the weather for."],
+) -> str:
+    """Get the weather for a given location."""
+    conditions = ["sunny", "cloudy", "rainy", "stormy"]
+    return f"The weather in {location} is {conditions[randint(0, 3)]} with a high of {randint(10, 30)}°C."
+
+
+def main() -> None:
+    agent = AzureOpenAIChatClient(credential=DefaultAzureCredential()).create_agent(
+        instructions="You are a helpful weather agent.",
+        tools=get_weather,
     )
 
-    bing_custom_search_tool = BingCustomSearchAgentTool(
-        bing_custom_search_preview=BingCustomSearchToolParameters(
-            search_configurations=[
-                BingCustomSearchConfiguration(
-                    project_connection_id=os.environ["BING_CUSTOM_SEARCH_PROJECT_CONNECTION_ID"],
-                    instance_name=os.environ["BING_CUSTOM_SEARCH_INSTANCE_NAME"],
-                )
-            ]
-        )
-    )
-
-    # bing_search_tool = HostedWebSearchTool(
-    #     name="Bing Grounding Search",
-    #     description="Search the web for current information using Bing",
-    #     connection_id=os.environ["BING_GROUNDING_CONNECTION_ID"],
-    # )
-
-    agent = ChatAgent(
-        chat_client=chat_client,
-        name="BingSearchAgent",
-        instructions=(
-            "You are a helpful assistant that can search the web for current information. "
-            "Use the Bing search tool to find up-to-date information and provide accurate, "
-            "well-sourced answers. Always cite your sources when possible."
-        ),
-        tools=bing_custom_search_tool, # bing_search_tool,
-    )
-    return agent
+    from_agent_framework(agent).run()
 
 
 if __name__ == "__main__":
-    from_agent_framework(lambda _: create_agent()).run()
+    main()

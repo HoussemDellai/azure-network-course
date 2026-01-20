@@ -32,6 +32,12 @@ resource "azurerm_role_assignment" "role_acrpull_aca" {
   principal_id         = azurerm_user_assigned_identity.identity_aca.principal_id
 }
 
+resource "azurerm_role_assignment" "role_azure_ai_user_aca" {
+  scope                = azurerm_cognitive_account.foundry.id
+  role_definition_name = "Azure AI User"
+  principal_id         = azurerm_user_assigned_identity.identity_aca.principal_id
+}
+
 resource "azurerm_container_app" "aca_agent" {
   name                         = "aca-agent"
   container_app_environment_id = azurerm_container_app_environment.env.id
@@ -58,7 +64,7 @@ resource "azurerm_container_app" "aca_agent" {
       image  = "${azurerm_container_registry.acr.login_server}/${var.hosted_agent_name}:${var.hosted_agent_version}"
       cpu    = 0.25
       memory = "0.5Gi"
-
+      
       env {
         name  = "AZURE_AI_PROJECT_ENDPOINT"
         value = azurerm_cognitive_account_project.project.endpoints["AI Foundry API"]
@@ -81,7 +87,7 @@ resource "azurerm_container_app" "aca_agent" {
   ingress {
     allow_insecure_connections = false
     external_enabled           = true
-    target_port                = 80
+    target_port                = 8088
     transport                  = "auto"
 
     traffic_weight {
@@ -122,6 +128,10 @@ resource "azurerm_container_app" "aca_inspector_gadget" {
       percentage      = 100
     }
   }
+}
+
+output "aca_agent_fqdn" {
+  value = azurerm_container_app.aca_agent.ingress.0.fqdn
 }
 
 output "aca_inspector_gadget_fqdn" {
