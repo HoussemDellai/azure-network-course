@@ -89,26 +89,6 @@ resource "azurerm_managed_disk" "disk-data" {
 #   create_option      = "Attach"    # The Create Option of the Data Disk, such as Empty or Attach. Defaults to Attach.
 # }
 
-# resource "azurerm_virtual_machine_extension" "cse" {
-#   name                 = "cse"
-#   virtual_machine_id   = azurerm_windows_virtual_machine.vm-windows.id
-#   publisher            = "Microsoft.Compute"
-#   type                 = "CustomScriptExtension"
-#   type_handler_version = "1.10"
-#   settings             = <<SETTINGS
-#     {
-#         "commandToExecute": "powershell -ExecutionPolicy unrestricted -NoProfile -NonInteractive -command \"cp c:/azuredata/customdata.bin c:/azuredata/install.ps1; c:/azuredata/install.ps1 > c:/azuredata/install.ps1.log\""
-#     }
-#     SETTINGS
-
-#   timeouts {
-#     create = "60m"
-#     read   = "5m"
-#     update = "30m"
-#     delete = "30m"
-#   }
-# }
-
 output "pip_in_vm" {
   value = azurerm_public_ip.pip-in-vm.ip_address
 }

@@ -1,33 +1,42 @@
-# Copyright (c) Microsoft. All rights reserved.
+import os
+from agent_framework import ChatAgent
+from agent_framework_azure_ai import AzureAIAgentClient
 
-from random import randint
-from typing import Annotated
-
-from agent_framework.azure import AzureOpenAIChatClient
-from azure.identity import DefaultAzureCredential
-from dotenv import load_dotenv
+from azure.identity.aio import DefaultAzureCredential
 
 from azure.ai.agentserver.agentframework import from_agent_framework
 
-load_dotenv()
+os.environ["AZURE_AI_PROJECT_ENDPOINT"] = "https://foundry-270-us-test.services.ai.azure.com/api/projects/project-270-us-test"
+os.environ["AZURE_AI_MODEL_DEPLOYMENT_NAME"] = "gpt-4o-mini"
 
+print("Using AZURE_AI_PROJECT_ENDPOINT:", os.environ["AZURE_AI_PROJECT_ENDPOINT"])
 
-def get_weather(
-    location: Annotated[str, "The location to get the weather for."],
-) -> str:
-    """Get the weather for a given location."""
-    conditions = ["sunny", "cloudy", "rainy", "stormy"]
-    return f"The weather in {location} is {conditions[randint(0, 3)]} with a high of {randint(10, 30)}°C."
+def create_agent() -> ChatAgent:
+    assert (
+        "AZURE_AI_PROJECT_ENDPOINT" in os.environ
+    ), "AZURE_AI_PROJECT_ENDPOINT environment variable must be set."
+    assert (
+        "AZURE_AI_MODEL_DEPLOYMENT_NAME" in os.environ
+    ), "AZURE_AI_MODEL_DEPLOYMENT_NAME environment variable must be set."
 
+    credential = DefaultAzureCredential()
 
-def main() -> None:
-    agent = AzureOpenAIChatClient(credential=DefaultAzureCredential()).create_agent(
-        instructions="You are a helpful weather agent.",
-        tools=get_weather,
+    chat_client = AzureAIAgentClient(
+        project_endpoint=os.environ["AZURE_AI_PROJECT_ENDPOINT"],
+        model_deployment_name=os.environ["AZURE_AI_MODEL_DEPLOYMENT_NAME"],
+        credential=credential,
     )
 
-    from_agent_framework(agent).run()
-
+    agent = ChatAgent(
+        chat_client=chat_client,
+        name="BingSearchAgent",
+        instructions=(
+            "You are a helpful assistant that can search the web for current information. "
+            "Use the Bing search tool to find up-to-date information and provide accurate, "
+            "well-sourced answers. Always cite your sources when possible."
+        )
+    )
+    return agent
 
 if __name__ == "__main__":
-    main()
+    from_agent_framework(lambda _: create_agent()).run()

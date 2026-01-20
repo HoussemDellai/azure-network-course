@@ -7,5 +7,5 @@ variable "hosted_agent_name" {
 }
 
 variable "hosted_agent_version" {
-  default = "v1.0.6"
+  default = "v1.0.8"
 }
