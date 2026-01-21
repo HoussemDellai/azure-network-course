@@ -39,6 +39,18 @@ resource "azurerm_role_assignment" "foundry_project_acrpull" {
   principal_id         = azurerm_cognitive_account_project.project.identity.0.principal_id
 }
 
+resource "azurerm_role_assignment" "role_azure_ai_user_foundry_project" {
+  scope                = azurerm_cognitive_account.foundry.id
+  role_definition_name = "Azure AI User"
+  principal_id         = azurerm_cognitive_account_project.project.identity.0.principal_id
+}
+
+# resource "azurerm_role_assignment" "foundry_project_openai_user" {
+#   scope                = azurerm_container_registry.acr.id
+#   role_definition_name = "Cognitive Services OpenAI User"
+#   principal_id         = azurerm_cognitive_account_project.project.identity.0.principal_id
+# }
+
 # resource "azurerm_role_assignment" "ai-services" {
 #   scope                = azurerm_cognitive_account.foundry.id
 #   role_definition_name = "Cognitive Services OpenAI Contributor" # "Cognitive Services OpenAI User"
