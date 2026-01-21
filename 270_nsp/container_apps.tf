@@ -81,6 +81,10 @@ resource "azurerm_container_app" "aca_agent" {
         name  = "BING_CUSTOM_SEARCH_PROJECT_CONNECTION_ID"
         value = azapi_resource.connection_bing_search_custom.id
       }
+      env {
+        name = "AZURE_CLIENT_ID" # Needed for authentication with User Assigned Identity and DefaultAzureCredential()
+        value = azurerm_user_assigned_identity.identity_aca.client_id
+      }
     }
   }
 
