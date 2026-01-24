@@ -1,7 +1,9 @@
 import os
 from agent_framework import ChatAgent
 from agent_framework_azure_ai import AzureAIAgentClient
+
 from azure.ai.agentserver.agentframework import from_agent_framework
+
 from azure.identity.aio import DefaultAzureCredential
 
 from azure.ai.projects.models import (
@@ -9,6 +11,9 @@ from azure.ai.projects.models import (
     BingCustomSearchToolParameters,
     BingCustomSearchConfiguration,
 )
+
+from dotenv import load_dotenv
+load_dotenv()
 
 def create_agent() -> ChatAgent:
     """Create and return a ChatAgent with Bing Grounding search tool."""
@@ -27,13 +32,13 @@ def create_agent() -> ChatAgent:
     assert (
         "BING_CUSTOM_SEARCH_PROJECT_CONNECTION_ID" in os.environ
     ), "BING_CUSTOM_SEARCH_PROJECT_CONNECTION_ID environment variable must be set to use BingCustomSearchAgentTool."
-    # assert (
-    #     "BING_GROUNDING_CONNECTION_ID" in os.environ
-    # ), "BING_GROUNDING_CONNECTION_ID environment variable must be set to use HostedWebSearchTool."
+
+    credential = DefaultAzureCredential()
 
     chat_client = AzureAIAgentClient(
-        endpoint=os.environ["AZURE_AI_PROJECT_ENDPOINT"],
-        async_credential=DefaultAzureCredential(),
+        project_endpoint=os.environ["AZURE_AI_PROJECT_ENDPOINT"],
+        model_deployment_name=os.environ["AZURE_AI_MODEL_DEPLOYMENT_NAME"],
+        credential=credential,
     )
 
     bing_custom_search_tool = BingCustomSearchAgentTool(
@@ -47,12 +52,6 @@ def create_agent() -> ChatAgent:
         )
     )
 
-    # bing_search_tool = HostedWebSearchTool(
-    #     name="Bing Grounding Search",
-    #     description="Search the web for current information using Bing",
-    #     connection_id=os.environ["BING_GROUNDING_CONNECTION_ID"],
-    # )
-
     agent = ChatAgent(
         chat_client=chat_client,
         name="BingSearchAgent",
@@ -61,7 +60,7 @@ def create_agent() -> ChatAgent:
             "Use the Bing search tool to find up-to-date information and provide accurate, "
             "well-sourced answers. Always cite your sources when possible."
         ),
-        tools=bing_custom_search_tool, # bing_search_tool,
+        tools=bing_custom_search_tool,
     )
     return agent
 

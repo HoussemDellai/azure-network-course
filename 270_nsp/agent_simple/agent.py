@@ -1,14 +1,12 @@
-# Copyright (c) Microsoft. All rights reserved.
-
 from random import randint
 from typing import Annotated
 
 from agent_framework.azure import AzureOpenAIChatClient
 from azure.identity import DefaultAzureCredential
-from dotenv import load_dotenv
 
 from azure.ai.agentserver.agentframework import from_agent_framework
 
+from dotenv import load_dotenv
 load_dotenv()
 
 

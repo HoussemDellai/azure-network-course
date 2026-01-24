@@ -1,10 +1,10 @@
 data "azurerm_monitor_diagnostic_categories" "categories-nsp" {
-  resource_id = azapi_resource.networkSecurityPerimeter.id
+  resource_id = azurerm_network_security_perimeter.nsp.id # azapi_resource.networkSecurityPerimeter.id
 }
 
 resource "azurerm_monitor_diagnostic_setting" "diagnostics_nsp" {
   name                           = "diagnostic-settings-nsp"
-  target_resource_id             = azapi_resource.networkSecurityPerimeter.id
+  target_resource_id             = azurerm_network_security_perimeter.nsp.id
   log_analytics_workspace_id     = azurerm_log_analytics_workspace.workspace.id
   log_analytics_destination_type = "Dedicated" # "AzureDiagnostics"
 

@@ -74,8 +74,24 @@ resource "azurerm_container_app" "aca_agent" {
         value = azurerm_cognitive_deployment.gpt_4o_mini.name
       }
       env {
+        name  = "BING_CUSTOM_CONNECTION_NAME"
+        value = azapi_resource.connection_bing_search_custom.name
+      }
+      env {
+        name  = "BING_CUSTOM_INSTANCE_NAME"
+        value = azapi_resource.configuration_bing_search_custom.name
+      }
+      env {
         name  = "BING_CUSTOM_SEARCH_INSTANCE_NAME"
         value = azapi_resource.bing_search_custom.name
+      }
+      env {
+        name  = "BING_CUSTOM_SEARCH_PROJECT_CONNECTION_NAME"
+        value = azapi_resource.connection_bing_search_custom.name
+      }
+      env {
+        name  = "BING_CUSTOM_CONNECTION_ID"
+        value = azapi_resource.connection_bing_search_custom.id
       }
       env {
         name  = "BING_CUSTOM_SEARCH_PROJECT_CONNECTION_ID"

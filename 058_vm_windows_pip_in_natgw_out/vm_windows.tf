@@ -33,7 +33,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   license_type          = "Windows_Client"                      # Possible values are None, Windows_Client and Windows_Server.
   disk_controller_type  = "NVMe"                                # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
 
-  # custom_data = filebase64("./install-tools-windows.ps1")
+  custom_data = filebase64("./install-dev-tools.ps1")
 
   os_disk {
     name                 = "os-disk-vm-windows"

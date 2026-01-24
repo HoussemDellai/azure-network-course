@@ -20,7 +20,7 @@ resource "azurerm_cognitive_deployment" "gpt_4o_mini" {
 
   sku {
     name     = "GlobalStandard" # "Standard" # DataZoneStandard, GlobalBatch, GlobalStandard and ProvisionedManaged
-    capacity = 10
+    capacity = 20
   }
 
   model {
