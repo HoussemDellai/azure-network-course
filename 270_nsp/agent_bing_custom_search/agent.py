@@ -4,9 +4,9 @@ from agent_framework_azure_ai import AzureAIAgentClient
 
 from azure.ai.agentserver.agentframework import from_agent_framework
 
-from azure.identity import DefaultAzureCredential
+from azure.identity import DefaultAzureCredential as SyncDefaultAzureCredential
 
-from azure.identity.aio import DefaultAzureCredential
+from azure.identity.aio import DefaultAzureCredential as AsyncDefaultAzureCredential
 
 from azure.ai.agents.models import BingCustomSearchTool
 
@@ -16,24 +16,25 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 def create_agent() -> ChatAgent:
 
-    credential = DefaultAzureCredential()
+    syncCredential = SyncDefaultAzureCredential()
 
     project_client = AIProjectClient(
         endpoint=os.environ["AZURE_AI_PROJECT_ENDPOINT"],
-        credential=credential,
+        credential=syncCredential,
     )
 
     bing_custom_search_connection_id = project_client.connections.get(os.environ["BING_CUSTOM_CONNECTION_NAME"]).id
 
     bing_custom_search_tool = BingCustomSearchTool(connection_id=bing_custom_search_connection_id, instance_name=os.environ["BING_CONFIGURATION_NAME"])
 
+    asyncCredential = AsyncDefaultAzureCredential()
+
     chat_client = AzureAIAgentClient(
         project_endpoint=os.environ["AZURE_AI_PROJECT_ENDPOINT"],
         model_deployment_name=os.environ["AZURE_AI_MODEL_DEPLOYMENT_NAME"],
-        credential=credential,
+        credential=asyncCredential,
     )
 
     agent = ChatAgent(
