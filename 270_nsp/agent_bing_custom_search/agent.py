@@ -16,6 +16,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# show all environment variables for debugging
+for key, value in os.environ.items():
+    print(f"{key}: {value}")
+
+    
 def create_agent() -> ChatAgent:
 
     syncCredential = SyncDefaultAzureCredential()
