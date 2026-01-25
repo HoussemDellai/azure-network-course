@@ -1,8 +1,3 @@
-moved {
-  from = azapi_resource.account
-  to   = azapi_resource.bing_search
-}
-
 resource "azapi_resource" "bing_search" {
   type                      = "Microsoft.Bing/accounts@2025-05-01-preview"
   parent_id                 = azurerm_resource_group.rg.id

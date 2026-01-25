@@ -1,7 +1,7 @@
 # https://github.com/claranet/terraform-azurerm-acr/blob/master/resources.tf
 
 resource "azurerm_container_registry" "acr" {
-  name                          = "acr4hostedagent"
+  name                          = "acr4hostedagent${var.prefix}"
   resource_group_name           = azurerm_resource_group.rg.name
   location                      = azurerm_resource_group.rg.location
   sku                           = "Standard"

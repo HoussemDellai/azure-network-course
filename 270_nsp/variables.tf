@@ -1,5 +1,5 @@
 variable "prefix" {
-  default = "270-us-test"
+  default = "270ncus"
 }
 
 variable "hosted_agent_name" {
