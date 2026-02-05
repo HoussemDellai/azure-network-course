@@ -1,13 +1,13 @@
-resource "azurerm_network_security_group" "nsg-vm" {
+resource "azurerm_network_security_group" "nsg_vm" {
   name                = "nsg-vm"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 }
 
-resource "azurerm_network_security_rule" "allow-rdp" {
+resource "azurerm_network_security_rule" "allow_rdp" {
   name                        = "allow-rdp"
-  network_security_group_name = azurerm_network_security_group.nsg-vm.name
-  resource_group_name         = azurerm_network_security_group.nsg-vm.resource_group_name
+  network_security_group_name = azurerm_network_security_group.nsg_vm.name
+  resource_group_name         = azurerm_network_security_group.nsg_vm.resource_group_name
   access                      = "Allow"
   priority                    = 100
   direction                   = "Inbound"
@@ -19,6 +19,6 @@ resource "azurerm_network_security_rule" "allow-rdp" {
 }
 
 resource "azurerm_subnet_network_security_group_association" "association-nsg-snet-vm" {
-  subnet_id                 = azurerm_subnet.snet-vm.id
-  network_security_group_id = azurerm_network_security_group.nsg-vm.id
+  subnet_id                 = azurerm_subnet.snet_vm.id
+  network_security_group_id = azurerm_network_security_group.nsg_vm.id
 }

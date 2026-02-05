@@ -1,4 +1,4 @@
-resource "azurerm_public_ip" "pip-in-vm" {
+resource "azurerm_public_ip" "pip_in_vm" {
   name                = "pip-in-vm-win"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
@@ -6,34 +6,34 @@ resource "azurerm_public_ip" "pip-in-vm" {
   sku                 = "Standard"
 }
 
-resource "azurerm_network_interface" "nic-vm" {
+resource "azurerm_network_interface" "nic_vm" {
   name                = "nic-vm-win"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 
   ip_configuration {
     name                          = "primary"
-    subnet_id                     = azurerm_subnet.snet-vm.id
+    subnet_id                     = azurerm_subnet.snet_vm.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.pip-in-vm.id
+    public_ip_address_id          = azurerm_public_ip.pip_in_vm.id
     primary                       = true
   }
 }
 
-resource "azurerm_windows_virtual_machine" "vm-windows" {
-  name                  = "vm-win11"
+resource "azurerm_windows_virtual_machine" "vm_windows" {
+  name                  = "vm-win11-25h2"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_D8ads_v6"
+  size                  = "Standard_D8ads_v6" # "Standard_D8ads_v6"
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
   priority              = "Spot"
   eviction_policy       = "Delete"                              # "Deallocate" # With Spot, there's no option of Stop-Deallocate for Ephemeral VMs, rather users need to Delete instead of deallocating them.
-  network_interface_ids = [azurerm_network_interface.nic-vm.id] # [azurerm_network_interface.nic-vm-inbound.id, azurerm_network_interface.nic-vm-outbound.id]
+  network_interface_ids = [azurerm_network_interface.nic_vm.id] # [azurerm_network_interface.nic-vm-inbound.id, azurerm_network_interface.nic-vm-outbound.id]
   license_type          = "Windows_Client"                      # Possible values are None, Windows_Client and Windows_Server.
   disk_controller_type  = "NVMe"                                # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.
 
-  custom_data = filebase64("./install-dev-tools.ps1")
+  # custom_data = filebase64("./install-tools-windows.ps1")
 
   os_disk {
     name                 = "os-disk-vm-windows"
@@ -67,7 +67,7 @@ resource "azurerm_windows_virtual_machine" "vm-windows" {
   }
 }
 
-resource "azurerm_managed_disk" "disk-data" {
+resource "azurerm_managed_disk" "disk_data" {
   name                 = "disk-data"
   location             = azurerm_resource_group.rg.location
   resource_group_name  = azurerm_resource_group.rg.name
@@ -90,11 +90,11 @@ resource "azurerm_managed_disk" "disk-data" {
 # }
 
 output "pip_in_vm" {
-  value = azurerm_public_ip.pip-in-vm.ip_address
+  value = azurerm_public_ip.pip_in_vm.ip_address
 }
 
 output "vm_windows_private_ip" {
-  value = azurerm_network_interface.nic-vm.private_ip_address
+  value = azurerm_network_interface.nic_vm.private_ip_address
 }
 
 # output "lb_pip" {

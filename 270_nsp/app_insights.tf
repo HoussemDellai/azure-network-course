@@ -17,6 +17,11 @@ output "app_insights_instrumentation_key" {
   sensitive = true
 }
 
+output "app_insights_instrumentation_connection_string" {
+  value     = azurerm_application_insights.app_insights.connection_string
+  sensitive = true
+}
+
 output "app_insights_app_id" {
   value = azurerm_application_insights.app_insights.app_id
 }

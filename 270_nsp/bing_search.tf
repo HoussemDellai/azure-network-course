@@ -41,51 +41,6 @@ resource "azapi_resource" "bing_search_custom" {
   }
 }
 
-# List keys for the Bing Account resource
-data "azapi_resource_action" "keys_bing_search_custom" {
-  type        = "microsoft.bing/accounts@2025-05-01-preview"
-  resource_id = azapi_resource.bing_search_custom.id
-  action      = "listKeys"
-  method      = "POST"
-
-  sensitive_response_export_values = ["key1", "key2"]
-  #   response_export_values = ["*"]
-}
-
-output "keys_bing_search_custom" {
-  value     = data.azapi_resource_action.keys_bing_search_custom.sensitive_output
-  sensitive = true
-}
-
-resource "azapi_resource" "connection_bing_search_custom" {
-  type                      = "Microsoft.CognitiveServices/accounts/projects/connections@2025-06-01"
-  name                      = "connection-bing-custom-search"
-  parent_id                 = azurerm_cognitive_account_project.project.id
-  schema_validation_enabled = false
-
-  body = {
-    name = "connection-bing-custom-search"
-    properties = {
-      category = "GroundingWithCustomSearch"
-      target   = "https://api.bing.microsoft.com/"
-      authType = "ApiKey" # AuthType for GroundingWithCustomSearch Connection can only be ApiKey
-      metadata = {
-        ApiType    = "Azure"
-        ResourceId = azapi_resource.bing_search_custom.id
-        location   = azurerm_resource_group.rg.location
-      }
-    }
-  }
-
-  sensitive_body = {
-    properties = {
-      credentials = {
-        key = data.azapi_resource_action.keys_bing_search_custom.sensitive_output.key1
-      }
-    }
-  }
-}
-
 # role assignment: Azure AI Owner role to create Foundry connections to Bing resources.
 resource "azurerm_role_assignment" "ai-owner-bing-search" {
   scope                = azapi_resource.bing_search_custom.id
@@ -133,10 +88,15 @@ resource "azapi_resource" "configuration_bing_search_custom" {
   }
 }
 
+output "bing_search_custom_name" {
+  value = azapi_resource.bing_search_custom.name
+}
+
 output "connection_id_bing_search_custom" {
   value = azapi_resource.connection_bing_search_custom.id
 }
 
-output "bing_search_custom_name" {
-  value = azapi_resource.bing_search_custom.name
+output "keys_bing_search_custom" {
+  value     = data.azapi_resource_action.keys_bing_search_custom.sensitive_output
+  sensitive = true
 }

@@ -3,7 +3,7 @@ data "azurerm_monitor_diagnostic_categories" "categories-foundry-project" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "diagnostics_foundry_project" {
-  name                           = "diagnostic-settings-foundry-project"
+  name                           = "diagnostic-settings-foundry-project-${var.prefix}"
   target_resource_id             = azurerm_cognitive_account_project.project.id
   log_analytics_workspace_id     = azurerm_log_analytics_workspace.workspace.id
   log_analytics_destination_type = "Dedicated" # "AzureDiagnostics"

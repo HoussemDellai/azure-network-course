@@ -1,13 +1,29 @@
+# WinGet will not be available until you have logged into Windows as a user for the first time, 
+# triggering Microsoft Store to register the Windows Package Manager as part of an asynchronous process. 
+# If you have recently logged in as a user for the first time and find that WinGet is not yet available, 
+# you can open PowerShell and enter the following command to request this WinGet registration: 
+
+Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
+
+winget install -e --id Brave.Brave --accept-package-agreements --accept-source-agreements
+
+winget install -e --id Microsoft.VisualStudioCode --accept-package-agreements --accept-source-agreements
+
+winget install -e --id Git.Git --accept-package-agreements --accept-source-agreements
+
+winget install -e --id Microsoft.AzureCLI --accept-package-agreements --accept-source-agreements --silent --force
+
+
 # The script will be downloaded into the VM: C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.15\Downloads\0
 
-# Install chocolately
-# Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+# # Install chocolately
+# # Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+# Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
-# install brave browser
-choco install brave -y
+# # # install brave browser
+# choco install brave -y
 
-choco install postman -y
+# choco install postman -y
 
 # choco install visualstudio2022enterprise -y
 

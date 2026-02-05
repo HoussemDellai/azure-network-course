@@ -1,10 +1,10 @@
-data "azurerm_monitor_diagnostic_categories" "categories-nsp" {
-  resource_id = azurerm_network_security_perimeter.nsp.id # azapi_resource.networkSecurityPerimeter.id
+data "azurerm_monitor_diagnostic_categories" "categories-bing-search-custom" {
+  resource_id = azapi_resource.bing_search_custom.id
 }
 
-resource "azurerm_monitor_diagnostic_setting" "diagnostics_nsp" {
-  name                           = "diagnostic-settings-nsp${var.prefix}"
-  target_resource_id             = azurerm_network_security_perimeter.nsp.id
+resource "azurerm_monitor_diagnostic_setting" "diagnostics_bing_search_custom" {
+  name                           = "diagnostic-settings-bing-search-custom-${var.prefix}"
+  target_resource_id             = azapi_resource.bing_search_custom.id
   log_analytics_workspace_id     = azurerm_log_analytics_workspace.workspace.id
   log_analytics_destination_type = "Dedicated" # "AzureDiagnostics"
 

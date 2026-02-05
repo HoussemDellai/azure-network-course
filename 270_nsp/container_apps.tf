@@ -119,6 +119,99 @@ resource "azurerm_container_app" "aca_agent" {
   depends_on = [ azurerm_role_assignment.role_acrpull_aca ]
 }
 
+resource "azurerm_container_app" "aca_agent_monitoring" {
+  name                         = "aca-agent-monitoring"
+  container_app_environment_id = azurerm_container_app_environment.env.id
+  resource_group_name          = azurerm_resource_group.rg.name
+  revision_mode                = "Single"
+  workload_profile_name        = "Consumption"
+
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.identity_aca.id]
+  }
+
+  registry {
+    server   = azurerm_container_registry.acr.login_server
+    identity = azurerm_user_assigned_identity.identity_aca.id
+  }
+
+  template {
+    min_replicas = 1
+    max_replicas = 3
+
+    container {
+      name   = "aca-agent"
+      image  = "${azurerm_container_registry.acr.login_server}/${var.hosted_agent_name}:${var.hosted_agent_version}"
+      cpu    = 0.25
+      memory = "0.5Gi"
+      
+      env {
+        name  = "APP_INSIGHTS_CONNECTION_STRING"
+        value = azurerm_application_insights.app_insights.connection_string
+      }
+      env {
+        name  = "ENABLE_INSTRUMENTATION"
+        value = "true"
+      }
+      env {
+        name  = "ENABLE_CONSOLE_EXPORTERS"
+        value = "true"
+      }
+      env {
+        name  = "AZURE_AI_PROJECT_ENDPOINT"
+        value = azurerm_cognitive_account_project.project.endpoints["AI Foundry API"]
+      }
+      env {
+        name  = "AZURE_AI_MODEL_DEPLOYMENT_NAME"
+        value = azurerm_cognitive_deployment.gpt_4o_mini.name
+      }
+      env {
+        name  = "BING_CUSTOM_CONNECTION_NAME"
+        value = azapi_resource.connection_bing_search_custom.name
+      }
+      env {
+        name  = "BING_CUSTOM_INSTANCE_NAME"
+        value = azapi_resource.configuration_bing_search_custom.name
+      }
+      env {
+        name  = "BING_CUSTOM_SEARCH_INSTANCE_NAME"
+        value = azapi_resource.bing_search_custom.name
+      }
+      env {
+        name  = "BING_CUSTOM_SEARCH_PROJECT_CONNECTION_NAME"
+        value = azapi_resource.connection_bing_search_custom.name
+      }
+      env {
+        name  = "BING_CUSTOM_CONNECTION_ID"
+        value = azapi_resource.connection_bing_search_custom.id
+      }
+      env {
+        name  = "BING_CUSTOM_SEARCH_PROJECT_CONNECTION_ID"
+        value = azapi_resource.connection_bing_search_custom.id
+      }
+      env {
+        name = "AZURE_CLIENT_ID" # Needed for authentication with User Assigned Identity and DefaultAzureCredential()
+        value = azurerm_user_assigned_identity.identity_aca.client_id
+      }
+    }
+  }
+
+  ingress {
+    allow_insecure_connections = false
+    external_enabled           = true
+    target_port                = 8088
+    transport                  = "auto"
+
+    traffic_weight {
+      latest_revision = true
+      percentage      = 100
+    }
+  }
+
+  depends_on = [ azurerm_role_assignment.role_acrpull_aca ]
+}
+
 resource "azurerm_container_app" "aca_inspector_gadget" {
   name                         = "inspector-gadget"
   container_app_environment_id = azurerm_container_app_environment.env.id
