@@ -11,7 +11,7 @@ terraform {
 }
 
 provider "azurerm" {
-  use_cli = true
+  # use_cli = true
 
   features {
     resource_group {

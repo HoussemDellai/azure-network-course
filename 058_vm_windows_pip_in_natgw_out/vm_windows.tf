@@ -27,8 +27,8 @@ resource "azurerm_windows_virtual_machine" "vm_windows" {
   size                  = "Standard_D8ads_v6" # "Standard_D8ads_v6"
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
-  priority              = "Spot"
-  eviction_policy       = "Delete"                              # "Deallocate" # With Spot, there's no option of Stop-Deallocate for Ephemeral VMs, rather users need to Delete instead of deallocating them.
+  # priority              = "Spot"
+  # eviction_policy       = "Delete"                              # "Deallocate" # With Spot, there's no option of Stop-Deallocate for Ephemeral VMs, rather users need to Delete instead of deallocating them.
   network_interface_ids = [azurerm_network_interface.nic_vm.id] # [azurerm_network_interface.nic-vm-inbound.id, azurerm_network_interface.nic-vm-outbound.id]
   license_type          = "Windows_Client"                      # Possible values are None, Windows_Client and Windows_Server.
   disk_controller_type  = "NVMe"                                # "SCSI" # "IDE" # "SCSI" is the default value. "NVMe" is only supported for Ephemeral OS Disk.

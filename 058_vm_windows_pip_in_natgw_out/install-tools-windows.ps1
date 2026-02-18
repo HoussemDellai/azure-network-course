@@ -13,6 +13,11 @@ winget install -e --id Git.Git --accept-package-agreements --accept-source-agree
 
 winget install -e --id Microsoft.AzureCLI --accept-package-agreements --accept-source-agreements --silent --force
 
+winget install -e --id Microsoft.Azd --accept-package-agreements --accept-source-agreements
+
+winget install -e --id Python.Python.3.13 --accept-package-agreements --accept-source-agreements
+
+winget install -e --id Python.Python.3.12 --accept-package-agreements --accept-source-agreements
 
 # The script will be downloaded into the VM: C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.15\Downloads\0
 
