@@ -186,7 +186,7 @@
   </sysctl>
   <system>
     <optimization>normal</optimization>
-    <hostname>OPNsense</hostname>
+    <hostname>OPNSENSE_SERVER_PUBLIC_IP</hostname>
     <domain>localhost</domain>
     <dnsallowoverride>1</dnsallowoverride>
     <group uuid="4780402b-6567-464d-af09-4ea15b14e5ad">
@@ -808,7 +808,7 @@
             <pubkey>+CV9zx1NgQPF/vNL1teDQ8mbkzPuCNp5KdnBb+yTHHo=</pubkey>
             <psk/>
             <tunneladdress>0.0.0.0/0</tunneladdress>
-            <serveraddress>135.225.126.162</serveraddress>
+            <serveraddress>OPNSENSE_SERVER_PUBLIC_IP</serveraddress>
             <serverport>51820</serverport>
             <keepalive/>
           </client>
@@ -1246,7 +1246,7 @@
           <program>audit,configd.py,dhcpd,dhcrelay,dnsmasq,filterlog,firewall,dpinger,charon,kea-ctrl-agent,kea-dhcp4,kea-dhcp6,kernel,lighttpd,monit,ntp,ntpd,ntpdate,openvpn,pkg,pkg-static,captiveportal,ppp,unbound,bgpd,miniupnpd,olsrd,ospfd,routed,zebra,suricata,wireguard,hostapd</program>
           <level>debug,info,notice,warn,err,crit,alert,emerg</level>
           <facility>kern,user,mail,daemon,auth,syslog,lpr,news,uucp,cron,authpriv,ftp,ntp,security,console,local0,local1,local2,local3,local4,local5,local6,local7</facility>
-          <hostname>135.116.186.253</hostname>
+          <hostname>OPNSENSE_SERVER_PUBLIC_IP</hostname>
           <certificate/>
           <port>9090</port>
           <rfc5424>0</rfc5424>
@@ -1262,7 +1262,7 @@
         <descr/>
         <interface>lan</interface>
         <ipprotocol>inet</ipprotocol>
-        <gateway>10.0.1.1</gateway>
+        <gateway>GATEWAY_PRIVATE_IP</gateway>
         <defaultgw>0</defaultgw>
         <fargw>0</fargw>
         <monitor_disable>1</monitor_disable>
