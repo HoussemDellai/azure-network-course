@@ -59,8 +59,8 @@ resource "azurerm_nat_gateway_public_ip_association" "association_pip2_nat_gatew
 
 resource "azurerm_nat_gateway_public_ip_association" "association_pip3_nat_gateway" {
   nat_gateway_id       = azurerm_nat_gateway.nat-gateway.id
-  public_ip_address_id = azurerm_public_ip.pip-nat-gateway-2.id
-}
+  public_ip_address_id = azurerm_public_ip.pip-nat-gateway-3.id
+}            
 
 resource "azurerm_subnet_nat_gateway_association" "subnet_natgw" {
   subnet_id      = azurerm_subnet.snet-untrusted.id

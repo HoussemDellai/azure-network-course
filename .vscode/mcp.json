@@ -1,0 +1,9 @@
+{
+	"servers": {
+		"open-websearch": {
+			"url": "http://localhost:3000/mcp",
+			"type": "sse"
+		}
+	},
+	"inputs": []
+}

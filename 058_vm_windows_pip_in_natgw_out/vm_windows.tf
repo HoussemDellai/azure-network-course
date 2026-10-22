@@ -24,7 +24,7 @@ resource "azurerm_windows_virtual_machine" "vm_windows" {
   name                  = "vm-win11-25h2"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_D8ads_v6" # "Standard_D8ads_v6"
+  size                  = "Standard_D8ads_v7" # "Standard_D8ads_v6"
   admin_username        = "azureuser"
   admin_password        = "@Aa123456789"
   # priority              = "Spot"

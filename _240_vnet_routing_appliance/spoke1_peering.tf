@@ -1,0 +1,19 @@
+resource "azurerm_virtual_network_peering" "vnet_peering_hub_to_spoke1" {
+  name                         = "vnet-peering-hub-to-spoke1"
+  virtual_network_name         = azurerm_virtual_network.vnet_hub.name
+  resource_group_name          = azurerm_virtual_network.vnet_hub.resource_group_name
+  remote_virtual_network_id    = azurerm_virtual_network.vnet_spoke1.id
+  allow_virtual_network_access = true
+  allow_forwarded_traffic      = true
+  allow_gateway_transit        = false
+}
+
+resource "azurerm_virtual_network_peering" "vnet_peering_spoke1_to_hub" {
+  name                         = "vnet-peering-spoke1-to-hub"
+  virtual_network_name         = azurerm_virtual_network.vnet_spoke1.name
+  resource_group_name          = azurerm_virtual_network.vnet_spoke1.resource_group_name
+  remote_virtual_network_id    = azurerm_virtual_network.vnet_hub.id
+  allow_virtual_network_access = true
+  allow_forwarded_traffic      = true
+  allow_gateway_transit        = false
+}

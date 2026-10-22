@@ -19,6 +19,16 @@ winget install -e --id Python.Python.3.13 --accept-package-agreements --accept-s
 
 winget install -e --id Python.Python.3.12 --accept-package-agreements --accept-source-agreements
 
+winget install -e --id Hashicorp.Terraform --accept-package-agreements --accept-source-agreements
+
+winget install -e --id Microsoft.Azure.FunctionsCoreTools --accept-package-agreements --accept-source-agreements
+
+winget install -e --id OpenJS.NodeJS.LTS --accept-package-agreements --accept-source-agreements
+
+winget install -e --id Microsoft.DotNet.SDK.10 --accept-package-agreements --accept-source-agreements
+
+winget install -e --id jqlang.jq --accept-package-agreements --accept-source-agreements
+
 # The script will be downloaded into the VM: C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.15\Downloads\0
 
 # # Install chocolately
