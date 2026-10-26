@@ -12,13 +12,6 @@ resource "azurerm_subnet" "snet_routing_appliance" {
   address_prefixes     = ["172.16.0.0/24"]
 }
 
-# resource "azurerm_subnet" "snet-firewall" {
-#   name                 = "AzureFirewallSubnet"
-#   resource_group_name  = azurerm_resource_group.rg-hub.name
-#   virtual_network_name = azurerm_virtual_network.vnet-hub.name
-#   address_prefixes     = ["172.16.0.0/24"]
-# }
-
 resource "azurerm_subnet" "snet_bastion" {
   name                 = "AzureBastionSubnet"
   virtual_network_name = azurerm_virtual_network.vnet_hub.name
